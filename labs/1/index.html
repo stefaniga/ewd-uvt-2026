@@ -51,7 +51,7 @@
 <main id="main-content">
 	<h1>Lab 1 - Development setup, Git, and your first page</h1>
 	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. This lab ties together <a href="../../lecture-0/#git-heading">Lecture 0 - How to use Git and GitHub Classroom</a>, <a href="../../lecture-1/">Lecture 1 - Web Foundations and HTML</a>, and the tools you will use all semester. Use <a href="../../resources/">Resources</a> for local server, Git, and editor setup.</p>
-	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#prerequisites">Prerequisites</a> · <a href="#github-classroom-onboarding">GitHub Classroom onboarding</a> · <a href="#html-basics">HTML basics</a> · <a href="#semantic-structure">Semantic HTML structure</a> · <a href="#task1">Task 1</a> · <a href="#task2">Task 2</a> · <a href="#github-pages-deployment">GitHub Pages deployment</a> · <a href="#task3">Task 3</a> · <a href="#deliverable">Deliverable</a> · <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
+	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#prerequisites">Prerequisites</a> · <a href="#github-classroom-onboarding">GitHub Classroom onboarding</a> · <a href="#html-basics">HTML basics</a> · <a href="#semantic-structure">Semantic HTML structure</a> · <a href="#task1">Task 1</a> · <a href="#task2">Task 2</a> · <a href="#github-pages-deployment">GitHub Pages deployment</a> (incl. <a href="#why-public-repo">public repo</a>) · <a href="#task3">Task 3</a> · <a href="#deliverable">Deliverable</a> · <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
 
 	<section id="overview">
 		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
@@ -69,7 +69,7 @@
 				<li><strong>GitHub Classroom:</strong> joining the classroom, accepting an assignment, your private repo per lab</li>
 				<li><strong>HTML document basics:</strong> DOCTYPE, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> (charset, viewport, title), <code>&lt;body&gt;</code></li>
 				<li><strong>Semantic HTML page structure:</strong> <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>; one <code>&lt;h1&gt;</code> per page; heading hierarchy; meaningful headings and image <code>alt</code> text</li>
-				<li><strong>GitHub Pages:</strong> publishing source (branch/folder), entry file <code>index.html</code>, site URL, build time, optional <code>.nojekyll</code></li>
+				<li><strong>GitHub Pages:</strong> private assignment repo vs. separate public repo for publishing; publishing source (branch/folder), entry file <code>index.html</code>, site URL, build time, optional <code>.nojekyll</code></li>
 			</ul>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): <a href="#github-classroom-onboarding">GitHub Classroom onboarding</a> → <a href="#task1">accept assignment &amp; clone</a> → <a href="#html-basics">HTML basics</a> &amp; <a href="#semantic-structure">semantic structure</a> → <a href="#task2">build <code>index.html</code></a> → <a href="#github-pages-deployment">initial deployment</a> &amp; <a href="#task3">enable Pages</a> → submit.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A personal course homepage (one HTML page) deployed on GitHub Pages; link submitted via the course platform.</p>
@@ -246,11 +246,18 @@ git push</code></pre>
 
 	<section id="github-pages-deployment">
 		<h2 id="pages-deployment-heading" tabindex="-1"><a class="header-anchor" href="#github-pages-deployment">Initial deployment to GitHub Pages</a></h2>
-		<p>GitHub Pages hosts static sites (HTML, CSS, images, fonts) directly from your repository. There is no server-side code (no PHP, Ruby, or Python). For this course you will deploy by telling GitHub which branch and folder to publish from.</p>
-		<h3 id="publishing-source" tabindex="-1"><a class="header-anchor" href="#publishing-source">Publishing source</a></h3>
-		<p>In <strong>Settings → Pages</strong> you choose:</p>
+		<p>GitHub Pages hosts static sites (HTML, CSS, images, fonts) directly from your repository. There is no server-side code (no PHP, Ruby, or Python).</p>
+		<h3 id="why-public-repo" tabindex="-1"><a class="header-anchor" href="#why-public-repo">Why you need a separate public repository</a></h3>
+		<p>In this course, <strong>GitHub Classroom assignment repositories are private</strong>. On a free GitHub account, GitHub Pages can only publish from <strong>public</strong> repositories. So you will:</p>
 		<ul>
-			<li><strong>Source:</strong> “Deploy from a branch” (the usual choice). Alternatively, “GitHub Actions” lets you use a workflow to build and deploy (e.g. from another folder or after a build step); for Lab 1 we use a branch.</li>
+			<li><strong>Do your work</strong> in the private Classroom repo (clone, edit, commit, push) as usual; the instructor grades your code there.</li>
+			<li><strong>Create a new public repository</strong> under your own GitHub account (e.g. <code>lab1-homepage</code> or <code>my-course-homepage</code>), add your site files (<code>index.html</code>, <code>images/</code>, etc.) to that repo, and enable GitHub Pages on it. The live URL from this public repo is what you submit so the grader can view your published page.</li>
+		</ul>
+		<p>So you keep two places in sync: the <strong>private</strong> repo (your assignment submission) and the <strong>public</strong> repo (your published site). You can push the same files to both, or copy the built files into the public repo.</p>
+		<h3 id="publishing-source" tabindex="-1"><a class="header-anchor" href="#publishing-source">Publishing source</a></h3>
+		<p>In the <strong>public</strong> repository where you want to publish, go to <strong>Settings → Pages</strong> and choose:</p>
+		<ul>
+			<li><strong>Source:</strong> “Deploy from a branch”. Alternatively, “GitHub Actions” lets you use a workflow to build and deploy; for Lab 1 we use a branch.</li>
 			<li><strong>Branch:</strong> e.g. <code>main</code> or <code>master</code> (the one you push to).</li>
 			<li><strong>Folder:</strong> “/ (root)” means GitHub serves files from the root of that branch. You can instead choose “/docs” and put your site in a <code>docs</code> folder if the repo root holds other things.</li>
 		</ul>
@@ -267,7 +274,7 @@ git push</code></pre>
 		<p>If you publish from a branch (and do not use GitHub Actions), GitHub runs Jekyll by default. Jekyll may hide files or folders that start with <code>_</code> or are in certain names. For a plain HTML site with no Jekyll theme, add an <strong>empty file</strong> named <code>.nojekyll</code> at the root of your publishing source. That disables Jekyll so all your files are served as-is. For Lab 1, if your repo has no <code>_</code> folders, it may work without <code>.nojekyll</code>; adding it is safe and avoids surprises.</p>
 		<h3 id="pages-troubleshooting" tabindex="-1"><a class="header-anchor" href="#pages-troubleshooting">Troubleshooting</a></h3>
 		<ul>
-			<li><strong>404 or “There isn’t a GitHub Pages site here”:</strong> Confirm Settings → Pages has “Deploy from a branch”, the correct branch (e.g. <code>main</code>), and the right folder. Ensure <code>index.html</code> exists at the top level of that folder and is committed and pushed.</li>
+			<li><strong>404 or “There isn’t a GitHub Pages site here”:</strong> Make sure you are using a <strong>public</strong> repository (Pages does not publish from private repos on free accounts). Confirm Settings → Pages has “Deploy from a branch”, the correct branch (e.g. <code>main</code>), and the right folder. Ensure <code>index.html</code> exists at the top level of that folder and is committed and pushed.</li>
 			<li><strong>Page is blank or old:</strong> Hard-refresh (Ctrl+Shift+R / Cmd+Shift+R) or try a private window. Wait a few more minutes after a push.</li>
 			<li><strong>Image or CSS not loading:</strong> Use relative paths (e.g. <code>images/photo.jpg</code>). For the root of the site use <code>./</code> or just the path; avoid absolute paths that assume a different domain.</li>
 		</ul>
@@ -276,18 +283,19 @@ git push</code></pre>
 
 	<section id="task3">
 		<h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3">Task 3 - Publish with GitHub Pages</a></h2>
-		<p>Use <a href="#github-pages-deployment">Initial deployment to GitHub Pages</a> above for publishing source, entry file, URL format, and troubleshooting. Steps:</p>
+		<p>Because assignment repos are private, you publish from a <strong>separate public repo</strong>. Use <a href="#github-pages-deployment">Initial deployment to GitHub Pages</a> above for details. Steps:</p>
 		<ol>
-			<li>On GitHub, open your Lab 1 repository. Go to <strong>Settings → Pages</strong> (in the “Code and automation” section of the sidebar).</li>
-			<li>Under “Build and deployment”, set <strong>Source</strong> to “Deploy from a branch”.</li>
-			<li>Choose the branch (e.g. <code>main</code>) and the folder (e.g. <code>/ (root)</code>). Save.</li>
-			<li>Wait a few minutes. GitHub will build and deploy. When ready, under “GitHub Pages” you will see a “Visit site” link (e.g. <code>https://yourusername.github.io/repo-name/</code>).</li>
-			<li>Optional: add a <code>.nojekyll</code> file at the repo root so GitHub serves your HTML as-is (see <a href="#jekyll-and-nojekyll">Jekyll and .nojekyll</a>). Commit and push.</li>
+			<li><strong>Create a new public repository</strong> on GitHub (your account): e.g. <code>lab1-homepage</code> or <code>my-course-homepage</code>. Do not initialize with a README if you will push an existing folder; or add a README and then add your files.</li>
+			<li><strong>Add your site to that repo.</strong> Either: (a) clone the new public repo, copy your <code>index.html</code> and <code>images/</code> (and any other assets) from your private Lab 1 repo into it, then commit and push; or (b) add the public repo as a second remote in your existing Lab 1 project and push the same branch to both remotes.</li>
+			<li>On GitHub, open that <strong>public</strong> repository. Go to <strong>Settings → Pages</strong> (in the “Code and automation” section of the sidebar).</li>
+			<li>Under “Build and deployment”, set <strong>Source</strong> to “Deploy from a branch”. Choose the branch (e.g. <code>main</code>) and the folder (e.g. <code>/ (root)</code>). Save.</li>
+			<li>Wait a few minutes. When ready, under “GitHub Pages” you will see a “Visit site” link (e.g. <code>https://yourusername.github.io/lab1-homepage/</code>). That is your live URL.</li>
+			<li>Optional: add a <code>.nojekyll</code> file at the root of the public repo so GitHub serves your HTML as-is (see <a href="#jekyll-and-nojekyll">Jekyll and .nojekyll</a>). Commit and push.</li>
 		</ol>
 		<p><strong>Exercise 3.1 - Verify and submit</strong></p>
-		<p>Open the Pages URL in your browser. Check that your course homepage loads, the title and headings are correct, and the image and links work. If something is wrong, fix it locally, commit, push, and wait for GitHub to update the site (can take a few minutes). Submit the <strong>live GitHub Pages URL</strong> on the course platform as your Lab 1 deliverable. Do not submit a link to the repository only; the grader must be able to view the published page.</p>
+		<p>Open the Pages URL (from the public repo) in your browser. Check that your course homepage loads, the title and headings are correct, and the image and links work. If something is wrong, update the files in your public repo (and in your private repo if you keep them in sync), push, and wait for GitHub to update the site (can take a few minutes). Submit the <strong>live GitHub Pages URL</strong> on the course platform as your Lab 1 deliverable. Do not submit a link to the repository only; the grader must be able to view the published page.</p>
 		<div class="note">
-			<p><strong>Tip:</strong> GitHub Pages is free for public repositories. Changes appear after each push; allow up to about 10 minutes for updates. For more options (e.g. custom domain or publishing from a <code>/docs</code> folder), see the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">GitHub Docs</a>.</p>
+			<p><strong>Tip:</strong> GitHub Pages is free for public repositories. Keep pushing your code to the <strong>private</strong> Classroom repo for grading, and update the <strong>public</strong> repo whenever you want the published site to change. Allow up to about 10 minutes for updates. For more options (e.g. custom domain or publishing from a <code>/docs</code> folder), see the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">GitHub Docs</a>.</p>
 		</div>
 	</section>
 
@@ -298,7 +306,7 @@ git push</code></pre>
 			<li>Accepted the GitHub Classroom assignment and cloned your repository</li>
 			<li>Created <code>index.html</code> with semantic structure (header, nav, main, at least one section, footer), one <code>h1</code>, meaningful <code>h2</code>s, one image with appropriate <code>alt</code> text, and an “about” or “goals” paragraph</li>
 			<li>Committed and pushed your work to GitHub</li>
-			<li>Enabled GitHub Pages and submitted the <strong>live site URL</strong> (not the repo URL) on the course platform</li>
+			<li>Created a <strong>public</strong> repository with your site, enabled GitHub Pages on it, and submitted the <strong>live site URL</strong> (not the repo URL) on the course platform</li>
 		</ul>
 	</section>
 
