@@ -49,18 +49,274 @@
 </nav>
 
 <main id="main-content">
-	<h1>Lab 1 - GitHub and HTML Structure</h1>
-	<p>Use <a href="../../lecture-0/#git-heading">Lecture 0 - How to use Git and GitHub Classroom</a> for the workflow and classroom code. See <a href="../../lecture-1/">Lecture 1</a> for semantic HTML and <a href="../../resources/">Resources</a> for local server, Git, and editors.</p>
+	<h1>Lab 1 - Development setup, Git, and your first page</h1>
+	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. This lab ties together <a href="../../lecture-0/#git-heading">Lecture 0 - How to use Git and GitHub Classroom</a>, <a href="../../lecture-1/">Lecture 1 - Web Foundations and HTML</a>, and the tools you will use all semester. Use <a href="../../resources/">Resources</a> for local server, Git, and editor setup.</p>
+	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#prerequisites">Prerequisites</a> · <a href="#github-classroom-onboarding">GitHub Classroom onboarding</a> · <a href="#html-basics">HTML basics</a> · <a href="#semantic-structure">Semantic HTML structure</a> · <a href="#task1">Task 1</a> · <a href="#task2">Task 2</a> · <a href="#github-pages-deployment">GitHub Pages deployment</a> · <a href="#task3">Task 3</a> · <a href="#deliverable">Deliverable</a> · <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
 
-	<section id="lab1">
-		<h2 id="lab-1" tabindex="-1"><a class="header-anchor" href="#lab1">Objectives, concepts, tasks, deliverable</a></h2>
+	<section id="overview">
+		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
 		<div class="lab-block">
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Understand GitHub Classroom workflow; create your first semantic HTML page.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> Git clone, commit, push; HTML5 structure (<code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>); accessibility basics.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Accept GitHub Classroom assignment; clone repository; create header, nav, main, section, footer; add meaningful headings; add alt text for images; commit properly.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> Personal course homepage deployed on GitHub Pages.</p>
-			<p><strong>Extra work [1]:</strong> Exercises 2-1, 4-1, 4-2.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives</strong></p>
+			<ul>
+				<li>Accept a GitHub Classroom assignment and clone your repository</li>
+				<li>Use your code editor with Git (stage, commit, push)</li>
+				<li>Create a single semantic HTML page with header, navigation, main content, and footer</li>
+				<li>Publish the page with GitHub Pages and submit the live URL</li>
+			</ul>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts</strong></p>
+			<ul>
+				<li><strong>Version control:</strong> repository, clone, commit, push; why we use Git for labs and hand-in</li>
+				<li><strong>GitHub Classroom:</strong> joining the classroom, accepting an assignment, your private repo per lab</li>
+				<li><strong>HTML document basics:</strong> DOCTYPE, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> (charset, viewport, title), <code>&lt;body&gt;</code></li>
+				<li><strong>Semantic HTML page structure:</strong> <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>; one <code>&lt;h1&gt;</code> per page; heading hierarchy; meaningful headings and image <code>alt</code> text</li>
+				<li><strong>GitHub Pages:</strong> publishing source (branch/folder), entry file <code>index.html</code>, site URL, build time, optional <code>.nojekyll</code></li>
+			</ul>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): <a href="#github-classroom-onboarding">GitHub Classroom onboarding</a> → <a href="#task1">accept assignment &amp; clone</a> → <a href="#html-basics">HTML basics</a> &amp; <a href="#semantic-structure">semantic structure</a> → <a href="#task2">build <code>index.html</code></a> → <a href="#github-pages-deployment">initial deployment</a> &amp; <a href="#task3">enable Pages</a> → submit.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A personal course homepage (one HTML page) deployed on GitHub Pages; link submitted via the course platform.</p>
+			<p><strong>Extra work [1]:</strong> Exercises 2-1, 4-1, 4-2 from the primary textbook (see <a href="../../assignments/">Assignments</a>).</p>
 		</div>
+	</section>
+
+	<section id="prerequisites">
+		<h2 id="prereq-heading" tabindex="-1"><a class="header-anchor" href="#prerequisites">Prerequisites</a></h2>
+		<p>Before the lab, ensure you have:</p>
+		<ul>
+			<li>A <a href="https://github.com/">GitHub</a> account</li>
+			<li>Git installed (<a href="https://git-scm.com/">git-scm.com</a>); run <code>git --version</code> in a terminal to confirm</li>
+			<li>Git identity set: <code>git config --global user.name "Your Name"</code> and <code>git config --global user.email "your@email.com"</code> (use the email linked to GitHub)</li>
+			<li>A code editor (e.g. <a href="https://code.visualstudio.com/">Visual Studio Code</a>) with which you can open a folder and use the terminal or Source Control view</li>
+		</ul>
+		<p>For VS Code, the built-in Git support is enough; optionally install the <a href="https://code.visualstudio.com/docs/sourcecontrol/github">GitHub Pull Requests and Issues</a> extension for a richer workflow. For publishing, you only need a browser and your GitHub repo; no extra static-site tools are required.</p>
+	</section>
+
+	<section id="github-classroom-onboarding">
+		<h2 id="classroom-onboarding-heading" tabindex="-1"><a class="header-anchor" href="#github-classroom-onboarding">GitHub Classroom onboarding</a></h2>
+		<p><strong>What is GitHub Classroom?</strong> GitHub Classroom is a tool that lets instructors create assignments from a template repository. When you accept an assignment, GitHub creates a <strong>private repository</strong> for you, pre-filled with starter files (or empty). You work in your copy and push your code to GitHub; the instructor can see your repo for grading. Every lab in this course uses the same flow: assignment link → accept → clone → work → commit → push.</p>
+		<h3 id="join-classroom" tabindex="-1"><a class="header-anchor" href="#join-classroom">Joining the course classroom</a></h3>
+		<ol>
+			<li>Your instructor will share a <strong>classroom link</strong> or <strong>invitation code</strong> (e.g. on the course platform or in the first lecture). It looks like <code>https://classroom.github.com/classrooms/.../...</code> or a short code you enter on <a href="https://classroom.github.com/">classroom.github.com</a>.</li>
+			<li>Open the link or go to GitHub Classroom and enter the code. You must be logged into GitHub with the account you want to use for the course.</li>
+			<li>Authorize GitHub Classroom if prompted (it needs permission to create repos in the course organization on your behalf).</li>
+			<li>You are now part of the classroom. You will use the same GitHub account for every assignment.</li>
+		</ol>
+		<h3 id="accept-one-assignment" tabindex="-1"><a class="header-anchor" href="#accept-one-assignment">Accepting a single assignment</a></h3>
+		<ol>
+			<li>For each lab, the instructor provides an <strong>assignment link</strong> (e.g. “Lab 1 - Course homepage”). Open that link in your browser.</li>
+			<li>You will see the assignment title and a green button: <strong>Accept this assignment</strong>. Click it.</li>
+			<li>GitHub creates your private repository (name often includes the assignment and your username, e.g. <code>lab1-john-doe</code>). The page will show a link to your new repo; bookmark or copy it.</li>
+			<li>If you see “You're ready to go!”, you can open your repository and start working. You do <strong>not</strong> need to create a new repo yourself-Classroom does it for you.</li>
+		</ol>
+		<p><strong>Important:</strong> Accept each lab assignment only once. If you have already accepted Lab 1, use the same repo; do not accept again or you may get a second empty repo. If you lose the repo link, go to your GitHub profile → Your repositories, or check the assignment page for “Your assignment has been submitted” and the repo link there.</p>
+	</section>
+
+	<section id="html-basics">
+		<h2 id="html-basics-heading" tabindex="-1"><a class="header-anchor" href="#html-basics">HTML document basics</a></h2>
+		<p>HTML (HyperText Markup Language) is the structure of a web page. The browser reads HTML and builds the Document Object Model (DOM); then it applies CSS and runs JavaScript. For Lab 1 you only need HTML.</p>
+		<p>The <strong>minimal structure of an HTML document</strong> includes <code>&lt;head&gt;</code> and <code>&lt;body&gt;</code> elements contained within the <code>&lt;html&gt;</code> root element. The diagram below shows this fundamental structure (from <a href="../../resources/#primary-textbook">Learning Web Design</a> [1]).</p>
+		<figure>
+			<img src="images/html-minimal-structure.png" alt="Diagram of minimal HTML5 document structure: DOCTYPE, html root with lang, head containing meta charset and title, body with placeholder for page content." width="600" height="auto">
+			<figcaption>Minimal HTML5 document structure. (1) DOCTYPE; (2) <code>&lt;html&gt;</code> root; (3) <code>&lt;head&gt;</code>; (4) <code>&lt;meta charset="utf-8"&gt;</code>; (5) <code>&lt;title&gt;</code>; (6) <code>&lt;body&gt;</code>. From Robbins, <em>Learning Web Design</em>, 6th ed. [1].</figcaption>
+		</figure>
+		<h3 id="html-skeleton" tabindex="-1"><a class="header-anchor" href="#html-skeleton">Minimum document skeleton</a></h3>
+		<p>Every HTML5 page should have:</p>
+		<ul>
+			<li><strong>1.</strong> <code>&lt;!DOCTYPE html&gt;</code> - declares the document type as HTML5 (must be the very first line).</li>
+			<li><strong>2.</strong> <code>&lt;html lang="en"&gt;</code> … <code>&lt;/html&gt;</code> - the root element; <code>lang</code> helps browsers and screen readers (use <code>lang="ro"</code> for Romanian if your page is in Romanian).</li>
+			<li><strong>3.</strong> <code>&lt;head&gt;</code> … <code>&lt;/head&gt;</code> - metadata (not shown on the page): charset, viewport, title, optional CSS/script links.</li>
+			<li><strong>4.</strong> <code>&lt;meta charset="UTF-8"&gt;</code> - character encoding (so accents and symbols display correctly).</li>
+			<li><strong>5.</strong> <code>&lt;title&gt;Title here&lt;/title&gt;</code> - appears in the browser tab and in search results; keep it short and descriptive.</li>
+			<li><strong>6.</strong> <code>&lt;body&gt;</code> … <code>&lt;/body&gt;</code> - the visible content; all headings, paragraphs, links, and images go here.</li>
+		</ul>
+		<h3 id="head-required" tabindex="-1"><a class="header-anchor" href="#head-required">Required elements in <code>&lt;head&gt;</code></a></h3>
+		<p>Besides charset and title, add <code>&lt;meta name="viewport" content="width=device-width"&gt;</code> for sensible scaling on mobile.</p>
+		<p>Example <code>&lt;head&gt;</code>:</p>
+		<pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width"&gt;
+  &lt;title&gt;My course homepage | Web Design 2025-2026&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+		<p>Everything the user sees goes inside <code>&lt;body&gt;</code>. Use the next section to structure that content with semantic elements.</p>
+	</section>
+
+	<section id="semantic-structure">
+		<h2 id="semantic-heading" tabindex="-1"><a class="header-anchor" href="#semantic-structure">Semantic HTML page structure</a></h2>
+		<p><strong>Semantic HTML</strong> means choosing elements that describe the <em>meaning</em> of the content, not just how it looks. Screen readers, search engines, and developers rely on this structure. For a single-page course homepage, use these building blocks in order.</p>
+		<dl>
+			<dt><code>&lt;header&gt;</code></dt>
+			<dd>Introductory content for the page or a section. For the top of the page: typically the site or page title and maybe a short tagline. Use <strong>exactly one</strong> <code>&lt;h1&gt;</code> per page inside it (the main heading).</dd>
+			<dt><code>&lt;nav&gt;</code></dt>
+			<dd>Navigation: a block of links to other pages or sections. Use a list (<code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code>) inside it. Add <code>aria-label="Main navigation"</code> or similar so assistive tech can name it.</dd>
+			<dt><code>&lt;main&gt;</code></dt>
+			<dd>The primary content of the page. There should be only one <code>&lt;main&gt;</code> per page. It often wraps several <code>&lt;section&gt;</code> elements. Give it <code>id="main-content"</code> so you can link a “Skip to main content” link to it (accessibility).</dd>
+			<dt><code>&lt;section&gt;</code></dt>
+			<dd>A thematic grouping of content, usually with a heading (<code>&lt;h2&gt;</code> or <code>&lt;h3&gt;</code>). Use one or more sections for “About me”, “Course goals”, etc. Each section should have a single heading that describes it.</dd>
+			<dt><code>&lt;footer&gt;</code></dt>
+			<dd>End of the page or of a section: copyright, your name, course name, semester, or links like “Back to top”.</dd>
+		</dl>
+		<h3 id="heading-hierarchy" tabindex="-1"><a class="header-anchor" href="#heading-hierarchy">Heading hierarchy</a></h3>
+		<ul>
+			<li>Use <strong>one <code>&lt;h1&gt;</code></strong> per page (the page title).</li>
+			<li>Use <code>&lt;h2&gt;</code> for main sections, then <code>&lt;h3&gt;</code> for subsections if needed. Do not skip levels (e.g. do not go from <code>h1</code> to <code>h3</code>).</li>
+		</ul>
+		<h3 id="outline-example" tabindex="-1"><a class="header-anchor" href="#outline-example">Example outline</a></h3>
+		<p>Live example (heading hierarchy and semantic structure):</p>
+		<p class="codepen" data-height="580" data-pen-title="heading-hierarchy-example-l1" data-default-tab="result" data-slug-hash="bNwbaBz" data-user="stefaniga" style="height: 580px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+			<span>See the Pen <a href="https://codepen.io/stefaniga/pen/bNwbaBz">heading-hierarchy-example-l1</a> by Sebastian Stefaniga (<a href="https://codepen.io/stefaniga">@stefaniga</a>) on <a href="https://codepen.io">CodePen</a>.</span>
+		</p>
+		<script async src="https://public.codepenassets.com/embed/index.js"></script>
+		<p>This structure gives you a clear document outline, good accessibility, and a solid base for adding CSS and more content later.</p>
+		<h4 id="code-to-copy" tabindex="-1"><a class="header-anchor" href="#code-to-copy">Code to copy</a></h4>
+		<p>Use the HTML below to simulate the structure in your own page or in CodePen. Replace <code>images/your-photo.jpg</code> with the path to your photo and write a short <code>alt</code> description. Copy from here:</p>
+		<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width"&gt;
+  &lt;title&gt;Course homepage - Heading hierarchy example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;My course homepage&lt;/h1&gt;
+    &lt;p&gt;Optional tagline here.&lt;/p&gt;
+  &lt;/header&gt;
+  &lt;nav aria-label="Main navigation"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Course site&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Resources&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+  &lt;main id="main-content"&gt;
+    &lt;section&gt;
+      &lt;h2&gt;About me / Course goals&lt;/h2&gt;
+      &lt;p&gt;Your name, programme, and one goal for this course.&lt;/p&gt;
+    &lt;/section&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Photo&lt;/h2&gt;
+      &lt;img src="images/your-photo.jpg" alt="Describe your image"&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;
+    &lt;p&gt;Your name · Course name · Semester&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+	</section>
+
+	<section id="task1">
+		<h2 id="task1-heading" tabindex="-1"><a class="header-anchor" href="#task1">Task 1 - Accept the assignment and clone</a></h2>
+		<p>Follow <a href="#github-classroom-onboarding">GitHub Classroom onboarding</a> above if you have not joined the classroom or accepted an assignment before. For Lab 1 specifically:</p>
+		<ol>
+			<li>Get the Lab 1 assignment link from the course platform. Open it in your browser while logged into GitHub.</li>
+			<li>Click <strong>Accept this assignment</strong>. Wait until GitHub creates your private repository and shows you its URL (e.g. <code>https://github.com/your-org/lab1-yourusername</code>).</li>
+			<li>Clone the repo: in a terminal, go to a folder where you keep course work (e.g. <code>Desktop</code> or <code>Documents</code>), then run <code>git clone &lt;repository-URL&gt;</code>. Replace <code>&lt;repository-URL&gt;</code> with the HTTPS URL from GitHub (use the green <strong>Code</strong> button on the repo page to copy it).</li>
+			<li>Open the cloned folder in your code editor (e.g. in VS Code: <strong>File → Open Folder</strong>).</li>
+		</ol>
+		<p><strong>Exercise 1.1 - Verify Git state</strong></p>
+		<p>In the terminal (inside the cloned folder), run <code>git status</code>. Note the current branch name (usually <code>main</code> or <code>master</code>). Run <code>git remote -v</code> and confirm that <code>origin</code> points to your GitHub repository. You will use this same workflow for every lab.</p>
+		<p><strong>Exercise 1.2 - First commit and push</strong></p>
+		<p>If the template includes a <code>README.md</code> or placeholder file, add a single line to it (e.g. your name and the date), save, then run:</p>
+		<pre><code>git add .
+git commit -m "Initial commit: add name and date to README"
+git push</code></pre>
+		<p>If you use VS Code’s Source Control view, stage the file, enter the same message in the commit box, commit, then push. Confirm on GitHub that your commit appears in the repository. This cycle (edit → add → commit → push) is the one you will repeat throughout the course.</p>
+	</section>
+
+	<section id="task2">
+		<h2 id="task2-heading" tabindex="-1"><a class="header-anchor" href="#task2">Task 2 - Build your course homepage</a></h2>
+		<p>Create a single file <code>index.html</code> at the root of your repository (or in the folder that will be the publishing source for GitHub Pages). Use <a href="#html-basics">HTML document basics</a> for the <code>&lt;head&gt;</code> and document shell, and <a href="#semantic-structure">Semantic HTML page structure</a> for the body content. This page will be your personal course homepage.</p>
+		<ol>
+			<li><strong>Document shell.</strong> Start with a valid HTML5 document: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html lang="en"&gt;</code>, <code>&lt;head&gt;</code> (with <code>charset</code>, <code>viewport</code>, and a <code>&lt;title&gt;</code>), then <code>&lt;body&gt;</code>. Use the structure from <a href="../../lecture-1/">Lecture 1</a> as reference.</li>
+			<li><strong>Semantic structure.</strong> Inside <code>&lt;body&gt;</code>, add in order:
+				<ul>
+					<li><code>&lt;header&gt;</code> - page title (use a single <code>&lt;h1&gt;</code>) and optional short tagline</li>
+					<li><code>&lt;nav&gt;</code> - a short list of links (e.g. to course site, Resources, or placeholder <code>#</code> links for later); consider <code>aria-label="Main navigation"</code> on <code>&lt;nav&gt;</code></li>
+					<li><code>&lt;main id="main-content"&gt;</code> - wrap the primary content that follows</li>
+					<li>At least one <code>&lt;section&gt;</code> inside <code>&lt;main&gt;</code> with a heading (<code>&lt;h2&gt;</code>) and a paragraph</li>
+					<li><code>&lt;footer&gt;</code> - your name, course name, and semester</li>
+				</ul>
+			</li>
+		</ol>
+		<p><strong>Exercise 2.1 - About you</strong></p>
+		<p>In one <code>&lt;section&gt;</code>, add a short paragraph (2-3 sentences) that states your name, your programme or year, and one goal you have for this course (e.g. “I want to build a small portfolio site” or “I want to understand how CSS layout works”). Use a descriptive <code>&lt;h2&gt;</code> for that section (e.g. “About me” or “Course goals”).</p>
+		<p><strong>Exercise 2.2 - One image with alt text</strong></p>
+		<p>Add one image to the page (e.g. a photo, avatar, or icon). Use <code>&lt;img src="…" alt="…"&gt;</code>. Write a concise <code>alt</code> attribute that describes the image for someone who cannot see it-avoid “image of” or “picture of”; describe the content or purpose. If the image is purely decorative, use <code>alt=""</code> and ensure the surrounding content still makes sense.</p>
+		<p><strong>Exercise 2.3 - Check structure and commit</strong></p>
+		<p>Open <code>index.html</code> in your browser (double-click the file or use a local server from <a href="../../resources/">Resources</a>). Confirm that the heading hierarchy is logical (one <code>h1</code>, then <code>h2</code>s). Then run <code>git add index.html</code>, <code>git commit -m "Add course homepage with semantic structure and about section"</code>, and <code>git push</code>.</p>
+	</section>
+
+	<section id="github-pages-deployment">
+		<h2 id="pages-deployment-heading" tabindex="-1"><a class="header-anchor" href="#github-pages-deployment">Initial deployment to GitHub Pages</a></h2>
+		<p>GitHub Pages hosts static sites (HTML, CSS, images, fonts) directly from your repository. There is no server-side code (no PHP, Ruby, or Python). For this course you will deploy by telling GitHub which branch and folder to publish from.</p>
+		<h3 id="publishing-source" tabindex="-1"><a class="header-anchor" href="#publishing-source">Publishing source</a></h3>
+		<p>In <strong>Settings → Pages</strong> you choose:</p>
+		<ul>
+			<li><strong>Source:</strong> “Deploy from a branch” (the usual choice). Alternatively, “GitHub Actions” lets you use a workflow to build and deploy (e.g. from another folder or after a build step); for Lab 1 we use a branch.</li>
+			<li><strong>Branch:</strong> e.g. <code>main</code> or <code>master</code> (the one you push to).</li>
+			<li><strong>Folder:</strong> “/ (root)” means GitHub serves files from the root of that branch. You can instead choose “/docs” and put your site in a <code>docs</code> folder if the repo root holds other things.</li>
+		</ul>
+		<p>After you save, GitHub builds and deploys. The first deployment can take a few minutes.</p>
+		<h3 id="entry-file" tabindex="-1"><a class="header-anchor" href="#entry-file">Entry file</a></h3>
+		<p>GitHub Pages looks for an <strong>entry file</strong> to serve at the root URL. It uses the first of these it finds: <code>index.html</code>, <code>index.md</code>, or <code>README.md</code>. For a plain HTML site, put <code>index.html</code> at the top level of the publishing source (e.g. repo root if you chose “/ (root)”). The URL <code>https://username.github.io/repo-name/</code> will then show that file. Other files (e.g. <code>about.html</code>) are available at <code>https://username.github.io/repo-name/about.html</code>.</p>
+		<h3 id="pages-url" tabindex="-1"><a class="header-anchor" href="#pages-url">Site URL</a></h3>
+		<p>For a <strong>project site</strong> (repo that is not named <code>username.github.io</code>), the base URL is:</p>
+		<p><code>https://&lt;username-or-org&gt;.github.io/&lt;repository-name&gt;/</code></p>
+		<p>Example: repo <code>lab1-john-doe</code> under user <code>johndoe</code> → <code>https://johndoe.github.io/lab1-john-doe/</code>. Note the trailing slash when linking to the root. Use this URL when submitting your lab.</p>
+		<h3 id="build-and-updates" tabindex="-1"><a class="header-anchor" href="#build-and-updates">Build time and updates</a></h3>
+		<p>After each <code>git push</code> to the published branch, GitHub rebuilds and redeploys. Allow <strong>up to about 10 minutes</strong> for changes to appear. If you do not see updates after an hour, check the branch and folder in Settings → Pages and ensure you pushed to the correct branch.</p>
+		<h3 id="jekyll-and-nojekyll" tabindex="-1"><a class="header-anchor" href="#jekyll-and-nojekyll">Jekyll and .nojekyll</a></h3>
+		<p>If you publish from a branch (and do not use GitHub Actions), GitHub runs Jekyll by default. Jekyll may hide files or folders that start with <code>_</code> or are in certain names. For a plain HTML site with no Jekyll theme, add an <strong>empty file</strong> named <code>.nojekyll</code> at the root of your publishing source. That disables Jekyll so all your files are served as-is. For Lab 1, if your repo has no <code>_</code> folders, it may work without <code>.nojekyll</code>; adding it is safe and avoids surprises.</p>
+		<h3 id="pages-troubleshooting" tabindex="-1"><a class="header-anchor" href="#pages-troubleshooting">Troubleshooting</a></h3>
+		<ul>
+			<li><strong>404 or “There isn’t a GitHub Pages site here”:</strong> Confirm Settings → Pages has “Deploy from a branch”, the correct branch (e.g. <code>main</code>), and the right folder. Ensure <code>index.html</code> exists at the top level of that folder and is committed and pushed.</li>
+			<li><strong>Page is blank or old:</strong> Hard-refresh (Ctrl+Shift+R / Cmd+Shift+R) or try a private window. Wait a few more minutes after a push.</li>
+			<li><strong>Image or CSS not loading:</strong> Use relative paths (e.g. <code>images/photo.jpg</code>). For the root of the site use <code>./</code> or just the path; avoid absolute paths that assume a different domain.</li>
+		</ul>
+		<p>Official guide: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">Creating a GitHub Pages site</a>.</p>
+	</section>
+
+	<section id="task3">
+		<h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3">Task 3 - Publish with GitHub Pages</a></h2>
+		<p>Use <a href="#github-pages-deployment">Initial deployment to GitHub Pages</a> above for publishing source, entry file, URL format, and troubleshooting. Steps:</p>
+		<ol>
+			<li>On GitHub, open your Lab 1 repository. Go to <strong>Settings → Pages</strong> (in the “Code and automation” section of the sidebar).</li>
+			<li>Under “Build and deployment”, set <strong>Source</strong> to “Deploy from a branch”.</li>
+			<li>Choose the branch (e.g. <code>main</code>) and the folder (e.g. <code>/ (root)</code>). Save.</li>
+			<li>Wait a few minutes. GitHub will build and deploy. When ready, under “GitHub Pages” you will see a “Visit site” link (e.g. <code>https://yourusername.github.io/repo-name/</code>).</li>
+			<li>Optional: add a <code>.nojekyll</code> file at the repo root so GitHub serves your HTML as-is (see <a href="#jekyll-and-nojekyll">Jekyll and .nojekyll</a>). Commit and push.</li>
+		</ol>
+		<p><strong>Exercise 3.1 - Verify and submit</strong></p>
+		<p>Open the Pages URL in your browser. Check that your course homepage loads, the title and headings are correct, and the image and links work. If something is wrong, fix it locally, commit, push, and wait for GitHub to update the site (can take a few minutes). Submit the <strong>live GitHub Pages URL</strong> on the course platform as your Lab 1 deliverable. Do not submit a link to the repository only; the grader must be able to view the published page.</p>
+		<div class="note">
+			<p><strong>Tip:</strong> GitHub Pages is free for public repositories. Changes appear after each push; allow up to about 10 minutes for updates. For more options (e.g. custom domain or publishing from a <code>/docs</code> folder), see the <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">GitHub Docs</a>.</p>
+		</div>
+	</section>
+
+	<section id="deliverable">
+		<h2 id="deliverable-heading" tabindex="-1"><a class="header-anchor" href="#deliverable">Deliverable summary</a></h2>
+		<p>By the end of Lab 1 you must have:</p>
+		<ul>
+			<li>Accepted the GitHub Classroom assignment and cloned your repository</li>
+			<li>Created <code>index.html</code> with semantic structure (header, nav, main, at least one section, footer), one <code>h1</code>, meaningful <code>h2</code>s, one image with appropriate <code>alt</code> text, and an “about” or “goals” paragraph</li>
+			<li>Committed and pushed your work to GitHub</li>
+			<li>Enabled GitHub Pages and submitted the <strong>live site URL</strong> (not the repo URL) on the course platform</li>
+		</ul>
+	</section>
+
+	<section id="extra">
+		<h2 id="extra-heading" tabindex="-1"><a class="header-anchor" href="#extra">Extra work</a></h2>
+		<p><strong>Extra work [1]:</strong> Complete exercises 2-1, 4-1, and 4-2 from the primary textbook (see <a href="../../resources/#primary-textbook">Resources - Bibliography [1]</a> and <a href="../../assignments/">Assignments</a>).</p>
+		<p><strong>Optional - Validation:</strong> Run your <code>index.html</code> through the <a href="https://validator.w3.org/">W3C Markup Validation Service</a>. Fix any reported errors and push again. This habit will help you keep HTML valid in later labs.</p>
+	</section>
+
+	<section id="references">
+		<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
+		<ul>
+			<li><a href="../../lecture-0/#git-heading">Lecture 0 - How to use Git and GitHub Classroom</a></li>
+			<li><a href="../../lecture-1/">Lecture 1 - Web Foundations and Professional Workflow</a></li>
+			<li><a href="../../resources/">Resources</a> (local server, Git, editors)</li>
+			<li>GitHub: <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site">Creating a GitHub Pages site</a></li>
+			<li>VS Code: <a href="https://code.visualstudio.com/docs/sourcecontrol/github">Working with GitHub in VS Code</a></li>
+		</ul>
 	</section>
 
 	<p><a href="../">Labs</a> · <a href="../../assignments/">Assignments</a> · <a href="../../">Course home</a></p>
