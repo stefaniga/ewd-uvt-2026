@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Resources | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content">
+	<h1>Resources</h1>
+	<p>Links and references for the course. See also <a href="../lecture-1/#resources-heading">Lecture 1 - Resource materials</a> and the <a href="../#logistics">Course logistics</a> section on the homepage.</p>
+
+	<section id="bibliography">
+		<span id="primary-textbook" aria-hidden="true"></span>
+		<h2 id="bibliography-heading" tabindex="-1"><a class="header-anchor" href="#bibliography">Bibliography</a></h2>
+		<p>[1] <strong>Primary textbook.</strong> Jennifer Niederst Robbins, <em><a href="https://learningwebdesign.com/">Learning Web Design: A Beginner's Guide to HTML, CSS, JavaScript, and Web Images</a></em>, 6th edition, O'Reilly Media, 2025, ISBN 978-1098137687.</p>
+		<p>[2] ECMA International. ECMA-262: ECMAScript Language Specification. <a href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">https://ecma-international.org/publications-and-standards/standards/ecma-262/</a> (additional resource).</p>
+		<p>[3] World Wide Web Consortium (W3C). Cascading Style Sheets (CSS) Specifications. <a href="https://www.w3.org/Style/CSS/">https://www.w3.org/Style/CSS/</a> (additional resource).</p>
+		<p>[4] WHATWG. HTML Living Standard. <a href="https://html.spec.whatwg.org/">https://html.spec.whatwg.org/</a> (additional resource).</p>
+		<p>[5] Mozilla Developer Network (MDN). MDN Web Docs. <a href="https://developer.mozilla.org/en-US/">https://developer.mozilla.org/en-US/</a> (additional resource).</p>
+		<p>[6] Ally.js. JavaScript Accessibility Library and Resources. <a href="https://allyjs.io/">https://allyjs.io/</a> (additional resource).</p>
+		<p>[7] W3C. Markup Validation Service. <a href="https://validator.w3.org/">https://validator.w3.org/</a> (additional resource).</p>
+		<p>[8] FrontendMasters. FrontendMasters Web Development Platform. <a href="https://frontendmasters.com/">https://frontendmasters.com/</a> (students eligible for the GitHub Student Developer Pack may receive six months free access; additional resource).</p>
+		<p>Supplementary materials for the primary textbook are on the book site.</p>
+		<div class="acknowledgment-block">
+			<p><strong>Acknowledgment.</strong> The instructor would like to thank Jennifer Niederst Robbins for generously providing access to the Instructor's Guide and supporting materials for <a href="https://learningwebdesign.com/">Learning Web Design</a> (6th edition), which contribute to the effective delivery of this course.</p>
+		</div>
+	</section>
+
+	<section>
+		<h2 id="localhost" tabindex="-1"><a class="header-anchor" href="#localhost">Starting a local server</a></h2>
+		<p>To view HTML/CSS/JS files as real web pages (and avoid file:// limitations), run a local HTTP server in your project folder. Examples:</p>
+		<ul>
+			<li>Python 3: <code>python -m http.server 8000</code> then open <code>http://localhost:8000</code></li>
+			<li>Node: <code>npx serve</code> or <code>npx http-server -p 8080</code></li>
+		</ul>
+		<p>Use the port number shown in the terminal. See also <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Tools_and_setup/set_up_a_local_testing_server">MDN - Set up a local testing server</a>.</p>
+	</section>
+
+	<section>
+		<h2 id="editors" tabindex="-1"><a class="header-anchor" href="#editors">Editors</a></h2>
+		<p>Use a code editor with HTML/CSS/JS support: e.g. VS Code, Sublime Text, or similar. Enable format-on-save and a linter/validator (e.g. W3C validator, ESLint for JS) to catch errors early.</p>
+	</section>
+
+	<section>
+		<h2 id="git-resources" tabindex="-1"><a class="header-anchor" href="#git-resources">Git</a></h2>
+		<p>Git is used for version control and submission. See <a href="../lecture-0/#git-heading">Lecture 0 - How to use Git and GitHub Classroom</a> for setup, clone, commit, and push. Reference: <a href="https://git-scm.com/doc">Git documentation</a>, <a href="https://pages.github.com/">GitHub Pages</a>.</p>
+	</section>
+
+	<section>
+		<h2 id="standards" tabindex="-1"><a class="header-anchor" href="#standards">Standards and specifications</a></h2>
+		<p>These are the official specifications that define how HTML, CSS, and JavaScript work. Use them when you need the exact rules (e.g. which elements exist, how attributes behave, or what a CSS property does).</p>
+		<ul>
+			<li><a href="https://html.spec.whatwg.org/">HTML Living Standard (WHATWG)</a> - Useful when you need to check which HTML elements and attributes exist, how they behave, and how they should be used. The single source of truth for HTML.</li>
+			<li><a href="https://www.w3.org/Style/CSS/">W3C CSS</a> - Useful when you need the formal definition of CSS: selectors, properties, values, and layout (e.g. Flexbox, Grid). Use it to understand why something works or does not.</li>
+			<li><a href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">ECMA-262 (ECMAScript)</a> - Useful when you need the official JavaScript (ECMAScript) specification: syntax, built-in objects, and language behaviour. Refer to it for precise answers about JS.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2 id="docs" tabindex="-1"><a class="header-anchor" href="#docs">Documentation and online resources</a></h2>
+		<p>These sites explain how to use web technologies in practice. Use them for quick lookups, examples, and checking that your markup or code is correct.</p>
+		<ul>
+			<li><a href="https://developer.mozilla.org/en-US/">MDN Web Docs</a> - Useful for looking up HTML elements, CSS properties, and JavaScript APIs. Includes examples, browser support, and tutorials. Use it as your main reference while coding.</li>
+			<li><a href="https://allyjs.io/">Ally.js</a> - Useful for accessibility: it documents which elements are focusable, how ARIA works, and how to test with keyboards and screen readers. Use it when building forms and interactive content (e.g. Lab 2, Lab 11).</li>
+			<li><a href="https://validator.w3.org/">W3C Markup Validator</a> - Useful for checking that your HTML is valid. Paste a URL or upload a file to see errors and warnings. Use it before submitting labs to fix markup mistakes.</li>
+			<li><a href="https://pages.github.com/">GitHub Pages</a> - Useful for publishing your labs as live websites. Use it to deploy the site you build in the course.</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2 id="tools" tabindex="-1"><a class="header-anchor" href="#tools">Tools</a></h2>
+		<p>Additional tools you will use in the course.</p>
+		<ul>
+			<li><a href="https://github.com/">GitHub</a> - Used for version control and GitHub Classroom. You clone, commit, and push your lab work here.</li>
+			<li><a href="https://www.figma.com/">Figma</a> - Used for design and wireframes in later lectures (e.g. Labs 5 and 6).</li>
+		</ul>
+	</section>
+
+	<section id="copyright-integrity">
+		<h2 id="copyright-heading" tabindex="-1"><a class="header-anchor" href="#copyright-integrity">Copyright and academic integrity</a></h2>
+		<p>Course materials are for your study only. Do not copy, redistribute, or publish them without permission. When you use ideas or text from others (including books, articles, or websites), you must <strong>cite the source</strong>. Submitting work that is not your own without attribution is academic misconduct. Follow the <a href="https://www.uvt.ro/educatie/info-studenti-proces-educational/regulamente-metodologii-si-proceduri/">Code of Student Rights and Obligations and the Regulation on the Professional Activity of Students</a> (UVT) and your institution's academic integrity policy. See also this course's AI policy (<a href="../#ai-policy">Course logistics</a>).</p>
+	</section>
+
+	<p><a href="../">Course home</a></p>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

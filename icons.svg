@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+	<defs>
+		<!-- Warning: triangle with exclamation -->
+		<symbol id="icon-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+			<line x1="12" y1="9" x2="12" y2="13"/>
+			<line x1="12" y1="17" x2="12.01" y2="17"/>
+		</symbol>
+		<!-- Tip / lightbulb -->
+		<symbol id="icon-tip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M9 18h6"/>
+			<path d="M10 22h4"/>
+			<path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>
+		</symbol>
+		<!-- Note / pin -->
+		<symbol id="icon-note" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M12 2v10l4.24 4.24a1 1 0 0 1-1.41 1.41L12 13.41 9.17 16.24a1 1 0 0 1-1.41-1.41L12 12V2z"/>
+			<path d="M5 22h14"/>
+		</symbol>
+		<!-- Objective / target -->
+		<symbol id="icon-objective" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<circle cx="12" cy="12" r="10"/>
+			<circle cx="12" cy="12" r="6"/>
+			<circle cx="12" cy="12" r="2"/>
+		</symbol>
+		<!-- Concept / book -->
+		<symbol id="icon-concept" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+			<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+			<path d="M8 7h8"/>
+			<path d="M8 11h8"/>
+		</symbol>
+		<!-- Task / checklist -->
+		<symbol id="icon-task" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M9 11l3 3L22 4"/>
+			<path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+		</symbol>
+		<!-- Deliverable / package -->
+		<symbol id="icon-deliverable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M16.5 9.4l-9-5.19"/>
+			<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+			<path d="M3.27 6.96L12 12.01l8.73-5.05"/>
+			<path d="M12 22.08V12"/>
+		</symbol>
+		<!-- Arrow right (for "next" / links) -->
+		<symbol id="icon-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path d="M5 12h14"/>
+			<path d="M12 5l7 7-7 7"/>
+		</symbol>
+	</defs>
+</svg>

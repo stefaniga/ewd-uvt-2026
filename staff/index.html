@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Staff | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content" class="staff-page">
+	<header class="staff-intro">
+		<h1>Staff</h1>
+		<p class="staff-lead">Course instructors for the Web Design discipline. For administrative and pedagogical matters, use the course platform (Google Classroom or Elearning UVT) or the contacts below.</p>
+	</header>
+
+	<section class="staff-section" aria-labelledby="instructors">
+		<h2 id="instructors" class="staff-section-title" tabindex="-1"><a class="header-anchor" href="#instructors">Instructors</a></h2>
+		<div class="staff-grid">
+			<article class="staff-card">
+				<div class="staff-card-photo-wrap">
+					<img src="../images/sebastian-stefaniga.png" alt="Sebastian Ștefănigă" class="staff-photo" width="160" height="160">
+				</div>
+				<div class="staff-card-body">
+					<h3 class="staff-card-name">Sebastian Ștefănigă</h3>
+					<p class="staff-card-role">Instructor</p>
+					<p class="staff-card-email"><a href="mailto:sebastian.stefaniga@e-uvt.ro">sebastian.stefaniga@e-uvt.ro</a></p>
+				</div>
+			</article>
+			<article class="staff-card">
+				<div class="staff-card-photo-wrap">
+					<img src="../images/ioana-morariu.png" alt="Ioana Morariu" class="staff-photo" width="160" height="160">
+				</div>
+				<div class="staff-card-body">
+					<h3 class="staff-card-name">Ioana Morariu</h3>
+					<p class="staff-card-role">Instructor</p>
+					<p class="staff-card-email"><a href="mailto:ioana.morariu@e-uvt.ro">ioana.morariu@e-uvt.ro</a></p>
+				</div>
+			</article>
+		</div>
+	</section>
+
+	<footer class="staff-footer">
+		<p><a href="../">Course home</a> <span class="staff-footer-sep">·</span> <a href="../#logistics">Logistics</a> <span class="staff-footer-sep">·</span> <a href="../schedule/">Schedule</a></p>
+	</footer>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

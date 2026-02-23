@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lab 2 | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content">
+	<p><a href="../">All labs</a></p>
+
+	<h2>Lab 2: HTML Forms and Accessibility</h2>
+	<p>This page corresponds to <strong><a href="../../assignments/#lab2">Lab 2</a></strong> on the Assignments page. Use the objectives, concepts, tasks, and deliverable described there.</p>
+
+	<h3 id="objectives" tabindex="-1"><a class="header-anchor" href="#objectives">Objectives</a></h3>
+	<ul>
+		<li>Build accessible forms</li>
+	</ul>
+
+	<h3 id="concepts" tabindex="-1"><a class="header-anchor" href="#concepts">Concepts</a></h3>
+	<p><code>&lt;form&gt;</code>, <code>&lt;label&gt;</code>, input types, ARIA basics.</p>
+
+	<h3 id="tasks" tabindex="-1"><a class="header-anchor" href="#tasks">Tasks</a></h3>
+	<ol>
+		<li>Create a contact form</li>
+		<li>Use proper labels (e.g. <code>for</code> / <code>id</code>)</li>
+		<li>Add required fields and pattern validation where appropriate</li>
+		<li>Use semantic grouping with <code>&lt;fieldset&gt;</code> where it helps</li>
+	</ol>
+
+	<h3 id="deliverable" tabindex="-1"><a class="header-anchor" href="#deliverable">Deliverable</a></h3>
+	<p>Form page committed and validated. Submit via the course platform.</p>
+
+	<p><strong>Reference:</strong> <a href="../../lecture-1/#interactivity-heading">Lecture 1 - Interactivity (forms and focus)</a>, <a href="../../resources/">Resources</a>.</p>
+	<p><a href="../">Labs</a> · <a href="../../assignments/">Assignments</a> · <a href="../../">Course home</a></p>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

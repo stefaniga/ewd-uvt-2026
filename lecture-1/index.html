@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lecture 1 - Web Foundations and HTML | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content">
+	<article>
+		<header>
+			<h1>Lecture 1 - Web Foundations and Professional Workflow</h1>
+			<p><strong>Lecture 1 - Web Foundations and Professional Workflow.</strong> Duration: <time datetime="PT2H">2 hours</time>. This lecture covers how the web works, semantic HTML, and Git in practice. Connected to <strong><a href="../assignments/#lab1">Lab 1</a></strong> and <strong><a href="../assignments/#lab2">Lab 2</a></strong>.</p>
+		</header>
+
+		<section aria-labelledby="learning-outcomes-heading">
+			<h2 id="learning-outcomes-heading" tabindex="-1"><a class="header-anchor" href="#learning-outcomes-heading">Learning outcomes</a></h2>
+			<p>By the end of this lecture you will be able to:</p>
+			<ul>
+				<li>Explain how the web works (clients, servers, HTTP request/response, browser rendering)</li>
+				<li>Write valid, semantic HTML with concrete use of elements and avoid presentational misuse</li>
+				<li>Mark up tabular data correctly using <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>, and <code>scope</code></li>
+				<li>Describe the Document Object Model (DOM) and how it relates to HTML, CSS, and interactivity</li>
+				<li>Use forms and focusable elements for basic interactivity and accessibility</li>
+				<li>Validate an HTML document and use Git</li>
+			</ul>
+		</section>
+
+		<section aria-labelledby="topics-heading">
+			<h2 id="topics-heading" tabindex="-1"><a class="header-anchor" href="#topics-heading">Topics</a></h2>
+			<ul>
+				<li>The Web: clients and servers, URL, HTTP request/response, browser parsing and display</li>
+				<li>Semantic HTML: meaning vs presentation; accessibility (screen readers, keyboard); concrete examples</li>
+				<li>Tabular data: when to use tables; proper structure (<code>&lt;caption&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;th&gt;</code>/<code>&lt;td&gt;</code>, <code>scope</code>)</li>
+				<li>Document Object Model (DOM): tree of nodes, parsing, relationship to CSS and JavaScript</li>
+				<li>Interactivity: forms, buttons, focus, appropriate form controls</li>
+				<li>Git and GitHub Classroom recap</li>
+			</ul>
+		</section>
+
+		<section aria-labelledby="resources-heading">
+			<h2 id="resources-heading" tabindex="-1"><a class="header-anchor" href="#resources-heading">Resource materials</a></h2>
+			<ul>
+				<li>Jennifer Niederst Robbins, <em><a href="https://learningwebdesign.com/">Learning Web Design: A Beginner's Guide to HTML, CSS, JavaScript, and Web Images</a></em>, 6th ed., O'Reilly Media, 2025</li>
+				<li>Robin Nixon, <em>Learning PHP, MySQL and JavaScript</em> (HTML5, CSS, JS), O'Reilly</li>
+				<li>David Flanagan, <em>JavaScript: The Definitive Guide</em>, 7th ed., O'Reilly</li>
+				<li><a href="https://www.w3.org/standards/webdesign">W3C Web Design Standards</a></li>
+				<li><a href="https://html.spec.whatwg.org/">HTML Living Standard (WHATWG)</a></li>
+				<li><a href="https://developer.mozilla.org/">MDN Web Docs</a></li>
+			</ul>
+			<p>All resources can be accessed via the course classroom. See also <a href="../resources/">Resources</a>. See <a href="../resources/#labs">Resources - Labs</a> and <a href="../labs/">Labs</a>.</p>
+		</section>
+
+		<section aria-labelledby="web-how-heading">
+			<h2 id="web-how-heading" tabindex="-1"><a class="header-anchor" href="#web-how-heading">The Web and how it works</a></h2>
+			<p>Computers connected to the web act either as <strong>clients</strong> (request and display content) or <strong>servers</strong> (store or generate and send content). The same machine can be both (e.g. when you run a local server and open a page in your browser).</p>
+			<h3 id="web-before-after" tabindex="-1"><a class="header-anchor" href="#web-before-after">Why the web changed how we get information</a></h3>
+			<p>Before the web, getting a document from another machine typically meant: finding the right server (e.g. via FTP), browsing or guessing filenames, downloading the file, and then opening it in whatever application could read it. You had to know where things lived and how to fetch them. The web changed that: you click a link and the browser fetches and shows the resource. One action replaces several. That shift is largely about <strong>usability</strong> - reducing steps and guesswork so that following a reference is trivial. As builders of web content, we keep that in mind: our pages should be easy to reach, clear, and quick to use.</p>
+			<h3 id="web-technical-flow" tabindex="-1"><a class="header-anchor" href="#web-technical-flow">Technical flow: URL, HTTP, browser</a></h3>
+			<dl>
+				<dt>URL (Uniform Resource Locator)</dt>
+				<dd>Address you type in the browser (e.g. <code>https://example.com/path/page.html</code>). The browser uses it to decide which server to contact and which resource to request.</dd>
+				<dt>HTTP (HyperText Transfer Protocol)</dt>
+				<dd>Protocol for exchanging data. The client sends an <strong>HTTP request</strong> (e.g. <code>GET /page.html HTTP/1.1</code> plus headers like <code>Host</code>, <code>User-Agent</code>). The server replies with an <strong>HTTP response</strong> (status like <code>200 OK</code>, headers like <code>Content-Type: text/html</code>, and the document body).</dd>
+				<dt>Browser rendering</dt>
+				<dd>The browser receives the HTML (and later CSS/JS), parses it into an internal tree (the DOM), applies styles, and paints the page. Understanding this pipeline helps you debug and optimize.</dd>
+			</dl>
+			<p><strong>Concrete example.</strong> When you open <code>https://example.com/hello.html</code>: (1) browser resolves the domain to an IP (DNS); (2) connects and sends <code>GET /hello.html</code>; (3) server returns <code>200 OK</code> and the HTML; (4) browser parses HTML, builds the DOM, loads linked CSS/JS, and displays the page. The Web Platform is built on three core technologies: <strong>HTML</strong> (structure), <strong>CSS</strong> (presentation), and <strong>JavaScript</strong> (behavior). Keeping structure in HTML, presentation in CSS, and behavior in JS is called separation of concerns and makes sites easier to maintain.</p>
+			<h3 id="usability-on-the-web" tabindex="-1"><a class="header-anchor" href="#usability-on-the-web">Usability on the web</a></h3>
+			<p>If a website is hard to use, people leave. If the purpose of the site is unclear, or the layout is confusing, or the content does not answer what they came for, they go elsewhere. Users do not usually read a manual or spend time decoding an interface. So we build with clarity, structure, and responsiveness in mind from the first line of HTML. Semantic markup, sensible navigation, and accessible forms are part of that: they help both humans and tools (e.g. screen readers, search engines) understand and use the page.</p>
+		</section>
+
+		<section aria-labelledby="html-semantic-heading">
+			<h2 id="html-semantic-heading" tabindex="-1"><a class="header-anchor" href="#html-semantic-heading">Semantic HTML - Structure and meaning</a></h2>
+			<h3 id="key-terms-html" tabindex="-1"><a class="header-anchor" href="#key-terms-html">Key terms</a></h3>
+			<dl>
+				<dt>Hypertext</dt>
+				<dd>Text displayed on a screen that contains references (hyperlinks) to other text the reader can access immediately.</dd>
+				<dt>Hypermedia</dt>
+				<dd>Extension of hypertext: graphics, audio, video, and hyperlinks in one medium.</dd>
+				<dt>Semantic markup</dt>
+				<dd>Using HTML elements to add <em>meaning</em> and structure, not presentation. Presentation is the role of CSS.</dd>
+			</dl>
+			<h3 id="semantic-concrete" tabindex="-1"><a class="header-anchor" href="#semantic-concrete">Concrete examples: meaning vs appearance</a></h3>
+			<p><strong>Heading vs styled text.</strong> These can look the same on screen but have different meaning:</p>
+			<pre><code>&lt;h1&gt;This is a top-level heading&lt;/h1&gt;
+&lt;span style="font-size: 2em; font-weight: bold;"&gt;Is this a top-level heading?&lt;/span&gt;</code></pre>
+			<p>The first is a real heading: assistive technologies and search engines treat it as the main title; the second is just bold large text with no structural meaning. Use <code>&lt;h1&gt;</code> … <code>&lt;h6&gt;</code> for headings, not styled <code>&lt;span&gt;</code> or <code>&lt;div&gt;</code>.</p>
+			<p><strong>Emphasis and citation.</strong> Visual result can be similar; semantics differ:</p>
+			<ul>
+				<li><code>&lt;em&gt;</code> - stress emphasis (e.g. "I <em>really</em> mean it").</li>
+				<li><code>&lt;i&gt;</code> - text set off from normal prose (e.g. foreign term, technical term).</li>
+				<li><code>&lt;cite&gt;</code> - title of a work (e.g. book or film).</li>
+				<li><code>&lt;span style="font-style: italic"&gt;</code> - purely visual; use when italics have no semantic meaning.</li>
+			</ul>
+			<p><strong>Why semantics matter.</strong> (1) <strong>Screen readers</strong> rely on correct headings, landmarks, and labels. (2) <strong>Keyboard users</strong> depend on focus order and focusable elements (links, buttons, form controls). (3) <strong>Search engines and bots</strong> use structure to understand and index content. (4) <strong>Maintainability</strong>: semantic markup (e.g. <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>) is easier to read and edit than a page full of <code>&lt;div&gt;</code>s.</p>
+			<p><strong>Full page structure example.</strong> Use landmarks and sectioning so the document outline is clear:</p>
+			<pre><code>&lt;header&gt;
+  &lt;h1&gt;Site name&lt;/h1&gt;
+  &lt;nav&gt;&lt;ul&gt;&lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+  &lt;section aria-labelledby="s1"&gt;&lt;h2 id="s1"&gt;Section title&lt;/h2&gt;&lt;p&gt;Content.&lt;/p&gt;&lt;/section&gt;
+  &lt;article&gt;&lt;h2&gt;Article title&lt;/h2&gt;&lt;p&gt;Content.&lt;/p&gt;&lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;&lt;p&gt;© Course name&lt;/p&gt;&lt;/footer&gt;</code></pre>
+			<p><code>&lt;header&gt;</code> / <code>&lt;footer&gt;</code> can be used for the page or for each <code>&lt;section&gt;</code> or <code>&lt;article&gt;</code>. <code>&lt;nav&gt;</code> wraps navigation links. <code>&lt;main&gt;</code> must be one per page and contain the primary content. Do not use <code>&lt;table&gt;</code> for layout; use it only for tabular data (see below).</p>
+		</section>
+
+		<section aria-labelledby="basic-structure-heading">
+			<h2 id="basic-structure-heading" tabindex="-1"><a class="header-anchor" href="#basic-structure-heading">HTML - Basic page structure</a></h2>
+			<ul>
+				<li><strong>Root element</strong> - <code>&lt;html&gt;</code></li>
+				<li><strong>HTML document</strong> - head and body</li>
+				<li><strong>Descriptive information / metadata</strong> - in <code>&lt;head&gt;</code> (e.g. charset, viewport, title)</li>
+				<li><strong>Document title</strong> - <code>&lt;title&gt;</code></li>
+				<li><strong>Visible content</strong> - in <code>&lt;body&gt;</code></li>
+			</ul>
+			<p>Semantic structure for content: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;footer&gt;</code>. These support accessibility and the document outline.</p>
+		</section>
+
+		<section aria-labelledby="attributes-heading">
+			<h2 id="attributes-heading" tabindex="-1"><a class="header-anchor" href="#attributes-heading">HTML - Attributes</a></h2>
+			<ul>
+				<li>Placed after the element name, in the <strong>opening tag only</strong> (never in the closing tag).</li>
+				<li>Several attributes can apply to one element, separated by spaces.</li>
+				<li>Names can be global or element-specific; defined in the <a href="https://www.w3.org/TR/html52/">HTML specification</a>.</li>
+				<li>Value follows <code>=</code>; straight quotation marks <code>"</code> are conventional.</li>
+				<li>Value types: number, word, string, URL, measurement.</li>
+				<li>Some attributes are <strong>required</strong> (e.g. <code>src</code> and <code>alt</code> on <code>&lt;img&gt;</code>).</li>
+			</ul>
+			<p>Example:</p>
+			<pre><code>&lt;div class="intro" id="summary"&gt;
+  &lt;h1&gt;Objectives:&lt;/h1&gt;
+  &lt;p&gt;Provide students with concepts in web design.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+			<p>Empty element: <code>&lt;img …&gt;</code> has no content; <strong>mandatory</strong> attributes: <code>src</code>, <code>alt</code>.</p>
+		</section>
+
+		<section aria-labelledby="style-and-css-heading">
+			<h2 id="style-and-css-heading" tabindex="-1"><a class="header-anchor" href="#style-and-css-heading">Style (look and feel)</a></h2>
+			<p>Styling can be: inline (on the element), embedded in the document (in <code>&lt;head&gt;</code>), or in a separate <strong>CSS (Cascading Style Sheet)</strong> file. The last is preferred for maintainability. Content (HTML) and presentation (CSS) should be separated.</p>
+			<p><strong>Activity:</strong> Open a site you use often, then open the browser’s developer tools (e.g. right-click → Inspect, or the keyboard shortcut for your OS). Remove or disable all <code>&lt;style&gt;</code> and <code>&lt;link rel="stylesheet"&gt;</code> and see how the page looks. The content and structure are still there; only the visual layer is gone. That illustrates how much the appearance depends on CSS and why keeping structure in HTML and presentation in CSS matters.</p>
+		</section>
+
+		<section aria-labelledby="dom-heading">
+			<h2 id="dom-heading" tabindex="-1"><a class="header-anchor" href="#dom-heading">Document Object Model (DOM)</a></h2>
+			<p>The browser turns your HTML into an internal tree of <strong>objects</strong> called the <strong>Document Object Model (DOM)</strong>. This tree is what CSS and JavaScript use to style and manipulate the page.</p>
+			<dl>
+				<dt>Syntax vs semantics</dt>
+				<dd>HTML is the <em>syntax</em> (the rules for writing tags). The <em>semantics</em> of that HTML is what it means; the DOM is the in-memory representation the browser builds from it.</dd>
+				<dt>Tree structure</dt>
+				<dd>Nodes have parent, child, and sibling relationships. Example: <code>&lt;body&gt;</code> is the parent of <code>&lt;p&gt;</code>; the text inside <code>&lt;p&gt;</code> is a child text node. Nested tags create a hierarchy (document → <code>html</code> → <code>head</code> / <code>body</code> → …).</dd>
+				<dt>Node types</dt>
+				<dd><strong>Document</strong> (root, no HTML element); <strong>Element</strong> (each tag, e.g. <code>html</code>, <code>p</code>, <code>em</code>); <strong>Text</strong> (text content, leaves of the tree); <strong>Comment</strong> (HTML comments).</dd>
+				<dt>HTML parsing</dt>
+				<dd>The process of reading the HTML source and building the DOM tree is called parsing. Browsers may fix invalid markup (e.g. close missing tags), which can change the resulting tree.</dd>
+			</dl>
+			<p><strong>Example.</strong> For <code>&lt;p&gt;Hello &lt;em&gt;world&lt;/em&gt;&lt;/p&gt;</code>, the DOM has: a <code>p</code> element containing a text node <code>"Hello "</code>, an <code>em</code> element containing the text node <code>"world"</code>. CSS selectors (e.g. <code>p em</code>) and JavaScript (e.g. <code>document.querySelector('p')</code>) work on this tree. We will use the DOM for interactivity in later labs.</p>
+		</section>
+
+		<section aria-labelledby="interactivity-heading">
+			<h2 id="interactivity-heading" tabindex="-1"><a class="header-anchor" href="#interactivity-heading">Interactivity - Forms and focus</a></h2>
+			<p>HTML provides built-in interactivity through forms and focusable elements. Use them so that keyboard and assistive-technology users can operate your page.</p>
+			<p><strong>Forms.</strong> A <code>&lt;form&gt;</code> groups controls and submits data. Use <code>action</code> for the URL that receives the submission and <code>method</code> (e.g. <code>get</code> or <code>post</code>). Only elements with a <code>name</code> attribute and that are enabled are submitted. Example:</p>
+			<pre><code>&lt;form method="get" action="https://www.example.com/search"&gt;
+  &lt;label for="q"&gt;Search:&lt;/label&gt;
+  &lt;input id="q" name="q" type="search" required&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+			<p><strong>Appropriate controls.</strong> Use the right input type: <code>type="email"</code>, <code>type="date"</code>, <code>type="number"</code>, etc., so browsers can offer validation and better UX (e.g. date picker on mobile). Use <code>&lt;label&gt;</code> associated with each control (via <code>for</code> and <code>id</code>) for accessibility.</p>
+			<p><strong>Focus.</strong> The focused element receives keyboard events. <kbd>Tab</kbd> moves focus to the next focusable element; <kbd>Shift+Tab</kbd> to the previous. By default, links, buttons, and form controls are focusable. Do not use <code>&lt;table&gt;</code> for form layout (e.g. label in one cell, input in another); use semantic structure and CSS for layout.</p>
+		</section>
+
+		<section aria-labelledby="validation-heading">
+			<h2 id="validation-heading" tabindex="-1"><a class="header-anchor" href="#validation-heading">HTML - Document validation</a></h2>
+			<p>Validation is checking markup against a standard (e.g. HTML5). Valid documents tend to be more consistent across browsers, display more quickly, and be more accessible. Validators (e.g. <a href="https://validator.w3.org/">validator.w3.org</a>, <a href="https://html5.validator.nu/">html5.validator.nu</a>) check DOCTYPE, character encoding, required attributes and rules, non-standard elements, mismatched or nested tags, and typos.</p>
+			<p><strong>How the three languages handle mistakes:</strong> HTML parsers try to repair invalid markup (e.g. infer missing closing tags) so the page can still render. CSS ignores unknown or malformed rules and continues with the rest. JavaScript, by contrast, stops when it hits a syntax or runtime error and reports it. So HTML and CSS are relatively forgiving for small mistakes; JS is strict. Use the validator and the browser console to catch errors early.</p>
+		</section>
+
+		<section aria-labelledby="block-inline-heading">
+			<h2 id="block-inline-heading" tabindex="-1"><a class="header-anchor" href="#block-inline-heading">Block-level and inline elements</a></h2>
+			<dl>
+				<dt>Block-level element</dt>
+				<dd>Starts on a new line and takes the full width available. Examples: <code>&lt;p&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;blockquote&gt;</code>.</dd>
+				<dt>Inline (phrasing) element</dt>
+				<dd>Does not start a new line; takes only as much width as needed. Examples: <code>&lt;a&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;sub&gt;</code>, <code>&lt;sup&gt;</code>.</dd>
+			</dl>
+			<p>Not all block-level elements can contain other block-level elements. Block-level elements can contain inline elements.</p>
+		</section>
+
+		<section aria-labelledby="grouping-heading">
+			<h2 id="grouping-heading" tabindex="-1"><a class="header-anchor" href="#grouping-heading">Grouping content</a></h2>
+			<p><code>&lt;p&gt;…&lt;/p&gt;</code> - paragraph; <code>&lt;hr&gt;</code> - thematic break. Headings <code>&lt;h1&gt;</code> … <code>&lt;h6&gt;</code> form the document outline and are used by assistive technologies and search engines. Unordered list: <code>&lt;ul&gt;</code> with <code>&lt;li&gt;</code>. Ordered list: <code>&lt;ol&gt;</code> with <code>&lt;li&gt;</code>; optional <code>start</code> attribute. Description list: <code>&lt;dl&gt;</code> with <code>&lt;dt&gt;</code> (term) and <code>&lt;dd&gt;</code> (description). Lists can be nested. Only <code>&lt;li&gt;</code> as direct children of <code>&lt;ul&gt;</code> / <code>&lt;ol&gt;</code>; <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> in pairs inside <code>&lt;dl&gt;</code>.</p>
+		</section>
+
+		<section aria-labelledby="tabular-heading">
+			<h2 id="tabular-heading" tabindex="-1"><a class="header-anchor" href="#tabular-heading">Tabular data - When and how to use tables</a></h2>
+			<p><strong>When to use.</strong> The <code>&lt;table&gt;</code> element represents <strong>tabular data</strong>: information in rows and columns (e.g. schedules, grade books, comparison charts). Do <strong>not</strong> use tables for page layout (headers, sidebars, columns of text); use semantic blocks and CSS (Flexbox/Grid) instead.</p>
+			<p><strong>Full flow for accessible tables.</strong></p>
+			<ol>
+				<li>Wrap the table in <code>&lt;table&gt;</code>.</li>
+				<li>Add a <code>&lt;caption&gt;</code> (optional but recommended) to summarize the table.</li>
+				<li>Group header rows in <code>&lt;thead&gt;</code> and use <code>&lt;th&gt;</code> for header cells. Use <code>scope="col"</code> for column headers and <code>scope="row"</code> for row headers so screen readers can associate cells correctly.</li>
+				<li>Put data rows in <code>&lt;tbody&gt;</code>; use <code>&lt;td&gt;</code> for data cells.</li>
+				<li>Optional: use <code>&lt;tfoot&gt;</code> for summary rows (e.g. totals).</li>
+			</ol>
+			<p><strong>Concrete example - Course schedule (tabular data):</strong></p>
+			<pre><code>&lt;table&gt;
+  &lt;caption&gt;Lecture 1 - Weekly schedule&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Week&lt;/th&gt;
+      &lt;th scope="col"&gt;Topic&lt;/th&gt;
+      &lt;th scope="col"&gt;Lab&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;1&lt;/th&gt;
+      &lt;td&gt;Web foundations&lt;/td&gt;
+      &lt;td&gt;Lab 1&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;2&lt;/th&gt;
+      &lt;td&gt;HTML and forms&lt;/td&gt;
+      &lt;td&gt;Lab 2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;&lt;td colspan="3"&gt;See Schedule for deadlines.&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+			<p>Styling (borders, spacing) is done with CSS, not with presentational attributes. Use <code>colspan</code> or <code>rowspan</code> only when a cell genuinely spans multiple columns or rows. Complex tables may need <code>id</code> and <code>headers</code> on cells for accessibility; see MDN and W3C guides for details.</p>
+		</section>
+
+		<section aria-labelledby="git-heading">
+			<h2 id="git-heading" tabindex="-1"><a class="header-anchor" href="#git-heading">Git and GitHub Classroom (recap)</a></h2>
+			<p>Version control: repository, commit, branch. You use Git to clone, commit, and push; GitHub Classroom for assignments. Further practical work is done in <a href="../labs/">Labs</a>. See <a href="../lecture-0/#git-heading">Lecture 0 - How to use Git and GitHub Classroom</a> for the full workflow and classroom code.</p>
+		</section>
+
+		<section aria-labelledby="next-heading">
+			<h2 id="next-heading" tabindex="-1"><a class="header-anchor" href="#next-heading">Next</a></h2>
+			<p>Next: Lecture 2 - CSS Architecture and Responsive Design.</p>
+			<p><a href="../lecture-0/">Lecture 0</a> | <a href="../">Course home</a> | <a href="../schedule/">Schedule</a></p>
+		</section>
+	</article>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
