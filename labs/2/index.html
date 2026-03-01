@@ -3,13 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Lab 2 | Web Design Course 2025-2026</title>
+	<title>Lab 2 - HTML Forms and Accessibility | Web Design Course 2025-2026</title>
 	<link rel="shortcut icon" href="../../favicon.svg">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="../../style.css">
 </head>
 <body>
 	<a href="#main-content" class="skip-link">Skip to main content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+	<defs>
+		<symbol id="icon-objective" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+		<symbol id="icon-concept" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h8"/></symbol>
+		<symbol id="icon-task" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+		<symbol id="icon-deliverable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4l-9-5.19"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></symbol>
+	</defs>
+</svg>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
 	<div class="container-fluid">
@@ -41,31 +49,255 @@
 </nav>
 
 <main id="main-content">
-	<p><a href="../">All labs</a></p>
+	<h1>Lab 2 - HTML Forms and Accessibility</h1>
+	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. This lab continues from <a href="../1/">Lab 1</a>: you keep the same Git and GitHub Pages workflow and add a <strong>contact (or feedback) form page</strong> to your site. You will use semantic form markup, proper labels, and accessible controls so keyboard and screen-reader users can use the form. See <a href="../../lecture-1/#interactivity-heading">Lecture 1 - Interactivity (forms and focus)</a> and <a href="../../resources/">Resources</a>.</p>
+	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#lab-setup">Lab setup</a> · <a href="#building-on-lab1">Building on Lab 1</a> · <a href="#forms-accessibility">Forms and accessibility</a> · <a href="#accessibility-tasks">Accessibility tasks and examples</a> · <a href="#task1">Task 1</a> · <a href="#task2">Task 2</a> · <a href="#task3">Task 3</a> · <a href="#task4">Task 4</a> · <a href="#deliverable">Deliverable</a> · <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
 
-	<h2>Lab 2: HTML Forms and Accessibility</h2>
-	<p>This page corresponds to <strong><a href="../../assignments/#lab2">Lab 2</a></strong> on the Assignments page. Use the objectives, concepts, tasks, and deliverable described there.</p>
+	<section id="overview">
+		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
+		<div class="lab-block">
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives</strong></p>
+			<ul>
+				<li>Add a second page (contact or feedback form) to your course site with the same semantic structure and document outline as Lab 1</li>
+				<li>Implement an accessible form: explicit labels, appropriate input types, semantic grouping (<code>&lt;fieldset&gt;</code> / <code>&lt;legend&gt;</code>), and native validation (<code>required</code>, <code>pattern</code>)</li>
+				<li>Apply accessibility good practices: skip link, landmark labels (<code>aria-label</code>), optional helper text via <code>aria-describedby</code>, and keyboard-operable layout</li>
+				<li>Verify accessibility by keyboard testing and HTML validation; link the form page from the homepage and publish via your public repo</li>
+			</ul>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts</strong></p>
+			<ul>
+				<li><strong>Forms:</strong> <code>&lt;form&gt;</code>, <code>action</code>, <code>method</code>; <code>&lt;label for="..."&gt;</code> and <code>id</code>; input types (<code>text</code>, <code>email</code>, <code>tel</code>, <code>url</code>); <code>&lt;textarea&gt;</code>; <code>required</code> and <code>pattern</code>; <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>; <code>&lt;button type="submit"&gt;</code></li>
+				<li><strong>Accessibility (a11y):</strong> Perceivable (labels, no information by colour alone); Operable (keyboard, skip link, focus order); Understandable (grouping, error hints); Robust (valid HTML, semantic structure). ARIA where needed: <code>aria-label</code>, <code>aria-describedby</code>, <code>aria-required</code> (redundant with <code>required</code> but sometimes used).</li>
+			</ul>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): accept Lab 2 and clone → build form page with semantic structure → implement accessibility tasks → link from homepage and test with keyboard → push and submit → <strong>HTML validation (Task 4)</strong>.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A contact/feedback form page meeting the accessibility requirements below, linked from your course homepage, committed to the private Lab 2 repo and published via your public repo; HTML validated; live site URL submitted on the course platform.</p>
+			<p><strong>Extra work [1]:</strong> As announced on <a href="../../assignments/">Assignments</a>.</p>
+		</div>
+	</section>
 
-	<h3 id="objectives" tabindex="-1"><a class="header-anchor" href="#objectives">Objectives</a></h3>
-	<ul>
-		<li>Build accessible forms</li>
-	</ul>
+	<section id="lab-setup">
+		<h2 id="lab-setup-heading" tabindex="-1"><a class="header-anchor" href="#lab-setup">Lab setup</a></h2>
+		<p>Before starting, ensure you have completed <a href="../1/">Lab 1</a> and have access to your course homepage, your private Lab 1 repo, and your public GitHub Pages repo. For Lab 2 you will need the same tools: a code editor, Git, and a browser. Use the task order below; the final step is HTML validation (Task 4).</p>
+		<ol>
+			<li><strong>Setup and form structure:</strong> Accept Lab 2 assignment, clone repo, create <code>contact.html</code> (or <code>feedback.html</code>) with full document shell (header, nav, main, footer). Add the form with two fieldsets: (1) Your details (name, email, phone optional), (2) Your message (subject/topic, message body). Use correct input types and a submit button. Link the form page from the homepage and the homepage from the form page.</li>
+			<li><strong>Accessibility implementation:</strong> Add skip link; associate every control with a <code>&lt;label&gt;</code>; add <code>aria-label</code> to <code>&lt;form&gt;</code> and <code>&lt;nav&gt;</code>; add <code>required</code> (and optionally <code>pattern</code>) where appropriate; add helper text for one field and link it with <code>aria-describedby</code>. Optionally add a third fieldset (e.g. "How did you hear about us?" with radio buttons or a select).</li>
+			<li><strong>Push, test, and submit:</strong> Perform keyboard-only testing (Tab order, focus visibility, no focus traps). Push to private and public repos, confirm live site, and submit the live URL (and repo link if required).</li>
+			<li><strong>HTML validation (last task):</strong> Validate all HTML pages with the W3C validator; fix any errors and push again if needed. Your deliverable must pass validation (see Task 4).</li>
+		</ol>
+	</section>
 
-	<h3 id="concepts" tabindex="-1"><a class="header-anchor" href="#concepts">Concepts</a></h3>
-	<p><code>&lt;form&gt;</code>, <code>&lt;label&gt;</code>, input types, ARIA basics.</p>
+	<section id="building-on-lab1">
+		<h2 id="building-on-lab1-heading" tabindex="-1"><a class="header-anchor" href="#building-on-lab1">Building on Lab 1</a></h2>
+		<p>You should have completed <a href="../1/">Lab 1</a>: a course homepage (<code>index.html</code>) with semantic structure, deployed via a <strong>public</strong> repository on GitHub Pages, and your work in a <strong>private</strong> Classroom repo. For Lab 2:</p>
+		<ul>
+			<li><strong>Accept the Lab 2 assignment</strong> in GitHub Classroom (same as Lab 1: use the assignment link, accept once, clone your new private repo).</li>
+			<li>You can either: (a) add the form page to the <strong>same</strong> public repo you used for Lab 1 (so your site has <code>index.html</code> and e.g. <code>contact.html</code>), or (b) create a new public repo for Lab 2 and deploy the full site (homepage + form page) from there. The grader must be able to open your live site and see both the homepage and the form page.</li>
+			<li>Keep the same workflow: work in the private Lab 2 repo, then copy or push the same files to your public repo so the published site is up to date.</li>
+		</ul>
+	</section>
 
-	<h3 id="tasks" tabindex="-1"><a class="header-anchor" href="#tasks">Tasks</a></h3>
-	<ol>
-		<li>Create a contact form</li>
-		<li>Use proper labels (e.g. <code>for</code> / <code>id</code>)</li>
-		<li>Add required fields and pattern validation where appropriate</li>
-		<li>Use semantic grouping with <code>&lt;fieldset&gt;</code> where it helps</li>
-	</ol>
+	<section id="forms-accessibility">
+		<h2 id="forms-accessibility-heading" tabindex="-1"><a class="header-anchor" href="#forms-accessibility">Forms and accessibility</a></h2>
+		<p>Forms collect input from users. For accessibility and usability, every control must have a clear label, and the form should be keyboard-operable and understandable by screen readers.</p>
+		<h3 id="form-structure" tabindex="-1"><a class="header-anchor" href="#form-structure">Form structure</a></h3>
+		<p>Use <code>&lt;form&gt;</code> with <code>action</code> (the URL that receives the submission) and <code>method</code> (<code>get</code> or <code>post</code>). Only controls with a <code>name</code> attribute are submitted. For this lab you may use <code>action="#"</code> or a placeholder URL if you are not yet handling submissions on a server.</p>
+		<h3 id="labels" tabindex="-1"><a class="header-anchor" href="#labels">Labels and control association</a></h3>
+		<p>Every form control (input, textarea, select) must have a <strong>label</strong>. The best way is to use <code>&lt;label for="control-id"&gt;</code> and give the control <code>id="control-id"</code>. That way clicking the label focuses the control, and screen readers announce the label when the control is focused. Do not use placeholder text as the only label; placeholders are hints, not replacements for visible labels.</p>
+		<h3 id="input-types" tabindex="-1"><a class="header-anchor" href="#input-types">Input types</a></h3>
+		<p>Choose the right <code>type</code> for each field: <code>text</code>, <code>email</code>, <code>tel</code>, <code>url</code>, <code>number</code>, <code>date</code>, etc. Browsers can validate (e.g. email format) and offer better UX (e.g. numeric keyboard on mobile). Use <code>&lt;textarea&gt;</code> for multi-line text (e.g. a message). Use <code>required</code> for mandatory fields and <code>pattern</code> when you need a specific format (e.g. phone).</p>
+		<h3 id="fieldset-legend" tabindex="-1"><a class="header-anchor" href="#fieldset-legend">Grouping with fieldset and legend</a></h3>
+		<p>Group related controls with <code>&lt;fieldset&gt;</code> and give the group a <code>&lt;legend&gt;</code> (e.g. "Contact details" or "Your message"). This helps screen-reader users understand the form structure. Use one fieldset for "Your details" (name, email, phone) and one for "Message" (subject, body) if that fits your form.</p>
+		<h3 id="focus-buttons" tabindex="-1"><a class="header-anchor" href="#focus-buttons">Focus and buttons</a></h3>
+		<p><kbd>Tab</kbd> moves focus to the next focusable element; <kbd>Shift+Tab</kbd> to the previous. Links, buttons, and form controls are focusable by default. Use <code>&lt;button type="submit"&gt;</code> for the submit action and <code>&lt;button type="button"&gt;</code> for actions that do not submit. Do not use a <code>&lt;table&gt;</code> to lay out the form; use semantic markup and CSS for layout.</p>
+		<p><strong>Reference:</strong> <a href="../../lecture-1/#interactivity-heading">Lecture 1 - Interactivity (forms and focus)</a>.</p>
+	</section>
 
-	<h3 id="deliverable" tabindex="-1"><a class="header-anchor" href="#deliverable">Deliverable</a></h3>
-	<p>Form page committed and validated. Submit via the course platform.</p>
+	<section id="accessibility-tasks">
+		<h2 id="accessibility-tasks-heading" tabindex="-1"><a class="header-anchor" href="#accessibility-tasks">Accessibility tasks and examples</a></h2>
+		<p>Complete the following accessibility requirements on your form page. Each item includes a short rationale and, where useful, example markup.</p>
 
-	<p><strong>Reference:</strong> <a href="../../lecture-1/#interactivity-heading">Lecture 1 - Interactivity (forms and focus)</a>, <a href="../../resources/">Resources</a>.</p>
+		<h3 id="a11y-skip-link" tabindex="-1"><a class="header-anchor" href="#a11y-skip-link">1. Skip link</a></h3>
+		<p>Provide a “Skip to main content” link as the first focusable element so keyboard and screen-reader users can bypass repeated navigation. It should be visible when focused (e.g. on Tab) and link to <code>#main-content</code>; the <code>&lt;main&gt;</code> element must have <code>id="main-content"</code>.</p>
+		<p><strong>Example:</strong></p>
+		<pre><code>&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;!-- nav, header, etc. --&gt;
+&lt;main id="main-content"&gt;
+  &lt;!-- page content --&gt;
+&lt;/main&gt;</code></pre>
+		<p>Style the skip link so it is hidden off-screen by default and appears (e.g. top-left) on focus. The course site uses this pattern; you can reuse the same class or inline styles.</p>
+
+		<h3 id="a11y-labels" tabindex="-1"><a class="header-anchor" href="#a11y-labels">2. Explicit labels for every control</a></h3>
+		<p>Every <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> must have an associated <code>&lt;label&gt;</code>. Use <code>&lt;label for="id-of-control"&gt;</code> and set <code>id</code> on the control so that clicking the label focuses the control and assistive technologies announce the label.</p>
+		<p><strong>Example:</strong></p>
+		<pre><code>&lt;label for="user-email"&gt;Email (required)&lt;/label&gt;
+&lt;input type="email" id="user-email" name="email" required&gt;
+
+&lt;label for="user-message"&gt;Message (required)&lt;/label&gt;
+&lt;textarea id="user-message" name="message" rows="5" required&gt;&lt;/textarea&gt;</code></pre>
+		<p>Do not rely on placeholder text as the only label; placeholders are supplementary hints and may not be announced.</p>
+
+		<h3 id="a11y-fieldsets" tabindex="-1"><a class="header-anchor" href="#a11y-fieldsets">3. Group related controls with fieldset and legend</a></h3>
+		<p>Use <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> to group related fields. Screen readers can announce the group and legend, improving structure. Use at least two fieldsets (e.g. “Your details” and “Your message”).</p>
+		<p><strong>Example:</strong></p>
+		<pre><code>&lt;form method="post" action="#" aria-label="Contact form"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Your details&lt;/legend&gt;
+    &lt;label for="name"&gt;Full name (required)&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" required&gt;
+    &lt;label for="email"&gt;Email (required)&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+    &lt;label for="phone"&gt;Phone (optional)&lt;/label&gt;
+    &lt;input type="tel" id="phone" name="phone"&gt;
+  &lt;/fieldset&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Your message&lt;/legend&gt;
+    &lt;!-- subject, message, etc. --&gt;
+  &lt;/fieldset&gt;
+  &lt;button type="submit"&gt;Send message&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+		<h3 id="a11y-landmarks" tabindex="-1"><a class="header-anchor" href="#a11y-landmarks">4. Landmark labels (aria-label)</a></h3>
+		<p>Give the form and the navigation a descriptive name so assistive technologies can distinguish them. Use <code>aria-label</code> on <code>&lt;form&gt;</code> and <code>&lt;nav&gt;</code>.</p>
+		<p><strong>Example:</strong></p>
+		<pre><code>&lt;nav aria-label="Main navigation"&gt;
+  &lt;ul&gt;&lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;form method="post" action="#" aria-label="Contact form"&gt;</code></pre>
+
+		<h3 id="a11y-helper-text" tabindex="-1"><a class="header-anchor" href="#a11y-helper-text">5. Helper text with aria-describedby</a></h3>
+		<p>When a field has additional instructions (e.g. “Include your student ID if asking about grades”), associate that text with the control using <code>aria-describedby</code> so screen readers announce it when the control is focused. The helper element must have an <code>id</code>.</p>
+		<p><strong>Example:</strong></p>
+		<pre><code>&lt;label for="subject"&gt;Subject (required)&lt;/label&gt;
+&lt;input type="text" id="subject" name="subject" required
+       aria-describedby="subject-hint"&gt;
+&lt;p id="subject-hint" class="form-hint"&gt;e.g. Lab 2 question, schedule, grading&lt;/p&gt;</code></pre>
+
+		<h3 id="a11y-validation" tabindex="-1"><a class="header-anchor" href="#a11y-validation">6. Required fields and pattern (native validation)</a></h3>
+		<p>Use the <code>required</code> attribute for mandatory fields so the browser can validate and report errors. Use <code>pattern</code> when you need a specific format (e.g. phone). Ensure error messages or hints are available (browser default or, in later courses, custom messages).</p>
+		<p><strong>Example (optional pattern for phone):</strong></p>
+		<pre><code>&lt;label for="phone"&gt;Phone (optional, format: digits and spaces)&lt;/label&gt;
+&lt;input type="tel" id="phone" name="phone"
+       pattern="[0-9\s\-+]+" title="Digits, spaces, hyphens, or plus only"&gt;</code></pre>
+
+		<h3 id="a11y-keyboard-test" tabindex="-1"><a class="header-anchor" href="#a11y-keyboard-test">7. Keyboard testing checklist</a></h3>
+		<p>Before submitting, verify the form with keyboard only (no mouse):</p>
+		<ul>
+			<li><strong>Tab order:</strong> Press <kbd>Tab</kbd> repeatedly. Focus should move in a logical order: skip link → nav links → form controls (in visual order) → submit button. <kbd>Shift+Tab</kbd> goes backward.</li>
+			<li><strong>Skip link:</strong> On first Tab, focus should go to the skip link; activating it should move focus to the main content (e.g. the form or the page heading).</li>
+			<li><strong>Labels:</strong> When focus is on an input or textarea, the label should be announced (test with a screen reader if possible, or confirm each control has a <code>for</code>/<code>id</code> pair).</li>
+			<li><strong>No focus trap:</strong> Focus should never get stuck; you should be able to Tab out of the form and reach the footer or other links.</li>
+			<li><strong>Visible focus:</strong> The focused element should be clearly visible (browser default outline or your own focus style). Do not remove focus outlines without providing an alternative.</li>
+		</ul>
+
+		<h3 id="minimal-form-example" tabindex="-1"><a class="header-anchor" href="#minimal-form-example">Minimal form example (reference)</a></h3>
+		<p>Below is a minimal contact form that satisfies the accessibility requirements. Adapt it to your page (add document shell, nav, footer) and extend as required (e.g. phone field, third fieldset).</p>
+		<pre><code>&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+&lt;nav aria-label="Main navigation"&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="contact.html"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+&lt;main id="main-content"&gt;
+  &lt;h1&gt;Contact&lt;/h1&gt;
+  &lt;section&gt;
+    &lt;form method="post" action="#" aria-label="Contact form"&gt;
+      &lt;fieldset&gt;
+        &lt;legend&gt;Your details&lt;/legend&gt;
+        &lt;label for="name"&gt;Full name (required)&lt;/label&gt;
+        &lt;input type="text" id="name" name="name" required&gt;
+        &lt;label for="email"&gt;Email (required)&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+      &lt;/fieldset&gt;
+      &lt;fieldset&gt;
+        &lt;legend&gt;Your message&lt;/legend&gt;
+        &lt;label for="subject"&gt;Subject (required)&lt;/label&gt;
+        &lt;input type="text" id="subject" name="subject" required
+               aria-describedby="subject-hint"&gt;
+        &lt;p id="subject-hint" class="form-hint"&gt;e.g. Lab 2, schedule, grading&lt;/p&gt;
+        &lt;label for="msg"&gt;Message (required)&lt;/label&gt;
+        &lt;textarea id="msg" name="message" rows="5" required&gt;&lt;/textarea&gt;
+      &lt;/fieldset&gt;
+      &lt;button type="submit"&gt;Send message&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/section&gt;
+&lt;/main&gt;</code></pre>
+	</section>
+
+	<section id="task1">
+		<h2 id="task1-heading" tabindex="-1"><a class="header-anchor" href="#task1">Task 1 - Accept Lab 2 assignment and clone</a></h2>
+		<p>Same as Lab 1: get the Lab 2 assignment link from the course platform, open it while logged into GitHub, and click <strong>Accept this assignment</strong>. Clone your new private repository and open it in your code editor. If you prefer to keep everything in one site repo, you can instead add the form page to your existing Lab 1 project and push to both the Lab 2 private repo (for grading) and your public repo (for the live site); just ensure the grader can see your Lab 2 work (either in the Lab 2 repo or via the live site).</p>
+	</section>
+
+	<section id="task2">
+		<h2 id="task2-heading" tabindex="-1"><a class="header-anchor" href="#task2">Task 2 - Build the form page and implement accessibility</a></h2>
+		<p>Create a new HTML page (e.g. <code>contact.html</code> or <code>feedback.html</code>) with the <strong>same document structure</strong> as your Lab 1 homepage: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main id="main-content"&gt;</code>, <code>&lt;footer&gt;</code>. Use one <code>&lt;h1&gt;</code> for the page title and place the form inside <code>&lt;main&gt;</code> in a <code>&lt;section&gt;</code>. Implement all items in <a href="#accessibility-tasks">Accessibility tasks and examples</a>.</p>
+
+		<h3 id="task2-form-content" tabindex="-1"><a class="header-anchor" href="#task2-form-content">Form content (required)</a></h3>
+		<ul>
+			<li><strong>Fieldset 1 – Your details:</strong> Full name (text, required), Email (email, required), Phone (tel, optional; optional <code>pattern</code> if you wish).</li>
+			<li><strong>Fieldset 2 – Your message:</strong> Subject or topic (text or select, required), Message (textarea, required). For one of these fields, add helper text and associate it with the control using <code>aria-describedby</code> (see <a href="#a11y-helper-text">accessibility task 5</a>).</li>
+			<li><strong>Submit:</strong> <code>&lt;button type="submit"&gt;</code> with clear text (e.g. "Send message").</li>
+		</ul>
+		<p><strong>Optional (for higher complexity):</strong> A third <code>&lt;fieldset&gt;</code> with a single question, e.g. “How did you hear about us?” with radio buttons (<code>&lt;input type="radio"&gt;</code> and shared <code>name</code>), each with its own <code>&lt;label&gt;</code>.</p>
+
+		<h3 id="task2-accessibility-checklist" tabindex="-1"><a class="header-anchor" href="#task2-accessibility-checklist">Accessibility checklist (all required)</a></h3>
+		<ul>
+			<li>Skip link as first focusable element, pointing to <code>#main-content</code>; <code>&lt;main id="main-content"&gt;</code> present.</li>
+			<li>Every form control has an explicit <code>&lt;label for="..."&gt;</code> with matching <code>id</code> on the control.</li>
+			<li>At least two <code>&lt;fieldset&gt;</code>s with <code>&lt;legend&gt;</code> (Your details, Your message).</li>
+			<li><code>aria-label</code> on <code>&lt;form&gt;</code> (e.g. "Contact form") and on <code>&lt;nav&gt;</code> (e.g. "Main navigation").</li>
+			<li>At least one control with helper text linked via <code>aria-describedby</code>.</li>
+			<li><code>required</code> on all mandatory fields; appropriate <code>type</code> (email, tel, text).</li>
+		</ul>
+
+		<h3 id="task2-linking" tabindex="-1"><a class="header-anchor" href="#task2-linking">Linking and navigation</a></h3>
+		<p>Add a link to the form page in the <code>&lt;nav&gt;</code> of your <strong>homepage</strong> (<code>index.html</code>). On the form page, include a link back to the homepage in the same nav. Use relative paths (e.g. <code>contact.html</code>, <code>index.html</code> or <code>./</code>).</p>
+
+		<p><strong>Exercise 2.1 - Keyboard and validation</strong></p>
+		<p>Run both pages through the <a href="https://validator.w3.org/">W3C Markup Validation Service</a> and fix any errors. Then perform the <a href="#a11y-keyboard-test">keyboard testing checklist</a>: Tab through the entire form page, activate the skip link, and confirm focus order and visibility. Document any issues you find and fix them. Commit and push to your private repo and to your public repo.</p>
+	</section>
+
+	<section id="task3">
+		<h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3">Task 3 - Push and submit</a></h2>
+		<p>Ensure your public repository contains both <code>index.html</code> (homepage with a nav link to the form page) and the form page (e.g. <code>contact.html</code>). Push any last changes. Open your live GitHub Pages URL and confirm both pages load and the link between them works. Submit the <strong>live site URL</strong> on the course platform (same as Lab 1: the grader must be able to view the published site). If the instructor also asks for the Lab 2 repository link, submit that as well.</p>
+	</section>
+
+	<section id="task4">
+		<h2 id="task4-heading" tabindex="-1"><a class="header-anchor" href="#task4">Task 4 - HTML validation</a></h2>
+		<p>As a final step, all submitted pages must be <strong>HTML validated</strong>. Run each page through the <a href="https://validator.w3.org/">W3C Markup Validation Service</a> (by URI, file upload, or pasted source). Fix every reported error and warning; then push the corrected files to your repos. Your Lab 2 deliverable is complete only when <code>index.html</code> and your form page (e.g. <code>contact.html</code>) pass validation with no errors. If you discover validation errors after submitting, fix them and push again; the grader may re-check.</p>
+	</section>
+
+	<section id="deliverable">
+		<h2 id="deliverable-heading" tabindex="-1"><a class="header-anchor" href="#deliverable">Deliverable summary</a></h2>
+		<p>By the end of Lab 2 you must have:</p>
+		<ul>
+			<li>Accepted the Lab 2 assignment and cloned your repository (or integrated the form into your existing site workflow)</li>
+			<li>Created a form page with full semantic structure (header, nav, main with <code>id="main-content"</code>, section, footer), one <code>h1</code>, and a form that meets all items in the <a href="#task2-accessibility-checklist">accessibility checklist</a>: skip link, explicit labels, two (or more) fieldsets with legends, <code>aria-label</code> on form and nav, at least one <code>aria-describedby</code> for helper text, required fields, and submit button</li>
+			<li>Linked the form page from your homepage and the homepage from the form page</li>
+			<li>Validated both pages with the W3C validator (Task 4) and performed keyboard testing; pushed to both private and public repos</li>
+			<li>Submitted the live site URL (and Lab 2 repo link if required) on the course platform</li>
+		</ul>
+	</section>
+
+	<section id="extra">
+		<h2 id="extra-heading" tabindex="-1"><a class="header-anchor" href="#extra">Extra work</a></h2>
+		<p><strong>Extra work [1]:</strong> See <a href="../../assignments/">Assignments</a> for Lab 2 extra exercises (e.g. from the primary textbook).</p>
+		<p><strong>Optional (complexity):</strong> Add a third fieldset with radio buttons (e.g. “How did you hear about us?”) or a <code>&lt;select&gt;</code> for “Topic” with options; ensure each option has an associated label. Test with a screen reader (e.g. NVDA, VoiceOver) and note how the form is announced.</p>
+	</section>
+
+	<section id="references">
+		<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
+		<ul>
+			<li><a href="../1/">Lab 1 - Development setup, Git, and your first page</a></li>
+			<li><a href="../../lecture-1/#interactivity-heading">Lecture 1 - Interactivity (forms and focus)</a></li>
+			<li><a href="../../lecture-1/#validation-heading">Lecture 1 - HTML validation</a></li>
+			<li><a href="../../resources/">Resources</a></li>
+			<li><a href="https://validator.w3.org/">W3C Markup Validation Service</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques">MDN - ARIA techniques</a>; <a href="https://www.w3.org/WAI/tutorials/forms/">W3C WAI - Form tutorials</a></li>
+		</ul>
+	</section>
+
 	<p><a href="../">Labs</a> · <a href="../../assignments/">Assignments</a> · <a href="../../">Course home</a></p>
 </main>
 
