@@ -78,8 +78,8 @@
 		<h2 id="lab-setup-heading" tabindex="-1"><a class="header-anchor" href="#lab-setup">Lab setup</a></h2>
 		<p>Before starting, ensure you have completed <a href="../1/">Lab 1</a> and have access to your course homepage, your private Lab 1 repo, and your public GitHub Pages repo. For Lab 2 you will need the same tools: a code editor, Git, and a browser. Use the task order below; the final step is HTML validation (Task 4).</p>
 		<ol>
-			<li><strong>Setup and form structure:</strong> Accept Lab 2 assignment, clone repo, create <code>contact.html</code> (or <code>feedback.html</code>) with full document shell (header, nav, main, footer). Add the form with two fieldsets: (1) Your details (name, email, phone optional), (2) Your message (subject/topic, message body). Use correct input types and a submit button. Link the form page from the homepage and the homepage from the form page.</li>
-			<li><strong>Accessibility implementation:</strong> Add skip link; associate every control with a <code>&lt;label&gt;</code>; add <code>aria-label</code> to <code>&lt;form&gt;</code> and <code>&lt;nav&gt;</code>; add <code>required</code> (and optionally <code>pattern</code>) where appropriate; add helper text for one field and link it with <code>aria-describedby</code>. Optionally add a third fieldset (e.g. "How did you hear about us?" with radio buttons or a select).</li>
+			<li><strong>Setup and form structure:</strong> Accept Lab 2 assignment, clone repo, create <code>contact.html</code> (or <code>feedback.html</code>) with full document shell (header, nav, main, footer). Add the form with three fieldsets: (1) Your details (name, email, phone optional), (2) Your message (subject/topic, message body), (3) A single question e.g. “How did you hear about us?” with radio buttons (shared <code>name</code>), each with its own <code>&lt;label&gt;</code>. Use correct input types and a submit button. Link the form page from the homepage and the homepage from the form page.</li>
+			<li><strong>Accessibility implementation:</strong> Add skip link; associate every control with a <code>&lt;label&gt;</code>; add <code>aria-label</code> to <code>&lt;form&gt;</code> and <code>&lt;nav&gt;</code>; add <code>required</code> (and optionally <code>pattern</code>) where appropriate; add helper text for one field and link it with <code>aria-describedby</code>.</li>
 			<li><strong>Push, test, and submit:</strong> Perform keyboard-only testing (Tab order, focus visibility, no focus traps). Push to private and public repos, confirm live site, and submit the live URL (and repo link if required).</li>
 			<li><strong>HTML validation (last task):</strong> Validate all HTML pages with the W3C validator; fix any errors and push again if needed. Your deliverable must pass validation (see Task 4).</li>
 		</ol>
@@ -105,7 +105,7 @@
 		<h3 id="input-types" tabindex="-1"><a class="header-anchor" href="#input-types">Input types</a></h3>
 		<p>Choose the right <code>type</code> for each field: <code>text</code>, <code>email</code>, <code>tel</code>, <code>url</code>, <code>number</code>, <code>date</code>, etc. Browsers can validate (e.g. email format) and offer better UX (e.g. numeric keyboard on mobile). Use <code>&lt;textarea&gt;</code> for multi-line text (e.g. a message). Use <code>required</code> for mandatory fields and <code>pattern</code> when you need a specific format (e.g. phone).</p>
 		<h3 id="fieldset-legend" tabindex="-1"><a class="header-anchor" href="#fieldset-legend">Grouping with fieldset and legend</a></h3>
-		<p>Group related controls with <code>&lt;fieldset&gt;</code> and give the group a <code>&lt;legend&gt;</code> (e.g. "Contact details" or "Your message"). This helps screen-reader users understand the form structure. Use one fieldset for "Your details" (name, email, phone) and one for "Message" (subject, body) if that fits your form.</p>
+		<p>Group related controls with <code>&lt;fieldset&gt;</code> and give the group a <code>&lt;legend&gt;</code> (e.g. "Contact details" or "Your message"). This helps screen-reader users understand the form structure. For this lab use three fieldsets: (1) "Your details" (name, email, phone), (2) "Your message" (subject, body), (3) A single question (e.g. "How did you hear about us?") with radio buttons, each with its own <code>&lt;label&gt;</code>.</p>
 		<h3 id="focus-buttons" tabindex="-1"><a class="header-anchor" href="#focus-buttons">Focus and buttons</a></h3>
 		<p><kbd>Tab</kbd> moves focus to the next focusable element; <kbd>Shift+Tab</kbd> to the previous. Links, buttons, and form controls are focusable by default. Use <code>&lt;button type="submit"&gt;</code> for the submit action and <code>&lt;button type="button"&gt;</code> for actions that do not submit. Do not use a <code>&lt;table&gt;</code> to lay out the form; use semantic markup and CSS for layout.</p>
 		<p><strong>Reference:</strong> <a href="../../lecture-1/#interactivity-heading">Lecture 1 - Interactivity (forms and focus)</a>.</p>
@@ -136,7 +136,7 @@
 		<p>Do not rely on placeholder text as the only label; placeholders are supplementary hints and may not be announced.</p>
 
 		<h3 id="a11y-fieldsets" tabindex="-1"><a class="header-anchor" href="#a11y-fieldsets">3. Group related controls with fieldset and legend</a></h3>
-		<p>Use <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> to group related fields. Screen readers can announce the group and legend, improving structure. Use at least two fieldsets (e.g. “Your details” and “Your message”).</p>
+		<p>Use <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code> to group related fields. Screen readers can announce the group and legend, improving structure. Use three fieldsets: (1) “Your details”, (2) “Your message”, (3) A single question (e.g. “How did you hear about us?”) with radio buttons, each with its own <code>&lt;label&gt;</code>.</p>
 		<p><strong>Example:</strong></p>
 		<pre><code>&lt;form method="post" action="#" aria-label="Contact form"&gt;
   &lt;fieldset&gt;
@@ -190,7 +190,7 @@
 		</ul>
 
 		<h3 id="minimal-form-example" tabindex="-1"><a class="header-anchor" href="#minimal-form-example">Minimal form example (reference)</a></h3>
-		<p>Below is a minimal contact form that satisfies the accessibility requirements. Adapt it to your page (add document shell, nav, footer) and extend as required (e.g. phone field, third fieldset).</p>
+		<p>Below is a minimal contact form that satisfies the accessibility requirements. Adapt it to your page (add document shell, nav, footer) and extend as required: add phone field and a third fieldset with a question and radio buttons (e.g. “How did you hear about us?”), each radio with its own <code>&lt;label&gt;</code>.</p>
 		<pre><code>&lt;a href="#main-content" class="skip-link"&gt;Skip to main content&lt;/a&gt;
 &lt;nav aria-label="Main navigation"&gt;
   &lt;ul&gt;
@@ -218,6 +218,15 @@
         &lt;label for="msg"&gt;Message (required)&lt;/label&gt;
         &lt;textarea id="msg" name="message" rows="5" required&gt;&lt;/textarea&gt;
       &lt;/fieldset&gt;
+      &lt;fieldset&gt;
+        &lt;legend&gt;How did you hear about us?&lt;/legend&gt;
+        &lt;label for="hear-course"&gt;Course / university&lt;/label&gt;
+        &lt;input type="radio" id="hear-course" name="hear" value="course"&gt;
+        &lt;label for="hear-search"&gt;Search / web&lt;/label&gt;
+        &lt;input type="radio" id="hear-search" name="hear" value="search"&gt;
+        &lt;label for="hear-other"&gt;Other&lt;/label&gt;
+        &lt;input type="radio" id="hear-other" name="hear" value="other"&gt;
+      &lt;/fieldset&gt;
       &lt;button type="submit"&gt;Send message&lt;/button&gt;
     &lt;/form&gt;
   &lt;/section&gt;
@@ -237,15 +246,15 @@
 		<ul>
 			<li><strong>Fieldset 1 – Your details:</strong> Full name (text, required), Email (email, required), Phone (tel, optional; optional <code>pattern</code> if you wish).</li>
 			<li><strong>Fieldset 2 – Your message:</strong> Subject or topic (text or select, required), Message (textarea, required). For one of these fields, add helper text and associate it with the control using <code>aria-describedby</code> (see <a href="#a11y-helper-text">accessibility task 5</a>).</li>
+			<li><strong>Fieldset 3 – Single question (required):</strong> A third <code>&lt;fieldset&gt;</code> with a single question, e.g. “How did you hear about us?” with radio buttons (<code>&lt;input type="radio"&gt;</code> and shared <code>name</code>), each with its own <code>&lt;label&gt;</code>.</li>
 			<li><strong>Submit:</strong> <code>&lt;button type="submit"&gt;</code> with clear text (e.g. "Send message").</li>
 		</ul>
-		<p><strong>Optional (for higher complexity):</strong> A third <code>&lt;fieldset&gt;</code> with a single question, e.g. “How did you hear about us?” with radio buttons (<code>&lt;input type="radio"&gt;</code> and shared <code>name</code>), each with its own <code>&lt;label&gt;</code>.</p>
 
 		<h3 id="task2-accessibility-checklist" tabindex="-1"><a class="header-anchor" href="#task2-accessibility-checklist">Accessibility checklist (all required)</a></h3>
 		<ul>
 			<li>Skip link as first focusable element, pointing to <code>#main-content</code>; <code>&lt;main id="main-content"&gt;</code> present.</li>
 			<li>Every form control has an explicit <code>&lt;label for="..."&gt;</code> with matching <code>id</code> on the control.</li>
-			<li>At least two <code>&lt;fieldset&gt;</code>s with <code>&lt;legend&gt;</code> (Your details, Your message).</li>
+			<li>Three <code>&lt;fieldset&gt;</code>s with <code>&lt;legend&gt;</code>: (1) Your details, (2) Your message, (3) A single question (e.g. “How did you hear about us?”) with radio buttons, each with its own <code>&lt;label&gt;</code>.</li>
 			<li><code>aria-label</code> on <code>&lt;form&gt;</code> (e.g. "Contact form") and on <code>&lt;nav&gt;</code> (e.g. "Main navigation").</li>
 			<li>At least one control with helper text linked via <code>aria-describedby</code>.</li>
 			<li><code>required</code> on all mandatory fields; appropriate <code>type</code> (email, tel, text).</li>
@@ -273,7 +282,7 @@
 		<p>By the end of Lab 2 you must have:</p>
 		<ul>
 			<li>Accepted the Lab 2 assignment and cloned your repository (or integrated the form into your existing site workflow)</li>
-			<li>Created a form page with full semantic structure (header, nav, main with <code>id="main-content"</code>, section, footer), one <code>h1</code>, and a form that meets all items in the <a href="#task2-accessibility-checklist">accessibility checklist</a>: skip link, explicit labels, two (or more) fieldsets with legends, <code>aria-label</code> on form and nav, at least one <code>aria-describedby</code> for helper text, required fields, and submit button</li>
+			<li>Created a form page with full semantic structure (header, nav, main with <code>id="main-content"</code>, section, footer), one <code>h1</code>, and a form that meets all items in the <a href="#task2-accessibility-checklist">accessibility checklist</a>: skip link, explicit labels, three fieldsets with legends (including one with a radio question), <code>aria-label</code> on form and nav, at least one <code>aria-describedby</code> for helper text, required fields, and submit button</li>
 			<li>Linked the form page from your homepage and the homepage from the form page</li>
 			<li>Validated both pages with the W3C validator (Task 4) and performed keyboard testing; pushed to both private and public repos</li>
 			<li>Submitted the live site URL (and Lab 2 repo link if required) on the course platform</li>
@@ -283,7 +292,7 @@
 	<section id="extra">
 		<h2 id="extra-heading" tabindex="-1"><a class="header-anchor" href="#extra">Extra work</a></h2>
 		<p><strong>Extra work [1]:</strong> Exercises 5-1, 5-3, 6-1.</p>
-		<p><strong>Optional (complexity):</strong> Add a third fieldset with radio buttons (e.g. “How did you hear about us?”) or a <code>&lt;select&gt;</code> for “Topic” with options; ensure each option has an associated label. Test with a screen reader (e.g. NVDA, VoiceOver) and note how the form is announced.</p>
+		<p><strong>Optional:</strong> Test the form with a screen reader (e.g. NVDA, VoiceOver) and note how the fieldsets and radio group are announced.</p>
 	</section>
 
 	<section id="references">
