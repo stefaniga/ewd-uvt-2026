@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lab 3 - HTML Tables | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+	<defs>
+		<symbol id="icon-objective" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+		<symbol id="icon-concept" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h8"/></symbol>
+		<symbol id="icon-task" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+		<symbol id="icon-deliverable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4l-9-5.19"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></symbol>
+	</defs>
+</svg>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content">
+
+
+
+	<h1>Lab 3 - HTML Tables</h1>
+
+	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>.
+	This lab continues from <a href="../2/">Lab 2</a>: you keep the same Git and GitHub Pages workflow and
+	<strong>add several HTML tables to the two pages already created in your site</strong>.
+	You will use semantic table markup such as <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>,
+	<code>&lt;th&gt;</code>, and <code>&lt;td&gt;</code> to organize information in rows and columns.
+	See <a href="../../lecture-1/#tables-heading">Lecture 1 - HTML Tables</a> and
+	<a href="../../resources/">Resources</a>.
+	</p>
+
+
+	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#lab-setup">Lab setup</a> ·  <a href="#tables-theory">HTML Tables</a>  · <a href="#task1">Task 1</a> · <a href="#task2">Task 2</a> · <a href="#task3">Task 3</a> · <a href="#task4">Task 4</a> · <a href="#references">References</a>.</p>
+
+	<section id="overview">
+		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
+		<div class="lab-block">
+   			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives</strong></p>
+    		<ul>
+        		<li>Clone Lab 2 repository to continue working on your course site with the same Git/GitHub Pages workflow</li>
+        		<li>Create three HTML tables:
+            		<ul>
+                		<li>Two tables on the index page: one for personal skills and one for personal project portfolio</li>
+                		<li>One table on the contact/feedback page to display received messages</li>
+            		</ul>
+        		</li>
+        		<li>Each table will have a different requirement: recreate from image, complete given code, or build based on a textual description</li>
+        		<li>Commit changes to your GitHub Classroom Lab 3 assignment.</li>
+    		</ul>
+    		<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts</strong></p>
+    		<ul>
+        		<li><strong>HTML Tables:</strong> <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code>, <code>colspan</code>, <code>rowspan</code></li>
+        		<li><strong>Table design approaches:</strong> recreate table from image, complete partially written table code, create table from textual description</li>
+        		<li><strong>Git/GitHub workflow:</strong> clone repository, commit, push, and link updates to GitHub Pages</li>
+    		</ul>
+    		<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): clone Lab 2 → add two tables on index page (skills + portfolio) → add one table on contact/feedback page (messages) → follow the specific instructions for each table → commit and push changes → HTML validation.</p>
+    		<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> Three fully functional HTML tables added to the appropriate pages, each completed according to its instructions, committed to your GitHub Classroom Lab 3 repository and HTML validated.</p>
+		</div>
+	</section>
+
+
+	<section id="lab-setup">
+    <h2 id="lab-setup-heading" tabindex="-1"><a class="header-anchor" href="#lab-setup">Lab setup</a></h2>
+    <p>Before starting, ensure you have completed <a href="../2/">Lab 2</a> and have access to your course homepage and your private Lab 2 repo. For Lab 3 you will need the same tools: a code editor, Git, and a browser. Use the task order below; the final step is pushing to GitHub (Task 4).</p>
+    <ol>
+        <li><strong>Setup and page structure:</strong> Accept the Lab 3 assignment, clone your Lab 2 repository, and continue working on the existing pages. Prepare the two pages for tables: the index page and the contact/feedback page.</li>
+
+        <li><strong>Create HTML tables:</strong>
+            <ul>
+                <li>Index page: add two tables
+                    <ul>
+                        <li>Personal Skills table – complete the provided table code by filling in the dotted parts (<code>…</code>) according to instructions, keeping the existing structure intact</li>
+                        <li>Portfolio table – create this table based on a textual description</li>
+                    </ul>
+                </li>
+                <li>Contact/Feedback page: add one table to display messages – recreate the table from the provided image</li>
+            </ul>
+        </li>
+
+        <li><strong>HTML validation:</strong> Validate all pages using the W3C validator; fix any errors. Your HTML must pass validation before committing or pushing changes.</li>
+
+        <li><strong>Commit and push:</strong> Commit your validated changes and push them to your GitHub Classroom Lab 3 assignment.</li>
+    </ol>
+	</section>
+
+
+	<section id="tables-theory">
+    <h2 id="tables-theory-heading" tabindex="-1"><a class="header-anchor" href="#tables-theory">HTML Tables</a></h2>
+
+    <p>Tables are used to organize data in rows and columns. They are ideal for displaying structured information such as schedules, statistics, project portfolios, or contact lists. A well-structured table improves readability, accessibility, and allows browsers and screen readers to interpret the data correctly.</p>
+
+    <h3 id="table-elements" tabindex="-1"><a class="header-anchor" href="#table-elements">Basic table elements</a></h3>
+    <p>An HTML table consists of several elements:</p>
+    <ul>
+        <li><code>&lt;table&gt;</code> – the container for the entire table. Optionally, you can add a <code>&lt;caption&gt;</code> to describe the table.</li>
+        <li><code>&lt;thead&gt;</code> – groups the header row(s) of the table. Headers are typically bold and help define columns.</li>
+        <li><code>&lt;tbody&gt;</code> – contains the main body rows of the table.</li>
+        <li><code>&lt;tfoot&gt;</code> – optional section for footer rows, such as totals or summaries.</li>
+        <li><code>&lt;tr&gt;</code> – table row, can contain header cells (<code>&lt;th&gt;</code>) or data cells (<code>&lt;td&gt;</code>).</li>
+        <li><code>&lt;th&gt;</code> – table header cell. Use <code>scope</code> to indicate whether it is a column or row header (improves accessibility).</li>
+        <li><code>&lt;td&gt;</code> – table data cell, contains regular content.</li>
+    </ul>
+
+    <h3 id="table-attributes" tabindex="-1"><a class="header-anchor" href="#table-attributes">Attributes and special properties</a></h3>
+    <p>Some useful attributes and properties include:</p>
+    <ul>
+        <li><code>colspan</code> – makes a cell span multiple columns.</li>
+        <li><code>rowspan</code> – makes a cell span multiple rows.</li>
+        <li><code>scope</code> – used in <code>&lt;th&gt;</code> cells to indicate which cells the header applies to. Helps screen readers announce correctly which header relates to each data cell. Common values: <code>col</code> – column header; <code>row</code> – row header; <code>colgroup</code> – group of columns; <code>rowgroup</code> – group of rows.</li>
+        <li><code>headers</code> – optional attribute on <code>&lt;td&gt;</code> linking it to a header <code>&lt;th&gt;</code>.</li>
+        <li><code>caption</code> – a title describing the table, usually placed above it.</li>
+    </ul>
+
+    <h3 id="simple-example" tabindex="-1"><a class="header-anchor" href="#simple-example">Simple table example</a></h3>
+    <p>Example of a simple table showing basic personal skills:</p>
+    <pre><code>&lt;table border="1"&gt;
+    &lt;caption&gt;Personal Skills&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th scope="col"&gt;Skill&lt;/th&gt;
+        &lt;th scope="col"&gt;Level&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;HTML&lt;/td&gt;
+        &lt;td&gt;Advanced&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;CSS&lt;/td&gt;
+        &lt;td&gt;Intermediate&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+    <h3 id="complex-example" tabindex="-1"><a class="header-anchor" href="#complex-example">Complex table example</a></h3>
+    <p>This complex table demonstrates <code>thead</code>, <code>tbody</code>, <code>tfoot</code>, <code>colspan</code>, <code>rowspan</code>, and nested lists:</p>
+    <pre><code>&lt;table border="1"&gt;
+    &lt;caption&gt;Personal Skills and Certifications&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Skill&lt;/th&gt;
+            &lt;th scope="col"&gt;Level&lt;/th&gt;
+            &lt;th scope="col"&gt;Years&lt;/th&gt;
+            &lt;th scope="col"&gt;Certifications&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;HTML&lt;/th&gt;
+            &lt;td&gt;Advanced&lt;/td&gt;
+            &lt;td&gt;5&lt;/td&gt;
+            &lt;td&gt;&lt;ul&gt;&lt;li&gt;MDN&lt;/li&gt;&lt;li&gt;W3C&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;CSS&lt;/th&gt;
+            &lt;td&gt;Intermediate&lt;/td&gt;
+            &lt;td&gt;4&lt;/td&gt;
+            &lt;td rowspan="2"&gt;&lt;ul&gt;&lt;li&gt;Responsive Design&lt;/li&gt;&lt;li&gt;CSS Grid&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;JavaScript&lt;/th&gt;
+            &lt;td&gt;Beginner&lt;/td&gt;
+            &lt;td&gt;2&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="row" colspan="2"&gt;Python &amp; Data Analysis&lt;/th&gt;
+            &lt;td&gt;3&lt;/td&gt;
+            &lt;td&gt;&lt;ul&gt;&lt;li&gt;DataCamp&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td colspan="3"&gt;Total Skills&lt;/td&gt;
+            &lt;td&gt;4&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;
+</code></pre>
+
+    <h3 id="additional-tips" tabindex="-1"><a class="header-anchor" href="#additional-tips">Additional tips</a></h3>
+    <ul>
+        <li>Use <code>&lt;caption&gt;</code> to describe the table for all users, including screen reader users.</li>
+        <li>Always define <code>scope="col"</code> or <code>scope="row"</code> for headers.</li>
+        <li>Merge cells only when it improves readability, using <code>colspan</code> or <code>rowspan</code>.</li>
+        <li>Keep tables simple, clean, and avoid using them for page layout.</li>
+        <li>Use CSS for styling instead of deprecated attributes like <code>border</code>.</li>
+        <li>Tables can contain other HTML elements such as <code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;a&gt;</code> links, and images.</li>
+    </ul>
+
+    <p><strong>References:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table">MDN – HTML Table</a>, <a href="https://www.w3.org/WAI/tutorials/tables/">W3C – Tables Accessibility</a>.</p>
+</section>
+
+
+<section id="task1">
+    <h2 id="task1-heading" tabindex="-1"><a class="header-anchor" href="#task1">Task 1 – Accept Lab 3 assignment and clone Lab 2</a></h2>
+    <p>Start by accepting the Lab 3 assignment on the course platform. While logged into GitHub, click <strong>Accept this assignment</strong> to create your Lab 3 private repository.</p>
+    <p>Next, open your local project for Lab 2 and make a clone in the Lab 3 repository. This cloned project will serve as the starting point for Lab 3. Ensure that both the <strong>index page</strong> and the <strong>contact/feedback page</strong> from Lab 2 are included, as you will modify them to add the required tables for Lab 3.</p>
+</section>
+
+
+<section id="task2">
+    <h2 id="task2-heading" tabindex="-1"><a class="header-anchor" href="#task2">Task 2 – Create tables for Lab 3</a></h2>
+
+    <p>For Lab 3, you will add three tables across your site pages. Use semantic HTML with <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>, <code>&lt;th&gt;</code> with <code>scope</code>, and <code>&lt;caption&gt;</code> where appropriate.</p>
+
+    <h3 id="task2-exercise1" tabindex="-1"><a class="header-anchor" href="#task2-exercise1">Exercise 1. – Messages table on contact/feedback page</a></h3>
+    <p>Using the provided image, recreate the table of messages received on your <code>contact/feedback.html</code> page. Include all IDs, names, emails, messages, dates, and priority cells. Use <code>rowspan</code> where multiple messages belong to the same sender, and include <code>mailto:</code> links for email addresses. Add a caption describing the table.</p>
+	<img src="./image.png" alt="Messages Received table with ID, Name, Email, Message, Date, and Priority columns." style="width:75%;">
+
+    <h3 id="task2-exercise2" tabindex="-1"><a class="header-anchor" href="#task2-exercise2">Exercise 2. – Personal Skills table on index page</a></h3>
+    <p>On the <code>index.html</code> page, complete the provided table skeleton by filling in the dotted parts (<code>…</code>) and missing attributes:</p>
+    <pre><code>&lt;table border="..."&gt;
+    &lt;...&gt;
+        &lt;tr&gt;
+            &lt;th scope="col" colspan="..."&gt;Personal Skills&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;...&gt;
+        &lt;tr&gt;
+            &lt;... scope="row" rowspan="3"&gt;...&lt;/th&gt;
+            &lt;td&gt;...&lt;/td&gt;
+            &lt;td&gt;JavaScript&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;...&gt;
+            &lt;td&gt;C/C++&lt;/td&gt;
+            &lt;td&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Java&lt;/td&gt;
+            &lt;td&gt;-&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th scope="..." rowspan="..."&gt;Design&lt;/th&gt;
+            &lt;td colspan="..."&gt;Figma&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;...&gt;
+            &lt;td colspan="2"&gt;...&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"&gt;Photoshop&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"&gt;UI/UX&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;th ...="row"&gt;Other&lt;/th&gt;
+            &lt;td colspan="..."&gt;Git&lt;/td&gt;
+        &lt;/...&gt;
+    &lt;/tbody&gt;
+&lt;/...&gt;
+</code></pre>
+
+    <h3 id="task2-exercise3" tabindex="-1"><a class="header-anchor" href="#task2-exercise3">Exercise 3. – Personal projects portfolio table on index page</a></h3>
+    <p>On <code>index.html</code>, create a complex table to display your personal projects portfolio. The table should include:</p>
+<ul>
+    <li>A <code>&lt;caption&gt;</code> describing the table.</li>
+    <li>A header row (<code>&lt;th&gt;</code>) with column titles: Project Name, Description, Technologies, Difficulty, Link, ETC.</li>
+    <li>For the <strong>Technologies</strong> column, include an unordered list (<code>&lt;ul&gt;</code>) of technologies used in the project.</li>
+    <li>For the <strong>Difficulty</strong> column, include a <code>&lt;select&gt;</code> element with options: Low, Medium, High.</li>
+    <li>For the <strong>Link</strong> column, include a hyperlink (<code>&lt;a&gt;</code>) pointing to your project repository or live demo (e.g., GitHub link).</li>
+        <li>Use <code>colspan</code> or <code>rowspan</code> where appropriate to combine cells for better layout and readability.</li>
+
+	<li>Use proper <code>scope</code> attributes for accessibility.</li>
+</ul>
+
+</section>
+
+
+
+	<section id="task3">
+    <h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3">Task 3 – Push, publish, and submit Lab 3</a></h2>
+    <p>After completing all table exercises and page updates, make sure your <strong> repository for Lab 3</strong> contains:</p>
+    <ul>
+        <li><code>index.html</code> – the homepage with the navigation link to the form page and the two tables (Personal Skills, Portfolio).</li>
+        <li><code>contact.html</code> (or <code>feedback.html</code>) – the form page with the Messages table recreated from the provided image.</li>
+    </ul>
+    <p>Push your final changes to the Lab 3 repository. Open the live GitHub Pages URL and confirm that:</p>
+    <ul>
+        <li>Both pages load correctly.</li>
+        <li>Navigation links between index and the form page work.</li>
+        <li>All three tables render as intended, including correct <code>rowspan</code>, <code>colspan</code>, lists, dropdowns, and links.</li>
+    </ul>
+</section>
+
+
+
+	<section id="task4">
+    <h2 id="task4-heading" tabindex="-1"><a class="header-anchor" href="#task4">Task 4 – HTML validation</a></h2>
+    <p>As the final step for Lab 3, ensure that all your pages are <strong>HTML validated</strong>. Use the <a href="https://validator.w3.org/">W3C Markup Validation Service</a> to check each page (index and your form page) via file upload or pasted source.</p>
+    <ul>
+        <li>Fix all errors and warnings reported by the validator.</li>
+        <li>Check that all tables render correctly and are semantically correct (<code>&lt;th&gt;</code> with <code>scope</code>, <code>caption</code>, <code>rowspan</code>, <code>colspan</code>, lists, dropdowns, and links).</li>
+        <li>After fixing issues, push the corrected files to your Lab 3 repository.</li>
+    </ul>
+    <p>Your Lab 3 deliverable is complete only when both <code>index.html</code> and the form page pass validation with no errors. If you find issues after submitting, fix and push them again; the grader may re-check your live site.</p>
+</section>
+
+
+	<section id="references">
+		<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
+		<ul>
+			<li><a href="../1/">Lab 1 - GitHub and HTML Structure</a></li>
+			<li><a href="../../lecture-1/#interactivity-heading">Lecture 1 - Interactivity</a></li>
+			<li><a href="../../lecture-1/#validation-heading">Lecture 1 - HTML validation</a></li>
+			<li><a href="../../resources/">Resources</a></li>
+			<li><a href="https://validator.w3.org/">W3C Markup Validation Service</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques">MDN - ARIA techniques</a>; <a href="https://www.w3.org/WAI/tutorials/forms/">W3C WAI - Form tutorials</a></li>
+		</ul>
+	</section>
+
+	<p><a href="../">Labs</a> · <a href="../../assignments/">Assignments</a> · <a href="../../">Course home</a></p>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
