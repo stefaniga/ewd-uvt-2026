@@ -31,7 +31,9 @@
 					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
 						<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
-						<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item active" href="../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item" href="../lecture-2/">Lecture 2</a></li>
+						<li><a class="dropdown-item" href="../lecture-3/">Lecture 3</a></li>
 					</ul>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
@@ -174,7 +176,7 @@
 		<section aria-labelledby="style-and-css-heading">
 			<h2 id="style-and-css-heading" tabindex="-1"><a class="header-anchor" href="#style-and-css-heading">Style (look and feel)</a></h2>
 			<p>Styling can be: inline (on the element), embedded in the document (in <code>&lt;head&gt;</code>), or in a separate <strong>CSS (Cascading Style Sheet)</strong> file. The last is preferred for maintainability. Content (HTML) and presentation (CSS) should be separated.</p>
-			<p><strong>Activity:</strong> Open a site you use often, then open the browser’s developer tools (e.g. right-click → Inspect, or the keyboard shortcut for your OS). Remove or disable all <code>&lt;style&gt;</code> and <code>&lt;link rel="stylesheet"&gt;</code> and see how the page looks. The content and structure are still there; only the visual layer is gone. That illustrates how much the appearance depends on CSS and why keeping structure in HTML and presentation in CSS matters.</p>
+			<p><strong>Activity:</strong> Open a site you use often, then open the browser’s developer tools (e.g. right-click &rarr; Inspect, or the keyboard shortcut for your OS). Remove or disable all <code>&lt;style&gt;</code> and <code>&lt;link rel="stylesheet"&gt;</code> and see how the page looks. The content and structure are still there; only the visual layer is gone. That illustrates how much the appearance depends on CSS and why keeping structure in HTML and presentation in CSS matters.</p>
 		</section>
 
 		<section aria-labelledby="dom-heading">
@@ -184,7 +186,7 @@
 				<dt>Syntax vs semantics</dt>
 				<dd>HTML is the <em>syntax</em> (the rules for writing tags). The <em>semantics</em> of that HTML is what it means; the DOM is the in-memory representation the browser builds from it.</dd>
 				<dt>Tree structure</dt>
-				<dd>Nodes have parent, child, and sibling relationships. Example: <code>&lt;body&gt;</code> is the parent of <code>&lt;p&gt;</code>; the text inside <code>&lt;p&gt;</code> is a child text node. Nested tags create a hierarchy (document → <code>html</code> → <code>head</code> / <code>body</code> → …).</dd>
+				<dd>Nodes have parent, child, and sibling relationships. Example: <code>&lt;body&gt;</code> is the parent of <code>&lt;p&gt;</code>; the text inside <code>&lt;p&gt;</code> is a child text node. Nested tags create a hierarchy (document &rarr; <code>html</code> &rarr; <code>head</code> / <code>body</code> &rarr; …).</dd>
 				<dt>Node types</dt>
 				<dd><strong>Document</strong> (root, no HTML element); <strong>Element</strong> (each tag, e.g. <code>html</code>, <code>p</code>, <code>em</code>); <strong>Text</strong> (text content, leaves of the tree); <strong>Comment</strong> (HTML comments).</dd>
 				<dt>HTML parsing</dt>

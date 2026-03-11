@@ -40,6 +40,8 @@
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
 						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
 						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item" href="../../lecture-2/">Lecture 2</a></li>
+						<li><a class="dropdown-item" href="../../lecture-3/">Lecture 3</a></li>
 					</ul>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
@@ -71,7 +73,7 @@
 				<li><strong>Semantic HTML page structure:</strong> <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code>; one <code>&lt;h1&gt;</code> per page; heading hierarchy; meaningful headings and image <code>alt</code> text</li>
 				<li><strong>GitHub Pages:</strong> private assignment repo vs. separate public repo for publishing; publishing source (branch/folder), entry file <code>index.html</code>, site URL, build time, optional <code>.nojekyll</code></li>
 			</ul>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): <a href="#github-classroom-onboarding">GitHub Classroom onboarding</a> → <a href="#task1">accept assignment &amp; clone</a> → <a href="#html-basics">HTML basics</a> &amp; <a href="#semantic-structure">semantic structure</a> → <a href="#task2">build <code>index.html</code></a> → <a href="#github-pages-deployment">initial deployment</a> &amp; <a href="#task3">enable Pages</a> → submit.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): <a href="#github-classroom-onboarding">GitHub Classroom onboarding</a> &rarr; <a href="#task1">accept assignment &amp; clone</a> &rarr; <a href="#html-basics">HTML basics</a> and <a href="#semantic-structure">semantic structure</a> &rarr; <a href="#task2">build <code>index.html</code></a> &rarr; <a href="#github-pages-deployment">initial deployment</a> and <a href="#task3">enable Pages</a> &rarr; submit.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A personal course homepage (one HTML page) deployed on GitHub Pages; link submitted via the course platform.</p>
 			<p><strong>Extra work [1]:</strong> Exercises 2-1, 4-1, 4-2 from the primary textbook (see <a href="../../assignments/">Assignments</a>).</p>
 		</div>
@@ -91,7 +93,7 @@
 
 	<section id="github-classroom-onboarding">
 		<h2 id="classroom-onboarding-heading" tabindex="-1"><a class="header-anchor" href="#github-classroom-onboarding">GitHub Classroom onboarding</a></h2>
-		<p><strong>What is GitHub Classroom?</strong> GitHub Classroom is a tool that lets instructors create assignments from a template repository. When you accept an assignment, GitHub creates a <strong>private repository</strong> for you, pre-filled with starter files (or empty). You work in your copy and push your code to GitHub; the instructor can see your repo for grading. Every lab in this course uses the same flow: assignment link → accept → clone → work → commit → push.</p>
+			<p><strong>What is GitHub Classroom?</strong> GitHub Classroom is a tool that lets instructors create assignments from a template repository. When you accept an assignment, GitHub creates a <strong>private repository</strong> for you, pre-filled with starter files (or empty). You work in your copy and push your code to GitHub; the instructor can see your repo for grading. Every lab in this course uses the same flow: assignment link &rarr; accept &rarr; clone &rarr; work &rarr; commit &rarr; push.</p>
 		<h3 id="join-classroom" tabindex="-1"><a class="header-anchor" href="#join-classroom">Joining the course classroom</a></h3>
 		<ol>
 			<li>Your instructor will share a <strong>classroom link</strong> or <strong>invitation code</strong> (e.g. on the course platform or in the first lecture). It looks like <code>https://classroom.github.com/classrooms/.../...</code> or a short code you enter on <a href="https://classroom.github.com/">classroom.github.com</a>.</li>
@@ -106,7 +108,7 @@
 			<li>GitHub creates your private repository (name often includes the assignment and your username, e.g. <code>lab1-john-doe</code>). The page will show a link to your new repo; bookmark or copy it.</li>
 			<li>If you see “You're ready to go!”, you can open your repository and start working. You do <strong>not</strong> need to create a new repo yourself-Classroom does it for you.</li>
 		</ol>
-		<p><strong>Important:</strong> Accept each lab assignment only once. If you have already accepted Lab 1, use the same repo; do not accept again or you may get a second empty repo. If you lose the repo link, go to your GitHub profile → Your repositories, or check the assignment page for “Your assignment has been submitted” and the repo link there.</p>
+		<p><strong>Important:</strong> Accept each lab assignment only once. If you have already accepted Lab 1, use the same repo; do not accept again or you may get a second empty repo. If you lose the repo link, go to your GitHub profile &rarr; Your repositories, or check the assignment page for “Your assignment has been submitted” and the repo link there.</p>
 	</section>
 
 	<section id="html-basics">
@@ -209,7 +211,7 @@
 			<li>Get the Lab 1 assignment link from the course platform. Open it in your browser while logged into GitHub.</li>
 			<li>Click <strong>Accept this assignment</strong>. Wait until GitHub creates your private repository and shows you its URL (e.g. <code>https://github.com/your-org/lab1-yourusername</code>).</li>
 			<li>Clone the repo: in a terminal, go to a folder where you keep course work (e.g. <code>Desktop</code> or <code>Documents</code>), then run <code>git clone &lt;repository-URL&gt;</code>. Replace <code>&lt;repository-URL&gt;</code> with the HTTPS URL from GitHub (use the green <strong>Code</strong> button on the repo page to copy it).</li>
-			<li>Open the cloned folder in your code editor (e.g. in VS Code: <strong>File → Open Folder</strong>).</li>
+				<li>Open the cloned folder in your code editor (e.g. in VS Code: <strong>File &rarr; Open Folder</strong>).</li>
 		</ol>
 		<p><strong>Exercise 1.1 - Verify Git state</strong></p>
 		<p>In the terminal (inside the cloned folder), run <code>git status</code>. Note the current branch name (usually <code>main</code> or <code>master</code>). Run <code>git remote -v</code> and confirm that <code>origin</code> points to your GitHub repository. You will use this same workflow for every lab.</p>
@@ -218,7 +220,7 @@
 		<pre><code>git add .
 git commit -m "Initial commit: add name and date to README"
 git push</code></pre>
-		<p>If you use VS Code’s Source Control view, stage the file, enter the same message in the commit box, commit, then push. Confirm on GitHub that your commit appears in the repository. This cycle (edit → add → commit → push) is the one you will repeat throughout the course.</p>
+		<p>If you use VS Code’s Source Control view, stage the file, enter the same message in the commit box, commit, then push. Confirm on GitHub that your commit appears in the repository. This cycle (edit &rarr; add &rarr; commit &rarr; push) is the one you will repeat throughout the course.</p>
 	</section>
 
 	<section id="task2">
@@ -255,7 +257,7 @@ git push</code></pre>
 		</ul>
 		<p>So you keep two places in sync: the <strong>private</strong> repo (your assignment submission) and the <strong>public</strong> repo (your published site). You can push the same files to both, or copy the built files into the public repo.</p>
 		<h3 id="publishing-source" tabindex="-1"><a class="header-anchor" href="#publishing-source">Publishing source</a></h3>
-		<p>In the <strong>public</strong> repository where you want to publish, go to <strong>Settings → Pages</strong> and choose:</p>
+		<p>In the <strong>public</strong> repository where you want to publish, go to <strong>Settings &rarr; Pages</strong> and choose:</p>
 		<ul>
 			<li><strong>Source:</strong> “Deploy from a branch”. Alternatively, “GitHub Actions” lets you use a workflow to build and deploy; for Lab 1 we use a branch.</li>
 			<li><strong>Branch:</strong> e.g. <code>main</code> or <code>master</code> (the one you push to).</li>
@@ -267,14 +269,14 @@ git push</code></pre>
 		<h3 id="pages-url" tabindex="-1"><a class="header-anchor" href="#pages-url">Site URL</a></h3>
 		<p>For a <strong>project site</strong> (repo that is not named <code>username.github.io</code>), the base URL is:</p>
 		<p><code>https://&lt;username-or-org&gt;.github.io/&lt;repository-name&gt;/</code></p>
-		<p>Example: repo <code>lab1-john-doe</code> under user <code>johndoe</code> → <code>https://johndoe.github.io/lab1-john-doe/</code>. Note the trailing slash when linking to the root. Use this URL when submitting your lab.</p>
+		<p>Example: repo <code>lab1-john-doe</code> under user <code>johndoe</code> &rarr; <code>https://johndoe.github.io/lab1-john-doe/</code>. Note the trailing slash when linking to the root. Use this URL when submitting your lab.</p>
 		<h3 id="build-and-updates" tabindex="-1"><a class="header-anchor" href="#build-and-updates">Build time and updates</a></h3>
 		<p>After each <code>git push</code> to the published branch, GitHub rebuilds and redeploys. Allow <strong>up to about 10 minutes</strong> for changes to appear. If you do not see updates after an hour, check the branch and folder in Settings → Pages and ensure you pushed to the correct branch.</p>
 		<h3 id="jekyll-and-nojekyll" tabindex="-1"><a class="header-anchor" href="#jekyll-and-nojekyll">Jekyll and .nojekyll</a></h3>
 		<p>If you publish from a branch (and do not use GitHub Actions), GitHub runs Jekyll by default. Jekyll may hide files or folders that start with <code>_</code> or are in certain names. For a plain HTML site with no Jekyll theme, add an <strong>empty file</strong> named <code>.nojekyll</code> at the root of your publishing source. That disables Jekyll so all your files are served as-is. For Lab 1, if your repo has no <code>_</code> folders, it may work without <code>.nojekyll</code>; adding it is safe and avoids surprises.</p>
 		<h3 id="pages-troubleshooting" tabindex="-1"><a class="header-anchor" href="#pages-troubleshooting">Troubleshooting</a></h3>
 		<ul>
-			<li><strong>404 or “There isn’t a GitHub Pages site here”:</strong> Make sure you are using a <strong>public</strong> repository (Pages does not publish from private repos on free accounts). Confirm Settings → Pages has “Deploy from a branch”, the correct branch (e.g. <code>main</code>), and the right folder. Ensure <code>index.html</code> exists at the top level of that folder and is committed and pushed.</li>
+			<li><strong>404 or “There isn’t a GitHub Pages site here”:</strong> Make sure you are using a <strong>public</strong> repository (Pages does not publish from private repos on free accounts). Confirm Settings &rarr; Pages has “Deploy from a branch”, the correct branch (e.g. <code>main</code>), and the right folder. Ensure <code>index.html</code> exists at the top level of that folder and is committed and pushed.</li>
 			<li><strong>Page is blank or old:</strong> Hard-refresh (Ctrl+Shift+R / Cmd+Shift+R) or try a private window. Wait a few more minutes after a push.</li>
 			<li><strong>Image or CSS not loading:</strong> Use relative paths (e.g. <code>images/photo.jpg</code>). For the root of the site use <code>./</code> or just the path; avoid absolute paths that assume a different domain.</li>
 		</ul>

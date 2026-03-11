@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lecture 2 - CSS Basics and the Box Model | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+				<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+					<li class="nav-item"><a class="nav-link" href="../#logistics">Logistics</a></li>
+					<li class="nav-item"><a class="nav-link" href="../staff/">Staff</a></li>
+					<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+					<li class="nav-item"><a class="nav-link" href="../assignments/">Assignments</a></li>
+					<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+							<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+							<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+							<li><a class="dropdown-item active" href="../lecture-2/">Lecture 2</a></li>
+							<li><a class="dropdown-item" href="../lecture-3/">Lecture 3</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main-content">
+		<article>
+			<header>
+				<h1>Lecture 2 - CSS Basics and the Box Model</h1>
+				<p><strong>Lecture 2 - CSS Basics and the Box Model.</strong> Duration: <time datetime="PT2H">2 hours</time>. This lecture introduces CSS as the presentation layer for semantic HTML, covers selector types, typography and color, and the CSS box model. It continues the foundations started in Lecture 1 and prepares the ground for responsive layouts and RWD patterns in <a href="../lecture-3/">Lecture 3</a>. Connected to <strong><a href="../labs/#lab3">Lab 3</a></strong> and <strong><a href="../labs/4/">Lab 4</a></strong>.</p>
+			</header>
+
+			<section aria-labelledby="learning-outcomes-heading">
+				<h2 id="learning-outcomes-heading" tabindex="-1"><a class="header-anchor" href="#learning-outcomes-heading">Learning outcomes</a></h2>
+				<p>By the end of this lecture you will be able to:</p>
+				<ul>
+					<li>Explain the role of CSS as the presentation layer on top of semantic HTML and the DOM tree</li>
+					<li>Distinguish between inline, embedded, and external style sheets and choose appropriate use cases</li>
+					<li>Use basic, contextual, class, ID, pseudo-class, pseudo-element, and attribute selectors to target elements</li>
+					<li>Control typography, spacing, colors, and backgrounds using common CSS properties and relative units</li>
+					<li>Explain and apply the CSS box model (content, padding, border, margin, box-sizing) in layout decisions</li>
+					<li>Apply basic styling to tables, navigation bars, and forms while keeping structure in HTML and presentation in CSS</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="topics-heading">
+				<h2 id="topics-heading" tabindex="-1"><a class="header-anchor" href="#topics-heading">Topics</a></h2>
+				<ul>
+					<li>Review: document structure and DOM tree from Lecture 1</li>
+					<li>CSS syntax: selectors, properties, values, and declaration blocks</li>
+					<li>Sources of style: inline styles, embedded style sheets, external style sheets, and <code>@import</code></li>
+					<li>Cascading and specificity: author vs user styles, origin order, and selector weight</li>
+					<li>Selector types: element, descendant, child, sibling, ID, class, pseudo-classes, pseudo-elements, attribute selectors</li>
+					<li>Typography and text: font families, font stacks, size, weight, style, line-height, text alignment, decoration, transform, spacing</li>
+					<li>Colors, opacity, and background images (including repeat, position, attachment, and shorthand)</li>
+					<li>Measurements: absolute vs relative units, <code>em</code> and <code>rem</code></li>
+					<li>The CSS box model: content box vs border box, width/height, padding, border, margin, box-shadow, and collapsing margins</li>
+					<li>Styling lists, tables, navigation bars, and forms for better usability without breaking semantics</li>
+					<li>The <code>display</code> property and how it affects layout and interaction</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="resources-heading">
+				<h2 id="resources-heading" tabindex="-1"><a class="header-anchor" href="#resources-heading">Resource materials</a></h2>
+				<ul>
+					<li>Jennifer Niederst Robbins, <em><a href="https://learningwebdesign.com/">Learning Web Design: A Beginner's Guide to HTML, CSS, JavaScript, and Web Images</a></em>, 6th ed., O'Reilly Media, 2025 – especially chapters on CSS basics, text, color, backgrounds, and the box model.</li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN Web Docs - CSS</a> – reference for selectors, properties, values, and layout behaviour.</li>
+					<li><a href="https://www.w3.org/Style/CSS/">W3C CSS Specifications</a> – formal definitions of CSS features and modules.</li>
+				</ul>
+				<p>All resources can be accessed via the course classroom. See also <a href="../resources/">Resources</a> and the lab descriptions for concrete CSS practice tasks.</p>
+			</section>
+
+			<section aria-labelledby="css-role-heading">
+				<h2 id="css-role-heading" tabindex="-1"><a class="header-anchor" href="#css-role-heading">CSS as the presentation layer</a></h2>
+				<p>In Lecture 1 we focused on <strong>HTML as structure and semantics</strong>. CSS adds <strong>presentation rules</strong> on top of that structure: how content is laid out, colored, and styled on screens, print, or assistive technologies. The same semantic HTML document can be shown very differently by swapping its style sheets, which is why separation of concerns is so powerful.</p>
+				<ul>
+					<li><strong>HTML</strong>: defines the elements and their meaning (headings, lists, forms, navigation, etc.).</li>
+					<li><strong>CSS</strong>: defines how those elements are presented (layout, typography, colors, spacing, animations).</li>
+					<li><strong>Benefits</strong>: easier maintenance, consistent design across pages, better accessibility, and more control over different media (screen, print, small devices, screen readers).</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="css-syntax-heading">
+				<h2 id="css-syntax-heading" tabindex="-1"><a class="header-anchor" href="#css-syntax-heading">CSS rules and syntax</a></h2>
+				<p>A CSS rule selects one or more elements in the document tree and declares how they should be presented.</p>
+				<dl>
+					<dt>Selector</dt>
+					<dd>Identifies which elements in the DOM the rule applies to (e.g. <code>p</code>, <code>.special</code>, <code>#main-nav</code>, <code>ul li a</code>).</dd>
+					<dt>Declaration block</dt>
+					<dd>Curly braces containing one or more property–value pairs separated by semicolons.</dd>
+					<dt>Property</dt>
+					<dd>The aspect of presentation being changed (e.g. <code>color</code>, <code>font-size</code>, <code>margin-top</code>).</dd>
+					<dt>Value</dt>
+					<dd>The specific setting for that property (e.g. <code>green</code>, <code>1.5rem</code>, <code>2px solid #333</code>).</dd>
+				</dl>
+				<pre><code>h1 {
+  color: green;
+  font-size: 2rem;
+}
+
+p, li {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}</code></pre>
+				<p>You can group multiple selectors with a comma to share the same declaration block. The <a href="https://www.w3.org/TR/CSS/">CSS specifications</a> define the standard properties and values available across browsers.</p>
+			</section>
+
+			<section aria-labelledby="sources-heading">
+				<h2 id="sources-heading" tabindex="-1"><a class="header-anchor" href="#sources-heading">Sources of style definitions</a></h2>
+				<ul>
+					<li><strong>Inline styles</strong> – <code>style</code> attribute on an element. Should be avoided in real projects because they mix presentation with structure and are hard to maintain.</li>
+					<li><strong>Embedded style sheets</strong> – <code>&lt;style&gt;</code> element inside the <code>&lt;head&gt;</code> of a single HTML document. Affects only that document.</li>
+					<li><strong>External style sheets</strong> – separate <code>.css</code> files linked with <code>&lt;link rel="stylesheet" href="…"&gt;</code>. The preferred method because multiple pages can share the same styles.</li>
+					<li><strong><code>@import</code></strong> – allows one style sheet to include another at the top, before any rules. Useful for modular CSS, but <code>&lt;link&gt;</code> is usually simpler and performs better.</li>
+				</ul>
+				<p>In this course we will primarily use <strong>external style sheets</strong>, sometimes combined into small modular files (e.g. base, layout, components) depending on the size of the project.</p>
+			</section>
+
+			<section aria-labelledby="cascade-heading">
+				<h2 id="cascade-heading" tabindex="-1"><a class="header-anchor" href="#cascade-heading">The cascade and specificity</a></h2>
+				<p>When several rules match the same element, the browser uses the <strong>cascade</strong> and <strong>specificity</strong> to decide which declarations win.</p>
+				<ul>
+					<li><strong>Sources hierarchy</strong> (from least to most specific): browser defaults, user style sheets, linked/ imported author styles, embedded styles, inline styles, rules marked <code>!important</code> (reader or author).</li>
+					<li><strong>Specificity</strong> of selectors: ID selectors are stronger than class selectors, which are stronger than contextual selectors and simple element selectors.</li>
+				</ul>
+				<p>For example, if both <code>strong { color: red; }</code> and <code>h1 strong { color: blue; }</code> apply, emphasized text inside <code>&lt;h1&gt;</code> will be blue because the second selector is more specific. We will revisit specificity later when we introduce more complex layout systems.</p>
+			</section>
+
+			<section aria-labelledby="selectors-heading">
+				<h2 id="selectors-heading" tabindex="-1"><a class="header-anchor" href="#selectors-heading">Selector types</a></h2>
+				<ul>
+					<li><strong>Element selectors</strong> – target all elements of a given type: <code>p</code>, <code>h1</code>, <code>ul</code>.</li>
+					<li><strong>Contextual (descendant) selectors</strong> – target elements nested inside others: <code>li em</code>, <code>ol a em</code>.</li>
+					<li><strong>Child selectors</strong> – target direct children: <code>p &gt; em</code>.</li>
+					<li><strong>Sibling selectors</strong> – <code>h1 + p</code> (adjacent sibling) and <code>h1 ~ h2</code> (general sibling).</li>
+					<li><strong>ID selectors</strong> – <code>#catalog1234</code> or <code>li#catalog1234</code>; should be unique in a document.</li>
+					<li><strong>Class selectors</strong> – <code>.special</code> or <code>p.special</code>; reusable across many elements.</li>
+					<li><strong>Pseudo-classes</strong> – element states such as <code>:link</code>, <code>:visited</code>, <code>:focus</code>, <code>:hover</code>, <code>:active</code>, <code>:checked</code>, <code>:disabled</code>.</li>
+					<li><strong>Pseudo-elements</strong> – parts of elements such as <code>::first-line</code>, <code>::first-letter</code>, <code>::before</code>, <code>::after</code>.</li>
+					<li><strong>Attribute selectors</strong> – target based on attribute presence or value, e.g. <code>a[target]</code>, <code>input[type="email"]</code>, <code>a[href*="example"]</code>.</li>
+				</ul>
+				<p>Selectors let you describe <em>where</em> in the document tree a rule should apply without adding extra markup just for styling.</p>
+			</section>
+
+			<section aria-labelledby="typography-heading">
+				<h2 id="typography-heading" tabindex="-1"><a class="header-anchor" href="#typography-heading">Typography, measurements, and text</a></h2>
+				<h3 id="fonts" tabindex="-1"><a class="header-anchor" href="#fonts">Font families and font stacks</a></h3>
+				<p>The <code>font-family</code> property defines a <strong>font stack</strong>: a list of preferred fonts ending with a generic family (<code>serif</code>, <code>sans-serif</code>, <code>monospace</code>, <code>cursive</code>, <code>fantasy</code>). The browser chooses the first available font.</p>
+				<pre><code>body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}</code></pre>
+				<h3 id="font-properties" tabindex="-1"><a class="header-anchor" href="#font-properties">Font size, weight, style, and variant</a></h3>
+				<ul>
+					<li><code>font-size</code> – absolute keywords or relative units; we will prefer <code>rem</code> and percentages for flexibility.</li>
+					<li><code>font-weight</code> – <code>normal</code>, <code>bold</code>, or numeric values like <code>400</code>, <code>700</code>.</li>
+					<li><code>font-style</code> – <code>normal</code>, <code>italic</code>, <code>oblique</code>.</li>
+					<li><code>font-variant</code> – e.g. <code>small-caps</code>.</li>
+					<li><code>font</code> – shorthand property combining these values.</li>
+				</ul>
+				<h3 id="measurements" tabindex="-1"><a class="header-anchor" href="#measurements">Absolute and relative measurements</a></h3>
+				<ul>
+					<li><strong>Absolute units</strong> – independent of environment (good for print), e.g. <code>cm</code>, <code>mm</code>, <code>in</code>, <code>pt</code>.</li>
+					<li><strong>Relative units</strong> – depend on context (preferred for screens), e.g. <code>em</code>, <code>rem</code>, <code>%</code>, <code>vw</code>, <code>vh</code>.</li>
+				</ul>
+				<h3 id="text-properties" tabindex="-1"><a class="header-anchor" href="#text-properties">Text properties</a></h3>
+				<p>Common text-related properties:</p>
+				<ul>
+					<li><code>line-height</code>, <code>text-indent</code>, <code>text-align</code>, <code>text-decoration</code>, <code>text-transform</code></li>
+					<li><code>letter-spacing</code>, <code>word-spacing</code>, <code>text-shadow</code>, <code>white-space</code>, <code>vertical-align</code></li>
+					<li><code>visibility</code> and <code>direction</code> (<code>ltr</code>/<code>rtl</code> for text direction)</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="colors-backgrounds-heading">
+				<h2 id="colors-backgrounds-heading" tabindex="-1"><a class="header-anchor" href="#colors-backgrounds-heading">Colors, backgrounds, and shadows</a></h2>
+				<p>Color and background properties control the visual theme of your UI.</p>
+				<ul>
+					<li><code>color</code> – text and border color.</li>
+					<li><code>background-color</code> – background color of an element; often used with <code>opacity</code> or alpha values in color functions.</li>
+					<li><code>background-image</code>, <code>background-repeat</code>, <code>background-position</code>, <code>background-attachment</code>, and the <code>background</code> shorthand.</li>
+					<li><code>text-shadow</code> and <code>box-shadow</code> – for visual emphasis and depth.</li>
+				</ul>
+				<p>Good practice: keep background images lightweight, ensure sufficient color contrast for accessibility, and always define a solid fallback color that matches the main tone of the background image.</p>
+			</section>
+
+			<section aria-labelledby="box-model-heading">
+				<h2 id="box-model-heading" tabindex="-1"><a class="header-anchor" href="#box-model-heading">The CSS box model</a></h2>
+				<p>Every element is represented as a rectangular box made of content, optional padding, border, and margin. Understanding the box model is essential for layout, spacing, and responsive design.</p>
+				<ul>
+					<li><strong>Content box</strong> – area where text, images, or other content live.</li>
+					<li><strong>Padding</strong> – space between the content and the border.</li>
+					<li><strong>Border</strong> – line surrounding the padding and content.</li>
+					<li><strong>Margin</strong> – space outside the border, separating the element from its neighbors.</li>
+				</ul>
+				<p>Key properties: <code>box-sizing</code> (<code>content-box</code> vs <code>border-box</code>), <code>width</code>, <code>height</code>, <code>padding</code>, <code>border</code> (style, width, color, radius, image), <code>margin</code>, <code>overflow</code>, and how vertical margins can collapse.</p>
+			</section>
+
+			<section aria-labelledby="lists-tables-forms-heading">
+				<h2 id="lists-tables-forms-heading" tabindex="-1"><a class="header-anchor" href="#lists-tables-forms-heading">Styling lists, tables, navigation bars, and forms</a></h2>
+				<p>CSS can transform default HTML rendering into more usable interfaces without changing the underlying semantics.</p>
+				<ul>
+					<li><strong>Lists</strong> – use <code>list-style</code> properties and <code>display</code> changes to create horizontal navigation bars from <code>&lt;ul&gt;</code>/<code>&lt;li&gt;</code> structures.</li>
+					<li><strong>Tables</strong> – control <code>caption-side</code>, <code>table-layout</code>, <code>border-collapse</code>, and <code>border-spacing</code> to improve readability of tabular data.</li>
+					<li><strong>Navigation bars</strong> – build accessible nav bars with semantic lists and anchors styled with background colors, hover states, and fixed positioning when appropriate.</li>
+					<li><strong>Forms</strong> – improve layout and user experience by styling labels, text inputs, textareas, buttons, and fieldsets while leaving UI controls that are heavily platform-specific largely to the browser.</li>
+				</ul>
+				<p>Good practice: align labels and inputs, group related controls into fieldsets, and use CSS rather than tables for form layout.</p>
+			</section>
+
+			<section aria-labelledby="display-heading">
+				<h2 id="display-heading" tabindex="-1"><a class="header-anchor" href="#display-heading">The <code>display</code> property</a></h2>
+				<p>The <code>display</code> property controls how an element participates in layout—for example, as an inline element, a block-level box, a list item, or a table cell.</p>
+				<ul>
+					<li>Common values: <code>inline</code>, <code>block</code>, <code>inline-block</code>, <code>list-item</code>, <code>none</code>.</li>
+					<li>Table-related values: <code>table</code>, <code>table-row</code>, <code>table-cell</code>, etc., which can be useful for certain layout patterns.</li>
+					<li><code>display: none</code> removes the element from layout entirely; contrast with <code>visibility: hidden</code>, which hides the element but keeps its space.</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="inspect-css-heading">
+				<h2 id="inspect-css-heading" tabindex="-1"><a class="header-anchor" href="#inspect-css-heading">Inspecting CSS and the box model</a></h2>
+				<p>When you inspect an element in your browser’s developer tools, you can see both the CSS rules that apply to it and a visual representation of the box model (content, padding, border, and margin). This is one of your main tools for <strong>debugging CSS</strong>: it tells you which selector wins, where spacing comes from, and how the browser actually computed the layout.</p>
+				<figure class="text-center">
+					<a href="css-windows.png" target="_blank" rel="noopener">
+						<img src="css-windows.png" class="img-fluid border rounded shadow-sm" alt="Browser developer tools showing CSS rules on the right and the box model diagram with content, padding, border, and margin.">
+					</a>
+					<figcaption><strong>Figure 1.</strong> The CSS inspector shows the active rules (fonts, colors, layout properties) and a box-model diagram. Click the image to open it full-size in a new tab; hovering over a rule or area in the diagram highlights the corresponding padding, border, or margin in the page.</figcaption>
+				</figure>
+				<ul>
+					<li><strong>Rules (Styles) panel</strong>: lists all CSS declarations that apply to the selected element, grouped by selector and source file. You can:
+						<ul>
+							<li>see exactly which selector sets a property like <code>margin</code> or <code>padding</code>,</li>
+							<li>see crossed‑out rules that lost due to specificity or later declarations,</li>
+							<li>toggle declarations on and off using the checkbox to test “what if this rule didn’t exist?”.</li>
+						</ul>
+					</li>
+					<li><strong>Computed / Layout panel</strong>: shows the final computed values and a box model diagram. The colored regions (content, then padding, then border, then margin) let you confirm whether extra space comes from margin outside the border or padding inside it. Hovering the diagram highlights those areas in the page.</li>
+					<li><strong>Debugging recipes</strong>:
+						<ul>
+							<li><strong>“Why is there extra space here?”</strong> Inspect the element, look at the box model, check which rule sets the margin or padding, then disable that rule temporarily and adjust the CSS file.</li>
+							<li><strong>“Why isn’t my selector working?”</strong> Inspect the element and, in the Rules panel, look for your selector: if it is crossed out, another selector is more specific or appears later; if it is missing, the file may not be loaded or the selector does not match.</li>
+							<li><strong>“Why is the font or color wrong?”</strong> Inspect the element, look at the <code>color</code>, <code>font-family</code>, and related properties in the Computed tab, and follow the link to the rule that sets them.</li>
+						</ul>
+					</li>
+				</ul>
+				<p><strong>Connection to labs.</strong> In the CSS labs (<a href="../labs/3/">Lab 3</a> and <a href="../labs/4/">Lab 4</a>), use the inspector constantly: change a property in devtools, see the effect immediately, and then copy the final values back into your CSS files to make the change permanent.</p>
+			</section>
+
+			<section aria-labelledby="quiz-next-heading">
+				<h2 id="quiz-next-heading" tabindex="-1"><a class="header-anchor" href="#quiz-next-heading">Next</a></h2>
+				<p>At the end of this lecture we will have a short quiz based on the previous topics (HTML and the CSS fundamentals from Lectures 1–2), followed by a brief recap that connects to the responsive design content in <a href="../lecture-3/">Lecture 3</a>.</p>
+				<p>Next: <strong><a href="../lecture-3/">Lecture 3</a></strong> continues directly from this lecture with layout techniques (float, positioning, Flexbox, Grid) and responsive patterns. Depending on class feedback and pacing, we may shift some subtopics between Lecture 2 and Lecture 3 while keeping the same overall learning outcomes and assessment structure.</p>
+				<p><a href="../lecture-1/">Lecture 1</a> | <a href="../">Course home</a> | <a href="../schedule/">Schedule</a></p>
+			</section>
+		</article>
+	</main>
+
+	<button id="back-to-top" type="button">Back to Top</button>
+	<script>
+		document.getElementById('back-to-top').addEventListener('click', function () {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+		window.addEventListener('scroll', function () {
+			document.body.classList.toggle('scrolled', window.scrollY > 300);
+		});
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

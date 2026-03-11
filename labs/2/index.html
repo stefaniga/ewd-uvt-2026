@@ -40,6 +40,8 @@
 					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
 						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
 						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item" href="../../lecture-2/">Lecture 2</a></li>
+						<li><a class="dropdown-item" href="../../lecture-3/">Lecture 3</a></li>
 					</ul>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
@@ -68,7 +70,7 @@
 				<li><strong>Forms:</strong> <code>&lt;form&gt;</code>, <code>action</code>, <code>method</code>; <code>&lt;label for="..."&gt;</code> and <code>id</code>; input types (<code>text</code>, <code>email</code>, <code>tel</code>, <code>url</code>); <code>&lt;textarea&gt;</code>; <code>required</code> and <code>pattern</code>; <code>&lt;fieldset&gt;</code> and <code>&lt;legend&gt;</code>; <code>&lt;button type="submit"&gt;</code></li>
 				<li><strong>Accessibility (a11y):</strong> Perceivable (labels, no information by colour alone); Operable (keyboard, skip link, focus order); Understandable (grouping, error hints); Robust (valid HTML, semantic structure). ARIA where needed: <code>aria-label</code>, <code>aria-describedby</code>, <code>aria-required</code> (redundant with <code>required</code> but sometimes used).</li>
 			</ul>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): accept Lab 2 and clone → build form page with semantic structure → implement accessibility tasks → link from homepage and test with keyboard → push and submit → <strong>HTML validation (Task 4)</strong>.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): accept Lab 2 and clone &rarr; build form page with semantic structure &rarr; implement accessibility tasks &rarr; link from homepage and test with keyboard &rarr; push and submit &rarr; <strong>HTML validation (Task 4)</strong>.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A contact/feedback form page meeting the accessibility requirements below, linked from your course homepage, committed to the private Lab 2 repo and published via your public repo; HTML validated; live site URL submitted on the course platform.</p>
 			<p><strong>Extra work [1]:</strong> Exercises 5-1, 5-3, 6-1.</p>
 		</div>
@@ -182,7 +184,7 @@
 		<h3 id="a11y-keyboard-test" tabindex="-1"><a class="header-anchor" href="#a11y-keyboard-test">7. Keyboard testing checklist</a></h3>
 		<p>Before submitting, verify the form with keyboard only (no mouse):</p>
 		<ul>
-			<li><strong>Tab order:</strong> Press <kbd>Tab</kbd> repeatedly. Focus should move in a logical order: skip link → nav links → form controls (in visual order) → submit button. <kbd>Shift+Tab</kbd> goes backward.</li>
+			<li><strong>Tab order:</strong> Press <kbd>Tab</kbd> repeatedly. Focus should move in a logical order: skip link &rarr; nav links &rarr; form controls (in visual order) &rarr; submit button. <kbd>Shift+Tab</kbd> goes backward.</li>
 			<li><strong>Skip link:</strong> On first Tab, focus should go to the skip link; activating it should move focus to the main content (e.g. the form or the page heading).</li>
 			<li><strong>Labels:</strong> When focus is on an input or textarea, the label should be announced (test with a screen reader if possible, or confirm each control has a <code>for</code>/<code>id</code> pair).</li>
 			<li><strong>No focus trap:</strong> Focus should never get stuck; you should be able to Tab out of the form and reach the footer or other links.</li>
