@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Lab 4 - Responsive Layouts (Flexbox, Media Queries) | Web Design Course 2025-2026</title>
+	<title>Lab 4 - CSS Styling | Web Design Course 2025-2026</title>
 	<link rel="shortcut icon" href="../../favicon.svg">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="../../style.css">
@@ -19,75 +19,467 @@
 	</defs>
 </svg>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
-		<div class="container-fluid">
-			<a class="navbar-brand d-flex align-items-center gap-2" href="../../">
-				<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
-			</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item"><a class="nav-link" href="../../#info">Info</a></li>
-					<li class="nav-item"><a class="nav-link" href="../../#logistics">Logistics</a></li>
-					<li class="nav-item"><a class="nav-link" href="../../staff/">Staff</a></li>
-					<li class="nav-item"><a class="nav-link" href="../../schedule/">Schedule</a></li>
-					<li class="nav-item"><a class="nav-link" href="../../assignments/">Assignments</a></li>
-					<li class="nav-item"><a class="nav-link" href="../../labs/">Labs</a></li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
-						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
-							<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
-							<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
-							<li><a class="dropdown-item" href="../../lecture-2/">Lecture 2</a></li>
-							<li><a class="dropdown-item" href="../../lecture-3/">Lecture 3</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
-	<main id="main-content">
-		<h1>Lab 4 - Responsive layouts with Flexbox and media queries</h1>
-		<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. This lab continues the CSS progression from <a href="../3/">Lab 3</a> and applies the layout ideas from <a href="../../lecture-2/">Lecture 2</a> and <a href="../../lecture-3/">Lecture 3</a>: box model &rarr; layout &rarr; responsive patterns.</p>
-
-		<section id="overview">
-			<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
-			<div class="lab-block">
-				<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Make your site layout responsive using Flexbox and media queries.</p>
-				<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> normal flow, <code>display: flex</code>, main axis vs cross axis, <code>gap</code>, wrapping, flexible images, viewport meta tag, media queries, mobile-first CSS.</p>
-				<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Create a CSS file for your site (or extend an existing one), convert navigation and at least one content section into a responsive Flexbox layout, add a breakpoint with a media query, and validate that layout still works with keyboard navigation.</p>
-				<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A live site (GitHub Pages) that adapts to narrow and wide screens, with clean HTML and a separate CSS file.</p>
-				<p><strong>Extra work [1]:</strong> Exercises from the primary textbook sections covering Flexbox and responsive layout (see course platform).</p>
-			</div>
-		</section>
-
-		<section id="references">
-			<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
-			<ul>
-				<li><a href="../../lecture-2/">Lecture 2 - CSS basics and the box model</a></li>
-				<li><a href="../../lecture-3/">Lecture 3 - CSS layout and RWD</a></li>
-				<li><a href="../../resources/">Resources</a></li>
-				<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout">MDN - Flexbox</a></li>
-				<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries">MDN - Media queries</a></li>
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item" href="../../lecture-2/">Lecture 2</a></li>
+						<li><a class="dropdown-item" href="../../lecture-3/">Lecture 3</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
 			</ul>
-		</section>
+		</div>
+	</div>
+</nav>
 
-		<p><a href="../">Labs</a> · <a href="../../schedule/">Schedule</a> · <a href="../../">Course home</a></p>
-	</main>
+<main id="main-content">
 
-	<button id="back-to-top" type="button">Back to Top</button>
-	<script>
-		document.getElementById('back-to-top').addEventListener('click', function () {
-			window.scrollTo({ top: 0, behavior: 'smooth' });
-		});
-		window.addEventListener('scroll', function () {
-			document.body.classList.toggle('scrolled', window.scrollY > 300);
-		});
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+	<h1>Lab 4 - CSS Styling</h1>
+
+	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>.
+	This lab continues from <a href="../3/">Lab 3</a>: you keep the same Git and GitHub Pages workflow and
+	<strong>add CSS styling to the pages already created in your site</strong>.
+	You will use CSS selectors, the box model, typography, backgrounds, and color to visually enhance your site.
+	See <a href="../../lecture-2/#css-heading">Lecture 2 - CSS</a> and
+	<a href="../../resources/">Resources</a>.
+	</p>
+
+
+	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#lab-setup">Lab setup</a> · <a href="#css-theory">CSS</a> · <a href="#task1">Task 1</a> · <a href="#task2">Task 2</a> · <a href="#task3">Task 3</a> · <a href="#task4">Task 4</a> · <a href="#references">References</a>.</p>
+
+	<section id="overview">
+		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
+		<div class="lab-block">
+   			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives</strong></p>
+    		<ul>
+        		<li>Clone Lab 3 repository to continue working on your course site with the same Git/GitHub Pages workflow</li>
+        		<li>Apply CSS styling to your existing pages:
+            		<ul>
+                		<li>Style the tables on the index page (Personal Skills and Portfolio) using CSS selectors, box model, and color</li>
+                		<li>Create a hero banner section on the index page with a background image and typography overlay</li>
+            		</ul>
+        		</li>
+        		<li>Use external, internal, and inline CSS appropriately throughout the project</li>
+        		<li>Commit changes to your GitHub Classroom Lab 4 assignment.</li>
+    		</ul>
+    		<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts</strong></p>
+    		<ul>
+        		<li><strong>CSS selectors:</strong> element, class, id, descendant, <code>:nth-child()</code>, <code>:hover</code>, <code>:focus</code></li>
+        		<li><strong>Box model:</strong> <code>margin</code>, <code>padding</code>, <code>border</code>, <code>border-radius</code>, <code>box-shadow</code>, <code>width</code>, <code>height</code></li>
+        		<li><strong>Typography:</strong> <code>font-family</code>, <code>font-size</code>, <code>font-weight</code>, <code>line-height</code>, <code>letter-spacing</code>, <code>text-transform</code>, <code>text-align</code>, Google Fonts</li>
+        		<li><strong>Backgrounds and color:</strong> <code>background-color</code>, <code>background-image</code>, <code>background-size</code>, <code>background-position</code>, <code>color</code>, <code>rgba()</code>, gradients</li>
+        		<li><strong>Git/GitHub workflow:</strong> clone repository, commit, push, and link updates to GitHub Pages</li>
+    		</ul>
+    		<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks</strong> (see sections below): clone Lab 3 → apply CSS to index page tables (selectors + box model + color) → create a hero banner section (background + typography) → push to GitHub → HTML/CSS validation.</p>
+    		<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A visually styled site with CSS applied to the tables and a hero banner section, using external, internal, and inline CSS as required, committed to your GitHub Classroom Lab 4 repository and validated.</p>
+		</div>
+	</section>
+
+
+	<section id="lab-setup">
+    <h2 id="lab-setup-heading" tabindex="-1"><a class="header-anchor" href="#lab-setup">Lab setup</a></h2>
+    <p>Before starting, ensure you have completed <a href="../3/">Lab 3</a> and have access to your course homepage and your private Lab 3 repo. For Lab 4 you will need the same tools: a code editor, Git, and a browser. Use the task order below; the final step is pushing to GitHub (Task 4).</p>
+    <ol>
+        <li><strong>Setup and page structure:</strong> Accept the Lab 4 assignment, clone your Lab 3 repository, and continue working on the existing pages. You will modify <code>index.html</code> to add CSS styling and a new hero section.</li>
+
+        <li><strong>Apply CSS styling:</strong>
+            <ul>
+                <li>Index page: style the existing tables using an external CSS file
+                    <ul>
+                        <li>Personal Skills table – apply box model, alternating row colors, and hover effects using CSS selectors</li>
+                        <li>Portfolio table – apply matching style with header color, padding, and shadow</li>
+                    </ul>
+                </li>
+                <li>Index page: add a hero banner section with background image, typography, and a semi-transparent overlay</li>
+            </ul>
+        </li>
+
+        <li><strong>CSS and HTML validation:</strong> Validate all pages using the W3C validator and the W3C CSS validator; fix any errors. Your HTML and CSS must pass validation before committing or pushing changes.</li>
+
+        <li><strong>Commit and push:</strong> Commit your validated changes and push them to your GitHub Classroom Lab 4 assignment.</li>
+    </ol>
+	</section>
+
+
+	<section id="css-theory">
+    <h2 id="css-theory-heading" tabindex="-1"><a class="header-anchor" href="#css-theory">CSS</a></h2>
+
+    <p>CSS (Cascading Style Sheets) is used to control the visual presentation of HTML elements. It separates structure (HTML) from style (CSS), making pages easier to maintain and redesign. CSS rules consist of a <strong>selector</strong> that targets elements, and a <strong>declaration block</strong> with one or more <strong>property: value</strong> pairs.</p>
+
+    <h3 id="css-ways" tabindex="-1"><a class="header-anchor" href="#css-ways">Ways to apply CSS</a></h3>
+    <p>There are three ways to include CSS in a web page, each with a different scope and use case:</p>
+    <ul>
+        <li><strong>Inline CSS</strong> – applied directly to a single HTML element using the <code>style</code> attribute. Has the highest specificity and overrides other styles. Best used only for quick, one-off overrides.
+            <pre><code>&lt;p style="color: red; font-weight: bold;"&gt;This text is red and bold.&lt;/p&gt;</code></pre>
+        </li>
+        <li><strong>Internal CSS</strong> – written inside a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code> section of the HTML file. Applies only to that page. Useful for single-page styles or quick testing.
+            <pre><code>&lt;head&gt;
+    &lt;style&gt;
+        h1 {
+            color: navy;
+            font-size: 2rem;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+        </li>
+        <li><strong>External CSS</strong> – written in a separate <code>.css</code> file and linked to the HTML using a <code>&lt;link&gt;</code> tag. Best practice for real projects: styles are shared across all pages and easy to maintain.
+            <pre><code>&lt;!-- In the &lt;head&gt; of your HTML --&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;</code></pre>
+            <pre><code>/* In style.css */
+body {
+    font-family: Georgia, serif;
+    background-color: #f9f9f9;
+}</code></pre>
+        </li>
+    </ul>
+
+    <h3 id="css-selectors" tabindex="-1"><a class="header-anchor" href="#css-selectors">CSS Selectors</a></h3>
+    <p>Selectors determine which HTML elements a CSS rule targets. For each selector type below, the HTML shows what you write in the page and the CSS shows how you style it.</p>
+
+    <p><strong>Element selector</strong> – targets <em>all</em> elements of a given type. Here every <code>&lt;p&gt;</code> on the page becomes gray:</p>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;p&gt;This is another paragraph.&lt;/p&gt;</code></pre>
+    <pre><code>/* CSS */
+p {
+    color: gray;
+    font-size: 1rem;
+}</code></pre>
+
+    <p><strong>Class selector</strong> – targets only elements that have a specific <code>class</code> attribute. Multiple elements can share the same class. The selector starts with a dot (<code>.</code>). Here, only the second paragraph is highlighted:</p>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;p&gt;This paragraph is not highlighted.&lt;/p&gt;
+&lt;p class="highlight"&gt;This paragraph IS highlighted.&lt;/p&gt;</code></pre>
+    <pre><code>/* CSS */
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+    padding: 4px 8px;
+}</code></pre>
+
+    <p><strong>ID selector</strong> – targets one unique element identified by its <code>id</code> attribute. An ID must be unique per page. The selector starts with a hash (<code>#</code>):</p>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;h1 id="main-title"&gt;Welcome to my site&lt;/h1&gt;
+&lt;h1&gt;This heading is not affected.&lt;/h1&gt;</code></pre>
+    <pre><code>/* CSS */
+#main-title {
+    font-size: 2rem;
+    color: navy;
+    text-align: center;
+}</code></pre>
+
+    <p><strong>Descendant selector</strong> – targets elements that are <em>inside</em> a specific parent element. Here only <code>&lt;td&gt;</code> cells that are inside a <code>&lt;table&gt;</code> are affected:</p>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Cell 1&lt;/td&gt;
+        &lt;td&gt;Cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;This paragraph is not a td, so it is not affected.&lt;/p&gt;</code></pre>
+    <pre><code>/* CSS */
+table td {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+}</code></pre>
+
+    <p><strong>Pseudo-class <code>:nth-child()</code></strong> – targets elements based on their position among siblings. Useful for alternating ("zebra") row colors in tables:</p>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;table&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;&lt;td&gt;Row 1 – white&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Row 2 – light gray&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Row 3 – white&lt;/td&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Row 4 – light gray&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+    <pre><code>/* CSS */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}</code></pre>
+
+    <p><strong>Pseudo-class <code>:hover</code></strong> – applies a style only while the user's mouse is over the element. Removed as soon as the mouse leaves. A classic use case is changing the appearance of links on hover:</p>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;a href="https://example.com"&gt;Visit my GitHub&lt;/a&gt;
+&lt;a href="mailto:user@example.com"&gt;Send me an email&lt;/a&gt;</code></pre>
+    <pre><code>/* CSS */
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1e40af;
+    text-decoration: underline;
+}</code></pre>
+
+    <p><strong>Pseudo-class <code>:focus</code></strong> – applies a style when an element is focused (e.g. clicked into or tabbed to with the keyboard). Commonly used on form inputs:</p>
+    <pre><code>&lt;!-- HTML --&gt;
+&lt;input type="text" placeholder="Click here to focus"&gt;</code></pre>
+    <pre><code>/* CSS */
+input:focus {
+    border: 2px solid blue;
+    outline: none;
+    background-color: #f0f8ff;
+}</code></pre>
+
+    <h3 id="css-boxmodel" tabindex="-1"><a class="header-anchor" href="#css-boxmodel">Box Model</a></h3>
+    <p>Every HTML element is treated as a rectangular box. The CSS box model describes the layers around an element's content:</p>
+    <ul>
+        <li><code>padding</code> – space between the content and the border (inside the element)</li>
+        <li><code>border</code> – a line drawn around the padding and content</li>
+        <li><code>margin</code> – space outside the border, separating the element from its neighbours</li>
+        <li><code>width</code> / <code>height</code> – set the dimensions of the content area</li>
+        <li><code>border-radius</code> – rounds the corners of the element's border</li>
+        <li><code>box-shadow</code> – adds a shadow effect around the element</li>
+    </ul>
+    <pre><code>/* Box model example */
+.card {
+    width: 300px;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}</code></pre>
+
+    <h3 id="css-typography" tabindex="-1"><a class="header-anchor" href="#css-typography">Typography</a></h3>
+    <p>CSS provides fine-grained control over text appearance. Key properties include:</p>
+    <ul>
+        <li><code>font-family</code> – sets the typeface, with fallback fonts: <code>font-family: 'Georgia', serif;</code></li>
+        <li><code>font-size</code> – sets the text size: <code>font-size: 1.2rem;</code></li>
+        <li><code>font-weight</code> – sets thickness: <code>font-weight: bold;</code> or <code>font-weight: 700;</code></li>
+        <li><code>line-height</code> – controls vertical spacing between lines: <code>line-height: 1.6;</code></li>
+        <li><code>letter-spacing</code> – adjusts space between characters: <code>letter-spacing: 0.05em;</code></li>
+        <li><code>text-transform</code> – changes text case: <code>text-transform: uppercase;</code></li>
+        <li><code>text-align</code> – aligns text horizontally: <code>text-align: center;</code></li>
+    </ul>
+    <p>You can import custom fonts from <a href="https://fonts.google.com/">Google Fonts</a> by adding a <code>&lt;link&gt;</code> in the <code>&lt;head&gt;</code>:</p>
+    <pre><code>&lt;link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&amp;display=swap" rel="stylesheet"&gt;</code></pre>
+    <pre><code>body {
+    font-family: 'Merriweather', serif;
+}</code></pre>
+
+    <h3 id="css-background-color" tabindex="-1"><a class="header-anchor" href="#css-background-color">Background and Color</a></h3>
+    <p>CSS controls both the background and text color of elements:</p>
+    <ul>
+        <li><code>color</code> – sets the text color: <code>color: #333333;</code></li>
+        <li><code>background-color</code> – fills the element background with a solid color: <code>background-color: #f0f4f8;</code></li>
+        <li><code>rgba(r, g, b, a)</code> – color with transparency (alpha): <code>background-color: rgba(0, 0, 0, 0.5);</code> — useful for overlays</li>
+        <li><code>background-image</code> – sets a background image: <code>background-image: url('banner.jpg');</code></li>
+        <li><code>background-size</code> – controls how the image is scaled: <code>background-size: cover;</code> (fills the entire element)</li>
+        <li><code>background-position</code> – positions the image: <code>background-position: center;</code></li>
+        <li><strong>Gradient</strong> – smooth transition between colors: <code>background: linear-gradient(to right, #1a1a2e, #16213e);</code></li>
+    </ul>
+    <pre><code>/* Hero section example */
+.hero {
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    position: relative;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.55);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title {
+    color: #ffffff;
+    font-size: 2.5rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}</code></pre>
+
+    <p><strong>References:</strong> <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN – CSS</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model">MDN – Box Model</a>, <a href="https://fonts.google.com/">Google Fonts</a>, <a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validator</a>.</p>
+</section>
+
+
+<section id="task1">
+    <h2 id="task1-heading" tabindex="-1"><a class="header-anchor" href="#task1">Task 1 – Accept Lab 4 assignment and clone Lab 3</a></h2>
+    <p>Start by accepting the Lab 4 assignment on the course platform. While logged into GitHub, click <strong>Accept this assignment</strong> to create your Lab 4 private repository.</p>
+    <p>Next, open your local project for Lab 3 and make a clone in the Lab 4 repository. This cloned project will serve as the starting point for Lab 4. Ensure that both the <strong>index page</strong> and the <strong>contact/feedback page</strong> from Lab 3 are included, together with all three tables, as you will modify them to add CSS styling for Lab 4.</p>
+</section>
+
+
+<section id="task2">
+    <h2 id="task2-heading" tabindex="-1"><a class="header-anchor" href="#task2">Task 2 – Style your site with CSS</a></h2>
+
+    <p>For Lab 4, you will complete three exercises. All CSS rules must be written in an <strong>external stylesheet</strong> and linked to your HTML, except where inline or internal CSS is explicitly required.</p>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <h3 id="task2-exercise1" tabindex="-1"><a class="header-anchor" href="#task2-exercise1">Exercise 1. – CSS Specificity Game</a></h3>
+
+    <p>Create a new file called <code>specificity.html</code> and copy the following code into it <strong>exactly as written</strong> — do not change anything:</p>
+
+    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Specificity Game&lt;/title&gt;
+    &lt;style&gt;
+        p {
+            color: gray;
+            font-size: 1rem;
+            font-family: Georgia, serif;
+            line-height: 1.4;
+            padding: 4px 0;
+        }
+
+        .info {
+            color: steelblue;
+            font-size: 1.25rem;
+            background-color: #e8f4fd;
+            padding: 8px 14px;
+            border-left: 5px solid steelblue;
+            font-family: Arial, sans-serif;
+        }
+
+        #warning {
+            color: darkred;
+            font-size: 0.8rem;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border: 2px dashed darkred;
+            padding: 10px;
+            background-color: #fff0f0;
+            font-family: 'Courier New', monospace;
+        }
+
+        #warning.info {
+            color: darkorange;
+            background-color: #fff7e0;
+            border: 2px solid darkorange;
+            font-size: 1.1rem;
+            font-style: normal;
+            letter-spacing: 0.03em;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;p&gt;Paragraph A&lt;/p&gt;
+
+    &lt;p class="info"&gt;Paragraph B&lt;/p&gt;
+
+    &lt;p id="warning"&gt;Paragraph C&lt;/p&gt;
+
+    &lt;p class="info" id="warning"&gt;Paragraph D&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+    <p>Open the file in the browser, then create a file called <code>specificity.txt</code> and answer the following:</p>
+    <ul>
+        <li>Explain which CSS properties each paragraph (A, B, C, D) receives and where each property comes from: element selector, class selector, or id selector.</li>
+        <li>Paragraph D matches <code>p</code>, <code>.info</code>, <code>#warning</code>, and <code>#warning.info</code>. All four define <code>color</code> — which value does the browser use and why? What about <code>font-family</code>: which rule wins and why?</li>
+        <li>Create an external CSS file called <code>style.css</code> and add properties for an <code>h1</code> title: choose a color, set a <code>font-style</code>, and add <code>padding: 10px;</code>. Then, in the <code>body</code>, create an <code>h1</code> with the text <code>title1</code> and check the result. After that, in the same HTML file, add an internal CSS rule for <code>h1</code> inside the <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code> and change the color. Check the result and explain  what happens.</li>
+    </ul>
+    <p>Submit <code>specificity.html</code>, <code>specificity.txt</code>, and <code>style.css</code>.</p>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <h3 id="task2-exercise2" tabindex="-1"><a class="header-anchor" href="#task2-exercise2">Exercise 2. – Style the Personal Skills table</a></h3>
+
+    <p>Style the Personal Skills table from your <code>index.html</code> (built in Lab 3) so that it matches the result shown in the image below. Use an external stylesheet. Your CSS must use at least: a class selector, a descendant selector, <code>:nth-child</code>, and both inline and internal CSS somewhere in the page.</p>
+
+    <img src="./table-reference.png" alt="Reference: styled Personal Skills table with dark purple header, category cells (Programming, Design, Other), and skill cells with alternating white and light purple backgrounds; some cells highlighted in light green or light red." style="width: 75%; max-width: 600px; margin: 1rem 0; border: 1px solid #e5e7eb; border-radius: 8px;">
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <h3 id="task2-exercise3" tabindex="-1"><a class="header-anchor" href="#task2-exercise3">Exercise 3. – Business card</a></h3>
+
+    <p>Create a new file <code>card.html</code> with a linked external stylesheet <code>card.css</code>. Create one main <code>div</code> container and inside it add: an image, a title with your full name, a subtitle with your specialisation and current year of study, and below them an email address as a link and a GitHub link on a separate line. Style the page so the final result looks like a pleasant personal card. Personalise all elements with CSS so the design looks clean, balanced, and visually appealing. Use CSS rules for element selectors, class selectors, and id selectors, with at least two examples of each type in your solution.</p>
+
+</section>
+
+
+
+	<section id="task3">
+    <h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3">Task 3 – Push, publish, and submit Lab 4</a></h2>
+    <p>After completing all CSS exercises and page updates, make sure your <strong>repository for Lab 4</strong> contains:</p>
+    <ul>
+        <li><code>specificity.html</code> and <code>specificity.txt</code> – the specificity game page and your written explanation.</li>
+        <li><code>index.html</code> – the homepage with the styled Personal Skills table.</li>
+        <li><code>style.css</code> – the external stylesheet with all CSS rules for the Skills table.</li>
+        <li><code>card.html</code> and <code>card.css</code> – the business card page and its stylesheet.</li>
+        <li><code>contact.html</code> (or <code>feedback.html</code>) – the form page from Lab 3 (no changes required, but must still be present).</li>
+    </ul>
+    <p>Push your final changes to the Lab 4 repository. Open the live GitHub Pages URL and confirm that:</p>
+    <ul>
+        <li>All pages load correctly.</li>
+        <li>The Skills table renders with alternating row colors, a dark header, and a hover effect.</li>
+        <li>The business card displays a circular avatar, your name, role, and two contact links.</li>
+        <li>External, internal, and inline CSS are all present as required.</li>
+    </ul>
+</section>
+
+
+
+	<section id="task4">
+    <h2 id="task4-heading" tabindex="-1"><a class="header-anchor" href="#task4">Task 4 – HTML and CSS validation</a></h2>
+    <p>As the final step for Lab 4, ensure that all your pages and stylesheets are <strong>validated</strong>. Use the <a href="https://validator.w3.org/">W3C Markup Validation Service</a> to check each HTML page and the <a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validation Service</a> to check your stylesheet.</p>
+    <ul>
+        <li>Fix all errors and warnings reported by both validators.</li>
+        <li>Check that the hero section renders correctly and all CSS properties are valid.</li>
+        <li>Check that all tables are still semantically correct after adding class attributes and CSS.</li>
+        <li>After fixing issues, push the corrected files to your Lab 4 repository.</li>
+    </ul>
+    <p>Your Lab 4 deliverable is complete only when both <code>index.html</code> and your stylesheet pass validation with no errors. If you find issues after submitting, fix and push them again; the grader may re-check your live site.</p>
+</section>
+
+
+	<section id="references">
+		<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
+		<ul>
+			<li><a href="../3/">Lab 3 - HTML Tables</a></li>
+			<li><a href="../../lecture-2/#css-heading">Lecture 2 - CSS</a></li>
+			<li><a href="../../lecture-2/#validation-heading">Lecture 2 - CSS validation</a></li>
+			<li><a href="../../resources/">Resources</a></li>
+			<li><a href="https://validator.w3.org/">W3C Markup Validation Service</a></li>
+			<li><a href="https://jigsaw.w3.org/css-validator/">W3C CSS Validation Service</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN – CSS reference</a></li>
+			<li><a href="https://fonts.google.com/">Google Fonts</a></li>
+			<li><a href="https://unsplash.com">Unsplash – free background images</a></li>
+		</ul>
+	</section>
+
+	<p><a href="../">Labs</a> · <a href="../../assignments/">Assignments</a> · <a href="../../">Course home</a></p>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
