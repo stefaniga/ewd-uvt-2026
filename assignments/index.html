@@ -59,14 +59,16 @@
 		<div class="lab-block">
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Build a coherent mini-project based on Labs 1-4 and Lectures 1-2 using HTML and CSS; practice semantic structure, accessibility, tabular data markup, core styling, and deployment on GitHub Pages.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> semantic structure and heading hierarchy, accessible forms (<code>label</code>, <code>fieldset</code>, <code>legend</code>, focus flow), tabular data with proper headers and scope, selectors/specificity/box model/typography/color, and validation workflow.</p>
+			<p><strong>Use only:</strong> HTML5 + CSS3 (external stylesheet), Git/GitHub, and GitHub Pages for publishing.</p>
+			<p><strong>Generative AI policy (UVT):</strong> follow the course policy from <a href="../#info">Course home - Info</a>, including allowed/prohibited uses and the required transparency declaration model.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong></p>
 			<ol>
 				<li><strong>Choose one topic scenario:</strong> Personal Brand Portfolio + CV; Junior Developer Project Showcase; Student Freelancer Micro-Agency; Campus Event and Club Guide 2026; Study Group and Peer Tutoring Hub; Local Small Business Digital Presence; NGO/Volunteer Impact Story Site; Internship/Jobs Tracker Dashboard; Study Sprint Planner; or Tech Event Landing Page + Archive.</li>
-				<li><strong>Create at least 4 linked pages:</strong> <code>index.html</code>, one content page, one data page with at least one meaningful table, and one contact/feedback form page.</li>
-				<li><strong>Apply semantic HTML and accessibility:</strong> one <code>h1</code> per page, logical heading levels, landmarks (<code>header/nav/main/footer</code>), skip link, explicit labels for all controls, grouped controls with <code>fieldset</code>/<code>legend</code>, and keyboard-test your navigation and form.</li>
-				<li><strong>Add CSS in an external stylesheet:</strong> style navigation, typography, spacing, table readability, and form controls; demonstrate selector usage (element, class, id at minimum) and clear box-model decisions.</li>
-				<li><strong>Keep layout requirements realistic for Labs 1-4:</strong> clear page structure, readable spacing, and consistent styling; responsive behavior is optional bonus, not required.</li>
-				<li><strong>Validate and publish:</strong> run HTML validation for all pages and CSS validation for stylesheet, fix errors, then publish on GitHub Pages and submit repository plus live URL.</li>
+				<li><strong>Create exactly these minimum pages:</strong> <code>index.html</code>, one content page, one data page (with a real table), and one contact/feedback form page.</li>
+				<li><strong>Build semantic structure on every page:</strong> <code>header</code>, <code>nav</code>, <code>main</code>, <code>footer</code>, one clear <code>h1</code>, and logical heading order.</li>
+				<li><strong>Implement form accessibility:</strong> explicit labels, grouped controls with <code>fieldset</code>/<code>legend</code>, required fields where appropriate, and keyboard-friendly flow.</li>
+				<li><strong>Style with one external CSS file:</strong> readable typography, spacing, navigation styling, table readability, and consistent visual hierarchy.</li>
+				<li><strong>Validate and publish:</strong> fix validation errors, publish on GitHub Pages, and submit repository URL + live URL.</li>
 			</ol>
 			<p><strong>How to build <code>index.html</code> (required structure):</strong></p>
 			<ul>
@@ -78,8 +80,28 @@
 				<li>Do not use tables for layout. Use tables only on the dedicated data page for real tabular information.</li>
 			</ul>
 			<p><strong>Minimum file checklist:</strong> <code>index.html</code>, one content page (for example <code>about.html</code>), one table/data page (for example <code>data.html</code>), one form page (for example <code>contact.html</code>), and one stylesheet (for example <code>styles.css</code>).</p>
+			<p><strong>Technical requirements (must have):</strong></p>
+			<ul>
+				<li><strong>All HTML pages:</strong> valid <code>&lt;!doctype html&gt;</code>, <code>lang</code> attribute, <code>meta charset</code>, <code>meta viewport</code>, linked external CSS, one <code>h1</code>, and semantic landmarks.</li>
+				<li><strong>Navigation:</strong> same menu on all pages, with working links to every required page.</li>
+				<li><strong>Data page:</strong> at least one table with minimum 4 rows of data (excluding header), header row with <code>&lt;th&gt;</code>, and proper table caption.</li>
+				<li><strong>Form page:</strong> minimum 5 controls total, including name, email, subject/topic, message, and submit button; each control must have a visible label.</li>
+				<li><strong>CSS:</strong> one external stylesheet used by all pages; include rules for body text, headings, navigation links, table, form controls, spacing (margin/padding), and colors.</li>
+				<li><strong>Validation:</strong> HTML pages and CSS must pass validation with no errors at submission time.</li>
+				<li><strong>Publication:</strong> project must be online on GitHub Pages and accessible from the submitted live URL.</li>
+			</ul>
+			<p><strong>Grading scale (max 10 points):</strong></p>
+			<ul>
+				<li><strong>1.0 point - Starting point:</strong> repository exists, project can be opened, and at least <code>index.html</code> is present.</li>
+				<li><strong>1.5 points - Required pages and linking:</strong> minimum 4 pages exist and navigation links work correctly between pages.</li>
+				<li><strong>1.5 points - Semantic HTML structure:</strong> correct landmarks, heading hierarchy, and meaningful content organization.</li>
+				<li><strong>1.5 points - Forms and tables correctness:</strong> accessible form markup and one proper data table with headers/scope where needed.</li>
+				<li><strong>1.5 points - CSS quality:</strong> external stylesheet, consistent visual style, readable spacing/typography, and clean selector usage.</li>
+				<li><strong>1.0 point - Validation + publication:</strong> HTML/CSS validation completed and final site published on GitHub Pages.</li>
+				<li><strong>2.0 points - Presentation in Lab 7:</strong> student presents the project live in Lab 7 (short demo + explanation of structure, accessibility choices, CSS decisions, and validation/publishing status).</li>
+			</ul>
+			<p><strong>Important:</strong> Missing publication link or non-working repository limits the assignment to the starting point until fixed. Missing Lab 7 presentation means the presentation points cannot be awarded.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A published multi-page website (minimum 4 pages) on GitHub Pages that uses HTML and CSS, passes validation, and demonstrates all required features, plus a short <code>README</code> section listing chosen scenario, implemented requirements checklist, and known limitations (if any).</p>
-			<p><strong>Extra work [1]:</strong> Add one optional page section with enhanced accessibility (for example improved focus styles, better helper text, and contrast checks) and document what you improved and why.</p>
 		</div>
 	</section>
 
