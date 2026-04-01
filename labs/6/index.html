@@ -53,7 +53,7 @@
 <main id="main-content">
 	<h1>Lab 6 - Figma wireframing, design tokens, components, and layout systems</h1>
 	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. This lab introduces UI planning in Figma and prepares your implementation workflow for upcoming homework and coding tasks.</p>
-	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
+	<p><strong>On this page:</strong>  <a href="#teorie2">UI vs UX</a> · <a href="#teorie1">About Figma</a> · <a href="#teorie3">Main Elements in Figma</a> ·<a href="#teorie4">Figma Workflow</a> ·<a href="#teorie5">Reusable Components</a> ·<a href="#task1">Task 1</a> ·<a href="#task2">Task 2</a> ·<a href="#task3">Task 3</a> ·  <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
 
 	<section id="overview">
 		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
@@ -61,8 +61,188 @@
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Build a clean wireframe and define a minimal reusable design system.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> wireframing, type and color tokens, spacing scales, components, and layout systems.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Create one key page wireframe, define token groups, and assemble reusable components (button/card/form field).</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A shared Figma file with wireframes, tokens, and components.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong>   Upload to GitHub Classroom (assigned repository) a screenshot of the authentication page created in Figma and the extracted CSS code saved in a separate file.</p>
 		</div>
+	</section>
+
+<section id="teorie2">
+		<h2 id="teorie2-heading" tabindex="-1"><a class="header-anchor" href="#teorie2">UI vs UX – the essential difference</a></h2>
+		<p>
+   			<strong>UI (User Interface)</strong> - refers to the visual part of an application: colors, buttons, fonts, spacing. It is what the user actually sees on the screen. For example, a well-designed, readable, and properly aligned button is part of UI.
+  		</p>
+
+  		<p>
+    		<strong>UX (User Experience)</strong> - goes deeper and focuses on how the user interacts with the application. This includes logical flows, ease of navigation, clarity of actions, and process efficiency. For example, if a user can quickly find the login button and understands what they need to do, then the UX is well designed.
+  		</p>
+
+  		<p>
+    		In short, <strong>UI is “how it looks,” while UX is “how it works and how it feels.”</strong> In Figma, these two dimensions come together: you design both the visual appearance and the interaction logic.
+  		</p>
+	</section>
+
+	<section id="teorie1">
+		<h2 id="teorie1-heading" tabindex="-1"><a class="header-anchor" href="#teorie1">What is Figma?</a></h2>
+		 <p>
+    		<a href="https://www.figma.com" target="_blank">Figma</a> is a digital design tool focused on creating graphical interfaces and user experiences, widely used in the industry for web and mobile applications. Unlike traditional locally installed applications, Figma runs directly in the browser and allows real-time collaboration between multiple users, making it extremely efficient for teams.
+  		</p>
+
+  		<p>
+    		From a conceptual standpoint, Figma is not just a “drawing tool”, but a complete working environment in which you can go through the entire design process: from simple sketches (wireframes), to detailed visual interfaces, and all the way to interactive prototypes that simulate the behavior of a real application.
+  		</p>
+	</section>
+
+	<section id="teorie3">
+		<h2 id="teorie3-heading" tabindex="-1"><a class="header-anchor" href="#teorie3">Main Elements in Figma</a></h2>
+		 <p>
+    		To work efficiently in Figma, you need to understand a few fundamental concepts that form the basis of any project:
+  		</p>
+
+  		<p>
+   		 <strong>1. Canvas (workspace)</strong> <br>It is the central area where you actually build the design. Here you add frames, components, images, and text.
+  		</p>
+
+  		<p>
+   		 <strong>2. Frames</strong> <br>
+		 They represent screens or containers for interfaces (e.g., login screen, homepage). They are equivalent to “artboards” in other tools.
+  		</p>
+
+  		<p>
+    		<strong>3. Layers</strong> <br>
+			The hierarchical structure of all elements in the design. It allows you to organize and precisely select components.
+  		</p>
+
+  		<p>
+    		<strong>4. Toolbar</strong><br>
+    		It contains the main tools: Select, Frame, Shape tools (rectangle, circle, etc.), Pen, Text, and others. It also includes access to Assets and other essential design utilities used for building and managing components efficiently.
+  		</p>
+
+  		<p>
+    		<strong>5. Properties Panel</strong><br>
+    		Located on the right side, it controls details such as colors, sizes, fonts, effects, and positioning.
+  		</p>
+
+  		<p>
+    		<strong>6. Assets / Components</strong><br>
+    		A library of reusable components (buttons, cards, icons) that can be reused across multiple screens, ensuring consistency and efficiency.
+  		</p>
+
+  		<p>
+    		<strong>7. Prototyping</strong><br>
+    		The mode that allows you to connect screens and define interactions (clicks, transitions, navigation).
+  		</p>
+
+  		<img src="figma1.png" alt="Figma interface" width="90%">
+	</section>
+
+	<section id="teorie4">
+		<h2 id="teorie4-heading" tabindex="-1"><a class="header-anchor" href="#teorie4">Figma Workflow</a></h2>
+		<p>
+    Open Figma and select <strong>New design file</strong>. This represents the main workspace where you will build your entire design project.
+  </p>
+
+  <p>
+    After creating the file, the next step is to work with <strong>frames</strong>. In Figma, you do not structure your project using multiple design pages, but rather multiple frames within the same file. Each frame typically represents a screen of the application (for example: login, home, profile, etc.), and the number of frames depends on how many screens you want to design.
+  </p>
+
+  <p>
+    For each frame, you set the size according to the target device. You can choose from Figma presets (mobile, tablet, desktop) or define custom dimensions manually. This helps you adapt the design to the real usage context.
+  </p>
+
+  <p>
+    After defining the frames, you start by creating the <strong>wireframe (rough structure)</strong>. At this stage, you do not focus on aesthetics, but on organizing elements: where buttons, text, and images are placed, and how the logical flow of the screen is structured.
+  </p>
+
+  <p>
+    Next, you move on to the <strong>visual design (UI)</strong> stage, where you add colors, fonts, icons, images, and refine spacing and alignment. Essentially, you transform the simple structure into a complete and visually coherent interface.
+  </p>
+
+  <p>
+    As you build the interface, you also create <strong>reusable components</strong> (such as buttons, navigation bars, cards). These are saved as assets and can be reused across multiple frames, ensuring consistency and efficiency in the design process.
+  </p>
+
+  <p>
+    Finally, you can connect the frames using <strong>prototyping mode</strong>, in order to simulate real navigation between screens and test the user experience before implementation.
+  </p>
+	</section>
+
+	<section id="teorie5">
+		<h2 id="teorie5-heading" tabindex="-1"><a class="header-anchor" href="#teorie5">How to create a reusable element – the example of a button</a></h2>
+		 <p>
+    In Figma, a reusable element (<strong>Component</strong>) allows you to reuse the same design element in multiple places throughout a project without recreating it each time. A very common example is a button.
+  </p>
+
+  <p>
+    The first step is to create the base button inside a frame or a dedicated components page. This is built using a rectangle (which represents the background) and a text element (for example, “Login” or “Submit”). The two elements are properly aligned to ensure consistent spacing and a clean visual structure.
+  </p>
+
+  <p>
+    After defining the base structure, you apply the necessary visual styling. This includes setting the background color, text color, font type, font size, corner radius, and, if needed, effects such as shadows or strokes. At this stage, you define the final appearance of the button.
+  </p>
+
+  <p>
+    Once the button is finalized, you convert it into a component. You select all its elements and use the <strong>“Create component”</strong> option or the corresponding shortcut. From this moment on, the button becomes a reusable design element.
+  </p>
+
+  <p>
+    The created component can be found in the <strong>Assets</strong> section and can be dragged and dropped into any frame. Each instance remains linked to the original component, meaning it preserves the same structure and styling.
+  </p>
+
+  <p>
+    A key advantage is that if you modify the original component, all instances used across the project are updated automatically. For example, if you change the button’s color, that change is reflected everywhere it is used.
+  </p>
+
+  <p>
+    Optionally, you can create <strong>variants</strong> of the same button, such as default, hover, or disabled states. These are grouped into a component set and make it easier to manage different UI states consistently.
+  </p>
+	</section>
+
+	<section id="task1">
+		<h2 id="task1-heading" tabindex="-1"><a class="header-anchor" href="#task1">Task 1 - Create Authentication Interface</a></h2>
+		 <p>
+    In this task, you will create the authentication interface shown in the attached image using Figma. The project must be built using a <strong>main frame</strong>, which will represent the entire login page.
+  </p>
+
+  <p>
+    Inside this frame, you will reproduce the visual structure: the left side authentication area (the form with email and password fields, where users enter their email and password) and the right side informational panel, together with all text elements, logos, and buttons.
+  </p>
+
+  <p>
+    The focus should be on properly organizing elements within the frame, respecting the layout, and correctly aligning all components. Each section should be built in a modular way so that the interface structure is clear and easy to modify later. A logical layer hierarchy and consistent grouping of form elements are recommended.
+  </p>
+
+  <p>
+    An essential requirement of this task is the use of <strong>reusable components</strong>. Buttons (such as “Authentication” and “UVT Intranet”) must be created as <strong>components</strong>, so they can be reused in other pages or states of the application.
+  </p>
+
+    		<img src="figma2.png" alt="Figma interface" width="90%">
+
+	</section>
+
+	<section id="task2">
+		<h2 id="task2-heading" tabindex="-1"><a class="header-anchor" href="#task2">Task 2 - Figma to CSS Export Task</a></h2>
+		<p>
+    In this task, after completing the interface in Figma, you will extract the corresponding CSS styles from the created design. To do this, select the main frame that contains the entire authentication page, then use the <strong>right click → Copy/Paste as → Copy as Code → CSS</strong> option.
+  </p>
+
+  <p>
+    The generated CSS code should be analyzed and saved in a separate file in order to understand how Figma translates visual design into CSS properties. You should focus on identifying styles related to layout, colors, fonts, spacing, and dimensions, as well as how containers and interface elements are represented.
+  </p>
+
+  <p>
+    The purpose of this activity is to bridge the gap between the design created in Figma and its implementation in code, providing a practical understanding of how a UI can be transformed from a visual prototype into a usable CSS structure for web development.
+  </p>
+      		<img src="figma3.png" alt="Figma interface" width="90%">
+	</section>
+
+	<section id="task3">
+		<h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3">Task 3 - Figma Task Submission</a></h2>
+		<p>
+    <strong>Submission requirement:</strong> Upload to <em>GitHub Classroom (assigned repository)</em> the following:
+    <ul>
+      <li>A screenshot/image of the authentication page created in Figma</li>
+      <li>The extracted CSS code saved in a separate file</li>
+    </ul>
+  </p>
 	</section>
 
 	<section id="extra">
