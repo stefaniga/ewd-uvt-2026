@@ -83,7 +83,7 @@
 					<li>Functions: declarations, expressions, arrows; parameters and defaults; invocation modes; <code>call</code> / <code>apply</code>; scope and closures</li>
 					<li>Classes: syntax, inheritance, prototype chain; modules: <code>export</code> / <code>import</code></li>
 					<li>Regular expressions: literals and flags; common metacharacters; <code>test</code>, string methods, capture groups; practical validation</li>
-					<li>Recap; next session may include a quiz (see announcements on the course platform)</li>
+					<li><strong>Quiz and recap:</strong> note—an <strong>announced quiz</strong> will take place in <strong>Lecture 5</strong> (see course platform for details).</li>
 				</ul>
 			</section>
 
@@ -109,9 +109,479 @@
 				<p><strong>Lexical scoping</strong> ties visibility to where code is written; <strong>closures</strong> let inner functions retain access to outer bindings, which enables patterns like private state in factories. <strong>Arrow functions</strong> do not have their own <code>this</code>; they inherit it from the enclosing scope, which differs from traditional functions used as methods or constructors.</p>
 			</section>
 
+			<section aria-labelledby="lexical-structure-heading">
+				<h2 id="lexical-structure-heading" tabindex="-1"><a class="header-anchor" href="#lexical-structure-heading">Lexical structure</a></h2>
+				<ul>
+					<li><strong>Character set:</strong> JavaScript uses Unicode.</li>
+					<li><strong>Case sensitivity:</strong> <code>myVar</code> ≠ <code>myvar</code> ≠ <code>MYVAR</code>.</li>
+					<li><strong>Comments:</strong> single-line (<code>//</code>) and multi-line (<code>/* ... */</code>).</li>
+					<li><strong>Literals:</strong> values written directly in code (e.g. <code>true</code>, <code>5</code>, <code>"five"</code>, <code>null</code>).</li>
+					<li><strong>Identifiers:</strong> start with a letter, <code>_</code>, or <code>$</code> (then letters/digits too).</li>
+					<li><strong>Reserved words:</strong> cannot be used as identifiers (e.g. <code>break</code>, <code>if</code>, <code>while</code>).</li>
+					<li><strong>Semicolons:</strong> we use them consistently to avoid subtle ASI edge cases.</li>
+				</ul>
+				<pre><code>// Single-line comment
+/* Multi-line
+   comment */
+
+const ok = true;
+const n = 5;
+const word = "five";
+</code></pre>
+			</section>
+
+			<section aria-labelledby="types-vars-heading">
+				<h2 id="types-vars-heading" tabindex="-1"><a class="header-anchor" href="#types-vars-heading">Types, values, variables, and coercion</a></h2>
+				<p>Two big categories:</p>
+				<ul>
+					<li><strong>Primitive values (immutable):</strong> numbers, strings, booleans, <code>null</code>, <code>undefined</code> (and also symbol, BigInt).</li>
+					<li><strong>Objects (mutable, reference type):</strong> collections of properties, arrays, functions, dates, regexes, errors.</li>
+				</ul>
+				<pre><code>// Compared by VALUE (primitives)
+let a = "hello";
+let b = "hello";
+console.log(a === b); // true
+
+// Compared by REFERENCE (objects)
+let o1 = { x: 1 };
+let o2 = { x: 1 };
+console.log(o1 === o2); // false
+let o3 = o1;
+console.log(o3 === o1); // true
+</code></pre>
+				<p><strong>Type coercion</strong> is automatic conversion. It is convenient but can surprise you.</p>
+				<pre><code>console.log(1 + "1");      // "11" (number -&gt; string)
+console.log("5" - 1);      // 4 (string -&gt; number)
+console.log(null &gt;= 0);    // true (null -&gt; 0 here)
+console.log(null == 0);    // false (different rule here)
+</code></pre>
+
+				<h3>Scope and declarations</h3>
+				<ul>
+					<li><strong><code>let</code>:</strong> block scoped.</li>
+					<li><strong><code>const</code>:</strong> block scoped, cannot be reassigned.</li>
+					<li><strong><code>var</code>:</strong> function scoped, hoisted; legacy.</li>
+				</ul>
+				<pre><code>// Hoisting with var (declaration hoisted, initialization not)
+console.log(x); // undefined (not an error)
+var x = 5;
+
+// Block scope with let/const
+if (true) {
+  let y = 10;
+  const z = 20;
+}
+// console.log(y); // ReferenceError
+</code></pre>
+
+				<h3>Lexical scoping (defined vs called)</h3>
+				<pre><code>let x = "global";
+function outer() {
+  let x = "outer";
+  function inner() {
+    let x = "inner";
+    console.log(x); // "inner"
+  }
+  inner();
+  console.log(x); // "outer"
+}
+outer();
+console.log(x); // "global"
+</code></pre>
+			</section>
+
+			<section aria-labelledby="numbers-strings-bools-heading">
+				<h2 id="numbers-strings-bools-heading" tabindex="-1"><a class="header-anchor" href="#numbers-strings-bools-heading">Numbers, strings, booleans</a></h2>
+				<h3>Numbers</h3>
+				<p>Numbers are 64-bit floating point (IEEE 754). JS does not throw for overflow or division by zero.</p>
+				<pre><code>console.log(1 / 0);      // Infinity
+console.log(-1 / 0);     // -Infinity
+console.log(0 / 0);      // NaN
+
+let n = 42;
+n += 5; // shortcut
+n++;    // post-increment
+--n;    // pre-decrement
+
+console.log(Math.pow(2, 8));  // 256
+console.log(Math.sqrt(16));   // 4
+console.log(Math.round(4.6)); // 5
+console.log(Math.random());   // 0..1
+</code></pre>
+
+				<h3>Strings</h3>
+				<p>Strings are immutable; methods return new strings.</p>
+				<pre><code>let s = "Hello";
+console.log(s[0]);         // "H"
+console.log(s.length);     // 5
+console.log(s.toUpperCase()); // "HELLO"
+console.log(s);            // still "Hello"
+
+let name = "Alice";
+console.log(`Hi ${name}!`); // template literal
+</code></pre>
+
+				<h3>Booleans and truthy/falsy</h3>
+				<p>Falsy values: <code>false</code>, <code>0</code>, <code>-0</code>, <code>""</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code>. Everything else is truthy (including <code>[]</code> and <code>{}</code>).</p>
+				<pre><code>console.log(Boolean(""));   // false
+console.log(Boolean([]));   // true
+console.log(Boolean({}));   // true
+</code></pre>
+			</section>
+
+			<section aria-labelledby="globals-heading">
+				<h2 id="globals-heading" tabindex="-1"><a class="header-anchor" href="#globals-heading">Globals (browser)</a></h2>
+				<p>In the browser, the global object is <code>window</code> (modern code can use <code>globalThis</code>). Some globals:</p>
+				<ul>
+					<li><strong>Properties:</strong> <code>undefined</code>, <code>Infinity</code>, <code>NaN</code></li>
+					<li><strong>Functions:</strong> <code>isNaN</code>, <code>parseInt</code>, <code>parseFloat</code>, <code>eval</code></li>
+					<li><strong>Objects:</strong> <code>Math</code>, <code>JSON</code></li>
+				</ul>
+				<pre><code>// In the browser:
+console.log(parseInt === window.parseInt); // true
+
+// Top-level var becomes a property of window (avoid)
+var legacy = 5;
+console.log(window.legacy); // 5
+</code></pre>
+			</section>
+
+			<section aria-labelledby="expressions-ops-heading">
+				<h2 id="expressions-ops-heading" tabindex="-1"><a class="header-anchor" href="#expressions-ops-heading">Expressions and operators</a></h2>
+				<p>Expressions evaluate to values; operator precedence matters (use parentheses when in doubt).</p>
+				<pre><code>// Equality: prefer === / !==
+console.log(0 == false);   // true (coercion)
+console.log(0 === false);  // false
+
+// Logical operators return values (short-circuit)
+console.log(null &amp;&amp; "x");  // null
+console.log("" || "guest"); // "guest"
+
+// Ternary
+let age = 20;
+console.log(age &gt;= 18 ? "adult" : "minor");
+
+// typeof
+console.log(typeof 42);        // "number"
+console.log(typeof "hi");      // "string"
+console.log(typeof null);      // "object" (historic bug)
+console.log(typeof (() =&gt; {})); // "function"
+</code></pre>
+				<p><strong>Special operators</strong>:</p>
+				<pre><code>// in / instanceof
+console.log("x" in { x: 1, y: 2 }); // true
+console.log(new Date() instanceof Date); // true
+
+// delete
+let obj = { x: 1, y: 2 };
+delete obj.x;
+console.log(obj); // { y: 2 }
+</code></pre>
+				<p><strong><code>eval</code></strong>: do not use with untrusted input (security + performance risk).</p>
+				<h3>Operator precedence (high → low)</h3>
+				<ol>
+					<li>Property access &amp; invocation: <code>obj.x</code>, <code>f()</code></li>
+					<li>Unary operators: <code>!</code>, <code>++</code>, <code>--</code>, <code>typeof</code></li>
+					<li>Arithmetic: <code>*</code> <code>/</code> <code>%</code> then <code>+</code> <code>-</code></li>
+					<li>Comparison: <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code></li>
+					<li>Equality: <code>==</code> <code>===</code> <code>!=</code> <code>!==</code></li>
+					<li>Logical AND: <code>&amp;&amp;</code></li>
+					<li>Logical OR: <code>||</code></li>
+					<li>Ternary: <code>?:</code></li>
+					<li>Assignment: <code>=</code> <code>+=</code> <code-=</code> etc.</li>
+				</ol>
+			</section>
+
+			<section aria-labelledby="statements-heading">
+				<h2 id="statements-heading" tabindex="-1"><a class="header-anchor" href="#statements-heading">Statements: conditionals, loops, jumps, exceptions</a></h2>
+				<pre><code>// if/else
+if (age &gt;= 18) {
+  console.log("adult");
+} else {
+  console.log("minor");
+}
+
+// switch (always use break)
+let day = "Mon";
+switch (day) {
+  case "Mon":
+    console.log("Start of week");
+    break;
+  default:
+    console.log("Other day");
+}
+</code></pre>
+				<pre><code>// while / do..while / for
+let x = 0;
+while (x &lt; 3) x++;
+
+do { x++; } while (x &lt; 5);
+
+for (let i = 0; i &lt; 3; i++) {
+  console.log(i);
+}
+</code></pre>
+				<pre><code>// for..in (enumerates enumerable properties; includes inherited ones)
+let p = { name: "Alice", age: 25 };
+for (let key in p) {
+  if (p.hasOwnProperty(key)) {
+    console.log(key + ": " + p[key]);
+  }
+}
+</code></pre>
+				<pre><code>// break / continue / return
+for (let i = 0; i &lt; 10; i++) {
+  if (i === 5) break;
+  if (i === 2) continue;
+}
+
+// try/catch/finally
+function divide(a, b) {
+  if (b === 0) throw new Error("Division by zero!");
+  return a / b;
+}
+try {
+  divide(10, 0);
+} catch (e) {
+  console.log(e.message);
+} finally {
+  console.log("Done");
+}
+</code></pre>
+				<pre><code>// Labels (rare, but useful to break out of nested loops)
+outer: for (let i = 0; i &lt; 3; i++) {
+  for (let j = 0; j &lt; 3; j++) {
+    if (j === 1) break outer;
+  }
+}
+</code></pre>
+			</section>
+
+			<section aria-labelledby="objects-heading">
+				<h2 id="objects-heading" tabindex="-1"><a class="header-anchor" href="#objects-heading">Objects, prototypes, descriptors, JSON</a></h2>
+				<h3>Object literals and methods</h3>
+				<pre><code>let person = {
+  name: "Alice",
+  age: 25,
+  greet: function () {
+    return \"Hi, I'm \" + this.name;
+  }
+};
+console.log(person.name);
+console.log(person[\"age\"]);
+console.log(person.greet());
+</code></pre>
+
+				<h3>Creating objects: literal, constructor, Object.create</h3>
+				<pre><code>let p1 = { x: 1, y: 2 };
+let d = new Date();
+let proto = { breathes: true };
+let dog = Object.create(proto);
+dog.name = \"Rex\";
+console.log(dog.breathes); // inherited
+</code></pre>
+
+				<h3>Accessors and property descriptors</h3>
+				<pre><code>let circle = {
+  radius: 5,
+  get area() { return Math.PI * this.radius ** 2; },
+  set area(a) { this.radius = Math.sqrt(a / Math.PI); }
+};
+console.log(circle.area);
+circle.area = 100;
+console.log(circle.radius);
+
+Object.defineProperty(person, \"id\", {
+  value: 1,
+  writable: false,
+  enumerable: false,
+  configurable: false
+});
+
+// Inspect a descriptor
+console.log(Object.getOwnPropertyDescriptor(person, "name"));
+</code></pre>
+				<p>If you want to prevent changes, you can freeze an object (makes its properties non-writable and non-configurable).</p>
+				<pre><code>Object.freeze(person);
+// person.age = 99; // silently fails or throws in strict mode
+</code></pre>
+
+				<h3>JSON</h3>
+				<p>JSON serializes own enumerable data properties. Functions and <code>undefined</code> are not serialized.</p>
+				<pre><code>let data = { name: \"Alice\", age: 25 };
+let json = JSON.stringify(data);
+let obj = JSON.parse(json);
+console.log(obj.name);
+</code></pre>
+			</section>
+
+			<section aria-labelledby="arrays-heading">
+				<h2 id="arrays-heading" tabindex="-1"><a class="header-anchor" href="#arrays-heading">Arrays</a></h2>
+				<pre><code>// Creation
+let empty = [];
+let numbers = [1, 2, 3];
+let mixed = [1, \"hello\", true, null, { x: 1 }];
+let nested = [[1, 2], [3, 4]];
+
+// Access + length
+console.log(numbers[0]);   // 1
+console.log(numbers.length); // 3
+
+// Length behavior
+let t = [1, 2, 3];
+t.length = 5; // [1,2,3, empty ×2]
+t.length = 2; // [1,2] (truncates)
+t.length = 0; // [] (clears)
+
+// push/pop/unshift/shift
+numbers.push(4); // [1,2,3,4]
+numbers.pop();   // [1,2,3]
+</code></pre>
+				<pre><code>// splice: insert/remove/replace
+let a = [1, 2, 3, 4, 5];
+a.splice(1, 2);        // remove 2 items at index 1 -&gt; [1,4,5]
+a.splice(1, 0, 9, 8);  // insert -&gt; [1,9,8,4,5]
+
+// searching
+console.log([1,2,3,2].indexOf(2));     // 1
+console.log([1,2,3,2].lastIndexOf(2)); // 3
+console.log([1,2,3].includes(3));      // true
+</code></pre>
+				<p>Note: <code>delete a[i]</code> leaves a hole (sparse array). Use <code>splice</code> to remove elements and shift indexes.</p>
+				<pre><code>// sorting: default is string sort, so pass compare for numbers
+let nums = [3, 1, 20, 2];
+nums.sort();                 // [1, 2, 20, 3] (as strings)
+nums.sort((x, y) =&gt; x - y);  // [1, 2, 3, 20]
+
+// higher-order methods (non-mutating)
+let list = [3, 1, 4, 1, 5, 9];
+console.log(list.filter(x =&gt; x &gt; 3));
+console.log(list.map(x =&gt; x * 2));
+console.log(list.reduce((sum, x) =&gt; sum + x, 0));
+</code></pre>
+			</section>
+
+			<section aria-labelledby="functions-heading">
+				<h2 id="functions-heading" tabindex="-1"><a class="header-anchor" href="#functions-heading">Functions, <code>this</code>, closures, higher-order functions</a></h2>
+				<h3>Declaring functions</h3>
+				<pre><code>// declaration (hoisted)
+function add(a, b) { return a + b; }
+
+// expression (not hoisted)
+const add2 = function (a, b) { return a + b; };
+
+// arrow
+const add3 = (a, b) =&gt; a + b;
+</code></pre>
+
+				<h3>Invoking and <code>this</code></h3>
+				<pre><code>// 1) as a function
+function whoAmI() { return this; }
+console.log(whoAmI()); // window (or undefined in strict mode)
+
+// 2) as a method
+let user = {
+  name: \"Alice\",
+  greet: function () { return \"Hi, \" + this.name; }
+};
+console.log(user.greet()); // this =&gt; user
+
+// 3) as a constructor
+function Person(name) { this.name = name; }
+let p = new Person(\"Bob\");
+console.log(p.name);
+
+// 4) call/apply
+function greet(greeting) { return greeting + \", \" + this.name; }
+console.log(greet.call(user, \"Hello\"));
+console.log(greet.apply(user, [\"Hello\"]))
+</code></pre>
+				<p>Arrow functions do not have their own <code>this</code>; they capture it from the surrounding scope.</p>
+
+				<h3>Closures</h3>
+				<pre><code>function makeCounter() {
+  let count = 0;
+  return function () {
+    count++;
+    return count;
+  };
+}
+const counter = makeCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2
+</code></pre>
+
+				<h3>Higher-order functions</h3>
+				<pre><code>function multiplier(factor) {
+  return (x) =&gt; x * factor;
+}
+const double = multiplier(2);
+console.log(double(5)); // 10
+</code></pre>
+			</section>
+
+			<section aria-labelledby="classes-modules-heading">
+				<h2 id="classes-modules-heading" tabindex="-1"><a class="header-anchor" href="#classes-modules-heading">Classes and modules</a></h2>
+				<h3>Classes and inheritance</h3>
+				<pre><code>class Animal {
+  constructor(name) { this.name = name; }
+  speak() { return this.name + \" makes a sound.\"; }
+}
+class Dog extends Animal {
+  speak() { return this.name + \" barks.\"; }
+  fetch() { return super.speak() + \" Fetching!\"; }
+}
+let dog = new Dog(\"Rex\");
+console.log(dog.speak());
+console.log(dog.fetch());
+</code></pre>
+				<p>Class declarations are not hoisted; always use <code>new</code> for class constructors.</p>
+
+				<h3>ES modules</h3>
+				<pre><code>// math.js
+export const PI = 3.14159;
+export function add(a, b) { return a + b; }
+export default class Calculator {
+  multiply(a, b) { return a * b; }
+}
+
+// main.js
+import Calculator, { PI, add } from \"./math.js\";
+import * as MathStuff from \"./math.js\";
+</code></pre>
+			</section>
+
+			<section aria-labelledby="regex-heading">
+				<h2 id="regex-heading" tabindex="-1"><a class="header-anchor" href="#regex-heading">Regular expressions</a></h2>
+				<p>RegExp patterns match text. Common flags: <code>i</code> (case-insensitive), <code>g</code> (global/all occurrences).</p>
+				<pre><code>let pattern = /hello/i;
+console.log(pattern.test(\"Hello World\")); // true
+
+let str = \"Hello World Hello\";
+console.log(str.match(/hello/gi)); // [\"Hello\", \"Hello\"]
+console.log(str.replace(/hello/gi, \"Hi\")); // \"Hi World Hi\"
+console.log(str.split(/\\s+/)); // split on whitespace
+</code></pre>
+				<pre><code>// capture groups
+let date = \"2026-04-14\";
+let m = date.match(/(\\d{4})-(\\d{2})-(\\d{2})/);
+console.log(m[1]); // year
+console.log(m[2]); // month
+console.log(m[3]); // day
+
+// simple validation example
+function validateEmail(email) {
+  let p = /^[\\w.-]+@[\\w.-]+\\.\\w{2,}$/;
+  return p.test(email);
+}
+</code></pre>
+				<p>Tip: test patterns quickly with <a href="https://regex101.com/">regex101</a>.</p>
+			</section>
+
 			<section aria-labelledby="next-heading">
 				<h2 id="next-heading" tabindex="-1"><a class="header-anchor" href="#next-heading">Next</a></h2>
 				<p>Upcoming work applies these language ideas in the browser: the DOM, events, forms, and validation (course unit C4 and associated labs). Check the course platform for quiz timing and reading assignments.</p>
+				<p><strong>Note:</strong> an <strong>announced quiz</strong> will be held in <strong>Lecture 5</strong>.</p>
 				<p><a href="../lecture-3/">Lecture 3</a> | <a href="../">Course home</a> | <a href="../schedule/">Schedule</a></p>
 			</section>
 		</article>
