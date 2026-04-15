@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>WD 2026 - Lecture 3 - Examples</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Small accessibility helper: keyboard users can skip the nav/header -->
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-row">
+        <!-- Logo uses the "image replacement" idea: text in HTML, visual logo in CSS -->
+        <h1 class="logo" id="logo">WD 2026</h1>
+        <nav aria-label="Lecture examples">
+          <!-- Just in-page anchors so students can jump between topics -->
+          <ul class="nav">
+            <li><a href="#normal-flow">Normal flow</a></li>
+            <li><a href="#float">Float</a></li>
+            <li><a href="#position">Position</a></li>
+            <li><a href="#layout">Layouts</a></li>
+            <li><a href="#motion">Transitions & animations</a></li>
+            <li><a href="#flexbox">Flexbox</a></li>
+            <li><a href="#rwd">RWD</a></li>
+            <li><a href="#uiux">UI/UX</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="container">
+      <!-- Quick intro + "rules of thumb" from the lecture -->
+      <section class="hero">
+        <div class="hero-text">
+          <h2>WD 2026 - Lecture 3 - Examples</h2>
+          <p class="muted">
+            A single page that demonstrates: <strong>normal flow</strong>, <strong>floats + clear</strong>,
+            <strong>positioning</strong>, <strong>layout strategies</strong>, <strong>transitions & animations</strong>,
+            <strong>CSS techniques</strong>, <strong>flexbox</strong>, and <strong>responsive web design</strong>.
+          </p>
+        </div>
+        <div class="hero-card" role="note" aria-label="Quick tips">
+          <ul class="checklist">
+            <li><strong>Fluid widths</strong>: use % for horizontal sizes</li>
+            <li><strong>Vertical rhythm</strong>: prefer rem/em for vertical spacing</li>
+            <li><strong>Images</strong>: <code>img { max-width: 100%; }</code></li>
+            <li><strong>Mobile-first</strong>: baseline, then small, then larger overrides</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Each panel below is one lecture topic, with a couple of small demos -->
+      <section id="normal-flow" class="panel">
+        <header class="panel-head">
+          <h3>1) Normal flow (block vs inline)</h3>
+          <p class="muted">Blocks stack; inline content flows left-to-right and wraps.</p>
+        </header>
+
+        <div class="demo-grid">
+          <div class="demo">
+            <h4>Block elements</h4>
+            <div class="block-stack">
+              <div class="block">Block A</div>
+              <div class="block">Block B</div>
+              <div class="block">Block C</div>
+            </div>
+          </div>
+          <div class="demo">
+            <h4>Inline elements</h4>
+            <p class="inline-run">
+              Inline text <span class="tag">span</span> <span class="tag">span</span>
+              <span class="tag">span</span> keeps flowing and wraps when needed.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="float" class="panel">
+        <header class="panel-head">
+          <h3>2) Floats + clear (breaking out of normal flow)</h3>
+          <p class="muted">
+            Float moves an element left/right; following content “flows around” it. Clearing forces the next element below.
+          </p>
+        </header>
+
+        <div class="demo-grid">
+          <div class="demo">
+            <h4>Float an “image” right</h4>
+            <div class="float-wrap">
+              <div class="fake-image float-right" aria-hidden="true"></div>
+              <p>
+                This paragraph wraps around the floated box. Floats are great for classic magazine-style text wrap.
+                Notice how the box sits to the right and the text flows around it.
+              </p>
+              <p>
+                When floats are used, containers can collapse to height 0. Below we use a clearfix to make the container
+                “contain” the float.
+              </p>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="demo">
+            <h4>Clear the next section</h4>
+            <div class="float-toolbar">
+              <a class="pill" href="#float">Home</a>
+              <a class="pill" href="#position">Docs</a>
+              <a class="pill" href="#rwd">About</a>
+            </div>
+            <p class="clear-both note">
+              This paragraph uses <code>clear: both</code>, so it starts below the floated “toolbar pills”.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="position" class="panel">
+        <header class="panel-head">
+          <h3>3) Positioning (static / relative / absolute / fixed)</h3>
+          <p class="muted">
+            Relative shifts from its original spot. Absolute is removed from flow and positioned within the nearest positioned parent.
+            Fixed stays anchored to the viewport (see the “Back to top” button).
+          </p>
+        </header>
+
+        <div class="demo-grid">
+          <div class="demo">
+            <h4>Relative + absolute + z-index</h4>
+            <!-- The parent is "position: relative" in CSS so the absolute child has a context -->
+            <div class="pos-stage" aria-label="Positioning stage">
+              <div class="pos-box static">static</div>
+              <div class="pos-box relative">relative (moved)</div>
+              <div class="pos-box absolute">absolute</div>
+              <div class="pos-badge">z-index</div>
+            </div>
+          </div>
+
+          <div class="demo">
+            <h4>Offsets</h4>
+            <p class="muted">
+              Offsets are controlled with <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>.
+              Stacking order can be changed with <code>z-index</code> (works on positioned elements).
+            </p>
+            <ul class="bullets">
+              <li><code>position: static</code> keeps normal flow</li>
+              <li><code>position: relative</code> keeps its original space</li>
+              <li><code>position: absolute</code> leaves normal flow (space collapses)</li>
+              <li><code>position: fixed</code> sticks to the viewport when scrolling</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="layout" class="panel">
+        <header class="panel-head">
+          <h3>4) Page layout strategies (fixed / fluid / elastic / hybrid)</h3>
+          <p class="muted">Same content, different sizing units.</p>
+        </header>
+
+        <div class="layout-grid">
+          <article class="layout-card fixed">
+            <h4>Fixed (px)</h4>
+            <p class="muted">A fixed width stays constant even if viewport changes.</p>
+          </article>
+          <article class="layout-card fluid">
+            <h4>Fluid (%)</h4>
+            <p class="muted">A fluid width grows/shrinks with the viewport.</p>
+          </article>
+          <article class="layout-card elastic">
+            <h4>Elastic (em)</h4>
+            <p class="muted">Scales with font size; good for “text-driven” scaling.</p>
+          </article>
+          <article class="layout-card hybrid">
+            <h4>Hybrid</h4>
+            <p class="muted">Mix fixed + flexible zones using <code>min/max-width</code>.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="motion" class="panel">
+        <header class="panel-head">
+          <h3>5) Transitions & animations</h3>
+          <p class="muted">Transitions are 2-keyframe animations (start/end). Animations can define many keyframes.</p>
+        </header>
+
+        <div class="demo-grid">
+          <div class="demo">
+            <h4>Transition (hover)</h4>
+            <p class="muted">
+              Hover to trigger a transition. Demonstrates <code>transition-property</code>, <code>duration</code> and
+              <code>timing-function</code>.
+            </p>
+            <!-- Hover the button and watch both the button and bar animate -->
+            <button class="btn">Hover me</button>
+            <div class="transition-bar" aria-hidden="true">
+              <div class="transition-fill"></div>
+            </div>
+          </div>
+
+          <div class="demo">
+            <h4>Animation (keyframes)</h4>
+            <p class="muted">
+              A looping keyframe animation that changes both position and color.
+            </p>
+            <div class="anim-stage" aria-label="Animation stage">
+              <div class="dot" aria-hidden="true"></div>
+            </div>
+            <p class="muted small">
+              Tip: respect accessibility with <code>prefers-reduced-motion</code> (handled in CSS).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="flexbox" class="panel">
+        <header class="panel-head">
+          <h3>6) Flexbox layout</h3>
+          <p class="muted">
+            <code>display: flex</code> makes alignment and spacing much easier than floats/positioning for components.
+          </p>
+        </header>
+
+        <div class="demo-grid">
+          <div class="demo">
+            <h4>Centering (main axis + cross axis)</h4>
+            <div class="flex-center">
+              <div class="box">Centered</div>
+            </div>
+            <p class="muted small">
+              Uses <code>justify-content</code> (main axis) + <code>align-items</code> (cross axis).
+            </p>
+          </div>
+
+          <div class="demo">
+            <h4>Space evenly</h4>
+            <div class="flex-row">
+              <div class="mini">1</div>
+              <div class="mini">2</div>
+              <div class="mini">3</div>
+              <div class="mini">4</div>
+            </div>
+            <p class="muted small">Uses <code>justify-content: space-evenly</code>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="rwd" class="panel">
+        <header class="panel-head">
+          <h3>7) Responsive Web Design (RWD)</h3>
+          <p class="muted">
+            Mobile-first styles + media queries. Resize the window to see the layout change.
+          </p>
+        </header>
+
+        <div class="rwd-grid">
+          <article class="card">
+            <h4>Fluid layout</h4>
+            <p class="muted">Cards use %/fr sizing so they adapt to viewport width.</p>
+          </article>
+          <article class="card">
+            <h4>Flexible images</h4>
+            <div class="img-frame" aria-label="Example responsive image">
+              <!-- Using an inline SVG so the example stays self-contained (no external image file needed) -->
+              <img
+                alt="A decorative gradient placeholder"
+                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%231a73e8'/%3E%3Cstop offset='1' stop-color='%23b37dff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='600' fill='url(%23g)'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui' font-size='56' fill='white' opacity='0.9'%3EFlexible image%3C/text%3E%3C/svg%3E"
+              />
+            </div>
+            <p class="muted small"><code>img { max-width: 100%; height: auto; }</code></p>
+          </article>
+          <article class="card">
+            <h4>Media queries</h4>
+            <p class="muted">
+              At <code>max-width: 900px</code> we change grid columns.
+              At <code>max-width: 600px</code> we simplify the top navigation.
+            </p>
+          </article>
+        </div>
+
+        <details class="details">
+          <summary>See the media-query checklist</summary>
+          <ul class="bullets">
+            <li><strong>width/height</strong>: viewport size</li>
+            <li><strong>device-width/height</strong>: actual device screen</li>
+            <li><strong>orientation</strong>: portrait vs landscape</li>
+            <li><strong>min-/max-*</strong>: enforce limits</li>
+            <li><strong>print</strong>: special styles for printing</li>
+          </ul>
+        </details>
+      </section>
+
+      <section id="uiux" class="panel">
+        <header class="panel-head">
+          <h3>8) UI/UX quick recap</h3>
+          <p class="muted">UI is “how it looks”; UX is “how it feels/works”.</p>
+        </header>
+
+        <div class="demo-grid">
+          <div class="demo">
+            <h4>UI (User Interface)</h4>
+            <ul class="bullets">
+              <li>Visual elements, patterns, style</li>
+              <li>Works closely with front-end dev</li>
+              <li>Style guide / design system support</li>
+            </ul>
+          </div>
+          <div class="demo">
+            <h4>UX (User Experience)</h4>
+            <ul class="bullets">
+              <li>User flow, solving problems</li>
+              <li>Meaningful experiences, usability</li>
+              <li>Wireframe, mockup, prototype</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <p class="muted">End of lecture 3 examples.</p>
+      </footer>
+    </main>
+
+    <a class="to-top" href="#content">Top</a>
+  </body>
+</html>

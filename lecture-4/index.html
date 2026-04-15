@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lecture 4 - JavaScript Language Fundamentals | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+				<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+					<li class="nav-item"><a class="nav-link" href="../#logistics">Logistics</a></li>
+					<li class="nav-item"><a class="nav-link" href="../staff/">Staff</a></li>
+					<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+					<li class="nav-item"><a class="nav-link" href="../assignments/">Assignments</a></li>
+					<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+							<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+							<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+							<li><a class="dropdown-item" href="../lecture-2/">Lecture 2</a></li>
+							<li><a class="dropdown-item" href="../lecture-3/">Lecture 3</a></li>
+							<li><a class="dropdown-item active" href="../lecture-4/">Lecture 4</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main-content">
+		<article>
+			<header>
+				<h1>Lecture 4 - JavaScript Language Fundamentals</h1>
+				<p><strong>Lecture 4 - JavaScript Language Fundamentals.</strong> Duration: <time datetime="PT2H">2 hours</time>. This lecture continues from <strong><a href="../lecture-3/">Lecture 3</a></strong>. It starts with a short recap of HTML and CSS topics from earlier weeks (box model, selectors and specificity, <code>display</code>, positioning), then introduces JavaScript as a high-level, dynamic, untyped, interpreted language suited to both object-oriented and functional styles. The focus is on the <em>language itself</em>—types, control flow, objects, arrays, functions, classes, modules, and regular expressions—before dedicated DOM and browser API work in labs. Connected to unit <strong>C4</strong> and <strong><a href="../labs/">Lab 8</a></strong>, <strong><a href="../labs/">Lab 9</a></strong> (see <a href="../schedule/">Schedule</a>).</p>
+			</header>
+
+			<section aria-labelledby="learning-outcomes-heading">
+				<h2 id="learning-outcomes-heading" tabindex="-1"><a class="header-anchor" href="#learning-outcomes-heading">Learning outcomes</a></h2>
+				<p>By the end of this lecture you will be able to:</p>
+				<ul>
+					<li>Describe JavaScript lexical rules: Unicode, case sensitivity, comments, literals, identifiers, reserved words, and consistent use of semicolons</li>
+					<li>Distinguish primitive types from objects; explain mutability, comparison by value vs reference, and type coercion pitfalls</li>
+					<li>Use <code>let</code>, <code>const</code>, and <code>var</code> appropriately; explain block scope, hoisting, and lexical scoping</li>
+					<li>Evaluate expressions with arithmetic, comparison (<code>===</code> vs <code>==</code>), logical, ternary, and <code>typeof</code> operators; reason about precedence</li>
+					<li>Write conditional and loop statements; use <code>break</code>, <code>continue</code>, <code>return</code>, and <code>try</code>/<code>catch</code>/<code>finally</code></li>
+					<li>Create and traverse objects; understand prototypes, property descriptors, accessors, and JSON serialization limits</li>
+					<li>Use arrays effectively: indexing, <code>length</code>, and core methods (<code>push</code>/<code>pop</code>, <code>splice</code>, <code>map</code>/<code>filter</code>/<code>reduce</code>, sorting pitfalls)</li>
+					<li>Declare and invoke functions; explain <code>this</code> in different call patterns; describe closures and higher-order functions</li>
+					<li>Define classes with <code>extends</code> and <code>super</code>; import and export ES modules</li>
+					<li>Build and test simple regular expressions for validation</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="topics-heading">
+				<h2 id="topics-heading" tabindex="-1"><a class="header-anchor" href="#topics-heading">Topics</a></h2>
+				<ul>
+					<li><strong>Warm-up (HTML/CSS):</strong> box model (<code>margin</code>, <code>padding</code>, <code>border</code>); selectors and specificity; <code>display</code> (<code>block</code>, <code>inline</code>, flex); positioning (<code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code>)</li>
+					<li><strong>Language overview:</strong> why JS is high-level, dynamic, untyped, interpreted</li>
+					<li>Lexical structure: character set, comments, literals, identifiers, reserved words</li>
+					<li>Types, values, and variables: primitives vs objects; built-in object types; coercion; global object (<code>window</code> / <code>globalThis</code>)</li>
+					<li>Numbers, strings, booleans: literals, falsy/truthy values, string methods (immutability)</li>
+					<li>Expressions and operators: property access, creation patterns, invocation and <code>this</code>; arithmetic and assignment; comparison and logical operators; <code>typeof</code>, <code>in</code>, <code>instanceof</code>, <code>delete</code>; precedence; avoiding <code>eval</code> on untrusted input</li>
+					<li>Statements: declarations; conditionals; loops; jump statements; exceptions</li>
+					<li>Objects: literals, constructors, <code>Object.create</code>; prototype chain; properties, enumeration, accessors, descriptors, <code>Object.freeze</code></li>
+					<li>JSON: <code>stringify</code> / <code>parse</code>; what is not serialized</li>
+					<li>Arrays: creation, sparse arrays, mutating methods, searching, sorting (numeric compare functions), higher-order iteration</li>
+					<li>Functions: declarations, expressions, arrows; parameters and defaults; invocation modes; <code>call</code> / <code>apply</code>; scope and closures</li>
+					<li>Classes: syntax, inheritance, prototype chain; modules: <code>export</code> / <code>import</code></li>
+					<li>Regular expressions: literals and flags; common metacharacters; <code>test</code>, string methods, capture groups; practical validation</li>
+					<li>Recap; next session may include a quiz (see announcements on the course platform)</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="resources-heading">
+				<h2 id="resources-heading" tabindex="-1"><a class="header-anchor" href="#resources-heading">Resource materials</a></h2>
+				<ul>
+					<li>Jennifer Niederst Robbins, <em><a href="https://learningwebdesign.com/">Learning Web Design</a></em>, 6th ed., 2025 - JavaScript chapters (language and browser scripting)</li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript">MDN - Learn JavaScript</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">JavaScript reference</a></li>
+					<li><a href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">ECMA-262 (ECMAScript)</a> language specification</li>
+					<li><a href="https://regex101.com/">regex101</a> - interactive regular expression testing</li>
+				</ul>
+				<p>See also <a href="../resources/">Resources</a> and <a href="../assignments/">Assignments</a> for reading lists and lab briefs.</p>
+			</section>
+
+			<section aria-labelledby="recap-css-heading">
+				<h2 id="recap-css-heading" tabindex="-1"><a class="header-anchor" href="#recap-css-heading">Bridge from CSS</a></h2>
+				<p>Before new material, we consolidate <strong><a href="../lecture-2/">Lecture 2</a></strong> and <strong><a href="../lecture-3/">Lecture 3</a></strong>: how the box model affects size and spacing; how specificity resolves conflicting rules; how <code>display</code> and positioning take elements in or out of normal flow. This sets up using JavaScript later to read computed styles and change classes on the DOM.</p>
+			</section>
+
+			<section aria-labelledby="js-core-heading">
+				<h2 id="js-core-heading" tabindex="-1"><a class="header-anchor" href="#js-core-heading">JavaScript at the core</a></h2>
+				<p>Variables hold values; primitives (<code>number</code>, <code>string</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code>, symbols, BigInt) are immutable and compared by value, while objects are mutable and compared by reference. Automatic <strong>type coercion</strong> means expressions like <code>1 + "1"</code> and <code>"5" - 1</code> need careful reading—prefer explicit conversions when clarity matters. Use <code>===</code> and <code>!==</code> by default to avoid coercion surprises in equality tests.</p>
+				<p><strong>Lexical scoping</strong> ties visibility to where code is written; <strong>closures</strong> let inner functions retain access to outer bindings, which enables patterns like private state in factories. <strong>Arrow functions</strong> do not have their own <code>this</code>; they inherit it from the enclosing scope, which differs from traditional functions used as methods or constructors.</p>
+			</section>
+
+			<section aria-labelledby="next-heading">
+				<h2 id="next-heading" tabindex="-1"><a class="header-anchor" href="#next-heading">Next</a></h2>
+				<p>Upcoming work applies these language ideas in the browser: the DOM, events, forms, and validation (course unit C4 and associated labs). Check the course platform for quiz timing and reading assignments.</p>
+				<p><a href="../lecture-3/">Lecture 3</a> | <a href="../">Course home</a> | <a href="../schedule/">Schedule</a></p>
+			</section>
+		</article>
+	</main>
+
+	<button id="back-to-top" type="button">Back to Top</button>
+	<script>
+		document.getElementById('back-to-top').addEventListener('click', function () {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+		window.addEventListener('scroll', function () {
+			document.body.classList.toggle('scrolled', window.scrollY > 300);
+		});
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
