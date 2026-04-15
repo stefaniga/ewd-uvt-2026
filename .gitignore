@@ -1,0 +1,50 @@
+# OS / editor
+.git/
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node / frontend
+node_modules/
+.npm/
+.yarn/
+.pnp.*
+dist/
+build/
+.parcel-cache/
+.next/
+.nuxt/
+.svelte-kit/
+.cache/
+coverage/
+
+# PHP / Composer
+vendor/
+.phpunit.result.cache
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Temp files
+tmp/
+temp/
+*.tmp
+*.swp
+*.swo
+
+# Local dev artifacts
+.tool-versions
