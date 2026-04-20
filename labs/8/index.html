@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lab 8 - JavaScript DOM manipulation and event handling | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+	<defs>
+		<symbol id="icon-objective" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+		<symbol id="icon-concept" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h8"/></symbol>
+		<symbol id="icon-task" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+		<symbol id="icon-deliverable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4l-9-5.19"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></symbol>
+	</defs>
+</svg>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item" href="../../lecture-2/">Lecture 2</a></li>
+						<li><a class="dropdown-item" href="../../lecture-3/">Lecture 3</a></li>
+						<li><a class="dropdown-item" href="../../lecture-4/">Lecture 4</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content">
+	<h1>Lab 8 - JavaScript DOM manipulation and event handling</h1>
+	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. This lab introduces JavaScript DOM manipulation and event handling to create interactive web pages.</p>
+	<p>In this lab, you will build a simple chatbot that displays questions and answers from a predefined question bank. The chatbot will use DOM manipulation to update the page content dynamically and event handling to respond to user interactions. You will learn how to select elements, modify their content, and attach event listeners to create an interactive experience. By the end of the lab, your chatbot should be able to cycle through questions and display corresponding answers based on user input.</p>
+	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#theory">Theory</a> · <a href="#lab-setup">Lab Setup</a> · <a href="#tasks">Tasks</a> · <a href="#task3">Push, publish, and submit</a> · <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
+
+	<section id="overview">
+		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
+		<div class="lab-block">
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Master DOM manipulation techniques including selecting elements, modifying content and attributes, and dynamically creating elements. Learn to handle various events such as clicks, key presses, and form submissions using event listeners.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> DOM tree, selectors, element manipulation, event listeners, and event propagation.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Select and modify DOM elements, add event listeners, and create interactive features.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> Upload to GitHub Classroom an interactive page with DOM manipulation and event handling implemented.</p>
+		</div>
+	</section>
+
+	<section id="theory">
+		<h2 id="theory-heading" tabindex="-1"><a class="header-anchor" href="#theory">Theory</a></h2>
+		<h3>DOM Basics</h3>
+		<p>The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects; that way, programming languages can interact with the page.</p>
+		<p>A web page is a document that can be either displayed in the browser window or as the HTML source. In both cases, it is the same document but the Document Object Model (DOM) representation allows it to be manipulated. As an object-oriented representation of the web page, it can be modified with a scripting language such as JavaScript.</p>
+
+		<h3>Introduction to JavaScript</h3>
+		<p>JavaScript, often abbreviated as JS, is a versatile and essential programming language for web development.</p>
+		<p>JavaScript is a scripting language primarily used for adding interactivity and dynamic behavior to websites. It allows web developers to create features such as form validation, animations, interactive maps, and much more. JavaScript is executed in the user's web browser, which means it can respond to user actions without the need to reload the entire web page.</p>
+		<p>To link JavaScript to HTML, you can use the <code>&lt;script&gt;</code> element in your HTML file's <code>&lt;head&gt;</code> or <code>&lt;body&gt;</code> section. You can include JavaScript code directly within the HTML file or link to an external JavaScript file.</p>
+
+		<p>Here's a simple example of a JavaScript code snippet to display an alert when a button is clicked:</p>
+		<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;JavaScript Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;button onclick="showAlert()"&gt;Click me&lt;/button&gt;
+
+    &lt;script&gt;
+        function showAlert() {
+            alert("Hello, JavaScript!");
+        }
+    &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+		<p>In this code, we create a function <code>showAlert</code> that displays a pop-up alert with the message "Hello, JavaScript!" when the button is clicked.</p>
+		<p>Here's an example of linking an external JavaScript file:</p>
+		<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;script src="myscript.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Your HTML content here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+		<p>In this example, the <code>src</code> attribute of the <code>&lt;script&gt;</code> tag points to an external JavaScript file named <code>myscript.js</code>. This separates your JavaScript code from your HTML, making it easier to manage and reuse.</p>
+
+		<h4>Variables</h4>
+		<p>Variables are used to store information. To create a variable in JavaScript, use the <code>let</code> keyword. The statement below creates (in other words: declares) a variable with the name <code>message</code>:</p>
+		<pre><code>let message;
+message = 'Hello'; // store the string 'Hello' in the variable named message
+message = 'World!'; // value changed</code></pre>
+		<p>We can declare multiple variables like:</p>
+		<pre><code>let user = 'John', age = 25, message = 'Hello';
+
+let user = 'John';
+let age = 25;
+let message = 'Hello';
+
+let user = 'John',
+     age = 25,
+     message = 'Hello';</code></pre>
+		<p>JavaScript supports different data types: strings, numbers, booleans, null, undefined, etc.</p>
+		<pre><code>let str = "Hello";
+let str2 = 'Single quotes are ok too';
+let phrase = `can embed another ${str}`;
+
+let nameFieldChecked = true;
+let ageFieldChecked = false;
+
+let age_1 = null;
+let age_2; // undefined
+
+let x = 1;
+x = -x; // -1
+
+let x = 1, y = 3;
+alert( y - x ); // 2
+
+let fruits = ["Apple", "Orange", "Plum"];
+console.log( fruits[0] ); // Apple</code></pre>
+
+		<h4>Objects</h4>
+		<p>The last important concept needed for our website is the JavaScript object. Objects are simply containers for key-value pairs, similar to what you'd find in a dictionary.</p>
+		<pre><code>let fullName = {
+  firstName: 'John',
+  lastName: 'Doe'
+}
+
+console.log(fullName.firstName);</code></pre>
+
+		<h4>Control Structures: if, while, do..while, for</h4>
+		<p>Control structures allow you to control the flow of your program based on conditions or loops.</p>
+		<p><strong>IF statement:</strong></p>
+		<pre><code>let accessAllowed;
+let age = prompt('How old are you?', '');
+if (age > 18) {
+  accessAllowed = true;
+} else {
+  accessAllowed = false;
+}
+console.log(accessAllowed);</code></pre>
+		<p><strong>WHILE loop:</strong></p>
+		<pre><code>let i = 0;
+while (i < 3) { // shows 0, then 1, then 2
+  console.log( i );
+  i++;
+}</code></pre>
+		<p><strong>DO…WHILE loop:</strong></p>
+		<pre><code>let i = 0;
+do {
+  console.log( i );
+  i++;
+} while (i < 3);</code></pre>
+		<p><strong>FOR loop:</strong></p>
+		<pre><code>for (let i = 0; i < 3; i++) { // shows 0, then 1, then 2
+  console.log(i);
+}</code></pre>
+
+		<h4>Functions</h4>
+		<p>Functions are the main "building blocks" of the program. They allow the code to be called many times without repetition.</p>
+		<p><strong>Function definition:</strong></p>
+		<pre><code>function name(parameter1, parameter2, ... parameterN) {
+ // body
+}</code></pre>
+		<p><strong>Example:</strong></p>
+		<pre><code>function showMessage() {
+  console.log( 'Hello everyone!' );
+}
+
+showMessage();
+showMessage();</code></pre>
+	</section>
+
+	<section id="lab-setup">
+		<h2 id="lab-setup-heading" tabindex="-1"><a class="header-anchor" href="#lab-setup">Lab setup</a></h2>
+		<p>Before starting, ensure you have completed <a href="../5/">Lab 5</a> and have access to your course homepage and your private Lab 5 repo. For Lab 8 you will need the same tools: a code editor, Git, and a browser. Use the task order below; the final step is pushing to GitHub.</p>
+		<ol>
+			<li><strong>Setup and page structure:</strong> Accept the Lab 8 assignment, clone your Lab 5 repository, and continue working on the existing pages.</li>
+			<li><strong>JavaScript implementation:</strong> Add JavaScript code to manipulate the DOM and handle events.</li>
+			<li><strong>Testing:</strong> Test the interactive features in the browser.</li>
+			<li><strong>Commit and push:</strong> Commit your changes and push them to your GitHub Classroom Lab 8 assignment.</li>
+		</ol>
+	</section>
+
+	<section id="tasks">
+		<h2 id="tasks-heading" tabindex="-1"><a class="header-anchor" href="#tasks">Tasks</a></h2>
+		<p>Complete the following tasks to build the chatbot.</p>
+
+		<h3>Task 1: Create the HTML page</h3>
+		<p>Create a file named <code>chatbot.html</code> with the following content, filling in the blanks:</p>
+		<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Chatbot&lt;/title&gt;
+    &lt;link rel="stylesheet" href="..."&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="chat-container" id="chat-container"&gt;
+    &lt;/div&gt;
+    &lt;form id="chat-form"&gt;
+        &lt;input type="text" id="user-input" placeholder="Answer Here..."&gt;
+        &lt;button type="submit"&gt;Trimite&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;script src="..."&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+		<h3>Task 2: Create the CSS file</h3>
+		<p>Create a file named <code>chatbot.css</code> with the following content, filling in the blanks:</p>
+		<pre><code>/* CSS styles */
+body {
+    background-color: …;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: …;
+    margin: …;
+    flex-direction: …;
+}
+
+.chat-container {
+    max-width: …;
+    width: …%;
+    height: …;
+    padding: ….;
+    background-color: …;
+    border-radius: …;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: ….;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: …;
+}
+
+#chat-form {
+    display: flex;
+}</code></pre>
+
+		<h3>Task 3: Create the JavaScript file</h3>
+		<p>Create a file named <code>chatbot.js</code> with the following content, filling in the blanks:</p>
+		<pre><code>// 1. The questions array contains objects with questions, options, correct answers, and feedback messages.
+let questions = [
+    {
+        question: "Do you feel happy?",
+        options: {
+            a: "Yes",
+            b: "No"
+        },
+        correctAnswer: "a",
+        correctResponse: "Super!",
+        incorrectResponse: "I am sorry"
+    },
+    // Add other questions and answers here
+     …
+];
+
+let currentQuestionIndex = …;
+let chatContainer = document.getElementById("chat-container");
+let chatForm = document.getElementById("chat-form");
+let userInput = document.getElementById("user-input");
+displayQuestion();
+
+// 2. The displayQuestion function creates and appends an element for the current question in the chat container.
+function displayQuestion() {
+    let currentQuestion = questions[...];
+    let optionsHTML = Object.keys(currentQuestion.options).map(key => `${key}. ${currentQuestion.options[key]}`).join(' ');
+
+    let botResponse = document.createElement("div");
+    botResponse.classList.add("message");
+    botResponse.innerHTML = `&lt;strong&gt;...:&lt;/strong&gt; ${currentQuestion.question} ${optionsHTML}`;
+    chatContainer.appendChild(...);
+}
+
+function scrollChatContainerToBottom() {
+    let chatContainer = document.getElementById("chat-container");
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+}
+
+// 3. The event listener for the form prevents default submit, processes user response, checks if correct, and displays appropriate feedback.
+chatForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    let userResponse = userInput.value.toLowerCase();
+
+    let userMessage = document.createElement("div");
+    userMessage.classList.add("message");
+    userMessage.innerHTML = `&lt;strong&gt;... :&lt;/strong&gt; ${userResponse}`;
+    chatContainer.appendChild(...);
+
+    let currentQuestion = questions[currentQuestionIndex];
+    let botResponse = document.createElement("div");
+    botResponse.classList.add("message");
+    botResponse.innerHTML = `&lt;strong&gt;... :&lt;/strong&gt; `;
+    if (userResponse === currentQuestion.correctAnswer) {
+        botResponse.innerHTML += currentQuestion. …;
+    } else {
+        botResponse.innerHTML += currentQuestion. …;
+    }
+    chatContainer.appendChild(...);
+
+    currentQuestionIndex = (currentQuestionIndex + … ) % questions.length;
+    userInput.value = …;
+    displayQuestion();
+
+    scrollChatContainerToBottom();
+});</code></pre>
+
+		<h3>Task 4: Add the new page to the menu</h3>
+		<p>Add a link to the chatbot page in your main navigation menu.</p>
+	</section>
+
+	<section id="task3">
+		<h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3"> Push, publish, and submit</a></h2>
+		<p>After completing the chatbot implementation, make sure your <strong>repository for Lab 8</strong> contains:</p>
+		<ul>
+			<li><code>chatbot.html</code> – the chatbot page.</li>
+			<li><code>chatbot.css</code> – the CSS file for styling.</li>
+			<li><code>chatbot.js</code> – the JavaScript file for functionality.</li>
+			<li>All files from previous labs and assignments.</li>
+		</ul>
+		<p>Push your final changes to the Lab 8 repository.</p>
+	</section>
+
+	<section id="extra">
+		<h2 id="extra-heading" tabindex="-1"><a class="header-anchor" href="#extra">Extra work</a></h2>
+		<p><strong>Extra work [1]:</strong> Complete exercises 15-1, 15-2, 17-1, and 17-2 from the primary textbook (see <a href="../../resources/#primary-textbook">Resources - Bibliography [1]</a> and <a href="../../assignments/">Assignments</a>).</p>
+	</section>
+
+	<section id="references">
+		<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
+		<ul>
+			<li><a href="../../lecture-4/">Lecture 4 - JavaScript Language Fundamentals</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">MDN - Document Object Model (DOM)</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events">MDN - Introduction to events</a></li>
+		</ul>
+	</section>
+
+	<p><a href="../">Labs</a> · <a href="../../schedule/">Schedule</a> · <a href="../../">Course home</a></p>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
