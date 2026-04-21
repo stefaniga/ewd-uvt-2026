@@ -109,11 +109,57 @@
 	<section id="hw2">
 		<h2 id="hw-2" tabindex="-1"><a class="header-anchor" href="#hw2">HW2</a></h2>
 		<div class="lab-block">
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Will be announced.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> Will be announced.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Will be announced.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> Will be announced.</p>
-			<p><strong>Extra work [1]:</strong> Will be announced.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Build a coherent continuation of HW1 inspired by the recent lab work. You will keep the same mini-project and extend it with stronger CSS styling, responsive layouts, a small UI design step (Figma), and one interactive JavaScript page, then publish the updated site on GitHub Pages.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> CSS selectors and specificity, box model and typography, CSS placement (external/internal/inline), responsive layouts with Flexbox and CSS Grid, wireframing and reusable components in Figma + exporting CSS, and JavaScript DOM manipulation + event handling, plus validation and publishing workflow.</p>
+			<p><strong>Use only:</strong> HTML5 + CSS3, JavaScript (vanilla), Git/GitHub, GitHub Pages, and Figma.</p>
+			<p><strong>Generative AI policy (UVT):</strong> follow the course policy from <a href="../#info">Course home - Info</a>, including allowed/prohibited uses and the required transparency declaration model.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong></p>
+			<ol>
+				<li><strong>Start from HW1 (do not restart):</strong> keep your HW1 repository and build on top of it. Your project must still satisfy all HW1 requirements (pages, navigation, semantic structure, table page, form accessibility, external CSS, validation, and GitHub Pages publication).</li>
+				<li><strong>CSS fundamentals (specificity + selectors):</strong>
+					<ul>
+						<li><strong>Create the specificity exercise files:</strong> add <code>specificity.html</code> and <code>specificity.txt</code> (include the provided code exactly as required and answer the required questions).</li>
+						<li><strong>Update your CSS styling:</strong> improve the styling of your existing HW1 pages using selector techniques (including <code>:nth-child</code> where relevant). Keep styling consistent across pages.</li>
+						<li><strong>Create a business card page:</strong> add <code>card.html</code> + <code>card.css</code> (image, full name, specialization + year, email link, GitHub link) and demonstrate element/class/id selectors.</li>
+						<li><strong>Validation:</strong> validate updated HTML/CSS and fix errors.</li>
+					</ul>
+				</li>
+				<li><strong>Responsive layout (Grid + Flexbox):</strong>
+					<ul>
+						<li>Create <code>cv.html</code> and link it from your main navigation.</li>
+						<li>Use <strong>CSS Grid</strong> for the main layout and <strong>Flexbox</strong> for smaller areas.</li>
+						<li>Include: profile (name + short description), skills, projects, and contact details.</li>
+						<li>Create a card-based section arranged in multiple columns with <strong>at least 4 cards</strong>; at least one card must be styled differently.</li>
+						<li>Validate <code>cv.html</code> and fix errors.</li>
+					</ul>
+				</li>
+				<li><strong>UI design step (Figma):</strong>
+					<ul>
+						<li>Create the authentication interface in Figma (main frame + two-panel layout) and create the required buttons as <strong>reusable components</strong>.</li>
+						<li>Export the CSS from the main frame (<em>Copy as Code → CSS</em>) and save it in your repository as a separate file (for example <code>figma-auth.css</code>).</li>
+						<li>Save a screenshot/image of the final authentication frame in your repository (for example in an <code>assets/</code> folder).</li>
+					</ul>
+				</li>
+				<li><strong>Interactivity (JavaScript DOM + events):</strong>
+					<ul>
+						<li>Create <code>chatbot.html</code>, <code>chatbot.css</code>, and <code>chatbot.js</code> and implement a simple chatbot page (question bank, dynamic DOM updates, and form submit event handling).</li>
+						<li>Add the chatbot page to your main navigation menu.</li>
+						<li>Test in the browser to confirm that questions, answers, and feedback render correctly and the chat scrolls as expected.</li>
+					</ul>
+				</li>
+				<li><strong>Final coherence + publish:</strong> keep consistent navigation and design across the site, ensure all links work, validate updated pages, publish on GitHub Pages, and submit repository URL + live URL.</li>
+			</ol>
+			<p><strong>Minimum file checklist:</strong> all HW1 required pages, plus <code>specificity.html</code>, <code>specificity.txt</code>, <code>card.html</code>, <code>card.css</code>, <code>cv.html</code>, <code>chatbot.html</code>, <code>chatbot.css</code>, <code>chatbot.js</code>, one exported CSS file from Figma (for example <code>figma-auth.css</code>), and one screenshot/image of the Figma authentication frame.</p>
+			<p><strong>Technical requirements (must have):</strong></p>
+			<ul>
+				<li><strong>Navigation:</strong> same menu on all pages, linking to all HW1 pages and the new HW2 pages (<code>cv.html</code> and <code>chatbot.html</code> at minimum).</li>
+				<li><strong>Validation:</strong> updated HTML pages and CSS must pass validation with no errors at submission time.</li>
+				<li><strong>Publication:</strong> the updated project must be published on GitHub Pages and accessible from the submitted live URL.</li>
+			</ul>
+			<p><strong>Review:</strong> HW2 review will take place in <strong>Week 10</strong>.</p>
+			<p><strong>Important:</strong> HW2 is graded as an extension of HW1. If your HW1 core requirements are missing/broken (pages, navigation, table, form accessibility, validation, or GitHub Pages link), your HW2 grade will be limited until fixed.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> Your HW1 project updated into HW2 and published on GitHub Pages (repository URL + live URL), plus a short <code>README</code> section listing what you implemented for HW2 (and any known limitations).</p>
+			<p><strong>Extra work [1]:</strong> Add one well-integrated improvement beyond the minimum and document it in the <code>README</code> (for example: improved accessibility and focus styles, better responsive navigation, or an additional interactive feature aligned with the JavaScript interactivity task).</p>
 		</div>
 	</section>
 
