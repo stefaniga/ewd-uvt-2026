@@ -110,61 +110,80 @@
 		<h2 id="hw-2" tabindex="-1"><a class="header-anchor" href="#hw2">HW2</a></h2>
 		<div class="lab-block">
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Build a coherent continuation of HW1 inspired by the recent lab work. You will keep the same mini-project and extend it with stronger CSS styling, responsive layouts, a small UI design step (Figma), and one interactive JavaScript page, then publish the updated site on GitHub Pages.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> CSS selectors and specificity, box model and typography, CSS placement (external/internal/inline), responsive layouts with Flexbox and CSS Grid, wireframing and reusable components in Figma + exporting CSS, and JavaScript DOM manipulation + event handling, plus validation and publishing workflow.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> CSS selectors and specificity, box model and typography, CSS placement (external/internal/inline), responsive layouts with Flexbox and CSS Grid + media queries, wireframing + basic tokens (type/color/spacing) and reusable components in Figma + exporting CSS, and JavaScript DOM manipulation + event handling, plus validation and publishing workflow.</p>
 			<p><strong>Use only:</strong> HTML5 + CSS3, JavaScript (vanilla), Git/GitHub, GitHub Pages, and Figma.</p>
 			<p><strong>Generative AI policy (UVT):</strong> follow the course policy from <a href="../#info">Course home - Info</a>, including allowed/prohibited uses and the required transparency declaration model.</p>
 			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong></p>
 			<ol>
-				<li><strong>Start from HW1 (copy, do not restart):</strong> accept the HW2 assignment repository and copy your complete HW1 project into it (same topic, same pages, same assets). You will continue working in the HW2 repository. Your project must still satisfy all HW1 requirements (pages, navigation, semantic structure, table page, form accessibility, external CSS, validation, and GitHub Pages publication).</li>
+				<li><strong>Start from HW1 (copy, do not restart):</strong> accept the HW2 assignment repository and copy your complete HW1 project into it (same scenario/topic, same pages, same assets). You will continue working in the HW2 repository. Your project must still satisfy all HW1 requirements (pages, navigation, semantic structure, table page, form accessibility, external CSS, validation, and GitHub Pages publication).
+					<div class="alert alert-secondary py-2 my-2" role="note"><strong>Hint:</strong> Start by making the copied site work exactly like HW1 (open locally, click all links, check table + form). Only then begin HW2 changes.</div>
+				</li>
 				<li><strong>CSS fundamentals (specificity + selectors):</strong>
 					<ul>
 						<li><strong>Create the specificity exercise files:</strong> add <code>specificity.html</code> and <code>specificity.txt</code> (include the provided code exactly as required and answer the required questions).</li>
-						<li><strong>Update your CSS styling:</strong> improve the styling of your existing HW1 pages using selector techniques (including <code>:nth-child</code> where relevant). Keep styling consistent across pages.</li>
+						<li><strong>Update your CSS styling:</strong> improve the styling of your existing HW1 pages using selector techniques (including <code>:nth-child</code> where relevant), plus box model and typography improvements (spacing, readable text, consistent hierarchy). Keep styling consistent across pages.</li>
+						<li><strong>Show CSS placement:</strong> demonstrate external CSS (main stylesheet), plus at least one internal CSS rule and at least one inline CSS rule used appropriately (keep them minimal and intentional).</li>
 						<li><strong>Create a business card page:</strong> add <code>card.html</code> + <code>card.css</code> (image, full name, specialization + year, email link, GitHub link) and demonstrate element/class/id selectors.</li>
 						<li><strong>Validation:</strong> validate updated HTML/CSS and fix errors.</li>
+						<li style="list-style: none;">
+							<div class="alert alert-secondary py-2 my-2" role="note"><strong>Hint:</strong> Prefer classes for styling; use ids only when an element is truly unique. Keep typography consistent by defining base styles for <code>body</code>, headings, and links.</div>
+						</li>
 					</ul>
 				</li>
 				<li><strong>Responsive layout page (Grid + Flexbox):</strong>
 					<ul>
-						<li>Create <code>cv.html</code> and link it from your main navigation.</li>
-						<li><strong>Topic note:</strong> <code>cv.html</code> does not need to be a literal CV. It should be a responsive “profile/overview” page that fits your chosen HW1 scenario (for example: portfolio overview, services page, projects showcase, event overview, NGO impact summary, planner/dashboard overview).</li>
+						<li>Create <code>overview.html</code> and link it from your main navigation.</li>
+						<li><strong>Topic note:</strong> <code>overview.html</code> should be a responsive “profile/overview” page that fits your chosen HW1 scenario (for example: portfolio overview, services page, projects showcase, event overview, NGO impact summary, planner/dashboard overview).</li>
 						<li>Use <strong>CSS Grid</strong> for the main layout and <strong>Flexbox</strong> for smaller areas.</li>
+						<li>Include at least one <strong>media query</strong> so the layout adapts to small screens (for example, switch from multi-column to single-column and adjust spacing/typography).</li>
 						<li>Include: profile (name + short description), skills, projects, and contact details.</li>
 						<li>Create a card-based section arranged in multiple columns with <strong>at least 4 cards</strong>; at least one card must be styled differently.</li>
-						<li>Validate <code>cv.html</code> and fix errors.</li>
+						<li>Validate <code>overview.html</code> and fix errors.</li>
+						<li style="list-style: none;">
+							<div class="alert alert-secondary py-2 my-2" role="note"><strong>Hint:</strong> Design mobile-first: start with a single-column layout, then enhance for larger screens using Grid columns. Use <code>gap</code> for spacing instead of many margins.</div>
+						</li>
 					</ul>
 				</li>
 				<li><strong>UI design step (Figma):</strong>
 					<ul>
 						<li>Create the authentication interface in Figma (main frame + two-panel layout) and create the required buttons as <strong>reusable components</strong>.</li>
+						<li>Define and use a minimal set of reusable styles (tokens) in Figma (for example: 2 text styles and 2–3 colors used consistently).</li>
 						<li>Export the CSS from the main frame (<em>Copy as Code → CSS</em>) and save it in your repository as a separate file (for example <code>figma-auth.css</code>).</li>
 						<li>Save a screenshot/image of the final authentication frame in your repository (for example in an <code>assets/</code> folder).</li>
+						<li style="list-style: none;">
+							<div class="alert alert-secondary py-2 my-2" role="note"><strong>Hint:</strong> Keep alignment and spacing consistent (use a simple spacing scale like 8/16/24). Make sure the button component is reused in at least two places.</div>
+						</li>
 					</ul>
 				</li>
 				<li><strong>Interactivity (JavaScript DOM + events):</strong>
 					<ul>
-						<li>Create <code>chatbot.html</code>, <code>chatbot.css</code>, and <code>chatbot.js</code> and implement a simple chatbot page (question bank, dynamic DOM updates, and form submit event handling).</li>
+						<li>Create <code>chatbot.html</code>, <code>chatbot.css</code>, and <code>chatbot.js</code> and implement a simple chatbot page with a question bank (array of objects), dynamic DOM updates, and form submit event handling.</li>
 						<li>Add the chatbot page to your main navigation menu.</li>
 						<li>Test in the browser to confirm that questions, answers, and feedback render correctly and the chat scrolls as expected.</li>
+						<li style="list-style: none;">
+							<div class="alert alert-secondary py-2 my-2" role="note"><strong>Hint:</strong> Keep the question bank in one place (an array of objects). Use <code>document.createElement</code> + <code>appendChild</code> for new messages, and clear the input after submit.</div>
+						</li>
 					</ul>
 				</li>
-				<li><strong>Final coherence + publish:</strong> keep consistent navigation and design across the site, ensure all links work, validate updated pages, publish on GitHub Pages, and submit repository URL + live URL.</li>
+				<li><strong>Final coherence + publish:</strong> keep consistent navigation and design across the site, ensure all links work, validate updated pages, publish on GitHub Pages, and submit repository URL + live URL.
+					<div class="alert alert-secondary py-2 my-2" role="note"><strong>Hint:</strong> Do a final “click-through” test starting from <code>index.html</code> and verify every page has the same menu and a working path back to the homepage.</div>
+				</li>
 			</ol>
-			<p><strong>Minimum file checklist:</strong> all HW1 required pages, plus <code>specificity.html</code>, <code>specificity.txt</code>, <code>card.html</code>, <code>card.css</code>, <code>cv.html</code>, <code>chatbot.html</code>, <code>chatbot.css</code>, <code>chatbot.js</code>, one exported CSS file from Figma (for example <code>figma-auth.css</code>), and one screenshot/image of the Figma authentication frame.</p>
+			<p><strong>Minimum file checklist:</strong> all HW1 required pages, plus <code>specificity.html</code>, <code>specificity.txt</code>, <code>card.html</code>, <code>card.css</code>, <code>overview.html</code>, <code>chatbot.html</code>, <code>chatbot.css</code>, <code>chatbot.js</code>, one exported CSS file from Figma (for example <code>figma-auth.css</code>), and one screenshot/image of the Figma authentication frame.</p>
 			<p><strong>Technical requirements (must have):</strong></p>
 			<ul>
-				<li><strong>Navigation:</strong> same menu on all pages, linking to all HW1 pages and the new HW2 pages (<code>cv.html</code> and <code>chatbot.html</code> at minimum).</li>
+				<li><strong>Navigation:</strong> same menu on all pages, linking to all HW1 pages and the new HW2 pages (<code>overview.html</code> and <code>chatbot.html</code> at minimum).</li>
 				<li><strong>Validation:</strong> updated HTML pages and CSS must pass validation with no errors at submission time.</li>
 				<li><strong>Publication:</strong> the updated project must be published on GitHub Pages and accessible from the submitted live URL.</li>
 			</ul>
 			<p><strong>Grading scale (max 10 points):</strong></p>
 			<ul>
 				<li><strong>1.0 point - Starting point:</strong> HW2 repository exists, contains a copied HW1 project, and the site can be opened.</li>
-				<li><strong>1.5 points - Required pages and linking:</strong> navigation is consistent on all pages and links work to all required pages, including <code>cv.html</code> and <code>chatbot.html</code>.</li>
-				<li><strong>1.5 points - CSS fundamentals:</strong> <code>specificity.html</code> and <code>specificity.txt</code> are present and completed; CSS improvements are applied consistently across the site (table styling, typography, spacing).</li>
+				<li><strong>1.5 points - Required pages and linking:</strong> navigation is consistent on all pages and links work to all required pages, including <code>overview.html</code> and <code>chatbot.html</code>.</li>
+				<li><strong>1.5 points - CSS fundamentals:</strong> <code>specificity.html</code> and <code>specificity.txt</code> are present and completed; CSS improvements are applied consistently across the site (table styling, typography, spacing) and CSS placement is demonstrated (external + at least one internal + at least one inline rule).</li>
 				<li><strong>1.5 points - Business card page:</strong> <code>card.html</code> + <code>card.css</code> exist and meet the required content (image, name, specialization + year, email link, GitHub link) with clean styling.</li>
-				<li><strong>1.5 points - Responsive layout page:</strong> <code>cv.html</code> uses Grid for the main layout and Flexbox for internal areas; content fits the chosen project scenario; includes 4+ cards with one styled differently; page is validated.</li>
-				<li><strong>1.0 point - UI design step (Figma):</strong> repository includes the exported CSS file (for example <code>figma-auth.css</code>) and a screenshot/image of the authentication UI.</li>
+				<li><strong>1.5 points - Responsive layout page:</strong> <code>overview.html</code> uses Grid for the main layout and Flexbox for internal areas; includes at least one media query; content fits the chosen project scenario; includes 4+ cards with one styled differently; page is validated.</li>
+				<li><strong>1.0 point - UI design step (Figma):</strong> repository includes the exported CSS file (for example <code>figma-auth.css</code>), a screenshot/image of the authentication UI, and evidence of consistent reusable styles/components.</li>
 				<li><strong>1.0 point - JavaScript interactivity:</strong> chatbot page works end-to-end (DOM updates + submit handling), is linked in the menu, and behaves correctly in the browser.</li>
 				<li><strong>1.0 point - Validation + publication:</strong> updated HTML/CSS validation completed and the final site is published on GitHub Pages.</li>
 			</ul>
