@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lab 9 - Client-side form validation and interactive UI components | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+	<defs>
+		<symbol id="icon-objective" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+		<symbol id="icon-concept" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h8"/></symbol>
+		<symbol id="icon-task" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+		<symbol id="icon-deliverable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4l-9-5.19"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></symbol>
+	</defs>
+</svg>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item" href="../../lecture-2/">Lecture 2</a></li>
+						<li><a class="dropdown-item" href="../../lecture-3/">Lecture 3</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content">
+	<h1>Lab 9 - Client-side form validation and interactive UI components</h1>
+	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. This lab introduces client-side form validation and interactive UI components using JavaScript.</p>
+	<p>In this lab, you will implement form validation on the contact page and add interactive UI components. You will learn to validate user input, provide feedback, and enhance user experience with dynamic elements.</p>
+	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#theory">Theory</a> · <a href="#lab-setup">Lab Setup</a> · <a href="#tasks">Tasks</a> · <a href="#task3">Push, publish, and submit Lab 9</a> · <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
+
+	<section id="overview">
+		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
+		<div class="lab-block">
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Implement client-side form validation and create interactive UI components.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> Form validation, user input handling, interactive components, and user feedback.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Validate the contact form and add interactive elements.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A validated contact form with interactive UI components.</p>
+		</div>
+	</section>
+
+<section id="theory">
+		<h2 id="theory-heading" tabindex="-1"><a class="header-anchor" href="#theory">Theory</a></h2>
+		<h4>Interaction: alert, prompt, confirm</h4>
+		<h5>Alert</h5>
+		<p>Shows a message. This one we've seen already. It shows a message and waits for the user to press "OK".</p>
+		<p>Simple example:</p>
+		<pre><code>alert("Hello");</code></pre>
+		<img src="./00 - alert.jpeg" alt="Alert example" class="img-fluid mb-3" width="90%" border="2">
+		<p>Complex example:</p>
+		<pre><code>let userName = "John";
+let greeting = `Welcome, ${userName}!`;
+alert(greeting);
+let currentTime = new Date().toLocaleTimeString();
+alert(`Current time: ${currentTime}`);
+alert("Session started successfully!");</code></pre>
+<br>
+		<h5>Prompt</h5>
+		<p>Shows a message asking the user to input text. It returns the text or, if Cancel button or Esc is clicked, null. The function prompt accepts two arguments: result = prompt(title, [default]);</p>
+		<p>Simple example:</p>
+		<pre><code>let age = prompt('How old are you?', 100);
+alert(`You are ${age} years old!`);</code></pre>
+		<img src="./01 - prompt.jpeg" alt="Prompt example" class="img-fluid mb-3" width="90%" border="2">
+
+		<p>Complex example:</p>
+		<pre><code>let name = prompt("What is your name?", "Anonymous");
+if (name) {
+    let age = prompt(`Hello ${name}, how old are you?`, 25);
+    if (age) {
+        alert(`${name}, you are ${age} years old!`);
+    } else {
+        alert("Age not provided.");
+    }
+} else {
+    alert("Name not provided.");
+}</code></pre>
+<br>
+
+		<h5>Confirm</h5>
+		<p>Shows a message and waits for the user to press "OK" or "Cancel". It returns true for OK and false for Cancel/Esc.</p>
+		<p>Simple example:</p>
+		<pre><code>let deleteItem = confirm("Are you sure you want to delete this item?");
+alert(deleteItem ? "Item deleted" : "Deletion cancelled");</code></pre>
+		<img src="./02 - confirm.jpeg" alt="Confirm example" class="img-fluid mb-3" width="90%" border="2">
+
+		<p>Complex example:</p>
+		<pre><code>let proceed = confirm("Do you want to proceed with the action?");
+if (proceed) {
+    let action = prompt("What action to perform?", "Save");
+    if (action) {
+        alert(`Performing: ${action}`);
+        // Simulate action
+        alert("Action completed!");
+    } else {
+        alert("No action specified.");
+    }
+} else {
+    alert("Action cancelled.");
+}</code></pre>
+	</section>
+
+
+	<section id="lab-setup">
+    <h2 id="lab-setup-heading" tabindex="-1"><a class="header-anchor" href="#lab-setup">Lab setup</a></h2>
+    <p>Before starting, ensure you have completed <a href="../8/">Lab 8</a> and have access to your course homepage and your private Lab 8 repo. For Lab 9 you will need the same tools: a code editor, Git, and a browser. Use the task order below; the final step is pushing to GitHub.</p>
+    <ol>
+        <li><strong>Setup and page structure:</strong> Accept the Lab 9 assignment, clone your Lab 8 repository, and continue working on the existing pages.</li>
+        
+        <li><strong>JavaScript implementation:</strong> Add JavaScript code for form validation and interactive UI components.</li>
+        
+        <li><strong>Testing:</strong> Test the form validation and interactive features in the browser.</li>
+        
+        <li><strong>Commit and push:</strong> Commit your changes and push them to your GitHub Classroom Lab 9 assignment.</li>
+    </ol>
+	</section>
+
+<section id="tasks">
+		<h2 id="tasks-heading" tabindex="-1"><a class="header-anchor" href="#tasks">Tasks</a></h2>
+		<p>In this laboratory, you will start from the form created in the previous lab (Lab 2) in the <code>contact.html</code> file and add data validation using JavaScript. The goal is to prevent the form from being submitted if the entered data does not meet the defined rules.</p>
+		<p>To allow proper access and validation of the form fields, each input element must have a unique <code>id</code> attribute. These IDs will be used in the JavaScript file to select and validate the values entered by the user.</p>
+		<pre><code>&lt;input type="text" name="fullname" id="fullname"&gt;</code></pre>
+		<p>The validation rules are as follows: the Full Name field must contain at least 5 characters and include only letters and spaces, without numbers or special characters. The Email must be valid and must end with the domain <code>@e-uvt.ro</code>. The Phone field is optional, but if filled in, it must contain exactly 10 digits. The Subject field is mandatory and must be selected from the available options, and the Message field cannot be empty. Additionally, the user must select at least one option from the radio button question.</p>
+		<p>Finally, if all validations are successfully passed, the user will receive a confirmation dialog before the form is submitted, asking for final approval. The form will only be submitted if the user explicitly confirms the action.</p>
+
+	<pre><code>document.getElementById("contactForm").addEventListener("submit", function (e) {
+
+		const fullname = document.getElementById(".....").value.trim();
+		const namePattern = /^[A-Za-z\s]+$/;
+
+		if (fullname.length < .....) {
+			alert("Full name must contain at least 5 characters.");
+			e.preventDefault();
+			return;
+		}
+
+		if (!namePattern.test(fullname)) {
+			.....("Full name must contain only letters and spaces.");
+			.....
+			return;
+		}
+
+		const email = document.getElementById("email").value.trim();
+		const ..... = /^[a-zA-Z0-9._%+-]+.....)$/;
+
+		if (!emailPattern.test(.....)) {
+			alert("Email must be valid and end with @e-uvt.ro");
+			e.preventDefault();
+			.....
+		 }
+
+		const phone = document.getElementById("phone").value.trim();
+		const phonePattern = .....;
+
+		if (!phonePattern.test(phone)) {
+			alert(.....);
+			e.preventDefault();
+			return;
+		}
+
+		.....
+	});
+	</code></pre>
+
+	<p>In addition to the existing requirements described above, you will extend the current form by adding new input fields in <code>contact.html</code>. These new fields must also follow the same principle: each element must have a unique <code>id</code> attribute in order to be accessible and validated through JavaScript.</p>
+	<pre><code>&lt;input type="date" id="dob"&gt;
+&lt;input type="number" id="age"&gt;
+&lt;input type="url" id="website"&gt;
+&lt;input type="file" id="fileUpload"&gt;
+&lt;input type="color" id="favColor"&gt;</code></pre>
+	<p>The validation rules for these additional fields are as follows: the <strong>Date of Birth</strong> field must ensure that the user is at least 18 years old based on the selected date. The <strong>Age</strong> field must accept only values between 18 and 60. The <strong>Website URL</strong> must be a valid URL and must start with <code>https://</code>. The <strong>File Upload</strong> field must accept only <code>.pdf</code> or <code>.docx</code> files and the file size must not exceed 2MB. The <strong>Color</strong> input is mandatory and must not be left empty.</p>
+	<p>All validations must be implemented in JavaScript, and the form submission must be blocked if any of these conditions are not satisfied. Only when all fields (both existing and newly added) are valid, the form can proceed to the final confirmation step described in the previous task.</p>
+
+</section>
+
+
+
+<section id="task3">
+    <h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3">Push, publish, and submit Lab 9</a></h2>
+    <p>After implementing form validation and interactive components, make sure your <strong>repository for Lab 9</strong> contains:</p>
+    <ul>
+        <li>Updated contact page with validation.</li>
+        <li>JavaScript files for validation and interactivity.</li>
+        <li>All files from previous labs and assignments.</li>
+    </ul>
+    <p>Push your final changes to the Lab 9 repository.</p>
+</section>
+	
+
+
+
+	<section id="extra">
+
+
+		<h2 id="extra-heading" tabindex="-1"><a class="header-anchor" href="#extra">Extra work</a></h2>
+		<p><strong>Extra work [1]:</strong> Complete exercises 18-2 and 18-3 from the primary textbook (see <a href="../../resources/#primary-textbook">Resources - Bibliography [1]</a> and <a href="../../assignments/">Assignments</a>).</p>
+	</section>
+
+	<section id="references">
+		<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
+		<ul>
+			<li><a href="../../lecture-4/">Lecture 4 - JavaScript Language Fundamentals</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">MDN - Document Object Model (DOM)</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events">MDN - Introduction to events</a></li>
+		</ul>
+	</section>
+
+
+	<p><a href="../">Labs</a> · <a href="../../schedule/">Schedule</a> · <a href="../../">Course home</a></p>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
