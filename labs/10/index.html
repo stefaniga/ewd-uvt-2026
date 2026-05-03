@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lab 9 - Fetch API and rendering public data | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+	<defs>
+		<symbol id="icon-objective" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+		<symbol id="icon-concept" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h8"/></symbol>
+		<symbol id="icon-task" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+		<symbol id="icon-deliverable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4l-9-5.19"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></symbol>
+	</defs>
+</svg>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item" href="../../lecture-2/">Lecture 2</a></li>
+						<li><a class="dropdown-item" href="../../lecture-3/">Lecture 3</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content">
+	<h1>Lab 10 - Fetch API and Rendering Public Data</h1>
+	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. This lab focuses on using the Fetch API to retrieve data from public APIs and dynamically render it in the browser.</p>
+	<p>You will create a new page that fetches a list of universities from a public API (<code>https://universities.hipolabs.com/search?country=Romania</code>), displays them in a table, implements filtering by name, and adds CSV export functionality.</p>
+	<p>The Fetch API is a modern JavaScript interface for making HTTP requests to retrieve data from external sources. It enables asynchronous operations, allowing your application to continue running while waiting for responses.</p>
+	<p><strong>On this page:</strong> <a href="#overview">Overview</a> · <a href="#theory">Theory</a> · <a href="#lab-setup">Lab Setup</a> · <a href="#tasks">Tasks</a> · <a href="#task3">Push, publish, and submit Lab 10</a> · <a href="#extra">Extra</a> · <a href="#references">References</a>.</p>
+
+	<section id="overview">
+		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
+		<div class="lab-block">
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Use the Fetch API to load public university data and render it on a new page.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> Fetch API, asynchronous requests, JSON parsing, dynamic DOM rendering, and API-driven pages.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Fetch a public universities API and display all results on a separate page in your project.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A new project page showing university data loaded from a public API.</p>
+		</div>
+	</section>
+
+<section id="theory">
+		<h2 id="theory-heading" tabindex="-1"><a class="header-anchor" href="#theory">Theory</a></h2>
+		<h4>Fetch API</h4>
+		<p>The Fetch API provides a modern way to make HTTP requests in JavaScript. It returns a Promise that resolves to the Response object representing the response to the request.</p>
+		<p>Basic example using promises:</p>
+		<pre><code>fetch('https://api.example.com/data')
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));</code></pre>
+		<p>Using async/await for cleaner code:</p>
+		<pre><code>async function fetchData() {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}</code></pre>
+		<p>The Fetch API supports various HTTP methods (GET, POST, etc.) and allows setting headers, body, and other options.</p>
+	</section>
+
+
+	<section id="lab-setup">
+    <h2 id="lab-setup-heading" tabindex="-1"><a class="header-anchor" href="#lab-setup">Lab setup</a></h2>
+    <p>Before starting, ensure you have completed <a href="../9/">Lab 9</a> and have access to your private Lab 10 repo. For Lab 10 you will need the same tools: a code editor, Git, and a browser. Copy the files from Lab 9 and add new files: <code>universities.html</code>, <code>universities.css</code>, and <code>universities.js</code>. Use the task order below; the final step is pushing to GitHub.</p>
+    <ol>
+        <li><strong>Setup and page structure:</strong> Accept the Lab 10 assignment, copy Lab 9 files, and add the new university page files.</li>
+        
+        <li><strong>JavaScript implementation:</strong> Add JavaScript code that uses the Fetch API to load data from a public universities API and render it dynamically.</li>
+        
+        <li><strong>Testing:</strong> Test the data fetch, loading state, error handling, and rendered university list in the browser.</li>
+        
+        <li><strong>Commit and push:</strong> Commit your changes and push the new page and JavaScript to your Lab 10 repository.</li>
+    </ol>
+	</section>
+
+<section id="tasks">
+		<h2 id="tasks-heading" tabindex="-1"><a class="header-anchor" href="#tasks">Tasks</a></h2>
+		<p>In this laboratory, you will create a new page called <code>universities.html</code> and use the Fetch API to load university data from the public API <code>http://universities.hipolabs.com/search?country=Romania</code>.</p>
+		<p>This exercise is structured as a set of steps with incomplete code blocks that students should complete.</p>
+
+		<ul>
+			<li>Familiarization with the JavaScript language, exploring syntax, events, and DOM manipulation.</li>
+			<li>Familiarization with JavaScript concepts such as asynchronous functions and the <code>Blob</code> interface.</li>
+			<li>Use of HTTP APIs, in particular: <code>github.com/Hipo/university-domains-list-api</code>.</li>
+		</ul>
+
+		<h3>Step 1. Create the <code>universities.html</code> skeleton</h3>
+		<p>Add the page structure where the results will be displayed:</p>
+		<pre><code>&lt;div&gt;
+  &lt;h1&gt;Universities in Romania&lt;/h1&gt;
+  &lt;label for="q"&gt;Filter (optional):&lt;/label&gt;
+  &lt;input id="q" placeholder="search by name…" /&gt;
+
+  &lt;div id="status" class="status"&gt;&lt;/div&gt;
+
+  &lt;table&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Country&lt;/th&gt;
+        &lt;th&gt;Website&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody id="tbody"&gt;&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+
+		<h3>Step 2. Create a CSS file</h3>
+		<p>Create a stylesheet for this page and add the following style skeleton:</p>
+		<pre><code>body {
+    margin: 0;
+    padding: 16px;
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+.status {
+    opacity: .8;
+    margin: …;
+}
+
+input {
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 1px solid #334155;
+    background: #0b1220;
+    color: #e5e7eb;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    background: …;
+}
+
+th, td {
+    padding: .55rem;
+    border-bottom: …;
+    text-align: left;
+    vertical-align: top;
+}
+
+td a {
+    color: #a7f3d0;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: …;
+}</code></pre>
+
+		<h3>Step 3. Create the <code>universities.js</code> script</h3>
+		<p>Write the script that fetches the list of universities and renders the table.</p>
+		<pre><code>const API_URL = "http://universities.hipolabs.com/search?country=Romania";
+const status = document.getElementById("status");
+const tbody = document.getElementById("tbody");
+const qInput = document.getElementById("q");
+let all = [];
+
+function setStatus(text) {
+    status.textContent = …;
+}
+
+function render(data) {
+    tbody.innerHTML = data.map(u => {
+        const site = u.web_pages?.[0]
+            ? `&lt;a href="${u.web_pages[0]}" target="_blank"&gt;${u.web_pages[0]}&lt;/a&gt;`
+            : "";
+        return `
+      &lt;tr&gt;
+        &lt;td&gt;${u.name || ""}&lt;/td&gt;
+        &lt;td&gt;${u.country || ""}&lt;/td&gt;
+        &lt;td&gt;${site}&lt;/td&gt;
+      &lt;/tr&gt;`;
+    }).join("");
+}
+
+async function loadUniversities() {
+    setStatus("Loading…");
+    tbody.innerHTML = "";
+    try {
+        const res = await fetch(API_URL);
+        const data = await res.json();
+        all = data;
+        render(all);
+        setStatus(`Loaded (${all.length} results).`);
+    } catch {
+        setStatus("Loading error. Please try again.");
+    }
+}
+
+qInput.addEventListener("input", () => {
+    const q = qInput.value.trim().toLowerCase();
+    const filtered = q
+        ? all.filter(u => (u.name || "").toLowerCase().includes(q))
+        : all;
+    render(...);
+    setStatus(`Filtered: ${filtered.length} of ${all.length}.`);
+});
+
+loadUniversities();</code></pre>
+
+		<h3>Step 4. Integrate the JavaScript file</h3>
+		<p>Link your script in <code>universities.html</code> so the page can fetch and filter the data.</p>
+		<pre><code>&lt;script src="universities.js"&gt;&lt;/script&gt;</code></pre>
+
+		<h3>Step 5. Add export to CSV</h3>
+		<p>Create a button and a function that exports the rendered results.</p>
+		<pre><code>function exportCSV(data) {
+    if (!data.length) return alert("No data to export.");
+
+    const header = ["Name", "Country", "Website"];
+    const rows = data.map(u => [
+        u.name || "",
+        u.country || "",
+        (u.web_pages && u.web_pages[0]) || ""
+    ]);
+
+    const csvContent = [header, ...rows]
+        .map(r => r.map(v => `"${v.replace(/"/g, '""')}"`).join(","))
+        .join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(…);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "universities.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+}
+</code></pre>
+		<p>Add a button like:</p>
+		<pre><code>&lt;button id="exportCsv"&gt;Export CSV&lt;/button&gt;</code></pre>
+
+		<h3>Step 6. Link the pages together</h3>
+		<p>Make sure your course navigation includes a link to <code>universities.html</code> from the main labs or project menu.</p>
+
+		<p>Key requirements:</p>
+		<ul>
+			<li>Use <code>fetch()</code> to request university data.</li>
+			<li>Render the data dynamically in the table body.</li>
+			<li>Support filtering by name.</li>
+			<li>Provide a loading status and error feedback.</li>
+			<li>Offer CSV export for the current results.</li>
+		</ul>
+
+</section>
+
+
+
+<section id="task3">
+    <h2 id="task3-heading" tabindex="-1"><a class="header-anchor" href="#task3">Push, publish, and submit Lab 10</a></h2>
+    <p>After implementing the Fetch API page, make sure your <strong>repository for Lab 10</strong> contains:</p>
+    <ul>
+        <li>A new page that fetches and displays university data.</li>
+        <li>JavaScript files for the Fetch API implementation and DOM rendering.</li>
+        <li>All files from previous labs and assignments.</li>
+        <li>All site files from Lab 9, including the previous lab pages and assets.</li>
+    </ul>
+    <p>Push your final changes to the Lab 10 repository.</p>
+</section>
+	
+
+
+
+	<section id="extra">
+
+
+		<h2 id="extra-heading" tabindex="-1"><a class="header-anchor" href="#extra">Extra work</a></h2>
+		<p><strong>Extra work [1]:</strong> Complete exercises 9-1 and 9-2 from the primary textbook (see <a href="../../resources/#primary-textbook">Resources - Bibliography [1]</a> and <a href="../../assignments/">Assignments</a>).</p>
+	</section>
+
+	<section id="references">
+		<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
+		<ul>
+			<li><a href="../../lecture-4/">Lecture 4 - JavaScript Language Fundamentals</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">MDN - Document Object Model (DOM)</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events">MDN - Introduction to events</a></li>
+		</ul>
+	</section>
+
+
+	<p><a href="../">Labs</a> · <a href="../../schedule/">Schedule</a> · <a href="../../">Course home</a></p>
+</main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
