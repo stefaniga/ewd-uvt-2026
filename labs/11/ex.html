@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 11 Example Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            background: #f7f7f7;
+        }
+        header, main, footer {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #003366;
+            color: #ffffff;
+        }
+        .hero {
+            padding: 20px;
+            background: #004080;
+            color: #cfdcff;
+        }
+        .hero p {
+            max-width: 680px;
+        }
+        .content-section {
+            padding: 18px;
+            background: #ffffff;
+            margin-bottom: 16px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,.08);
+        }
+        .content-section h2 {
+            margin-top: 0;
+        }
+        .grid {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: 1fr 1fr;
+        }
+        .button-link {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #0073e6;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .button-link:hover {
+            background: #005bb5;
+        }
+        .low-contrast {
+            color: #767676;
+            background: #f0f0f0;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 14px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
+        .notice {
+            border-left: 4px solid #c00;
+            background: #fff6f6;
+            padding: 14px;
+            margin-bottom: 16px;
+        }
+        figure {
+            margin: 0;
+        }
+        figure img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+        }
+        figcaption {
+            margin-top: 10px;
+            color: #555;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <div class="hero">
+            <h1>Lab 11 Accessibility Example</h1>
+            <p>Use Lighthouse and Narrator to review this page and identify accessibility concerns.</p>
+        </div>
+    </header>
+    <main role="main">
+        <section class="content-section">
+            <h2>Quick checks</h2>
+            <p class="low-contrast" role="presentation">Review the text, components, and visual design on this page to determine whether the page is easy to use for all users.</p>
+            <p>Use the controls and content below as part of your accessibility audit.</p>
+            <img src="https://something.com/image.jpg" width="700" height="200">
+            <p><a class="button-link" href="#" role="button" aria-label="Start review">🔍</a></p>
+        </section>
+
+        <section class="content-section">
+            <h3>Forms and labels</h3>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input id="email" type="email" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <input type="text" id="search" placeholder="Search products...">
+            </div>
+            <div class="form-group">
+                <button>Submit</button>
+            </div>
+            <div class="form-group">
+                <div tabindex="0">Focusable content without button semantics</div>
+            </div>
+        </section>
+
+        <section class="content-section" role="student">
+            <h2>Navigation</h2>
+            <div class="grid">
+                <a href="https://example.com">Learn more</a>
+                <a href="https://example.com">Read the guide</a>
+                <a href="https://example.com">Start now</a>
+                <a href="https://example.com">Submit form</a>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Layout and structure</h2>
+            <p>Check the overall document structure and decide whether the page is organized in a way that supports accessibility tools.</p>
+        </section>
+    </main>
+    <footer class="content-section" role="contentinfo">
+    </main>
+    <footer class="content-section">
+        <p>Use Lighthouse to scan the page and Narrator to read the structure aloud. Identify the failures and write down what should be fixed.</p>
+    </footer>
+</body>
+</html>

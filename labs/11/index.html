@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lab 11 - Accessibility audit using Lighthouse and manual inspection | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+	<defs>
+		<symbol id="icon-objective" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+		<symbol id="icon-concept" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h8"/></symbol>
+		<symbol id="icon-task" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></symbol>
+		<symbol id="icon-deliverable" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4l-9-5.19"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></symbol>
+	</defs>
+</svg>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+	<div class="container-fluid">
+		<a class="navbar-brand d-flex align-items-center gap-2" href="../../">
+			<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav ms-auto">
+				<li class="nav-item"><a class="nav-link" href="../../#info">Info</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../#logistics">Logistics</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../staff/">Staff</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../schedule/">Schedule</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../assignments/">Assignments</a></li>
+				<li class="nav-item"><a class="nav-link" href="../../labs/">Labs</a></li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+						<li><a class="dropdown-item" href="../../lecture-0/">Lecture 0</a></li>
+						<li><a class="dropdown-item" href="../../lecture-1/">Lecture 1</a></li>
+						<li><a class="dropdown-item" href="../../lecture-2/">Lecture 2</a></li>
+						<li><a class="dropdown-item" href="../../lecture-3/">Lecture 3</a></li>
+					</ul>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="../../resources/">Resources</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<main id="main-content">
+	<h1>Lab 11 - Accessibility audit using Lighthouse and manual inspection</h1>
+	<p><strong>Duration:</strong> <time datetime="PT2H">2 hours</time>. In this lab we learn what Lighthouse is, how to inspect a page manually, and how to use Windows Narrator to check accessibility.</p>
+	<p>Below you will find a theory section about Lighthouse and Narrator that you should read carefully. After the theory, you will prepare a short report by inspecting a given page and writing down what you observe.</p>
+	<p><strong>On this page:</strong> <a href="#osverview">Overview</a> · <a href="#theory">Theory</a> · <a href="#lab-setup">Lab Setup</a> · <a href="#tasks">Tasks</a> · <a href="#references">References</a>.</p>
+
+	<section id="overview">
+		<h2 id="overview-heading" tabindex="-1"><a class="header-anchor" href="#overview">Overview</a></h2>
+		<div class="lab-block">
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Learn what Lighthouse does, inspect a page for accessibility issues, and compare automated results with a screen reader experience.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> Lighthouse auditing, manual inspection, WCAG accessibility checks, keyboard navigation, and Narrator screen reader testing.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Inspect a page visually and in the DOM, run Lighthouse, use Narrator, and write down the main accessibility findings.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> A plain text report file describing the accessibility issues discovered during the tasks.</p>
+		</div>
+	</section>
+
+<section id="theory">
+		<h2 id="theory-heading" tabindex="-1"><a class="header-anchor" href="#theory">Theory</a></h2>
+		<h3>1. What is Lighthouse?</h3>
+		<p>Lighthouse is an open-source automated auditor developed by Google that runs in the Chromium engine. It analyzes a web page and executes a standard set of tests for accessibility, performance, best practices, and SEO. For accessibility, Lighthouse inspects both the HTML DOM and the browser-generated accessibility tree.</p>
+
+		<h4>Why do we use Lighthouse?</h4>
+		<ul>
+			<li>It generates a quantitative accessibility score.</li>
+			<li>It detects automated issues such as:<ul>
+				<li>images missing <code>alt</code> text,</li>
+				<li>interactive controls without labels,</li>
+				<li>insufficient color contrast,</li>
+				<li>inconsistent focus order, and</li>
+				<li>elements hidden incorrectly from the accessibility tree.</li>
+			</ul></li>
+			<li>It is useful for finding low-hanging fruits before manual testing.</li>
+			<li>It allows you to compare page versions and track improvements over time.</li>
+		</ul>
+
+		<h4>How do I activate Lighthouse?</h4>
+		<ol>
+			<li>Open the web page in Chrome (or another Chromium-based browser such as Edge or Brave).</li>
+			<li>Press <strong>F12</strong> or <strong>Ctrl+Shift+I</strong> to open DevTools, or use <strong>Inspect</strong>.</li>
+			<li>Select the <strong>Lighthouse</strong> tab.</li>
+			<li>Choose only <strong>Accessibility</strong> for a focused audit, then click <strong>Generate report</strong>.</li>
+			<li>Lighthouse will rebuild the page in a test environment and report the identified issues.</li>
+		</ol>
+
+		<h4>What can we observe in the report?</h4>
+		<p>The report includes technical details in the following areas:</p>
+		<ul>
+			<li><strong>Score</strong>: the overall accessibility score.</li>
+			<li><strong>Audit failures</strong>: checks that did not pass.</li>
+			<li><strong>Warnings</strong>: semi-critical issues that may affect users.</li>
+			<li><strong>Element</strong>: the problematic HTML node and a code snippet.</li>
+			<li><strong>Recommendations</strong>: which attribute or structure needs to be fixed.</li>
+		</ul>
+		<p>Examples of technical checks:</p>
+		<ul>
+			<li><code>image-alt</code> – an image must have an <code>alt</code> attribute or be marked as decorative.</li>
+			<li><code>label</code> – each input must be associated with a <code>&lt;label&gt;</code> or an <code>aria-label</code>.</li>
+			<li><code>color-contrast</code> – minimum ratio 4.5:1 for normal text and 3:1 for large text.</li>
+			<li><code>tabindex</code> – interactive elements must be able to receive focus in the correct order.</li>
+			<li><code>aria-roles</code> – roles must be correct and must not override native elements incorrectly.</li>
+		</ul>
+
+
+        <img src="./IMG1.png" alt="Lighthouse accessibility report example" style="max-width:100%; border:1px solid #ccc; border-radius:4px; margin-top:8px;" />
+		<h3>2. What is Narrator?</h3>
+		<p>Microsoft Narrator is the native screen reader in Windows. It reads the accessibility tree and provides spoken feedback for each interactive and non-interactive element. It is used for manual testing of the experience for users with visual impairments and for checking reading order.</p>
+
+		<h4>Why do we use Narrator?</h4>
+		<ul>
+			<li>It verifies that accessible names match the visible content.</li>
+			<li>It exposes reading-order issues that are not always visible in automated tests.</li>
+			<li>It allows precise evaluation of how headings, links, buttons, form controls, and state changes are announced.</li>
+		</ul>
+
+		<h4>How do I activate it?</h4>
+		<ol>
+			<li>Search for the <strong>Narrator</strong> application in the Windows Start menu and start it.</li>
+			<li>Open the page in your browser and navigate using <strong>Tab</strong> and <strong>Shift + Tab</strong>.</li>
+			<li>Use <strong>Caps Lock + Right Arrow</strong> / <strong>Caps Lock + Left Arrow</strong> to move the reading cursor and <strong>Caps Lock + Space</strong> to activate a control.</li>
+			<li>Listen to how elements are announced and note any inconsistency or mislabeling.</li>
+		</ol>
+
+		<h4>What can we observe with Narrator?</h4>
+		<ul>
+			<li>Whether elements are announced with the correct type: <em>button</em>, <em>link</em>, <em>heading</em>, <em>textbox</em>.</li>
+			<li>Whether the spoken order matches the visual order of the page.</li>
+			<li>Whether ARIA labels and accessible names are descriptive and not generic.</li>
+			<li>Whether decorative images are skipped or marked correctly with <code>alt=""</code> / <code>aria-hidden="true"</code>.</li>
+			<li>Whether form controls announce their state: required, checked, expanded, collapsed, etc.</li>
+			<li>Whether there are keyboard navigation traps or elements that cannot receive focus.</li>
+		</ul>
+
+        <img src="./IMG2.png" alt="Narrator reading a web page" style="max-width:100%; border:1px solid #ccc; border-radius:4px; margin-top:8px;" />
+        <p>You can also review the following accessibility resources:</p>
+        <ul>
+            <li><a href="https://www.digitala11y.com/wcag-checklist/">Digital A11Y - WCAG checklist</a></li>
+            <li><a href="https://learntheweb.courses/topics/accessibility-cheat-sheet/">Learn the Web - Accessibility cheat sheet</a></li>
+        </ul>
+	</section>
+
+
+	<section id="lab-setup">
+    <h2 id="lab-setup-heading" tabindex="-1"><a class="header-anchor" href="#lab-setup">Lab setup</a></h2>
+    <p>For this lab, you only need to accept the Lab 11 assignment in GitHub Classroom. Once the assignment is accepted, you can continue with the accessibility audit tasks.</p>
+	</section>
+
+<section id="tasks">
+		<h2 id="tasks-heading" tabindex="-1"><a class="header-anchor" href="#tasks">Tasks</a></h2>
+        <p>Complete the following steps and summarize your findings in a file named <code>raport.txt</code>.</p>
+        <ol>
+            <li>Open the exercise page in a new tab by clicking <a href="./ex.html" target="_blank" rel="noopener">Exercise page</a>.</li>
+            <li>Open DevTools and run a Lighthouse accessibility audit for the page.</li>
+            <li>Write the Lighthouse results in <code>raport.txt</code>, including the issues found and the improvements needed to increase the accessibility score.</li>
+            <li>Use Windows Narrator to navigate the page and evaluate how the content is announced.</li>
+            <li>Add your Narrator observations to <code>raport.txt</code>, describing the experience and any obstacles you encountered.</li>
+        </ol>
+        <p>Make sure your report includes both the automated Lighthouse findings and your manual Narrator evaluation.</p>
+<section id="push">
+        <h2 id="push-heading" tabindex="-1"><a class="header-anchor" href="#push">Push your work</a></h2>
+        <p>When you are done, push your <code>raport.txt</code> file to GitHub. This will be the deliverable for this lab.</p>
+        <h3>What to include in <code>raport.txt</code></h3>
+		<ul>
+			<li>Lighthouse findings and the accessibility checks that failed or warned.</li>
+			<li>Suggested improvements for images, labels, contrast, focus order, link text, and roles.</li>
+			<li>Your experience using Narrator, including how it announces page structure and interactive elements.</li>
+			<li>Any usability obstacles you noticed while navigating with Narrator.</li>
+		</ul>
+
+	</section>
+
+
+
+	<section id="extra">
+
+		<h2 id="extra-heading" tabindex="-1"><a class="header-anchor" href="#extra">Extra work</a></h2>
+		<p><strong>Extra work [1]:</strong> Complete exercises 23-1, 23-2 and 23-3 from the primary textbook (see <a href="../../resources/#primary-textbook">Resources - Bibliography [1]</a> and <a href="../../assignments/">Assignments</a>).</p>
+	</section>
+
+	<section id="references">
+		<h2 id="ref-heading" tabindex="-1"><a class="header-anchor" href="#references">References</a></h2>
+		<ul>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">MDN - Document Object Model (DOM)</a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Scripting/Events">MDN - Introduction to events</a></li>
+            <li><a href="https://www.digitala11y.com/wcag-checklist/">Digital A11Y - WCAG checklist</a></li>
+            <li><a href="https://learntheweb.courses/topics/accessibility-cheat-sheet/">Learn the Web - Accessibility cheat sheet</a></li>
+</ul></sections>
+        </main>
+
+<button id="back-to-top" type="button">Back to Top</button>
+<script>
+	document.getElementById('back-to-top').addEventListener('click', function () {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	});
+	window.addEventListener('scroll', function () {
+		document.body.classList.toggle('scrolled', window.scrollY > 300);
+	});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
