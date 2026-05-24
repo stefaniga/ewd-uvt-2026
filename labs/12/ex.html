@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <title>Bad Optimized Frontend</title>
+
+    <style>
+
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Roboto;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            background-color: #3498db;
+            background-color: #3498db;
+            background-color: #3498db;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-size: 42px;
+        }
+
+        .banner {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .banner img {
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .search-container {
+            padding: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .table-container {
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background-color: #222;
+            background-color: #222;
+            color: white;
+            padding: 15px;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0f0f0;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 33%;
+            height: 350px;
+            object-fit: cover;
+
+            filter: blur(1px);
+
+            transition: top 1s;
+            position: relative;
+            top: 0;
+        }
+
+        .gallery img:hover {
+            top: -10px;
+        }
+
+        body div.table-container table tbody tr td span p a {
+            color: red;
+        }
+
+        body div.header div ul li a span {
+            color: yellow;
+        }
+
+        .card1 {
+            padding: 20px;
+        }
+
+        .card2 {
+            padding: 20px;
+        }
+
+        .card3 {
+            padding: 20px;
+        }
+
+        .card4 {
+            padding: 20px;
+        }
+
+        .card5 {
+            padding: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header" style="box-shadow: 0px 0px 30px rgba(0,0,0,0.4);">
+        <h1>Store Products</h1>
+        <p style="font-size:18px;">Poorly optimized application example</p>
+    </div>
+
+    <div class="banner">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=3500" alt="banner">
+    </div>
+
+    <div class="search-container">
+        <input
+            type="text"
+            id="search"
+            class="search-input"
+            placeholder="Search product..."
+            style="border-radius:10px;"
+        >
+    </div>
+
+    <div class="table-container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-body"></tbody>
+
+        </table>
+
+    </div>
+
+    <div class="gallery">
+
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=2500">
+
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2500">
+
+        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=2500">
+
+    </div>
+
+    <script>
+
+        const tableBody = document.getElementById('table-body');
+        const searchInput = document.getElementById('search');
+
+        const products = [];
+
+        for(let i = 0; i < 5000; i++) {
+
+            products.push({
+                id: i,
+                name: 'Product ' + i,
+                price: Math.floor(Math.random() * 1000),
+                category: 'Category ' + (i % 10)
+            });
+
+        }
+
+        
+
+        function renderProducts(data) {
+
+            tableBody.innerHTML = '';
+
+            data.forEach(product => {
+
+                const tr = document.createElement('tr');
+
+                tr.innerHTML += `<td>${product.id}</td>`;
+                tr.innerHTML += `<td>${product.name}</td>`;
+                tr.innerHTML += `<td>${product.price}</td>`;
+                tr.innerHTML += `<td>${product.category}</td>`;
+
+                tr.addEventListener('click', () => {
+                    console.log(product.name);
+                });
+
+                tr.style.height = '40px';
+                tr.style.fontSize = '16px';
+                tr.style.backgroundColor = 'white';
+
+                tableBody.appendChild(tr);
+
+            });
+
+        }
+
+        renderProducts(products);
+
+        searchInput.addEventListener('keyup', function() {
+
+            document.querySelector('.header').style.opacity = '0.99';
+
+            const value = searchInput.value.toLowerCase();
+
+            const filtered = products.filter(product => {
+
+                for(let i = 0; i < 500000; i++) {}
+                return product.name.toLowerCase().includes(value);
+
+            });
+
+            renderProducts(filtered);
+
+        });
+
+        window.addEventListener('scroll', () => {
+
+            console.log(window.scrollY);
+
+        });
+
+        setInterval(() => {
+
+            document.body.style.backgroundColor = '#f5f5f5';
+
+        }, 300);
+
+        setTimeout(() => {
+
+            const div = document.createElement('div');
+
+            div.innerHTML = `
+                <div style="
+                    background:red;
+                    color:white;
+                    padding:30px;
+                    text-align:center;
+                    font-size:24px;
+                ">
+                    SUPER DISCOUNT !!!
+                </div>
+            `;
+
+            document.body.prepend(div);
+
+        }, 2000);
+
+    </script>
+
+</body>
+</html>
