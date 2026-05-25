@@ -202,11 +202,51 @@
 	<section id="hw3">
 		<h2 id="hw-3" tabindex="-1"><a class="header-anchor" href="#hw3">HW3</a></h2>
 		<div class="lab-block">
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Will be announced.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> Will be announced.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong> Will be announced.</p>
-			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> Will be announced.</p>
-			<p><strong>Extra work [1]:</strong> Will be announced.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-objective"/></svg> Objectives:</strong> Build a visually attractive portfolio page where users can add their personal projects through an accessible form. Display submitted projects in a table with high accessibility and performance standards.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-concept"/></svg> Concepts:</strong> semantic HTML, accessible forms with validation, client-side JavaScript validation, responsive design, visual design (cards, images, layout), performance optimization, and accessibility scoring (target ≥95).</p>
+			<p><strong>Use only:</strong> HTML5, CSS3, JavaScript (vanilla), Git/GitHub, and GitHub Pages.</p>
+			<p><strong>Generative AI policy (UVT):</strong> follow the course policy from <a href="../#info">Course home - Info</a>, including allowed/prohibited uses and the required transparency declaration model.</p>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-task"/></svg> Tasks:</strong></p>
+			<ol>
+				<li><strong>Create portfolio page:</strong> build a new page (e.g., <code>portfolio.html</code>) that visually matches the site. Include the navigation and a styled main content area consistent with the site's design.</li>
+				<li><strong>Build project form (main element):</strong> create an accessible form with at least 5 input fields of different types (e.g., <code>text</code>, <code>textarea</code>, <code>url</code>, <code>select</code>, <code>date</code>). Use explicit <code>label</code> elements, <code>fieldset</code>/<code>legend</code>, or <code>aria-describedby</code>.</li>
+				<li><strong>Add visual enhancements:</strong> Add some visual elements or something original for your homepage.</li>
+				<li><strong>Implement JavaScript validation:</strong> validate all form inputs with clear, accessible error messages displayed next to each field. Prevent form submission if validation fails. Support form reset.</li>
+				<li><strong>Display projects table:</strong> after successful validation, insert submitted project data into an accessible table on the same page. Include: project name, description, URL, technologies, image thumbnail, and completion date. Use <code>caption</code>, <code>th</code> with <code>scope</code>, and responsive table wrapper.</li>
+				<li><strong>Ensure responsive layout:</strong> the page must work perfectly on mobile, tablet, and desktop. Form and table must be fully usable on all screen sizes.</li>
+				<li><strong>Optimize accessibility and performance:</strong>
+					<ul>
+						<li>Target Lighthouse accessibility score ≥95.</li>
+						<li>Optimize performance: lazy-load images, minimize CSS/JS, efficient DOM updates.</li>
+						<li>Include skip link, proper heading hierarchy, keyboard navigation, and visible focus styles.</li>
+						<li>Document all Lighthouse scores (Performance, Accessibility, Best Practices, SEO) in README.</li>
+					</ul>
+				</li>
+				<li><strong>Validate and publish:</strong> validate HTML and CSS with no errors. Publish on GitHub Pages and link from the assignments page.</li>
+			</ol>
+			<p><strong>Grading scale (max 10 points):</strong></p>
+			<ul>
+    <li><strong>1.0 point - Starting point:</strong> HW3 repository exists, contains a copied HW1+HW2 project, and the site can be opened.</li>
+
+    <li><strong>0.5 points - Dedicated CV page:</strong> a new page (for example <code>cv.html</code>) exists, is linked in the navigation, and fits the style of the existing site.</li>
+
+    <li><strong>1.0 points - Accessible form:</strong> form includes at least 5 different types of controls, uses <code>label</code>, <code>fieldset</code>/<code>legend</code>, and provides visible error messages with <code>aria-describedby</code>.</li>
+
+    <li><strong>1.5 points - JavaScript validation:</strong> client-side validation is implemented, prevents form submission on errors, and displays accessible error messages.</li>
+
+    <li><strong>1.5 points - Data display:</strong> after validation, form data is displayed in an accessible table on the same page (with caption, proper headers, and dynamically added rows).</li>
+
+    <li><strong>1.5 points - Accessibility:</strong> implementation is optimized for accessibility and achieves a high Lighthouse score (95+).</li>
+
+    <li><strong>1.5 points - Performance:</strong> all performance metrics are optimized for fast loading and smooth user experience.</li>
+
+    <li><strong>1.0 points - Page complexity:</strong> add images and other media to enhance visual appeal, plus light animations or interactive elements.</li>
+
+    <li><strong>0.5 points - Validation:</strong> HTML/CSS validation completed with no errors and the final site is published on GitHub Pages.</li>
+
+    <li><strong>+1.0 point - Originality (bonus):</strong> creative decision</li>
+</ul>
+			<p><strong><svg class="icon-svg" aria-hidden="true" focusable="false"><use href="#icon-deliverable"/></svg> Deliverable:</strong> Published CV page + source code (HTML, CSS, JS) and README with accessibility notes and performance scores.</p>
 		</div>
 	</section>
 
