@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Lecture 5 - JavaScript in the Browser, DOM, and Asynchronous JavaScript | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+				<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+					<li class="nav-item"><a class="nav-link" href="../#logistics">Logistics</a></li>
+					<li class="nav-item"><a class="nav-link" href="../staff/">Staff</a></li>
+					<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+					<li class="nav-item"><a class="nav-link" href="../assignments/">Assignments</a></li>
+					<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+							<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+							<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+							<li><a class="dropdown-item" href="../lecture-2/">Lecture 2</a></li>
+							<li><a class="dropdown-item" href="../lecture-3/">Lecture 3</a></li>
+							<li><a class="dropdown-item" href="../lecture-4/">Lecture 4</a></li>
+							<li><a class="dropdown-item active" href="../lecture-5/">Lecture 5</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main-content">
+		<article>
+			<header>
+				<h1>Lecture 5 - JavaScript in the Browser, DOM, and Asynchronous JavaScript</h1>
+				<p><strong>Lecture 5 - JavaScript in the Browser, DOM, and Asynchronous JavaScript.</strong> Duration: <time datetime="PT2H">2 hours</time>. This lecture continues from <strong><a href="../lecture-4/">Lecture 4</a></strong> (language fundamentals). We apply JavaScript in the browser: how scripts load and run, the Document Object Model (DOM), events, and synchronous vs asynchronous execution—including callbacks, <code>XMLHttpRequest</code>, and the modern <code>fetch()</code> API. Connected to unit <strong>C4</strong> and <strong><a href="../labs/8/">Lab 8</a></strong>, <strong><a href="../labs/9/">Lab 9</a></strong>; previews client-side data handling in <strong>C5</strong> (see <a href="../schedule/">Schedule</a>). An <strong>announced quiz</strong> may take place during this session (see course platform).</p>
+			</header>
+
+			<section aria-labelledby="learning-outcomes-heading">
+				<h2 id="learning-outcomes-heading" tabindex="-1"><a class="header-anchor" href="#learning-outcomes-heading">Learning outcomes</a></h2>
+				<p>By the end of this lecture you will be able to:</p>
+				<ul>
+					<li>Explain how JavaScript runs in web browsers: embedded vs external scripts, execution phases, and the single-threaded model</li>
+					<li>Compare synchronous, <code>defer</code>, and <code>async</code> script loading and when each is appropriate</li>
+					<li>Describe the DOM as a tree of nodes; distinguish element, text, and attribute nodes</li>
+					<li>Select elements with <code>getElementById</code>, <code>getElementsBy*</code>, and <code>querySelector</code> / <code>querySelectorAll</code></li>
+					<li>Read and update page content with properties such as <code>innerHTML</code> and element attributes</li>
+					<li>Create, insert, replace, and remove nodes with DOM methods (<code>createElement</code>, <code>appendChild</code>, <code>insertBefore</code>, <code>replaceChild</code>, <code>removeChild</code>)</li>
+					<li>Navigate the node tree with <code>parentNode</code>, <code>childNodes</code>, <code>firstChild</code>, <code>lastChild</code>, and sibling properties</li>
+					<li>Attach event handlers and reason about when handlers run relative to page load and user actions</li>
+					<li>Explain why blocking JavaScript hurts performance and how non-blocking patterns help</li>
+					<li>Use callbacks for asynchronous work; describe AJAX and load data with <code>fetch()</code></li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="topics-heading">
+				<h2 id="topics-heading" tabindex="-1"><a class="header-anchor" href="#topics-heading">Topics</a></h2>
+				<ul>
+					<li><strong>Bridge:</strong> JavaScript recap (high-level, dynamic, untyped, interpreted); link to <a href="../lecture-4/">Lecture 4</a> language topics</li>
+					<li>JavaScript in web browsers: <code>document</code>, <code>window</code>, event handlers, client-side applications and UX</li>
+					<li>Adding scripts: <code>&lt;script&gt;</code> embedded vs external; placement in <code>&lt;head&gt;</code> or end of <code>&lt;body&gt;</code></li>
+					<li>Execution model: load phase vs event phase; blocking, <code>defer</code>, <code>async</code></li>
+					<li>DOM: tree structure, node types, DOM standards (Levels 0–4, WHATWG)</li>
+					<li>DOM APIs: selection, properties, creating and deleting elements, tables, simple animations (<code>setTimeout</code>, <code>setInterval</code>)</li>
+					<li>Node lists and tree navigation</li>
+					<li>Synchronous JavaScript: blocking behaviour, <code>document.write</code>, performance motivation</li>
+					<li>Asynchronous JavaScript: callbacks, <code>XMLHttpRequest</code>, AJAX, <code>fetch()</code>, SPAs</li>
+					<li><strong>Quiz:</strong> announced assessment on material from recent lectures (see course platform)</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="resources-heading">
+				<h2 id="resources-heading" tabindex="-1"><a class="header-anchor" href="#resources-heading">Resource materials</a></h2>
+				<ul>
+					<li>Jennifer Niederst Robbins, <em><a href="https://learningwebdesign.com/">Learning Web Design</a></em>, 6th ed., 2025 — JavaScript in the browser (Ch 15, 17, 18)</li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">MDN — Document Object Model (DOM)</a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">MDN — Fetch API</a></li>
+					<li><a href="https://ecma-international.org/publications-and-standards/standards/ecma-262/">ECMA-262 (ECMAScript)</a></li>
+					<li><a href="https://whatwg.org/">WHATWG</a> — living HTML/DOM standards</li>
+					<li><a href="http://callbackhell.com/">callbackhell.com</a> — composing async callbacks</li>
+				</ul>
+				<p>See also <a href="../resources/">Resources</a> and <a href="../assignments/">Assignments</a>.</p>
+			</section>
+
+			<section aria-labelledby="bridge-heading">
+				<h2 id="bridge-heading" tabindex="-1"><a class="header-anchor" href="#bridge-heading">Bridge from Lecture 4</a></h2>
+				<p>JavaScript is a <strong>high-level</strong>, <strong>dynamic</strong>, <strong>untyped</strong>, <strong>interpreted</strong> language, well suited to object-oriented and functional styles. In <strong><a href="../lecture-4/">Lecture 4</a></strong> we covered the language itself: lexical structure, types and variables, expressions and operators, statements, objects, arrays, functions, classes, modules, and regular expressions. This lecture moves from <em>language</em> to <em>environment</em>—how scripts run inside the browser and interact with HTML through the DOM.</p>
+			</section>
+
+			<section aria-labelledby="js-browser-heading">
+				<h2 id="js-browser-heading" tabindex="-1"><a class="header-anchor" href="#js-browser-heading">JavaScript in web browsers</a></h2>
+				<p>The <code>document</code> object represents the HTML document. <code>document.getElementById(id)</code> returns the element with that unique <code>id</code>. Each element has properties and methods to read or change its content and attributes (including presentation via CSS).</p>
+				<p><strong>Event handlers</strong> are properties on <code>window</code>, <code>document</code>, and element objects. They associate functions that run asynchronously when events occur—for example document load, user clicks, network activity, timers, or errors in script code.</p>
+				<pre><code>window.onload = function () {
+  console.log("Document loaded");
+};
+
+const btn = document.getElementById("demo-btn");
+btn.onclick = function () {
+  alert("Clicked!");
+};
+</code></pre>
+				<p>Client-side applications use JavaScript to access and manipulate page content, use browser services (networking, graphics, geolocation, history, background workers, and more), and improve UX—for example animations, sortable tables, and progressive disclosure of content.</p>
+			</section>
+
+			<section aria-labelledby="scripts-heading">
+				<h2 id="scripts-heading" tabindex="-1"><a class="header-anchor" href="#scripts-heading">Adding JavaScript to pages</a></h2>
+				<h3>Embedded script</h3>
+				<p>The <code>&lt;script&gt;</code> element adds JavaScript inline. It can appear anywhere in the HTML file; common practice is in the <code>&lt;head&gt;</code> or at the very end of <code>&lt;body&gt;</code> so the DOM exists before scripts that manipulate it run.</p>
+				<pre><code>&lt;script&gt;
+// JavaScript code goes here
+&lt;/script&gt;
+</code></pre>
+				<h3>External script</h3>
+				<p>The <code>src</code> attribute points to a <code>.js</code> file by URL:</p>
+				<pre><code>&lt;script src="app.js"&gt;&lt;/script&gt;
+</code></pre>
+				<p><strong>Advantages:</strong> separates content from behaviour; one file can serve many pages (cached after first download); enables libraries and third-party scripts (e.g. maps APIs).</p>
+				<p><strong>Downsides:</strong> each external file is an extra HTTP request (mitigated by HTTP/2 and bundling); embedding third-party code has security implications—only load scripts from sources you trust.</p>
+			</section>
+
+			<section aria-labelledby="execution-heading">
+				<h2 id="execution-heading" tabindex="-1"><a class="header-anchor" href="#execution-heading">How scripts execute</a></h2>
+				<p>Execution happens in two broad phases:</p>
+				<ol>
+					<li>The document loads and code from <code>&lt;script&gt;</code> elements (inline and external) runs.</li>
+					<li>The browser invokes event handler functions in response to asynchronous events.</li>
+				</ol>
+				<p>JavaScript in the browser uses a <strong>single-threaded</strong> model: scripts and handlers run one at a time without concurrent threads in the same page context.</p>
+				<ul>
+					<li><strong>Synchronous (default):</strong> the HTML parser runs the script before continuing to parse and render—blocking.</li>
+					<li><strong><code>defer</code>:</strong> download in parallel; execute after the document is parsed and ready to manipulate.</li>
+					<li><strong><code>async</code>:</strong> download and run as soon as possible without blocking parsing while downloading.</li>
+				</ul>
+				<pre><code>&lt;script src="analytics.js" defer&gt;&lt;/script&gt;
+&lt;script src="ads.js" async&gt;&lt;/script&gt;
+</code></pre>
+				<p>Use <code>defer</code> when the script needs the full DOM but order relative to other deferred scripts matters. Use <code>async</code> for independent scripts (e.g. ads) where execution order is not critical. Scripts that call <code>document.write</code> during load cannot safely use <code>async</code>/<code>defer</code> in the same way.</p>
+			</section>
+
+			<section aria-labelledby="dom-intro-heading">
+				<h2 id="dom-intro-heading" tabindex="-1"><a class="header-anchor" href="#dom-intro-heading">Document Object Model (DOM)</a></h2>
+				<p>The <strong>DOM</strong> is a cross-platform, language-independent API. In web pages, JavaScript uses the DOM to access, traverse, and manipulate HTML (and XML) documents. It is standardized by W3C and maintained as a living standard by <a href="https://whatwg.org/">WHATWG</a>.</p>
+				<p>The DOM treats a document as a <strong>tree</strong>: each node is an object representing part of the document (elements, text, attributes).</p>
+				<h3>Node types</h3>
+				<ul>
+					<li><strong>Element nodes</strong> — HTML tags; can have children and attributes.</li>
+					<li><strong>Text nodes</strong> — text inside elements; no child elements.</li>
+					<li><strong>Attribute nodes</strong> — name/value pairs on elements (often accessed via element properties in modern APIs).</li>
+				</ul>
+				<h3>DOM standards (brief)</h3>
+				<ul>
+					<li><strong>Level 0</strong> — early browser implementations before a common standard.</li>
+					<li><strong>Level 1 (1998)</strong> — full document model for HTML/XML.</li>
+					<li><strong>Level 2 (2000)</strong> — events, namespaces, stylesheets, richer traversal.</li>
+					<li><strong>Level 3 (2004)</strong> — XPath, keyboard events.</li>
+					<li><strong>Level 4 (2015+)</strong> — current DOM feature set; browsers implement the living standard.</li>
+				</ul>
+			</section>
+
+			<section aria-labelledby="dom-select-heading">
+				<h2 id="dom-select-heading" tabindex="-1"><a class="header-anchor" href="#dom-select-heading">Selecting elements</a></h2>
+				<p>The browser <code>window</code> represents the tab; <code>window.document</code> (or just <code>document</code>) is the page.</p>
+				<table class="table table-bordered">
+					<thead><tr><th>Method</th><th>Description</th></tr></thead>
+					<tbody>
+						<tr><td><code>getElementById(id)</code></td><td>Single element with that <code>id</code></td></tr>
+						<tr><td><code>getElementsByName(name)</code></td><td>Collection by <code>name</code> attribute</td></tr>
+						<tr><td><code>getElementsByTagName(tag)</code></td><td>Collection by tag name</td></tr>
+						<tr><td><code>getElementsByClassName(class)</code></td><td>Collection by class name</td></tr>
+						<tr><td><code>querySelector(selector)</code></td><td>First match for a CSS selector</td></tr>
+						<tr><td><code>querySelectorAll(selector)</code></td><td>All matches (NodeList)</td></tr>
+					</tbody>
+				</table>
+				<pre><code>const title = document.getElementById("main-title");
+const items = document.querySelectorAll("ul.menu li");
+const firstBtn = document.querySelector("button.primary");
+</code></pre>
+				<p><code>innerHTML</code> gets or sets the HTML content inside an element. Prefer safer APIs (<code>textContent</code>, <code>createElement</code>) when content comes from users to avoid XSS.</p>
+				<pre><code>const box = document.getElementById("demo");
+box.innerHTML = "&lt;p&gt;Updated content&lt;/p&gt;";
+box.textContent = "Plain text only";
+</code></pre>
+			</section>
+
+			<section aria-labelledby="dom-manipulate-heading">
+				<h2 id="dom-manipulate-heading" tabindex="-1"><a class="header-anchor" href="#dom-manipulate-heading">Creating and changing elements</a></h2>
+				<table class="table table-bordered">
+					<thead><tr><th>Method</th><th>Description</th></tr></thead>
+					<tbody>
+						<tr><td><code>document.createElement(tag)</code></td><td>Create a new element</td></tr>
+						<tr><td><code>parent.appendChild(child)</code></td><td>Append as last child</td></tr>
+						<tr><td><code>parent.insertBefore(elem, ref)</code></td><td>Insert before a reference node</td></tr>
+						<tr><td><code>parent.replaceChild(new, old)</code></td><td>Replace a child</td></tr>
+						<tr><td><code>parent.removeChild(child)</code></td><td>Remove a child</td></tr>
+					</tbody>
+				</table>
+				<pre><code>const list = document.getElementById("todo-list");
+const li = document.createElement("li");
+li.textContent = "Learn DOM APIs";
+list.appendChild(li);
+
+// Change attributes
+const img = document.querySelector("img#avatar");
+img.src = "photo.jpg";
+img.alt = "Profile photo";
+</code></pre>
+				<h3>Event handlers (property style)</h3>
+				<pre><code>document.getElementById("save").onclick = function () {
+  // handle click
+};
+</code></pre>
+				<p>In modern code you will often use <code>addEventListener</code> (covered in <a href="../labs/8/">Lab 8</a>) for multiple listeners and clearer separation.</p>
+			</section>
+
+			<section aria-labelledby="dom-table-animation-heading">
+				<h2 id="dom-table-animation-heading" tabindex="-1"><a class="header-anchor" href="#dom-table-animation-heading">Tables and simple animations</a></h2>
+				<p>The <code>HTMLTableElement</code> API supports dynamic rows and cells: <code>insertRow</code>, <code>deleteRow</code>, <code>insertCell</code>, <code>createCaption</code>, and related methods.</p>
+				<p>Animations are often built by changing element styles over time. <code>setTimeout(fn, ms)</code> runs <code>fn</code> once after <code>ms</code> milliseconds; <code>setInterval(fn, ms)</code> repeats; <code>clearTimeout</code> / <code>clearInterval</code> cancel timers. Position can be updated with inline styles such as <code>element.style.left</code>.</p>
+				<pre><code>let pos = 0;
+function moveBox() {
+  const box = document.getElementById("box");
+  pos += 5;
+  box.style.left = pos + "px";
+  if (pos &lt; 200) setTimeout(moveBox, 50);
+}
+moveBox();
+</code></pre>
+			</section>
+
+			<section aria-labelledby="dom-nodes-heading">
+				<h2 id="dom-nodes-heading" tabindex="-1"><a class="header-anchor" href="#dom-nodes-heading">Nodes, traversal, and NodeList</a></h2>
+				<p>Everything in the document is a <strong>node</strong> represented as an object (element, text, document type, etc.). Useful navigation properties:</p>
+				<ul>
+					<li><code>parentNode</code></li>
+					<li><code>childNodes</code> (indexed collection; includes text nodes)</li>
+					<li><code>firstChild</code>, <code>lastChild</code></li>
+					<li><code>nextSibling</code>, <code>previousSibling</code></li>
+				</ul>
+				<p>A <strong>NodeList</strong> is an ordered collection (e.g. from <code>getElementsByTagName</code> or <code>querySelectorAll</code>). It is array-like but not always a true Array—use indexing or <code>Array.from(nodeList)</code> when you need array methods.</p>
+				<pre><code>const parent = document.getElementById("container");
+const newP = document.createElement("p");
+newP.textContent = "Hello from a new node";
+parent.appendChild(newP);
+// insertBefore(newP, parent.firstChild) — insert at top
+</code></pre>
+			</section>
+
+			<section aria-labelledby="sync-heading">
+				<h2 id="sync-heading" tabindex="-1"><a class="header-anchor" href="#sync-heading">Synchronous JavaScript and performance</a></h2>
+				<p>JavaScript is a common cause of slow pages: while a script runs, parsing and rendering can stall. Small delays matter—research cited in industry talks links hundreds of milliseconds of load time to measurable drops in engagement and search ranking.</p>
+				<p>Browsers render synchronously in document order: later resources wait for earlier blocking scripts. <strong>Goal:</strong> load and run work in a non-blocking way where possible.</p>
+				<h3><code>document.write</code></h3>
+				<p><code>document.write</code> inserts markup while the parser is still reading the stream. It assumes inline, synchronous loading—so it breaks expectations if the script is loaded asynchronously. Legacy tags and ads still rely on it; modern code should prefer <code>createElement</code>, <code>innerHTML</code> (with care), or frameworks—and use <code>defer</code>/<code>async</code> only when <code>document.write</code> is not used.</p>
+				<h3>Blocking example</h3>
+				<p>With a blocking script that busy-waits for 5 seconds in the <code>&lt;head&gt;</code>, a following inline <code>alert</code> runs only after the wait finishes. With <code>async</code> on the external script, the alert can appear before the long script completes—illustrating non-blocking download vs ordered execution.</p>
+			</section>
+
+			<section aria-labelledby="async-heading">
+				<h2 id="async-heading" tabindex="-1"><a class="header-anchor" href="#async-heading">Asynchronous JavaScript</a></h2>
+				<p><strong>Asynchronous</strong> code lets the browser stay responsive while waiting on I/O or slow work. Without it, every network request would freeze the UI.</p>
+				<h3>Callbacks</h3>
+				<p>Functions are first-class objects in JavaScript—you can pass them as arguments and invoke them later. A <strong>callback</strong> is a function passed into another function to run when work completes.</p>
+				<pre><code>function getData(callback) {
+  const data = fetchFromSomewhere();
+  callback(data);
+  return data;
+}
+
+getData(function (data) {
+  alert("We have " + data);
+});
+</code></pre>
+				<p>Compose small callbacks carefully; deeply nested callbacks become hard to read (“callback hell”)—see <a href="http://callbackhell.com/">callbackhell.com</a>. Later you will use Promises and <code>async</code>/<code>await</code> (unit C5).</p>
+				<p><strong>Rule of thumb:</strong> if an API needs I/O or heavy work (&gt; ~15 ms), design it asynchronously from the start.</p>
+			</section>
+
+			<section aria-labelledby="ajax-heading">
+				<h2 id="ajax-heading" tabindex="-1"><a class="header-anchor" href="#ajax-heading">AJAX and XMLHttpRequest</a></h2>
+				<p><strong>AJAX</strong> (Asynchronous JavaScript and XML) means making HTTP requests in the background and handling responses with JavaScript—no full page reload. Historically this used <code>XMLHttpRequest</code>; modern code prefers <code>fetch()</code>.</p>
+				<pre><code>function loadXMLAsync(filePath) {
+  const req = new XMLHttpRequest();
+  req.open("GET", filePath, true);
+  req.send(null);
+  req.onreadystatechange = function () {
+    if (req.readyState === 4) {
+      if (req.status === 200) {
+        processXML(req.responseXML);
+      } else {
+        alert("Error loading XML");
+      }
+    }
+  };
+}
+// readyState: 0 uninitialized, 1 loading, 2 loaded, 3 interactive, 4 complete
+</code></pre>
+				<p>Example processing: read <code>&lt;image&gt;</code> nodes from XML and append <code>&lt;img&gt;</code> elements to <code>document.body</code> with <code>createElement</code> and <code>appendChild</code>.</p>
+				<p><strong>SPAs:</strong> AJAX enables single-page applications that rewrite parts of the DOM instead of loading entire new documents—UX closer to native apps. JavaScript updates the DOM as the user interacts.</p>
+			</section>
+
+			<section aria-labelledby="fetch-heading">
+				<h2 id="fetch-heading" tabindex="-1"><a class="header-anchor" href="#fetch-heading">The Fetch API</a></h2>
+				<p><code>fetch(url)</code> returns a <strong>Promise</strong> that resolves with the HTTP response. It is the modern replacement for many <code>XMLHttpRequest</code> use cases.</p>
+				<pre><code>fetch("data.json")
+  .then((response) =&gt; {
+    if (!response.ok) throw new Error("Network error");
+    return response.json();
+  })
+  .then((data) =&gt; console.log(data))
+  .catch((err) =&gt; console.error(err));
+</code></pre>
+				<p>Optional second argument configures method, headers, and body for POST, PUT, DELETE, etc. Detailed practice continues in unit <strong>C5</strong> and <a href="../labs/10/">Lab 10</a>.</p>
+			</section>
+
+			<section aria-labelledby="quiz-heading">
+				<h2 id="quiz-heading" tabindex="-1"><a class="header-anchor" href="#quiz-heading">Quiz</a></h2>
+				<p>An <strong>announced quiz</strong> covers recent course material (HTML/CSS from earlier units, JavaScript language fundamentals from Lecture 4, and browser/DOM concepts from this lecture). Check the course platform for scope, format, and date.</p>
+			</section>
+
+			<section aria-labelledby="next-heading">
+				<h2 id="next-heading" tabindex="-1"><a class="header-anchor" href="#next-heading">Next</a></h2>
+				<p>Apply DOM and event skills in <strong><a href="../labs/8/">Lab 8</a></strong> and form validation in <strong><a href="../labs/9/">Lab 9</a></strong>. Unit <strong>C5</strong> deepens JSON, asynchronous patterns, dynamic content, and error handling with <code>fetch()</code>.</p>
+				<p><a href="../lecture-4/">Lecture 4</a> | <a href="../">Course home</a> | <a href="../schedule/">Schedule</a></p>
+			</section>
+		</article>
+	</main>
+
+	<button id="back-to-top" type="button">Back to Top</button>
+	<script>
+		document.getElementById('back-to-top').addEventListener('click', function () {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+		window.addEventListener('scroll', function () {
+			document.body.classList.toggle('scrolled', window.scrollY > 300);
+		});
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
