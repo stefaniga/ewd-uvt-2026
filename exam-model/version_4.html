@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Version 4 Exam Model - Code Analysis</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="exam.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+				<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+					<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+					<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+							<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+							<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+							<li><a class="dropdown-item" href="../lecture-2/">Lecture 2</a></li>
+							<li><a class="dropdown-item" href="../lecture-3/">Lecture 3</a></li>
+							<li><a class="dropdown-item" href="../lecture-4/">Lecture 4</a></li>
+							<li><a class="dropdown-item" href="../lecture-5/">Lecture 5</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item active" href="index.html">Exam examples</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main-content">
+		<h1>Version 4 Exam Model - Code Analysis</h1>
+		<div class="exam-meta">
+			<p><strong>Course:</strong> Web Design (2025-2026)</p>
+			<p><strong>Component:</strong> Knowledge of theoretical concepts II - written code analysis (30 questions)</p>
+			<p><strong>Scoring:</strong> 9 points shared equally across the 30 questions + 1 base point = 10 points maximum</p>
+			<p><a href="version_1.html">Version 1</a> | <a href="version_2.html">Version 2</a> | <a href="version_3.html">Version 3</a></p>
+		</div>
+
+		<p>Read the source files below (<code>index.html</code>, <code>styles.css</code>, <code>app.js</code>), then answer the questions. Each question refers to a specific file and line number. Select one answer per question and click <strong>Check answers</strong> for feedback.</p>
+
+		<h2>Source code to analyze</h2>
+		<p class="code-note">Task list app using an ES6 class, localStorage persistence, regex validation, and dynamic DOM events.</p>
+		<div id="code-files"></div>
+
+		<div id="score-panel" class="score-panel" aria-live="polite">
+			<p class="score-label">Result</p>
+			<p class="score-value" id="score-value">-</p>
+			<p class="score-detail" id="score-detail"></p>
+		</div>
+
+		<h2>Questions</h2>
+		<form id="quiz-form" novalidate>
+			<div id="quiz-questions"></div>
+			<div class="quiz-actions">
+				<button type="button" class="btn btn-primary" id="check-btn">Check answers</button>
+				<button type="button" class="btn btn-outline-secondary" id="reset-btn">Reset</button>
+			</div>
+		</form>
+	</main>
+
+	<button id="back-to-top" type="button">Back to Top</button>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+	<script>
+		const CODE_FILES = [
+			{
+				name: 'index.html',
+				lang: 'html',
+				code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weekly Task List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header>
+    <h1>Weekly Task List</h1>
+  </header>
+  <main id="main-content">
+    <form id="task-form" novalidate>
+      <label for="task-input">New task</label>
+      <input id="task-input" name="taskText" type="text" required>
+      <button type="submit">Add task</button>
+    </form>
+    <p id="form-feedback" aria-live="polite"></p>
+    <ul id="task-list"></ul>
+  </main>
+  <script src="app.js" defer><\/script>
+</body>
+</html>`
+			},
+			{
+				name: 'styles.css',
+				lang: 'css',
+				code: `* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; line-height: 1.5; color: #1f2328; background: #f6f8fa; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; background: #fff; padding: 0.5rem; }
+header { padding: 1rem 1.5rem; background: #fff; border-bottom: 1px solid #d0d7de; }
+main { max-width: 760px; margin: 0 auto; padding: 1.5rem; }
+#task-form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+#task-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.task-item { display: flex; justify-content: space-between; align-items: center; border: 1px solid #d0d7de; border-radius: 0.4rem; padding: 0.6rem 0.8rem; background: #fff; }
+.task-text.done { text-decoration: line-through; color: #57606a; }
+.task-toggle, .task-delete { border: 1px solid #8c959f; background: #f6f8fa; padding: 0.25rem 0.55rem; cursor: pointer; }
+.task-delete { color: #b42318; }
+@media (max-width: 560px) {
+  #task-form { flex-direction: column; }
+}`
+			},
+			{
+				name: 'app.js',
+				lang: 'javascript',
+				code: `class TaskStore {
+  constructor(key) {
+    this.key = key;
+    this.tasks = JSON.parse(localStorage.getItem(this.key)) || [];
+  }
+  add(text) {
+    this.tasks.push({ text: text, done: false });
+    this.save();
+  }
+  toggle(index) {
+    this.tasks[index].done = !this.tasks[index].done;
+    this.save();
+  }
+  remove(index) {
+    this.tasks.splice(index, 1);
+    this.save();
+  }
+  save() {
+    localStorage.setItem(this.key, JSON.stringify(this.tasks));
+  }
+  all() {
+    return this.tasks;
+  }
+}
+const form = document.getElementById('task-form');
+const input = document.getElementById('task-input');
+const list = document.getElementById('task-list');
+const feedback = document.getElementById('form-feedback');
+const nonEmptyPattern = /^(?=.*[A-Za-z0-9]).+$/;
+const store = new TaskStore('ewd-tasks');
+function render() {
+  list.innerHTML = '';
+  store.all().forEach(function (task, index) {
+    const item = document.createElement('li');
+    item.className = 'task-item';
+    const text = document.createElement('span');
+    text.className = task.done ? 'task-text done' : 'task-text';
+    text.textContent = task.text;
+    const controls = document.createElement('div');
+    const toggleBtn = document.createElement('button');
+    toggleBtn.type = 'button';
+    toggleBtn.className = 'task-toggle';
+    toggleBtn.textContent = task.done ? 'Undo' : 'Done';
+    toggleBtn.addEventListener('click', function () {
+      store.toggle(index);
+      render();
+    });
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.className = 'task-delete';
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.addEventListener('click', function () {
+      store.remove(index);
+      render();
+    });
+    controls.appendChild(toggleBtn);
+    controls.appendChild(deleteBtn);
+    item.appendChild(text);
+    item.appendChild(controls);
+    list.appendChild(item);
+  });
+}
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const value = input.value.trim();
+  if (!nonEmptyPattern.test(value)) {
+    feedback.textContent = 'Enter meaningful text before adding a task.';
+    return;
+  }
+  store.add(value);
+  input.value = '';
+  feedback.textContent = 'Task added successfully.';
+  render();
+});
+render();`
+			}
+		];
+
+		const QUESTIONS = [
+			{ text: 'In `index.html` (line 10), the skip link is intended to help:', options: ['Keyboard users jump directly to main content', 'Only search engines index links', 'JavaScript load sooner', 'Media queries activate earlier'], correct: 0, feedbackOk: 'Correct. Skip links improve keyboard and assistive navigation efficiency.', feedbackBad: 'Incorrect. The skip link is an accessibility mechanism for keyboard users.' },
+			{ text: 'In `index.html` (line 15), the `required` attribute on the input indicates:', options: ['The field is hidden', 'The control must contain a value before native submit', 'The input accepts only numbers', 'The label is optional'], correct: 1, feedbackOk: 'Correct. `required` adds built-in constraint validation for empty input.', feedbackBad: 'Incorrect. `required` means a value is required before native submission.' },
+			{ text: 'In `index.html` (line 13), `novalidate` on the form means:', options: ['Validation is impossible', 'The form submits automatically', 'Browser native validation UI is disabled so custom logic can run', 'The form uses only GET requests'], correct: 2, feedbackOk: 'Correct. `novalidate` allows JavaScript to control validation messaging.', feedbackBad: 'Incorrect. `novalidate` disables the browser default validation interface.' },
+			{ text: 'In `index.html` (line 20), loading `app.js` with `defer` ensures execution:', options: ['Before parsing begins', 'During CSS parsing only', 'Only after clicking submit', 'After the HTML document is parsed'], correct: 3, feedbackOk: 'Correct. Deferred execution occurs after parsing, preserving script order.', feedbackBad: 'Incorrect. Deferred scripts run after parsing, not before it.' },
+			{ text: 'In `styles.css` (line 7), `#task-form { display: flex; }` creates:', options: ['A flex formatting context for form children', 'A CSS grid of rows and columns', 'An absolute layout', 'A hidden form'], correct: 0, feedbackOk: 'Correct. The form children are laid out as flex items.', feedbackBad: 'Incorrect. `display: flex` applies Flexbox, not grid or hidden layout.' },
+			{ text: 'In `styles.css` (line 10), `.task-text.done { text-decoration: line-through; }` is used to:', options: ['Disable click events', 'Visually mark completed tasks', 'Delete task items', 'Reset form fields'], correct: 1, feedbackOk: 'Correct. The style conventionally indicates completed status.', feedbackBad: 'Incorrect. The rule is for completed-task visual feedback, not deletion.' },
+			{ text: 'In `styles.css` (line 11), `cursor: pointer` on buttons communicates:', options: ['A loading state', 'Read-only state', 'An interactive clickable control', 'A disabled control'], correct: 2, feedbackOk: 'Correct. Pointer cursor is a standard affordance for clickable elements.', feedbackBad: 'Incorrect. Pointer cursor signals interaction, not disabled state.' },
+			{ text: 'In `styles.css` (line 13), the media query changes `#task-form` to column direction:', options: ['On very wide desktop screens', 'At exactly 560px only', 'On print media only', 'On viewports up to 560px wide'], correct: 3, feedbackOk: 'Correct. `max-width: 560px` targets narrow screens for stacked controls.', feedbackBad: 'Incorrect. The rule applies to 560px and below.' },
+			{ text: 'In `app.js` (line 1), `class TaskStore` is:', options: ['An ES6 class declaration', 'A JSON object', 'A DOM element', 'A CSS class rule'], correct: 0, feedbackOk: 'Correct. It defines a reusable class with constructor and methods.', feedbackBad: 'Incorrect. Line 1 declares a JavaScript class, not data or CSS.' },
+			{ text: 'In `app.js` (line 4), `JSON.parse(localStorage.getItem(this.key)) || []` provides:', options: ['An encrypted string', 'A fallback empty array if nothing is stored', 'A fetch response', 'A NodeList'], correct: 1, feedbackOk: 'Correct. When storage is empty, `null` falls back to `[]`.', feedbackBad: 'Incorrect. The expression restores saved tasks or defaults to an empty array.' },
+			{ text: 'In `app.js` (line 7), `this.tasks.push({ text: text, done: false })` appends:', options: ['A CSS declaration', 'A plain string only', 'A new task object at the end of the array', 'A detached DOM node'], correct: 2, feedbackOk: 'Correct. `push` adds a structured task object to the array.', feedbackBad: 'Incorrect. `push` appends a task object, not CSS or DOM elements.' },
+			{ text: 'In `app.js` (line 17), `JSON.stringify(this.tasks)` is needed because localStorage stores:', options: ['Booleans only', 'Functions only', 'DOM nodes only', 'String values only'], correct: 3, feedbackOk: 'Correct. Arrays and objects must be serialized into strings for storage.', feedbackBad: 'Incorrect. localStorage persists strings, so JSON serialization is required.' },
+			{ text: 'In `app.js` (line 20), `return this.tasks;` in `all()` means the method:', options: ['Returns the current task array reference', 'Always returns a deep clone', 'Deletes all tasks', 'Sorts tasks alphabetically'], correct: 0, feedbackOk: 'Correct. The method exposes the current in-memory array for rendering.', feedbackBad: 'Incorrect. The line returns the stored array; it does not clone or delete.' },
+			{ text: 'In `app.js` (line 27), `const nonEmptyPattern = /^(?=.*[A-Za-z0-9]).+$/;` validates that text:', options: ['Contains at least one alphanumeric character', 'Contains only digits', 'Contains only lowercase letters', 'Contains no spaces at all'], correct: 1, feedbackOk: 'Correct. The lookahead ensures at least one alphanumeric character exists.', feedbackBad: 'Incorrect. The regex checks for meaningful non-empty text with alphanumerics.' },
+			{ text: 'In `app.js` (line 30), `list.innerHTML = \'\'` is used to:', options: ['Persist data to storage', 'Toggle a class', 'Clear previous DOM items before re-rendering', 'Submit the form'], correct: 2, feedbackOk: 'Correct. Clearing the container avoids duplicate nodes on repeated renders.', feedbackBad: 'Incorrect. The line clears rendered items; it does not persist or submit.' },
+			{ text: 'In `app.js` (line 31), `store.all().forEach(function (task, index) { ... })` is useful because it:', options: ['Runs once only', 'Skips index values', 'Mutates CSS media queries', 'Iterates each task and keeps both value and index'], correct: 3, feedbackOk: 'Correct. `forEach` exposes both the current task and its position.', feedbackBad: 'Incorrect. The callback receives task and index for each element.' },
+			{ text: 'In `app.js` (line 35), `text.className = task.done ? \'task-text done\' : \'task-text\'` applies:', options: ['Conditional class names based on completion state', 'A random class each render', 'A permanent error class', 'Inline styles only'], correct: 0, feedbackOk: 'Correct. The ternary sets classes according to each task state.', feedbackBad: 'Incorrect. The expression conditionally assigns the done style class.' },
+			{ text: 'In `app.js` (line 41), `toggleBtn.addEventListener(\'click\', function () { ... })` creates:', options: ['A global polling loop', 'A click handler closure using the current `index` value', 'A CSS selector alias', 'A static HTML template'], correct: 1, feedbackOk: 'Correct. The callback closes over `index`, binding each button to its item.', feedbackBad: 'Incorrect. The event callback captures `index` via closure for correct toggling.' },
+			{ text: 'In `app.js` (line 48), the delete button handler calls `store.remove(index)` to:', options: ['Reverse array order', 'Reset all tasks', 'Remove one specific task by its index', 'Validate regex input'], correct: 2, feedbackOk: 'Correct. The method removes the selected item position from the task list.', feedbackBad: 'Incorrect. The call removes one targeted task; it does not reset all.' },
+			{ text: 'In `app.js` (line 60), `event.preventDefault()` in submit handling is needed to:', options: ['Disable regex checks', 'Re-enable native validation', 'Automatically save on server', 'Stop default form submission and page reload'], correct: 3, feedbackOk: 'Correct. It keeps control in JavaScript for validation and rendering.', feedbackBad: 'Incorrect. The call prevents native submit/reload behavior.' },
+			{ text: 'In `app.js` (line 61), `input.value.trim()` removes:', options: ['Leading and trailing whitespace', 'All punctuation symbols', 'Numbers only', 'Internal spaces between words'], correct: 0, feedbackOk: 'Correct. `trim()` strips whitespace only at the boundaries.', feedbackBad: 'Incorrect. `trim()` removes boundary whitespace, not all punctuation or internal spaces.' },
+			{ text: 'In `app.js` (line 62), `if (!nonEmptyPattern.test(value))` uses `test()` to return:', options: ['A JSON object', 'A boolean indicating regex match status', 'A DOM node', 'A sorted array'], correct: 1, feedbackOk: 'Correct. `RegExp.prototype.test` returns true or false.', feedbackBad: 'Incorrect. `test()` yields a boolean, not an object or node.' },
+			{ text: 'In `app.js` (line 67), `store.add(value)` triggers persistence because `add()` calls:', options: ['`render()` only', '`fetch()`', '`save()` internally', '`querySelectorAll()`'], correct: 2, feedbackOk: 'Correct. `add()` writes data and then persists through `save()`.', feedbackBad: 'Incorrect. The `add` method delegates persistence by invoking `save`.' },
+			{ text: 'In `app.js` (line 72), final `render()` is included to:', options: ['Register CSS media queries', 'Define the class syntax', 'Reset localStorage keys', 'Display existing tasks immediately on page load'], correct: 3, feedbackOk: 'Correct. The initial render shows tasks restored from storage at startup.', feedbackBad: 'Incorrect. Without this call, restored tasks would not appear initially.' },
+			{ text: 'In `styles.css` (line 9), `.task-item { display: flex; justify-content: space-between; }` makes each row:', options: ['Use horizontal distribution between text and controls', 'Collapse into table rows', 'Hide overflow by default', 'Load asynchronously'], correct: 0, feedbackOk: 'Correct. Flex with `space-between` separates text and controls across the row.', feedbackBad: 'Incorrect. The rule establishes horizontal spacing, not table behavior.' },
+			{ text: 'In `styles.css` (line 12), `.task-delete { color: #b42318; }` is mainly a:', options: ['Layout property', 'Visual emphasis for destructive action', 'Storage key', 'DOM traversal rule'], correct: 1, feedbackOk: 'Correct. A distinct color communicates a potentially destructive action.', feedbackBad: 'Incorrect. The color is a visual cue for the delete action.' },
+			{ text: 'In `index.html` (line 17), `aria-live="polite"` on feedback allows assistive technology to:', options: ['Read updates as urgent interrupts', 'Ignore all text changes', 'Announce non-disruptive text updates', 'Disable keyboard input'], correct: 2, feedbackOk: 'Correct. Polite live regions announce updates at appropriate times.', feedbackBad: 'Incorrect. `aria-live="polite"` announces updates without abrupt interruption.' },
+			{ text: 'In `app.js` (line 64), the `return;` statement after invalid input prevents:', options: ['Regex evaluation', 'Feedback text assignment', 'Any further script execution globally', 'Adding invalid tasks and running subsequent submit logic'], correct: 3, feedbackOk: 'Correct. Early return exits the submit handler before add/render actions.', feedbackBad: 'Incorrect. The early return stops the remaining submit-handler workflow only.' },
+			{ text: 'In `app.js` (line 23), `document.getElementById(\'task-form\')` returns:', options: ['The form element with that id or null', 'All forms in the document', 'A NodeList of matching ids', 'A CSS declaration block'], correct: 0, feedbackOk: 'Correct. The API resolves one element by unique id.', feedbackBad: 'Incorrect. `getElementById` returns a single element, not a collection.' },
+			{ text: 'In `app.js` (line 14), `this.tasks.splice(index, 1)` removes:', options: ['A range of all remaining tasks', 'Exactly one task at the provided index', 'Only tasks marked done', 'Nothing unless followed by parse'], correct: 1, feedbackOk: 'Correct. `splice(index, 1)` deletes one array element at the target position.', feedbackBad: 'Incorrect. The second argument `1` removes exactly one item.' }
+		];
+	</script>
+	<script src="exam.js"></script>
+</body>
+</html>

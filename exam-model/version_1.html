@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Version 1 Exam Model - Code Analysis | Web Design Course 2025-2026</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="exam.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+				<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+					<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+					<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+							<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+							<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+							<li><a class="dropdown-item" href="../lecture-2/">Lecture 2</a></li>
+							<li><a class="dropdown-item" href="../lecture-3/">Lecture 3</a></li>
+							<li><a class="dropdown-item" href="../lecture-4/">Lecture 4</a></li>
+							<li><a class="dropdown-item" href="../lecture-5/">Lecture 5</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item active" href="index.html">Exam examples</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main-content">
+		<h1>Version 1 Exam Model - Code Analysis</h1>
+		<div class="exam-meta">
+			<p><strong>Course:</strong> Web Design (2025-2026)</p>
+			<p><strong>Component:</strong> Knowledge of theoretical concepts II - written code analysis (30 questions)</p>
+			<p><strong>Scoring:</strong> 9 points shared equally across the 30 questions + 1 base point = 10 points maximum</p>
+			<p><a href="version_2.html">Version 2</a> | <a href="version_3.html">Version 3</a> | <a href="version_4.html">Version 4</a></p>
+		</div>
+
+		<p>Read the source files below (<code>index.html</code>, <code>styles.css</code>, <code>app.js</code>), then answer the questions. Each question refers to a specific file and line number. Select one answer per question and click <strong>Check answers</strong> for feedback.</p>
+
+		<h2>Source code to analyze</h2>
+		<p class="code-note">Event registration page: semantic HTML, accessible form, responsive CSS, client-side validation and DOM updates.</p>
+		<div id="code-files"></div>
+
+		<div id="score-panel" class="score-panel" aria-live="polite">
+			<p class="score-label">Result</p>
+			<p class="score-value" id="score-value">-</p>
+			<p class="score-detail" id="score-detail"></p>
+		</div>
+
+		<h2>Questions</h2>
+		<form id="quiz-form" novalidate>
+			<div id="quiz-questions"></div>
+			<div class="quiz-actions">
+				<button type="button" class="btn btn-primary" id="check-btn">Check answers</button>
+				<button type="button" class="btn btn-outline-secondary" id="reset-btn">Reset</button>
+			</div>
+		</form>
+	</main>
+
+	<button id="back-to-top" type="button">Back to Top</button>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+	<script>
+		const CODE_FILES = [
+			{
+				name: 'index.html',
+				lang: 'html',
+				code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Events</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header>
+    <nav aria-label="Main">
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </nav>
+    <h1>Student Events</h1>
+  </header>
+
+  <main id="main">
+    <section>
+      <h2>Upcoming sessions</h2>
+      <table>
+        <caption>Workshop schedule</caption>
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Topic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>10 Jun</td>
+            <td>HTML forms</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Register</h2>
+      <form id="register-form" novalidate>
+        <fieldset>
+          <legend>Your details</legend>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <p class="error" id="form-error" hidden></p>
+        </fieldset>
+        <button type="submit">Register</button>
+      </form>
+      <ul id="registrations"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Web Design Course 2025-2026</p>
+  </footer>
+  <script src="app.js" defer><\/script>
+</body>
+</html>`
+			},
+			{
+				name: 'styles.css',
+				lang: 'css',
+				code: `* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  color: #1f2328;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}
+
+header { background: #f0f4f8; padding: 1rem 1.5rem; }
+
+.nav-list {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #d0d7de;
+  padding: 0.5rem;
+}
+
+.field { margin-bottom: 1rem; }
+
+label { display: block; font-weight: 600; margin-bottom: 0.25rem; }
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.error { color: #b00020; font-size: 0.875rem; }
+
+button:hover { background: #0a6ebd; color: #fff; }
+
+@media (max-width: 600px) {
+  main { padding: 1rem; }
+}`
+			},
+			{
+				name: 'app.js',
+				lang: 'javascript',
+				code: `class RegistrationStore {
+  constructor(key) {
+    this.key = key;
+    this.items = JSON.parse(localStorage.getItem(key)) || [];
+  }
+  add(entry) {
+    this.items.push(entry);
+    localStorage.setItem(this.key, JSON.stringify(this.items));
+  }
+  all() {
+    return this.items;
+  }
+}
+
+const form = document.getElementById('register-form');
+const list = document.getElementById('registrations');
+const errorBox = document.getElementById('form-error');
+const emailPattern = /^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/;
+const store = new RegistrationStore('registrations');
+
+function render() {
+  list.innerHTML = '';
+  const labels = store.all().map(function (entry) {
+    return entry.name + ' - ' + entry.email;
+  });
+  labels.forEach(function (text) {
+    const li = document.createElement('li');
+    li.textContent = text;
+    list.appendChild(li);
+  });
+}
+
+render();
+
+form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  errorBox.hidden = true;
+  errorBox.textContent = '';
+
+  const name = form.name.value.trim();
+  const email = form.email.value.trim();
+
+  if (name === '' || email === '') return;
+
+  if (!emailPattern.test(email)) {
+    errorBox.textContent = 'Please enter a valid email.';
+    errorBox.hidden = false;
+    return;
+  }
+
+  store.add({ name: name, email: email });
+  render();
+  form.reset();
+});`
+			}
+		];
+
+		const QUESTIONS = [
+			{
+				text: 'In <code>index.html</code> (line 1), <code>&lt;!DOCTYPE html&gt;</code> declares:',
+				options: ['An HTML5 document in standards mode', 'An XML document', 'A CSS stylesheet', 'A JavaScript module'],
+				correct: 0,
+				feedbackOk: 'Correct. <!DOCTYPE html> identifies the document as HTML5.',
+				feedbackBad: 'Incorrect. Line 1 is the HTML5 document type declaration.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 5), the viewport meta tag is used for:',
+				options: ['Setting the page title', 'Responsive layout on mobile devices', 'Loading JavaScript', 'Declaring UTF-8 encoding'],
+				correct: 1,
+				feedbackOk: 'Correct. The viewport meta tag configures scaling and width for responsive pages.',
+				feedbackBad: 'Incorrect. Line 5 sets the viewport for responsive rendering.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 10), the skip link helps:',
+				options: ['Search engines only', 'Screen readers read faster', 'Keyboard users jump to the main content', 'Hide the navigation'],
+				correct: 2,
+				feedbackOk: 'Correct. A skip link lets keyboard users bypass repetitive navigation to #main.',
+				feedbackBad: 'Incorrect. The skip link targets #main for keyboard and screen-reader users.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 12), <code>&lt;nav aria-label="Main"&gt;</code> is:',
+				options: ['A generic div', 'A footer landmark', 'A table header', 'A semantic navigation landmark with an accessible name'],
+				correct: 3,
+				feedbackOk: 'Correct. <nav> is the semantic landmark for navigation; aria-label names it for assistive technology.',
+				feedbackBad: 'Incorrect. <nav> is the navigation landmark; aria-label provides its accessible name.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 25), <code>&lt;caption&gt;</code> provides:',
+				options: ['An accessible title for the table', 'A column header', 'A hidden comment', 'A form label'],
+				correct: 0,
+				feedbackOk: 'Correct. <caption> gives the table an accessible title.',
+				feedbackBad: 'Incorrect. <caption> is the table title for assistive technology.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 28), <code>scope="col"</code> on <code>&lt;th&gt;</code> associates the header with:',
+				options: ['Its column', 'Its row', 'The whole table', 'The caption'],
+				correct: 0,
+				feedbackOk: 'Correct. scope="col" links the header cell to its column.',
+				feedbackBad: 'Incorrect. scope="col" is for column headers; scope="row" is for row headers.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 43), <code>novalidate</code> on the form:',
+				options: ['Makes all fields optional forever', 'Disables browser built-in validation so JavaScript can validate', 'Submits to the server automatically', 'Hides the form'],
+				correct: 1,
+				feedbackOk: 'Correct. novalidate turns off native validation so app.js handles checking.',
+				feedbackBad: 'Incorrect. novalidate disables the browser default validation UI.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 47), <code>&lt;label for="name"&gt;</code> correctly associates the label with the input because:',
+				options: ['They share the same class', 'The for attribute matches the input id', 'Both use required', 'They are in a fieldset'],
+				correct: 1,
+				feedbackOk: 'Correct. for="name" matches id="name", giving the control an accessible name.',
+				feedbackBad: 'Incorrect. The label is associated via for="name" matching id="name".'
+			},
+			{
+				text: 'In <code>index.html</code> (line 52), <code>type="email"</code> provides:',
+				options: ['Encryption', 'Automatic server submission', 'Email semantics and a suitable input mode', 'A file upload'],
+				correct: 2,
+				feedbackOk: 'Correct. type="email" sets email semantics and can offer an email keyboard on mobile.',
+				feedbackBad: 'Incorrect. type="email" sets the input type and semantics; it does not encrypt or submit alone.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 65), <code>defer</code> on the script means:',
+				options: ['The script runs before HTML parsing', 'The script is loaded asynchronously with no order guarantee', 'The script downloads in parallel and runs after parsing, preserving order', 'The script cannot use the DOM'],
+				correct: 2,
+				feedbackOk: 'Correct. defer downloads in parallel and executes after the document is parsed, in order.',
+				feedbackBad: 'Incorrect. defer runs after parsing in document order; async would not guarantee order.'
+			},
+			{
+				text: 'In <code>styles.css</code> (line 1), <code>box-sizing: border-box</code> means the declared width includes:',
+				options: ['Content, padding, and border', 'Margin only', 'Content only', 'Padding only'],
+				correct: 0,
+				feedbackOk: 'Correct. border-box includes padding and border inside the width.',
+				feedbackBad: 'Incorrect. With border-box, width covers content, padding, and border.'
+			},
+			{
+				text: 'In <code>styles.css</code> (lines 11-16), the skip link is shown when:',
+				options: ['Always visible', 'The link receives keyboard focus', 'On hover only', 'Never'],
+				correct: 1,
+				feedbackOk: 'Correct. It is off-screen by default and moves into view on :focus.',
+				feedbackBad: 'Incorrect. .skip-link:focus brings the link on screen for keyboard users.'
+			},
+			{
+				text: 'In <code>styles.css</code> (line 21), <code>display: flex</code> on <code>.nav-list</code> arranges items:',
+				options: ['In a vertical stack only', 'In a grid', 'Along the flex main axis (row by default)', 'As inline text without layout'],
+				correct: 2,
+				feedbackOk: 'Correct. Flex lays out the list items along the main axis, which defaults to a row.',
+				feedbackBad: 'Incorrect. display: flex arranges children along the main axis (row by default).'
+			},
+			{
+				text: 'In <code>styles.css</code> (line 22), <code>gap: 1rem</code> sets:',
+				options: ['Outer margin', 'Border width', 'Font size', 'Space between flex items'],
+				correct: 3,
+				feedbackOk: 'Correct. gap defines spacing between flex items.',
+				feedbackBad: 'Incorrect. gap controls the space between flex items.'
+			},
+			{
+				text: 'In <code>styles.css</code> (line 36), <code>border-collapse: collapse</code> on tables:',
+				options: ['Merges adjacent cell borders into one', 'Hides the table', 'Adds double borders', 'Removes padding'],
+				correct: 0,
+				feedbackOk: 'Correct. border-collapse: collapse merges shared borders between cells.',
+				feedbackBad: 'Incorrect. border-collapse: collapse merges adjacent cell borders.'
+			},
+			{
+				text: 'In <code>styles.css</code> (line 44), <code>label { display: block; }</code> causes each label to:',
+				options: ['Start on its own line above the field', 'Stay inline with the input', 'Be hidden', 'Float right'],
+				correct: 0,
+				feedbackOk: 'Correct. display: block puts each label on its own line.',
+				feedbackBad: 'Incorrect. display: block makes the label occupy a full line.'
+			},
+			{
+				text: 'In <code>styles.css</code> (line 53), <code>button:hover</code> is:',
+				options: ['A pseudo-element', 'A pseudo-class', 'An id selector', 'A child combinator'],
+				correct: 1,
+				feedbackOk: 'Correct. :hover is a pseudo-class matching the hover state.',
+				feedbackBad: 'Incorrect. :hover is a pseudo-class, not a pseudo-element or combinator.'
+			},
+			{
+				text: 'In <code>styles.css</code> (lines 55-57), <code>@media (max-width: 600px)</code> applies when:',
+				options: ['The screen is at least 600px wide', 'The screen is 600px wide or narrower', 'The device is in landscape', 'Print mode is active'],
+				correct: 1,
+				feedbackOk: 'Correct. max-width: 600px matches viewports up to 600px wide.',
+				feedbackBad: 'Incorrect. max-width: 600px applies on screens 600px wide or less.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 1), <code>class RegistrationStore</code> is:',
+				options: ['An object literal', 'An ES6 class declaration', 'A function call', 'A DOM node'],
+				correct: 1,
+				feedbackOk: 'Correct. class declares a constructor-backed type used with new.',
+				feedbackBad: 'Incorrect. class RegistrationStore is an ES6 class declaration.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 4), <code>JSON.parse(localStorage.getItem(key)) || []</code> ensures:',
+				options: ['The key is deleted', 'An empty array is used when nothing is stored', 'Data is sent to a server', 'The form is reset'],
+				correct: 1,
+				feedbackOk: 'Correct. If getItem returns null, the || [] fallback supplies an empty array.',
+				feedbackBad: 'Incorrect. || [] provides an empty array when localStorage has no value.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 8), <code>JSON.stringify(this.items)</code> is needed because localStorage stores:',
+				options: ['DOM nodes', 'Binary files', 'Strings only', 'Functions'],
+				correct: 2,
+				feedbackOk: 'Correct. localStorage values are strings; stringify serializes the array.',
+				feedbackBad: 'Incorrect. localStorage stores strings, so the array is serialized with JSON.stringify.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 20), <code>document.getElementById</code> returns:',
+				options: ['A NodeList', 'All elements with a class', 'A boolean', 'One element or null'],
+				correct: 3,
+				feedbackOk: 'Correct. getElementById returns a single element or null.',
+				feedbackBad: 'Incorrect. getElementById returns one element (or null), not a collection.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 27), <code>.map()</code> returns:',
+				options: ['A new array of formatted strings', 'The first match', 'A boolean', 'The original array mutated'],
+				correct: 0,
+				feedbackOk: 'Correct. map builds a new array by transforming each entry.',
+				feedbackBad: 'Incorrect. map returns a new array; it does not mutate the source.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 32), <code>li.textContent = text</code> is preferred over <code>innerHTML</code> because:',
+				options: ['It parses HTML tags', 'It sets plain text and avoids HTML injection', 'It is slower', 'It removes the element'],
+				correct: 1,
+				feedbackOk: 'Correct. textContent writes plain text without parsing HTML.',
+				feedbackBad: 'Incorrect. textContent is safe for plain text; innerHTML can introduce XSS.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 21), the regex <code>/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/</code> is anchored with <code>^</code> and <code>$</code> to:',
+				options: ['Match a substring', 'Allow any whitespace anywhere', 'Match the whole input string', 'Be case-insensitive'],
+				correct: 2,
+				feedbackOk: 'Correct. ^ and $ require the pattern to match the entire value.',
+				feedbackBad: 'Incorrect. ^ and $ anchor the match to the full string.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 39), <code>event.preventDefault()</code> stops:',
+				options: ['JavaScript execution', 'The default form submission and page reload', 'localStorage writes', 'CSS from loading'],
+				correct: 1,
+				feedbackOk: 'Correct. preventDefault blocks the browser default submit behaviour.',
+				feedbackBad: 'Incorrect. preventDefault stops the default form submission/reload.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 45), <code>name === \'\' || email === \'\'</code> is true when:',
+				options: ['Both fields are filled', 'At least one field is empty', 'The email is invalid', 'The store is empty'],
+				correct: 1,
+				feedbackOk: 'Correct. || is true if either operand is true, so one empty field triggers the guard.',
+				feedbackBad: 'Incorrect. The condition is true when at least one of name or email is empty.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 47), <code>emailPattern.test(email)</code> returns:',
+				options: ['The matched substring', 'An array', 'A boolean', 'The email string'],
+				correct: 2,
+				feedbackOk: 'Correct. RegExp.test returns true or false.',
+				feedbackBad: 'Incorrect. test() returns a boolean indicating whether the pattern matches.'
+			},
+			{
+				text: 'In <code>index.html</code> (line 44), <code>&lt;fieldset&gt;</code> with <code>&lt;legend&gt;</code> is used to:',
+				options: ['Style the button', 'Load external CSS', 'Group related controls with a visible group label', 'Validate on the server'],
+				correct: 2,
+				feedbackOk: 'Correct. fieldset groups controls and legend labels the group for users and assistive technology.',
+				feedbackBad: 'Incorrect. fieldset/legend groups related form controls with an accessible group name.'
+			},
+			{
+				text: 'In <code>app.js</code> (line 56), after a successful registration, <code>form.reset()</code>:',
+				options: ['Submits again', 'Deletes localStorage', 'Clears the input fields to their initial values', 'Removes the list'],
+				correct: 2,
+				feedbackOk: 'Correct. reset() restores form controls to their default values.',
+				feedbackBad: 'Incorrect. reset() clears the form fields; it does not submit or delete storage.'
+			}
+		];
+	</script>
+	<script src="exam.js"></script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Version 3 Exam Model - Code Analysis</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="exam.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+				<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+					<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+					<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+							<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+							<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+							<li><a class="dropdown-item" href="../lecture-2/">Lecture 2</a></li>
+							<li><a class="dropdown-item" href="../lecture-3/">Lecture 3</a></li>
+							<li><a class="dropdown-item" href="../lecture-4/">Lecture 4</a></li>
+							<li><a class="dropdown-item" href="../lecture-5/">Lecture 5</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item active" href="index.html">Exam examples</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main-content">
+		<h1>Version 3 Exam Model - Code Analysis</h1>
+		<div class="exam-meta">
+			<p><strong>Course:</strong> Web Design (2025-2026)</p>
+			<p><strong>Component:</strong> Knowledge of theoretical concepts II - written code analysis (30 questions)</p>
+			<p><strong>Scoring:</strong> 9 points shared equally across the 30 questions + 1 base point = 10 points maximum</p>
+			<p><a href="version_1.html">Version 1</a> | <a href="version_2.html">Version 2</a> | <a href="version_4.html">Version 4</a></p>
+		</div>
+
+		<p>Read the source files below (<code>index.html</code>, <code>styles.css</code>, <code>app.js</code>), then answer the questions. Each question refers to a specific file and line number. Select one answer per question and click <strong>Check answers</strong> for feedback.</p>
+
+		<h2>Source code to analyze</h2>
+		<p class="code-note">Accessible tabbed interface with sticky header, Flexbox tabs, media queries, and event-driven panel switching.</p>
+		<div id="code-files"></div>
+
+		<div id="score-panel" class="score-panel" aria-live="polite">
+			<p class="score-label">Result</p>
+			<p class="score-value" id="score-value">-</p>
+			<p class="score-detail" id="score-detail"></p>
+		</div>
+
+		<h2>Questions</h2>
+		<form id="quiz-form" novalidate>
+			<div id="quiz-questions"></div>
+			<div class="quiz-actions">
+				<button type="button" class="btn btn-primary" id="check-btn">Check answers</button>
+				<button type="button" class="btn btn-outline-secondary" id="reset-btn">Reset</button>
+			</div>
+		</form>
+	</main>
+
+	<button id="back-to-top" type="button">Back to Top</button>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+	<script>
+		const CODE_FILES = [
+			{
+				name: 'index.html',
+				lang: 'html',
+				code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Student Help Tabs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="tabs-header">
+    <h1>Student Help Center</h1>
+    <nav aria-label="Help sections">
+      <ul class="tab-list" role="tablist">
+        <li><button class="tab is-active" role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" data-target="overview">Overview</button></li>
+        <li><button class="tab" role="tab" id="tab-resources" aria-selected="false" aria-controls="panel-resources" data-target="resources">Resources</button></li>
+        <li><button class="tab" role="tab" id="tab-faq" aria-selected="false" aria-controls="panel-faq" data-target="faq">FAQ</button></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main-content">
+    <section id="panel-overview" class="tab-panel is-visible" role="tabpanel" aria-labelledby="tab-overview">
+      <h2>Overview</h2>
+      <p>Use the tabs to switch support content.</p>
+    </section>
+    <section id="panel-resources" class="tab-panel" role="tabpanel" aria-labelledby="tab-resources">
+      <h2>Resources</h2>
+      <p>Read the weekly guidance and examples.</p>
+    </section>
+    <section id="panel-faq" class="tab-panel" role="tabpanel" aria-labelledby="tab-faq">
+      <h2>FAQ</h2>
+      <p>Frequently asked questions for students.</p>
+    </section>
+  </main>
+  <script src="app.js" defer><\/script>
+</body>
+</html>`
+			},
+			{
+				name: 'styles.css',
+				lang: 'css',
+				code: `* { box-sizing: border-box; }
+body { margin: 0; font-family: Arial, sans-serif; color: #1f2328; line-height: 1.5; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; background: #fff; padding: 0.5rem; }
+.tabs-header { position: sticky; top: 0; background: #fff; border-bottom: 1px solid #d0d7de; padding: 1rem; z-index: 10; }
+.tab-list { display: flex; gap: 0.75rem; list-style: none; padding: 0; margin: 0; flex-wrap: wrap; }
+.tab { border: 1px solid #8c959f; background: #f6f8fa; color: #1f2328; padding: 0.4rem 0.75rem; cursor: pointer; }
+.tab[aria-selected="true"] { background: #2f6feb; color: #fff; }
+main { padding: 1rem; }
+.tab-panel { display: none; padding: 1rem; border: 1px solid #d0d7de; border-radius: 0.5rem; margin-top: 1rem; background: #fff; }
+.tab-panel.is-visible { display: block; }
+@media (min-width: 780px) {
+  main { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+}`
+			},
+			{
+				name: 'app.js',
+				lang: 'javascript',
+				code: `const tabs = document.querySelectorAll('.tab');
+const panels = document.querySelectorAll('.tab-panel');
+function activateTab(targetName) {
+  tabs.forEach(function (tab) {
+    const isCurrent = tab.dataset.target === targetName;
+    tab.classList.toggle('is-active', isCurrent);
+    tab.setAttribute('aria-selected', String(isCurrent));
+  });
+  panels.forEach(function (panel) {
+    const isCurrent = panel.id === 'panel-' + targetName;
+    panel.classList.toggle('is-visible', isCurrent);
+  });
+}
+tabs.forEach(function (tab) {
+  tab.addEventListener('click', function () {
+    activateTab(tab.dataset.target);
+  });
+  tab.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      activateTab(tab.dataset.target);
+    }
+  });
+});
+activateTab('overview');`
+			}
+		];
+
+		const QUESTIONS = [
+			{ text: 'In `index.html` (line 10), the skip link is primarily intended to assist:', options: ['Search robots', 'Keyboard users who want to bypass repeated content', 'Analytics scripts', 'Image optimization'], correct: 0, feedbackOk: 'Correct. Skip links are an accessibility technique for faster keyboard navigation.', feedbackBad: 'Incorrect. The skip link is an accessibility feature for keyboard navigation.' },
+			{ text: 'In `index.html` (line 14), `role="tablist"` communicates that the list is:', options: ['A form control group', 'A container for related tabs', 'A table row group', 'A live region'], correct: 1, feedbackOk: 'Correct. The role identifies the element as a tablist for assistive technologies.', feedbackBad: 'Incorrect. `role="tablist"` defines a semantic container for tab controls.' },
+			{ text: 'In `index.html` (line 15), `aria-controls="panel-overview"` establishes:', options: ['Visual styling inheritance', 'A hover trigger', 'A programmatic relationship to the controlled panel', 'A CSS media query'], correct: 2, feedbackOk: 'Correct. The tab is explicitly associated with the panel it controls.', feedbackBad: 'Incorrect. `aria-controls` links a controller element to its target region.' },
+			{ text: 'In `index.html` (line 22), the class `is-visible` on the panel indicates:', options: ['Server-side rendering state', 'A CSS variable name', 'A JavaScript-only comment', 'The panel should be shown by CSS'], correct: 3, feedbackOk: 'Correct. CSS uses that class to switch display from hidden to visible.', feedbackBad: 'Incorrect. The class marks which panel should be displayed.' },
+			{ text: 'In `index.html` (line 26), `role="tabpanel"` identifies a section as:', options: ['A panel associated with tab interaction', 'A navigation landmark', 'A figure caption', 'An inline note'], correct: 0, feedbackOk: 'Correct. The role exposes panel semantics within a tab interface.', feedbackBad: 'Incorrect. `tabpanel` denotes content associated with tab controls.' },
+			{ text: 'In `index.html` (line 30), `defer` on `app.js` means script execution happens:', options: ['Before HTML parsing', 'After HTML parsing has finished', 'Only when scrolling starts', 'Only in large screens'], correct: 1, feedbackOk: 'Correct. Deferred scripts execute after parsing and before DOMContentLoaded.', feedbackBad: 'Incorrect. Deferred scripts do not execute before parsing; they run afterward.' },
+			{ text: 'In `styles.css` (line 5), `position: sticky` with `top: 0` makes the header:', options: ['Always absolutely positioned', 'Hidden on scroll', 'Stick to the top edge after reaching it', 'Float to the right'], correct: 2, feedbackOk: 'Correct. Sticky positioning keeps the header attached to the top threshold.', feedbackBad: 'Incorrect. Sticky plus `top: 0` keeps the header pinned when scrolling.' },
+			{ text: 'In `styles.css` (line 6), `display: flex` on `.tab-list` arranges tab items:', options: ['As block rows only', 'As table cells', 'As grid tracks', 'Along the flex main axis'], correct: 3, feedbackOk: 'Correct. Flexbox lays out direct children along the main axis.', feedbackBad: 'Incorrect. Flexbox controls the axis-based arrangement of list items.' },
+			{ text: 'In `styles.css` (line 10), `.tab-panel { display: none; }` causes panels to:', options: ['Be hidden by default', 'Be positioned sticky', 'Render inline', 'Become keyboard-focusable automatically'], correct: 0, feedbackOk: 'Correct. The default panel state is hidden until an active class is added.', feedbackBad: 'Incorrect. `display: none` hides panel elements by default.' },
+			{ text: 'In `styles.css` (line 12), `@media (min-width: 780px)` applies on viewports that are:', options: ['780px or narrower', '780px or wider', 'Exactly 780px only', 'Touch devices only'], correct: 1, feedbackOk: 'Correct. `min-width` activates at the breakpoint and above.', feedbackBad: 'Incorrect. `min-width: 780px` targets wider viewports, not narrow ones.' },
+			{ text: 'In `styles.css` (line 8), `.tab[aria-selected="true"]` is a:', options: ['Type selector', 'Pseudo-element selector', 'Class selector with an attribute filter', 'ID selector'], correct: 2, feedbackOk: 'Correct. It combines a class selector with an attribute selector.', feedbackBad: 'Incorrect. The selector includes an attribute condition on `.tab` elements.' },
+			{ text: 'In `styles.css` (line 11), `.tab-panel.is-visible { display: block; }` is used to:', options: ['Create a hover animation', 'Alter tab button colors only', 'Disable keyboard focus', 'Show the currently active panel'], correct: 3, feedbackOk: 'Correct. The class pair overrides the hidden default for the active panel.', feedbackBad: 'Incorrect. That rule controls visibility of the active panel content.' },
+			{ text: 'In `app.js` (line 1), `querySelectorAll(\'.tab\')` returns:', options: ['A NodeList of tab elements', 'A single tab element', 'A boolean result', 'A CSS style object'], correct: 0, feedbackOk: 'Correct. The method returns a NodeList of all matching elements.', feedbackBad: 'Incorrect. `querySelectorAll` returns all matches in a NodeList.' },
+			{ text: 'In `app.js` (line 4), `tabs.forEach(...)` executes the callback:', options: ['Only once at startup', 'For each tab element in the NodeList', 'Only for active tabs', 'Only after keydown'], correct: 1, feedbackOk: 'Correct. `forEach` iterates every tab in sequence.', feedbackBad: 'Incorrect. `forEach` runs once per element in the list.' },
+			{ text: 'In `app.js` (line 6), `classList.toggle(\'is-active\', isCurrent)` uses the second argument to:', options: ['Append duplicate classes', 'Return the index', 'Force add/remove based on a boolean condition', 'Sort class names alphabetically'], correct: 2, feedbackOk: 'Correct. The boolean argument determines whether the class is present.', feedbackBad: 'Incorrect. With two arguments, `toggle` conditionally adds or removes the class.' },
+			{ text: 'In `app.js` (line 7), `setAttribute(\'aria-selected\', String(isCurrent))` updates:', options: ['Only CSS classes', 'Only internal JavaScript state', 'A dataset property', 'The accessibility state exposed to assistive technology'], correct: 3, feedbackOk: 'Correct. The attribute communicates selected state semantically.', feedbackBad: 'Incorrect. The line updates the ARIA state attribute for accessibility.' },
+			{ text: 'In `app.js` (line 10), `panel.id === \'panel-\' + targetName` checks whether:', options: ['The panel corresponds to the chosen tab target', 'The panel has an inline style', 'The panel is inside a form', 'The panel supports fetch'], correct: 0, feedbackOk: 'Correct. The comparison maps tab target names to panel ids.', feedbackBad: 'Incorrect. The string concatenation matches each tab target to one panel id.' },
+			{ text: 'In `app.js` (line 15), `addEventListener(\'click\', ...)` does what?', options: ['Runs the callback immediately', 'Registers a callback for future click events', 'Removes existing listeners', 'Submits all forms'], correct: 1, feedbackOk: 'Correct. The callback runs when a click event occurs.', feedbackBad: 'Incorrect. `addEventListener` registers a handler; it does not execute it immediately.' },
+			{ text: 'In `app.js` (line 16), `activateTab(tab.dataset.target)` reads which value?', options: ['The element id', 'The class list', 'The `data-target` attribute via the dataset API', 'The first child text only'], correct: 2, feedbackOk: 'Correct. `dataset.target` maps directly to `data-target`.', feedbackBad: 'Incorrect. The expression reads the custom `data-target` attribute.' },
+			{ text: 'In `app.js` (line 20), `event.preventDefault()` in keydown handling is used to:', options: ['Disable JavaScript', 'Reload the page', 'Remove all listeners', 'Stop default key behavior before custom activation'], correct: 3, feedbackOk: 'Correct. It prevents default key action while preserving custom tab behavior.', feedbackBad: 'Incorrect. The call prevents the browser default action for that key event.' },
+			{ text: 'In `app.js` (line 23), the outer `tabs.forEach` loop ensures that:', options: ['Every tab receives both click and keydown handlers', 'Only the first tab is interactive', 'Handlers are attached to panels', 'The script runs only once per session'], correct: 0, feedbackOk: 'Correct. Iterating tabs applies listeners uniformly across controls.', feedbackBad: 'Incorrect. The loop attaches handlers to each tab, not only one.' },
+			{ text: 'In `app.js` (line 25), `activateTab(\'overview\')` provides:', options: ['A final score calculation', 'An explicit initial selected-tab state', 'A fetch request to the server', 'A CSS compilation trigger'], correct: 1, feedbackOk: 'Correct. The call initializes the interface with the overview tab active.', feedbackBad: 'Incorrect. The line sets an initial active panel and selected tab.' },
+			{ text: 'In `styles.css` (line 6), `list-style: none` is used to:', options: ['Enable sticky behavior', 'Set panel visibility', 'Remove default list markers', 'Center text inside headings'], correct: 2, feedbackOk: 'Correct. The rule removes bullet markers from the tab list.', feedbackBad: 'Incorrect. `list-style: none` affects list markers only.' },
+			{ text: 'In `styles.css` (line 5), `z-index: 10` on the sticky header helps it:', options: ['Run JavaScript faster', 'Use larger fonts', 'Hide the main element', 'Stay above overlapping content layers'], correct: 3, feedbackOk: 'Correct. A positive z-index helps the sticky header remain visually on top.', feedbackBad: 'Incorrect. `z-index` controls stacking order, not script speed or fonts.' },
+			{ text: 'In `index.html` (line 15), using `<button>` for each tab is beneficial because buttons are:', options: ['Natively focusable and keyboard-operable', 'Rendered as table cells', 'Automatically hidden from assistive technology', 'Equivalent to CSS selectors'], correct: 0, feedbackOk: 'Correct. Native buttons provide solid keyboard and accessibility behavior.', feedbackBad: 'Incorrect. Buttons are preferred controls because they are natively interactive.' },
+			{ text: 'In `index.html` (line 22), `role="tabpanel"` and `aria-labelledby` together provide:', options: ['Visual grid alignment', 'Accessible linkage between a panel and its controlling tab', 'Automatic localStorage persistence', 'Animation timing functions'], correct: 1, feedbackOk: 'Correct. The panel receives an accessible label from its corresponding tab.', feedbackBad: 'Incorrect. Those attributes create accessibility relationships, not layout or storage.' },
+			{ text: 'In `styles.css` (line 7), `cursor: pointer` on `.tab` communicates:', options: ['Read-only state', 'Form submission state', 'Interactive click affordance', 'Server response loading'], correct: 2, feedbackOk: 'Correct. The pointer cursor indicates clickability to users.', feedbackBad: 'Incorrect. The pointer cursor is a visual affordance for interactive elements.' },
+			{ text: 'In `app.js` (line 18), the keydown listener supports keyboard activation when users press:', options: ['ArrowDown only', 'Escape only', 'Tab only', 'Enter or Space'], correct: 3, feedbackOk: 'Correct. The condition checks Enter and Space for activation behavior.', feedbackBad: 'Incorrect. The handler activates on Enter or Space, not on all keys.' },
+			{ text: 'In `styles.css` (line 12), the media query modifies `main` so that large-screen content has:', options: ['A maximum width and centered layout', 'Absolute positioning only', 'Hidden panel content', 'Inline display behavior'], correct: 0, feedbackOk: 'Correct. The rule constrains line length and centers the main content area.', feedbackBad: 'Incorrect. The media rule defines width constraints and centering on wider screens.' },
+			{ text: 'In `app.js` (line 9), iterating `panels.forEach(...)` allows the script to:', options: ['Compile CSS variables', 'Update visibility state for every panel before showing one target', 'Delete inactive panels permanently', 'Read cookies from the browser'], correct: 1, feedbackOk: 'Correct. The loop normalizes panel visibility, then one panel is shown.', feedbackBad: 'Incorrect. The loop updates each panel state rather than deleting elements.' }
+		];
+	</script>
+	<script src="exam.js"></script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Version 2 Exam Model - Code Analysis</title>
+	<link rel="shortcut icon" href="../favicon.svg">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="exam.css">
+</head>
+<body>
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm" aria-label="Main navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand d-flex align-items-center gap-2" href="../">
+				<span><strong>Web Design Course</strong> <span class="text-muted">2025-2026</span></span>
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ms-auto">
+					<li class="nav-item"><a class="nav-link" href="../#info">Info</a></li>
+					<li class="nav-item"><a class="nav-link" href="../schedule/">Schedule</a></li>
+					<li class="nav-item"><a class="nav-link" href="../labs/">Labs</a></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarLectures" role="button" data-bs-toggle="dropdown" aria-expanded="false">Lectures</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarLectures">
+							<li><a class="dropdown-item" href="../lecture-0/">Lecture 0</a></li>
+							<li><a class="dropdown-item" href="../lecture-1/">Lecture 1</a></li>
+							<li><a class="dropdown-item" href="../lecture-2/">Lecture 2</a></li>
+							<li><a class="dropdown-item" href="../lecture-3/">Lecture 3</a></li>
+							<li><a class="dropdown-item" href="../lecture-4/">Lecture 4</a></li>
+							<li><a class="dropdown-item" href="../lecture-5/">Lecture 5</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item active" href="index.html">Exam examples</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="../resources/">Resources</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<main id="main-content">
+		<h1>Version 2 Exam Model - Code Analysis</h1>
+		<div class="exam-meta">
+			<p><strong>Course:</strong> Web Design (2025-2026)</p>
+			<p><strong>Component:</strong> Knowledge of theoretical concepts II - written code analysis (30 questions)</p>
+			<p><strong>Scoring:</strong> 9 points shared equally across the 30 questions + 1 base point = 10 points maximum</p>
+			<p><a href="version_1.html">Version 1</a> | <a href="version_3.html">Version 3</a> | <a href="version_4.html">Version 4</a></p>
+		</div>
+
+		<p>Read the source files below (<code>index.html</code>, <code>styles.css</code>, <code>app.js</code>), then answer the questions. Each question refers to a specific file and line number. Select one answer per question and click <strong>Check answers</strong> for feedback.</p>
+
+		<h2>Source code to analyze</h2>
+		<p class="code-note">Product catalog app with semantic structure, responsive CSS Grid, and JavaScript rendering with filter, map, and reduce.</p>
+		<div id="code-files"></div>
+
+		<div id="score-panel" class="score-panel" aria-live="polite">
+			<p class="score-label">Result</p>
+			<p class="score-value" id="score-value">-</p>
+			<p class="score-detail" id="score-detail"></p>
+		</div>
+
+		<h2>Questions</h2>
+		<form id="quiz-form" novalidate>
+			<div id="quiz-questions"></div>
+			<div class="quiz-actions">
+				<button type="button" class="btn btn-primary" id="check-btn">Check answers</button>
+				<button type="button" class="btn btn-outline-secondary" id="reset-btn">Reset</button>
+			</div>
+		</form>
+	</main>
+
+	<button id="back-to-top" type="button">Back to Top</button>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/css.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+	<script>
+		const CODE_FILES = [
+			{
+				name: 'index.html',
+				lang: 'html',
+				code: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campus Store Catalog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <h1>Campus Store</h1>
+    <p>Compare products and estimated totals.</p>
+  </header>
+  <main id="main-content">
+    <section aria-labelledby="filter-heading">
+      <h2 id="filter-heading">Filter products</h2>
+      <form id="filter-form">
+        <label for="max-price">Maximum price</label>
+        <input id="max-price" name="maxPrice" type="number" min="0" value="1500">
+        <button type="submit">Apply</button>
+      </form>
+    </section>
+    <section aria-labelledby="catalog-heading">
+      <h2 id="catalog-heading">Product catalog</h2>
+      <div id="catalog-grid" class="catalog-grid" aria-live="polite"></div>
+    </section>
+    <section aria-labelledby="summary-heading">
+      <h2 id="summary-heading">Price summary</h2>
+      <table>
+        <caption>Current totals</caption>
+        <thead>
+          <tr><th scope="col">Metric</th><th scope="col">Value</th></tr>
+        </thead>
+        <tbody id="summary-body"></tbody>
+      </table>
+    </section>
+  </main>
+  <footer>
+    <small>Web Design practice model</small>
+  </footer>
+  <script src="app.js" defer><\/script>
+</body>
+</html>`
+			},
+			{
+				name: 'styles.css',
+				lang: 'css',
+				code: `* { box-sizing: border-box; }
+:root { color-scheme: light; }
+body { margin: 0; font-family: Arial, sans-serif; line-height: 1.5; color: #1f2328; }
+.skip-link { position: absolute; left: -9999px; }
+.skip-link:focus { left: 1rem; top: 1rem; background: #fff; padding: 0.5rem; }
+.site-header { padding: 1rem 1.5rem; background: #e9f2ff; border-bottom: 1px solid #c7d2e0; }
+main { max-width: 960px; margin: 0 auto; padding: 1.5rem; }
+#filter-form { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: end; margin-bottom: 1rem; }
+#max-price { width: 9rem; padding: 0.4rem; border: 1px solid #8c959f; }
+button { padding: 0.4rem 0.8rem; border: 1px solid #2f6feb; background: #2f6feb; color: #fff; cursor: pointer; }
+button:hover { background: #1f4fbf; }
+.catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.card { border: 1px solid #d0d7de; border-radius: 0.5rem; padding: 0.75rem; background: #fff; }
+.card h3 { margin: 0 0 0.5rem; }
+.card p { margin: 0.25rem 0; }
+.card .stock-ok { color: #1a7f37; }
+.card .stock-no { color: #b42318; }
+table { width: 100%; border-collapse: collapse; margin-top: 0.75rem; }
+th, td { border: 1px solid #d0d7de; padding: 0.4rem; text-align: left; }
+@media (max-width: 760px) {
+  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  #filter-form { flex-direction: column; align-items: stretch; }
+  .catalog-grid { grid-template-columns: 1fr; }
+}`
+			},
+			{
+				name: 'app.js',
+				lang: 'javascript',
+				code: `const products = [
+  { id: 1, name: 'Mechanical Keyboard', category: 'Accessories', price: 320, inStock: true },
+  { id: 2, name: 'Wireless Mouse', category: 'Accessories', price: 180, inStock: true },
+  { id: 3, name: '27" Monitor', category: 'Displays', price: 980, inStock: false },
+  { id: 4, name: 'USB-C Hub', category: 'Accessories', price: 210, inStock: true },
+  { id: 5, name: 'Noise-Canceling Headphones', category: 'Audio', price: 760, inStock: false }
+];
+const catalogGrid = document.getElementById('catalog-grid');
+const summaryBody = document.getElementById('summary-body');
+const filterForm = document.getElementById('filter-form');
+const maxPriceInput = document.getElementById('max-price');
+function buildCard(product) {
+  const article = document.createElement('article');
+  article.className = 'card';
+  const title = document.createElement('h3');
+  title.textContent = product.name;
+  const meta = document.createElement('p');
+  meta.textContent = product.category + ' - ' + product.price + ' RON';
+  const stock = document.createElement('p');
+  stock.textContent = product.inStock ? 'In stock' : 'Out of stock';
+  stock.className = product.inStock ? 'stock-ok' : 'stock-no';
+  article.appendChild(title);
+  article.appendChild(meta);
+  article.appendChild(stock);
+  return article;
+}
+function renderSummary(list) {
+  summaryBody.innerHTML = '';
+  const names = list.map(function (item) { return item.name; });
+  const total = list.reduce(function (sum, item) { return sum + item.price; }, 0);
+  const average = list.length === 0 ? 0 : Math.round(total / list.length);
+  const rows = [
+    ['Visible products', String(list.length)],
+    ['Names', names.join(', ') || 'None'],
+    ['Total price', String(total) + ' RON'],
+    ['Average price', String(average) + ' RON']
+  ];
+  rows.forEach(function (row) {
+    const tr = document.createElement('tr');
+    row.forEach(function (cellValue) {
+      const cell = document.createElement('td');
+      cell.textContent = cellValue;
+      tr.appendChild(cell);
+    });
+    summaryBody.appendChild(tr);
+  });
+}
+function renderCatalog(maxPrice) {
+  catalogGrid.innerHTML = '';
+  const filtered = products.filter(function (product) { return product.price <= maxPrice; });
+  filtered.forEach(function (product) { catalogGrid.appendChild(buildCard(product)); });
+  renderSummary(filtered);
+}
+filterForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+  const parsed = Number(maxPriceInput.value);
+  const maxPrice = Number.isNaN(parsed) ? 0 : parsed;
+  renderCatalog(maxPrice);
+});
+renderCatalog(Number(maxPriceInput.value));`
+			}
+		];
+
+		const QUESTIONS = [
+			{ text: 'In `index.html` (line 1), `<!DOCTYPE html>` indicates:', options: ['The HTML5 document type in standards mode', 'A JavaScript module', 'A CSS import', 'An XML-only document'], correct: 0, feedbackOk: 'Correct. The declaration on line 1 identifies the file as an HTML5 document.', feedbackBad: 'Incorrect. Line 1 defines the HTML5 doctype, not JavaScript, CSS, or XML mode.' },
+			{ text: 'In `index.html` (line 10), the skip link mainly supports:', options: ['Search engine crawling', 'Keyboard users who want to jump directly to main content', 'Automatic translations', 'Server-side rendering'], correct: 1, feedbackOk: 'Correct. A skip link improves keyboard accessibility by bypassing repeated navigation.', feedbackBad: 'Incorrect. The skip link exists for accessibility, especially keyboard navigation.' },
+			{ text: 'In `index.html` (line 16), `aria-labelledby="filter-heading"` provides:', options: ['A CSS selector', 'A JavaScript event', 'An accessible name relationship between the section and heading', 'A table caption'], correct: 2, feedbackOk: 'Correct. The section is programmatically labeled by the heading element.', feedbackBad: 'Incorrect. `aria-labelledby` creates an accessibility relationship, not visual styling or events.' },
+			{ text: 'In `index.html` (line 35), `<tbody id="summary-body"></tbody>` is used so JavaScript can:', options: ['Attach an external stylesheet', 'Store cookies', 'Define a media query', 'Insert summary rows dynamically'], correct: 3, feedbackOk: 'Correct. The empty tbody is a target for dynamic row creation.', feedbackBad: 'Incorrect. Line 35 creates a DOM target for JavaScript-generated rows.' },
+			{ text: 'In `index.html` (line 33), `scope="col"` on `<th>` identifies:', options: ['Column headers for accessibility tools', 'Only visual center alignment', 'A row group', 'A sortable column'], correct: 0, feedbackOk: 'Correct. `scope="col"` explicitly marks each header as a column header.', feedbackBad: 'Incorrect. The `scope` value defines semantic header association for columns.' },
+			{ text: 'In `index.html` (line 42), adding `defer` to the script means the file executes:', options: ['Before HTML parsing starts', 'After HTML parsing completes, while preserving script order', 'Only on hover', 'Inside the CSS parser'], correct: 1, feedbackOk: 'Correct. Deferred scripts execute after parsing and preserve order.', feedbackBad: 'Incorrect. `defer` does not execute before parsing; it runs after parsing finishes.' },
+			{ text: 'In `styles.css` (line 12), `display: grid` with `repeat(3, minmax(0, 1fr))` creates:', options: ['A single row with auto width', 'A flex layout', 'Three equal responsive grid columns', 'Three fixed 300px columns'], correct: 2, feedbackOk: 'Correct. The rule defines three equal fractional columns in a grid.', feedbackBad: 'Incorrect. The declaration creates a three-column grid, not flex or fixed 300px tracks.' },
+			{ text: 'In `styles.css` (line 24), `flex-direction: column` on `#filter-form` changes layout to:', options: ['A hidden form', 'An inline list', 'A CSS grid area', 'A vertical control stack on small screens'], correct: 3, feedbackOk: 'Correct. The media rule stacks form controls vertically on narrow viewports.', feedbackBad: 'Incorrect. The line changes axis direction to vertical; it does not hide the form.' },
+			{ text: 'In `styles.css` (line 1), `box-sizing: border-box` means declared width includes:', options: ['Content, padding, and border', 'Margin only', 'Content only', 'Padding only'], correct: 0, feedbackOk: 'Correct. Border-box sizing includes padding and border in the declared width.', feedbackBad: 'Incorrect. Border-box includes padding and border, unlike content-box.' },
+			{ text: 'In `styles.css` (line 20), `@media (max-width: 760px)` applies when the viewport is:', options: ['At least 760px wide', '760px wide or narrower', 'Exactly 760px only', 'Print-only mode'], correct: 1, feedbackOk: 'Correct. `max-width` matches the breakpoint and smaller widths.', feedbackBad: 'Incorrect. `max-width: 760px` applies at 760px and below.' },
+			{ text: 'In `styles.css` (line 17), `.card .stock-no` is a selector for:', options: ['Any `.card` element', 'A pseudo-element', 'Descendants with class `stock-no` inside a `.card`', 'The first child of body only'], correct: 2, feedbackOk: 'Correct. The selector targets descendant elements named `stock-no` within cards.', feedbackBad: 'Incorrect. It is a descendant class selector scoped to `.card`.' },
+			{ text: 'In `styles.css` (line 19), `th, td` is a grouped selector that styles:', options: ['Only header cells', 'Only data cells', 'Only table captions', 'Both header and data cells'], correct: 3, feedbackOk: 'Correct. Grouped selectors apply one rule set to both element types.', feedbackBad: 'Incorrect. The comma combines both `th` and `td` targets.' },
+			{ text: 'In `app.js` (line 1), `products` is declared as:', options: ['An array of product objects', 'A single object literal', 'A function declaration', 'A NodeList from the DOM'], correct: 0, feedbackOk: 'Correct. The square brackets contain multiple object entries.', feedbackBad: 'Incorrect. The variable holds an array of objects, not one object.' },
+			{ text: 'In `app.js` (line 29), `.map(...)` is used to:', options: ['Mutate objects in place', 'Create a new array of product names', 'Remove out-of-stock items', 'Sum all prices'], correct: 1, feedbackOk: 'Correct. `map` transforms each item into a corresponding name string.', feedbackBad: 'Incorrect. `map` creates a transformed array; it does not filter or reduce.' },
+			{ text: 'In `app.js` (line 30), `.reduce(...)` computes:', options: ['A boolean stock flag', 'A sorted array', 'A single numeric total accumulated from prices', 'A DOM fragment'], correct: 2, feedbackOk: 'Correct. The reducer accumulates one total value from all prices.', feedbackBad: 'Incorrect. `reduce` returns one accumulated result, here the total price.' },
+			{ text: 'In `app.js` (line 50), `.filter(...)` returns:', options: ['All products regardless of price', 'The first product only', 'A map of categories', 'Only products with `price <= maxPrice`'], correct: 3, feedbackOk: 'Correct. The predicate keeps products at or below the selected threshold.', feedbackBad: 'Incorrect. The filter condition keeps only items meeting the maximum price.' },
+			{ text: 'In `app.js` (line 13), `document.createElement(\'article\')` creates:', options: ['A new detached article element', 'A clone of the body', 'A text string only', 'An already-rendered card in DOM'], correct: 0, feedbackOk: 'Correct. `createElement` returns a new node that is not attached yet.', feedbackBad: 'Incorrect. The element is created detached and must be appended later.' },
+			{ text: 'In `app.js` (line 22), `article.appendChild(title)` does what?', options: ['Removes the title node', 'Appends the title node as the last child of `article`', 'Converts HTML to text', 'Finds an existing child by selector'], correct: 1, feedbackOk: 'Correct. `appendChild` inserts the node at the end of the parent children list.', feedbackBad: 'Incorrect. `appendChild` inserts; it does not remove or query elements.' },
+			{ text: 'In `app.js` (line 16), assigning with `title.textContent` is preferred because it:', options: ['Parses HTML tags from user input', 'Runs CSS selectors', 'Inserts plain text without HTML parsing', 'Sends text to localStorage automatically'], correct: 2, feedbackOk: 'Correct. `textContent` writes plain text and avoids HTML interpretation.', feedbackBad: 'Incorrect. `textContent` does not parse markup; it safely inserts text.' },
+			{ text: 'In `app.js` (line 55), `event.preventDefault()` is used to:', options: ['Disable JavaScript', 'Clear the input field', 'Submit twice for reliability', 'Stop default form submission and page reload'], correct: 3, feedbackOk: 'Correct. The handler prevents browser default submission behavior.', feedbackBad: 'Incorrect. `preventDefault` blocks default submit/reload, enabling custom logic.' },
+			{ text: 'In `app.js` (line 8), `document.getElementById(\'catalog-grid\')` returns:', options: ['A single element or null', 'Every element with class `catalog-grid`', 'An array of nodes', 'A CSSStyleDeclaration'], correct: 0, feedbackOk: 'Correct. `getElementById` resolves one unique element id.', feedbackBad: 'Incorrect. `getElementById` returns one element, not a collection.' },
+			{ text: 'In `app.js` (line 57), `Number.isNaN(parsed) ? 0 : parsed` ensures that:', options: ['All values become strings', 'Invalid numeric input falls back to `0`', 'The form cannot submit', 'Products become sorted'], correct: 1, feedbackOk: 'Correct. The expression guards against invalid numbers by providing `0`.', feedbackBad: 'Incorrect. The ternary only normalizes invalid numeric input.' },
+			{ text: 'In `styles.css` (line 8), `display: flex` on `#filter-form` creates:', options: ['A three-column grid', 'A table formatting context', 'A flexible row layout for direct children', 'Absolute positioning for inputs'], correct: 2, feedbackOk: 'Correct. Flexbox controls alignment and spacing of immediate children.', feedbackBad: 'Incorrect. The declaration creates a flex formatting context, not grid/table.' },
+			{ text: 'In `styles.css` (line 11), `button:hover` is:', options: ['A class selector', 'An attribute selector', 'A descendant combinator', 'A pseudo-class selector'], correct: 3, feedbackOk: 'Correct. `:hover` is a state-based pseudo-class.', feedbackBad: 'Incorrect. `:hover` is classified as a pseudo-class.' },
+			{ text: 'In `index.html` (line 30), using `<table>` in the summary section provides:', options: ['A semantic structure for tabular metrics', 'A replacement for forms', 'Automatic JavaScript validation', 'A CSS-only layout system'], correct: 0, feedbackOk: 'Correct. The data is tabular, so table semantics are appropriate.', feedbackBad: 'Incorrect. The table represents structured metric rows and columns semantically.' },
+			{ text: 'In `app.js` (line 38), `rows.forEach(...)` means the callback runs:', options: ['Only once', 'Once for each summary row definition', 'Only for rows with prices above 500', 'Only after user confirmation'], correct: 1, feedbackOk: 'Correct. `forEach` iterates each entry in `rows` sequentially.', feedbackBad: 'Incorrect. The callback executes per row item in the array.' },
+			{ text: 'In `index.html` (line 20), `type="number"` on the price input suggests:', options: ['An email keyboard', 'A date picker', 'Numeric data entry semantics', 'Mandatory decimal precision only'], correct: 2, feedbackOk: 'Correct. The control is semantically numeric and receives numeric UI affordances.', feedbackBad: 'Incorrect. `type="number"` indicates numeric entry, not email/date behavior.' },
+			{ text: 'In `app.js` (line 60), `renderCatalog(Number(maxPriceInput.value));` executes:', options: ['Only after clicking Apply', 'After every keypress', 'Only in dark mode', 'An initial render when the script loads'], correct: 3, feedbackOk: 'Correct. This call initializes the page with the current input value.', feedbackBad: 'Incorrect. The line performs an immediate initial render on load.' },
+			{ text: 'In `styles.css` (line 18), `border-collapse: collapse` on `table` causes:', options: ['Adjacent cell borders to collapse into single lines', 'Table rows to become hidden', 'Only captions to display', 'Rows to convert into flex items'], correct: 0, feedbackOk: 'Correct. Collapsed borders avoid doubled border seams between cells.', feedbackBad: 'Incorrect. `border-collapse` merges neighboring table borders.' },
+			{ text: 'In `app.js` (line 51), `filtered.forEach(...)` combined with `appendChild` does what?', options: ['Creates one card element per filtered product and inserts it', 'Mutates the `products` array length', 'Deletes unavailable products from memory', 'Converts all prices to strings'], correct: 1, feedbackOk: 'Correct. The loop renders each filtered product card into the catalog container.', feedbackBad: 'Incorrect. The loop renders DOM nodes; it does not delete source data.' }
+		];
+	</script>
+	<script src="exam.js"></script>
+</body>
+</html>
